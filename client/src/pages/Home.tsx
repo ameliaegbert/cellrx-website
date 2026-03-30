@@ -118,10 +118,10 @@ export default function Home() {
             alt="CellRX Medical Director"
             className="w-full h-full object-cover object-top"
           />
-          {/* Left-side fade only — keeps the photo fully visible on the right */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#051229] via-[#051229]/40 to-transparent" />
-          {/* Subtle bottom fade to blend into next section */}
-          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#051229] to-transparent" />
+          {/* Narrow left-edge fade only — stops at 30% so the doctor's face is fully clear */}
+          <div className="absolute inset-y-0 left-0 w-[30%] bg-gradient-to-r from-[#051229] to-transparent" />
+          {/* Subtle bottom fade */}
+          <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#051229] to-transparent" />
         </div>
 
         <div className="container relative z-10 pt-32 pb-24">
