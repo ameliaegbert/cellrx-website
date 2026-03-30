@@ -16,7 +16,7 @@ const INJECTION_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/
 const IV_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/service_iv_9142a5f3.webp";
 const BLACK_LABEL_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/service_black_label_1c68d442.webp";
 const CLINIC_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/clinic_interior_31c757cf.webp";
-const PHYSICIAN_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/team_photo_3d1739e6.webp";
+const PHYSICIAN_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/physician_portrait_d5fe25e9.webp";
 const BG_DARK_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/background_dark_fb24a343.webp";
 
 function useScrollAnimation() {
@@ -118,8 +118,10 @@ export default function Home() {
             alt="CellRX Medical Director"
             className="w-full h-full object-cover object-top"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#051229] via-[#051229]/75 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#051229] via-transparent to-transparent" />
+          {/* Left-side fade only — keeps the photo fully visible on the right */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#051229] via-[#051229]/40 to-transparent" />
+          {/* Subtle bottom fade to blend into next section */}
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#051229] to-transparent" />
         </div>
 
         <div className="container relative z-10 pt-32 pb-24">
