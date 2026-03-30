@@ -1,18 +1,17 @@
 /*
  * CellRX Home Page — Editorial Dark Luxury
- * Sections: Hero, Trust Bar, Services, Why CellRX, Physician, Testimonials, FAQ, CTA
- * Colors: Navy #051229, Blue #0047BB, Gold #C9A84C, Cream #F6F5EC
+ * Brand Colors: #051229 Navy | #0047BB Blue | #FBB217 Amber | #F6F5EC Cream | #36454F Charcoal | #D6D7D9 Silver
  * Fonts: Bebas Neue (display), Tenor Sans (sub), Inter (body)
+ * Copy: Luxury sales psychology — exclusivity, authority, transformation, scarcity
  */
 
 import { useEffect, useRef, useState } from "react";
 import { Link } from "wouter";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { ChevronDown, Shield, Award, Clock, Star, ArrowRight, CheckCircle2, Plus, Minus } from "lucide-react";
+import { ChevronDown, Shield, Zap, Clock, Star, ArrowRight, CheckCircle2, Plus, Minus } from "lucide-react";
 
 // CDN URLs
-const HERO_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/clinic_interior_31c757cf.webp";
 const INJECTION_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/service_injection_3f039e48.webp";
 const IV_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/service_iv_9142a5f3.webp";
 const BLACK_LABEL_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/service_black_label_1c68d442.webp";
@@ -20,17 +19,10 @@ const CLINIC_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7t
 const PHYSICIAN_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/team_photo_3d1739e6.webp";
 const BG_DARK_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/background_dark_fb24a343.webp";
 
-// Scroll animation hook
 function useScrollAnimation() {
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
-      },
+      (entries) => { entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("visible"); }); },
       { threshold: 0.1 }
     );
     document.querySelectorAll(".fade-up, .fade-in").forEach((el) => observer.observe(el));
@@ -38,64 +30,53 @@ function useScrollAnimation() {
   }, []);
 }
 
-// Counter animation
 function AnimatedCounter({ target, suffix = "" }: { target: number; suffix?: string }) {
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
   const started = useRef(false);
-
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !started.current) {
-          started.current = true;
-          let start = 0;
-          const duration = 2000;
-          const step = target / (duration / 16);
-          const timer = setInterval(() => {
-            start += step;
-            if (start >= target) {
-              setCount(target);
-              clearInterval(timer);
-            } else {
-              setCount(Math.floor(start));
-            }
-          }, 16);
-        }
-      },
-      { threshold: 0.5 }
-    );
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !started.current) {
+        started.current = true;
+        let start = 0;
+        const step = target / (2000 / 16);
+        const timer = setInterval(() => {
+          start += step;
+          if (start >= target) { setCount(target); clearInterval(timer); }
+          else setCount(Math.floor(start));
+        }, 16);
+      }
+    }, { threshold: 0.5 });
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
   }, [target]);
-
   return <span ref={ref}>{count}{suffix}</span>;
 }
 
 const faqs = [
   {
-    q: "What makes CellRX regenerative treatments different from traditional pain or inflammation therapies?",
-    a: "CellRX therapies work by activating your body's own healing mechanisms rather than simply masking symptoms. By delivering biologic signals directly to tissues or systemically, these treatments reduce inflammation and support real repair at the cellular level, helping you regain function and feel better long-term."
+    q: "What makes CellRX stem cells different from what other clinics offer?",
+    a: "Most clinics purchase stem cells through third-party distributors — meaning the product has often changed hands multiple times, may have been diluted, and comes with no verifiable chain of custody. At CellRX, our Medical Director serves as the Medical Director of our stem cell source company. This means we have direct, unbroken oversight from the moment of ethical procurement to the moment of your treatment. Our biologics are never diluted, never replicated, and always sourced from healthy, consented local births — giving you the highest concentration and the most transparent provenance available anywhere."
+  },
+  {
+    q: "How is stem cell therapy priced at CellRX?",
+    a: "Stem cell treatments are priced at $1,250 per CC, with protocols ranging from 1 CC to a maximum of 10 CC depending on your condition, goals, and our physician's recommendation. Your consultation will determine the optimal dose for your specific needs. This transparent, per-CC model ensures you receive exactly what your biology requires — nothing more, nothing less."
   },
   {
     q: "Are stem cell and regenerative treatments safe?",
-    a: "Yes. At CellRX, we use ethically sourced, rigorously screened biologic products and follow strict protocols to ensure safety and compatibility. All regenerative treatments are administered by expert clinicians who tailor the approach to your unique needs. Minor soreness or temporary swelling can occur, but serious side effects are rare when performed in a controlled, clinical environment."
+    a: "Yes. At CellRX, we use ethically sourced, rigorously screened biologic products with full chain-of-custody documentation. All treatments are administered by expert clinicians who tailor every protocol to your unique biology. Our biologics are sourced exclusively from healthy local births and are never diluted or replicated — ensuring the highest purity and safety standards in the industry."
   },
   {
-    q: "When will I start to feel results?",
-    a: "Many patients notice early improvements in pain, mobility, or energy within the first few weeks. Because regenerative healing happens at the cellular level, full benefits often continue to develop over several months as your body rebuilds and restores function."
+    q: "When will I start to notice results?",
+    a: "Many patients report meaningful improvements in pain, mobility, energy, and cognitive clarity within the first few weeks. Because regenerative healing operates at the cellular level, the full arc of benefit often continues to unfold over three to six months as your body rebuilds and restores function. The results are not a temporary mask — they represent genuine biological repair."
   },
   {
-    q: "How long does a regenerative procedure take and what's the recovery like?",
-    a: "Under an hour. Most treatments are minimally invasive and completed in a single clinic visit. Recovery is typically gentle — most people resume normal activities quickly with little downtime. We'll provide personalized aftercare guidance to help support healing and maximize outcomes."
+    q: "How long does a procedure take, and what is the recovery like?",
+    a: "Most treatments are completed in under 60 minutes in our private clinic environment. Recovery is minimal — the vast majority of patients resume their normal activities the same day. We provide personalized aftercare guidance to support healing and ensure your results are optimized."
   },
   {
-    q: "Am I a good candidate for CellRX regenerative therapy?",
-    a: "Regenerative treatments can benefit a wide range of individuals dealing with joint pain, chronic inflammation, slow recovery, or performance limitations, especially those seeking non-surgical alternatives. A consultation with our team helps determine the best approach for your goals and medical history."
-  },
-  {
-    q: "What makes the Black Label Membership different from standard care?",
-    a: "Black Label goes far beyond traditional treatment plans. As a member, you receive concierge-level access to our most advanced regenerative therapies, priority scheduling, direct communication with your medical team, and optimization protocols built uniquely around your biology and goals."
+    q: "What is included in the Black Label Membership?",
+    a: "Black Label is our most comprehensive concierge health program, priced at $28,000 per year. It includes quarterly laboratory panels, personalized longevity protocols, direct physician access, priority scheduling, and unlimited consultations. Stem cell treatments are available as a premium add-on. Spouses may be added for an additional $20,000 per year. Membership is limited to ensure every member receives the full attention and resources they deserve."
   }
 ];
 
@@ -110,12 +91,12 @@ function FAQItem({ q, a }: { q: string; a: string }) {
         <span className="text-white font-medium text-base leading-snug" style={{ fontFamily: "'Tenor Sans', serif" }}>
           {q}
         </span>
-        <span className="text-[#C9A84C] shrink-0">
+        <span className="text-[#FBB217] shrink-0">
           {open ? <Minus size={18} /> : <Plus size={18} />}
         </span>
       </button>
       <div className={`overflow-hidden transition-all duration-300 ${open ? "max-h-96 pb-6" : "max-h-0"}`}>
-        <p className="text-white/60 text-sm leading-relaxed">{a}</p>
+        <p className="text-[#D6D7D9] text-sm leading-relaxed">{a}</p>
       </div>
     </div>
   );
@@ -130,16 +111,14 @@ export default function Home() {
 
       {/* ─── HERO ─── */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
-        {/* Background: dark navy with subtle texture */}
         <div className="absolute inset-0 bg-[#051229]" />
-        {/* Right side: physician image */}
         <div className="absolute right-0 top-0 bottom-0 w-full lg:w-3/5 overflow-hidden">
           <img
             src={PHYSICIAN_IMG}
             alt="CellRX Medical Director"
             className="w-full h-full object-cover object-top"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#051229] via-[#051229]/70 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#051229] via-[#051229]/75 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#051229] via-transparent to-transparent" />
         </div>
 
@@ -147,35 +126,34 @@ export default function Home() {
           <div className="max-w-xl">
             <p className="section-label mb-6 fade-up">Concierge Regenerative Medicine</p>
             <h1
-              className="text-white leading-none mb-6 fade-up"
+              className="text-[#F6F5EC] leading-none mb-6 fade-up"
               style={{ fontSize: "clamp(60px, 8vw, 110px)", fontFamily: "'Bebas Neue', sans-serif", letterSpacing: "0.03em", transitionDelay: "0.1s" }}
             >
-              TRANSFORM<br />
+              RECLAIM<br />
               <span className="text-[#0047BB]">YOUR</span><br />
-              HEALTH
+              VITALITY
             </h1>
             <p
-              className="text-white/70 text-lg leading-relaxed mb-10 max-w-lg fade-up"
+              className="text-[#D6D7D9] text-lg leading-relaxed mb-10 max-w-lg fade-up"
               style={{ transitionDelay: "0.2s" }}
             >
-              Precision stem cell therapy and concierge wellness programs designed for elite performers who refuse to accept decline.
+              The most advanced stem cell therapies available — sourced with full chain of custody, never diluted, and administered by the physician who oversees their creation.
             </p>
             <div className="flex flex-wrap gap-4 fade-up" style={{ transitionDelay: "0.3s" }}>
               <Link href="/contact">
                 <button className="btn-primary rounded-none">
-                  Book Your Consultation
+                  Book Your Private Consultation
                 </button>
               </Link>
               <Link href="/services">
                 <button className="btn-outline rounded-none">
-                  Explore Services
+                  Explore Treatments
                 </button>
               </Link>
             </div>
           </div>
         </div>
 
-        {/* Scroll indicator */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/30 animate-bounce">
           <ChevronDown size={20} />
         </div>
@@ -186,15 +164,15 @@ export default function Home() {
         <div className="container">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
-              { icon: <Shield size={20} className="text-[#C9A84C]" />, label: "Ethically Sourced", sub: "Rigorously screened biologics" },
-              { icon: <Award size={20} className="text-[#C9A84C]" />, label: "Expert Clinicians", sub: "Specialized regenerative team" },
-              { icon: <Clock size={20} className="text-[#C9A84C]" />, label: "Under 60 Minutes", sub: "Minimally invasive procedures" },
-              { icon: <Star size={20} className="text-[#C9A84C]" />, label: "White-Glove Service", sub: "Concierge care at every step" },
+              { icon: <Shield size={20} className="text-[#FBB217]" />, label: "Full Chain of Custody", sub: "Unbroken oversight from source to syringe" },
+              { icon: <Zap size={20} className="text-[#FBB217]" />, label: "Never Diluted", sub: "Maximum concentration, every time" },
+              { icon: <Clock size={20} className="text-[#FBB217]" />, label: "Under 60 Minutes", sub: "Minimally invasive, same-day return" },
+              { icon: <Star size={20} className="text-[#FBB217]" />, label: "White-Glove Service", sub: "Concierge care at every step" },
             ].map((item, i) => (
               <div key={i} className="flex flex-col items-center gap-2">
                 {item.icon}
-                <p className="text-white text-sm font-semibold tracking-wide">{item.label}</p>
-                <p className="text-white/40 text-xs">{item.sub}</p>
+                <p className="text-[#F6F5EC] text-sm font-semibold tracking-wide">{item.label}</p>
+                <p className="text-[#D6D7D9]/60 text-xs">{item.sub}</p>
               </div>
             ))}
           </div>
@@ -209,17 +187,17 @@ export default function Home() {
               { value: 500, suffix: "+", label: "Patients Treated" },
               { value: 10, suffix: "+", label: "Years of Excellence" },
               { value: 98, suffix: "%", label: "Patient Satisfaction" },
-              { value: 3, suffix: "", label: "Treatment Protocols" },
+              { value: 10, suffix: " CC", label: "Maximum Dose Available" },
             ].map((stat, i) => (
               <div key={i} className="fade-up" style={{ transitionDelay: `${i * 0.1}s` }}>
                 <div
-                  className="text-white mb-2"
+                  className="text-[#F6F5EC] mb-2"
                   style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(48px, 6vw, 72px)", letterSpacing: "0.02em", lineHeight: 1 }}
                 >
                   <AnimatedCounter target={stat.value} suffix={stat.suffix} />
                 </div>
                 <div className="gold-rule mx-auto mb-3" />
-                <p className="text-white/50 text-xs tracking-widest uppercase">{stat.label}</p>
+                <p className="text-[#D6D7D9]/60 text-xs tracking-widest uppercase">{stat.label}</p>
               </div>
             ))}
           </div>
@@ -231,7 +209,7 @@ export default function Home() {
         <div className="container">
           <div className="mb-16 fade-up">
             <p className="section-label mb-4">Our Treatments</p>
-            <h2 className="text-white" style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(40px, 5vw, 64px)" }}>
+            <h2 className="text-[#F6F5EC]" style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(40px, 5vw, 64px)" }}>
               PRECISION REGENERATIVE PROTOCOLS
             </h2>
           </div>
@@ -242,30 +220,30 @@ export default function Home() {
                 img: INJECTION_IMG,
                 label: "01",
                 title: "STEM CELL INJECTION",
-                sub: "Targeted Joint Repair",
-                desc: "A targeted regenerative treatment that gives your joint the precise biologic signals it needs to repair tissue, reduce inflammation, and restore function.",
-                price: "Starting at $2,500",
-                features: ["Repairs damaged tissue at the root", "Reduces inflammation and joint pain", "Restores mobility, avoids surgery"],
+                sub: "Targeted Joint & Tissue Repair",
+                desc: "Precision-dosed regenerative biologics delivered directly to the site of damage — giving your body the exact signals it needs to repair tissue, eliminate chronic inflammation, and restore function without surgery.",
+                price: "$1,250 per CC",
+                features: ["Addresses root cause, not symptoms", "Eliminates chronic inflammation", "Restores mobility — avoids surgery"],
                 href: "/services"
               },
               {
                 img: IV_IMG,
                 label: "02",
                 title: "STEM CELL IV THERAPY",
-                sub: "Full-Body Regeneration",
-                desc: "A full-body regenerative infusion that delivers powerful biologic signals through the bloodstream to reduce inflammation, accelerate repair, and restore vitality.",
-                price: "Starting at $4,000",
-                features: ["Supports whole-body repair", "Reduces systemic inflammation", "Restores energy and performance"],
+                sub: "Systemic Regeneration & Optimization",
+                desc: "A full-body regenerative infusion that delivers concentrated biologics through the bloodstream — targeting inflammation, accelerating cellular repair, and restoring the energy and clarity of a younger biology.",
+                price: "$1,250 per CC",
+                features: ["Whole-body cellular restoration", "Elevates energy and cognitive performance", "Accelerates recovery, extends longevity"],
                 href: "/services"
               },
               {
                 img: BLACK_LABEL_IMG,
                 label: "03",
                 title: "BLACK LABEL",
-                sub: "Concierge Wellness",
-                desc: "For the refined, high-performance individual who desires a team dedicated to excellence and longevity. Concierge-level access to advanced regenerative therapies.",
-                price: "Investment plan specific",
-                features: ["Concierge access to advanced treatments", "Personalized protocols for your goals", "Priority scheduling & exclusive benefits"],
+                sub: "Concierge Health Partnership",
+                desc: "For those who refuse to leave their health to chance. An all-encompassing annual membership that delivers proactive optimization, quarterly labs, and direct physician access — with stem cell treatments available as a premium add-on.",
+                price: "$28,000 / year",
+                features: ["Quarterly biomarker & lab panels", "Personalized longevity protocols", "Stem cell treatments available as add-on"],
                 href: "/black-label"
               }
             ].map((service, i) => (
@@ -283,7 +261,7 @@ export default function Home() {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#030d1e] via-[#030d1e]/30 to-transparent" />
                   <div className="absolute top-4 left-4">
                     <span
-                      className="text-[#C9A84C]/30"
+                      className="text-[#FBB217]/25"
                       style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "48px", lineHeight: 1 }}
                     >
                       {service.label}
@@ -293,24 +271,24 @@ export default function Home() {
                 <div className="bg-[#0a1628] p-8 border border-white/5 border-t-0">
                   <p className="section-label mb-2">{service.sub}</p>
                   <h3
-                    className="text-white mb-4"
+                    className="text-[#F6F5EC] mb-4"
                     style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "28px", letterSpacing: "0.05em" }}
                   >
                     {service.title}
                   </h3>
-                  <p className="text-white/50 text-sm leading-relaxed mb-6">{service.desc}</p>
+                  <p className="text-[#D6D7D9]/70 text-sm leading-relaxed mb-6">{service.desc}</p>
                   <ul className="space-y-2 mb-6">
                     {service.features.map((f, j) => (
-                      <li key={j} className="flex items-center gap-2 text-white/60 text-xs">
+                      <li key={j} className="flex items-center gap-2 text-[#D6D7D9]/70 text-xs">
                         <CheckCircle2 size={13} className="text-[#0047BB] shrink-0" />
                         {f}
                       </li>
                     ))}
                   </ul>
                   <div className="flex items-center justify-between pt-4 border-t border-white/10">
-                    <span className="text-[#C9A84C] text-sm font-semibold">{service.price}</span>
+                    <span className="text-[#FBB217] text-sm font-semibold">{service.price}</span>
                     <Link href={service.href}>
-                      <button className="flex items-center gap-2 text-white/60 text-xs hover:text-[#C9A84C] transition-colors group/btn">
+                      <button className="flex items-center gap-2 text-[#D6D7D9]/60 text-xs hover:text-[#FBB217] transition-colors group/btn">
                         Learn More <ArrowRight size={13} className="group-hover/btn:translate-x-1 transition-transform" />
                       </button>
                     </Link>
@@ -322,52 +300,45 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── WHY CELLRX ─── */}
+      {/* ─── THE CELLRX DIFFERENCE ─── */}
       <section
         className="relative py-24 overflow-hidden"
         style={{ backgroundImage: `url(${CLINIC_IMG})`, backgroundSize: "cover", backgroundPosition: "center" }}
       >
-        <div className="absolute inset-0 bg-[#051229]/85" />
+        <div className="absolute inset-0 bg-[#051229]/88" />
         <div className="container relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="fade-up">
-              <p className="section-label mb-4">Why CellRX</p>
+              <p className="section-label mb-4">The CellRX Difference</p>
               <h2
-                className="text-white mb-6"
+                className="text-[#F6F5EC] mb-6"
                 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(40px, 5vw, 64px)" }}
               >
-                THE ULTIMATE IN<br />
-                <span className="text-[#C9A84C]">LUXURY HEALTHCARE</span>
+                THE STANDARD<br />
+                <span className="text-[#FBB217]">OTHERS CANNOT MATCH</span>
               </h2>
-              <p className="text-white/60 leading-relaxed mb-8">
-                CellRX was founded on a singular belief: that the most discerning individuals deserve medical care that matches their standards. We combine cutting-edge regenerative science with the discretion, precision, and white-glove service of a private members' club.
+              <p className="text-[#D6D7D9]/80 leading-relaxed mb-8">
+                Most regenerative clinics purchase biologics through distributors — products that have changed hands multiple times, with no verifiable chain of custody. At CellRX, our Medical Director is also the Medical Director of our stem cell source company. That means every vial we administer has been under our direct oversight from the moment of ethical procurement. Never diluted. Never replicated. Always from healthy, consented local births.
               </p>
               <Link href="/about">
                 <button className="btn-primary rounded-none">
-                  Our Story
+                  Our Approach
                 </button>
               </Link>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 fade-in">
               {[
-                { title: "Discreet & Private", desc: "Treatment spaces designed for complete peace of mind and confidentiality." },
-                { title: "World-Class Experts", desc: "Access to medical experts specializing in regenerative and longevity medicine." },
-                { title: "White-Glove Service", desc: "Seamless, attentive service at every step of your experience." },
-                { title: "Precision Care", desc: "Unmatched attention to detail, ensuring precision in every aspect of your care." },
+                { title: "Full Chain of Custody", desc: "Direct oversight from source to syringe. No distributors. No unknowns. Complete transparency." },
+                { title: "Maximum Concentration", desc: "Our biologics are never diluted or replicated — you receive the full therapeutic dose every time." },
+                { title: "Ethically Sourced", desc: "Exclusively from healthy, consented local births. The highest ethical and quality standards in the industry." },
+                { title: "Physician-Directed", desc: "Your treatment is designed and overseen by the same physician who directs the source company. Accountability at every level." },
               ].map((item, i) => (
-                <div
-                  key={i}
-                  className="glass-card p-6"
-                  style={{ transitionDelay: `${i * 0.1}s` }}
-                >
+                <div key={i} className="glass-card p-6">
                   <div className="gold-rule mb-4" />
-                  <h4
-                    className="text-white mb-2"
-                    style={{ fontFamily: "'Tenor Sans', serif", fontSize: "16px" }}
-                  >
+                  <h4 className="text-[#F6F5EC] mb-2" style={{ fontFamily: "'Tenor Sans', serif", fontSize: "16px" }}>
                     {item.title}
                   </h4>
-                  <p className="text-white/50 text-sm leading-relaxed">{item.desc}</p>
+                  <p className="text-[#D6D7D9]/60 text-sm leading-relaxed">{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -380,52 +351,50 @@ export default function Home() {
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="relative fade-in">
-              <div className="relative">
-                <img
-                  src={PHYSICIAN_IMG}
-                  alt="CellRX Medical Director"
-                  className="w-full max-w-md mx-auto object-cover"
-                  style={{ aspectRatio: "3/4", objectFit: "cover" }}
-                />
-                <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-[#051229] to-transparent" />
-              </div>
-              {/* Credential badge */}
-              <div className="absolute top-8 -right-4 bg-[#0047BB] p-4 max-w-[160px] hidden lg:block">
-                <p className="text-white text-xs font-bold tracking-wide uppercase leading-tight">Board Certified</p>
-                <p className="text-white/70 text-xs mt-1">Regenerative Medicine</p>
+              <img
+                src={PHYSICIAN_IMG}
+                alt="CellRX Medical Director"
+                className="w-full max-w-md mx-auto object-cover"
+                style={{ aspectRatio: "3/4", objectFit: "cover" }}
+              />
+              <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-[#051229] to-transparent" />
+              {/* Authority badge */}
+              <div className="absolute top-8 -right-4 bg-[#0047BB] p-4 max-w-[180px] hidden lg:block">
+                <p className="text-white text-xs font-bold tracking-wide uppercase leading-tight">Medical Director</p>
+                <p className="text-white/70 text-xs mt-1">Stem Cell Source Company</p>
               </div>
             </div>
 
             <div className="fade-up">
               <p className="section-label mb-4">Meet Our Medical Director</p>
               <h2
-                className="text-white mb-2"
+                className="text-[#F6F5EC] mb-2"
                 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(40px, 5vw, 60px)" }}
               >
-                EXPERT CARE YOU<br />CAN TRUST
+                AUTHORITY THAT<br />GOES ALL THE WAY
               </h2>
               <div className="gold-rule mb-6" />
-              <p className="text-white/60 leading-relaxed mb-6">
-                Our medical director brings years of specialized experience in regenerative medicine, combining the latest advances in stem cell science with a deep commitment to patient outcomes. Every protocol at CellRX is designed with precision, safety, and efficacy as the non-negotiable standard.
+              <p className="text-[#D6D7D9]/80 leading-relaxed mb-6">
+                Our Medical Director occupies a position no other clinic can claim: he serves simultaneously as the Medical Director of CellRX and as the Medical Director of our stem cell source company. This dual role means he has direct, unbroken oversight of every biologic we administer — from the moment of ethical procurement through the moment it enters your body.
               </p>
-              <p className="text-white/60 leading-relaxed mb-8">
-                We believe that exceptional healthcare begins with exceptional expertise. Our team is trained in the most advanced regenerative techniques, ensuring that every patient receives care that is not only cutting-edge but also deeply personalized.
+              <p className="text-[#D6D7D9]/80 leading-relaxed mb-8">
+                When you choose CellRX, you are not trusting a distributor's word. You are trusting a physician who personally guarantees the purity, concentration, and provenance of every treatment he provides.
               </p>
               <div className="grid grid-cols-3 gap-4 mb-8">
                 {[
-                  { label: "Board Certified", sub: "Regenerative Medicine" },
+                  { label: "Dual Director", sub: "Clinic & Source Company" },
                   { label: "10+ Years", sub: "Clinical Experience" },
                   { label: "500+ Patients", sub: "Successfully Treated" },
                 ].map((cred, i) => (
                   <div key={i} className="text-center">
-                    <p className="text-[#C9A84C] text-sm font-semibold">{cred.label}</p>
-                    <p className="text-white/40 text-xs mt-1">{cred.sub}</p>
+                    <p className="text-[#FBB217] text-sm font-semibold">{cred.label}</p>
+                    <p className="text-[#D6D7D9]/50 text-xs mt-1">{cred.sub}</p>
                   </div>
                 ))}
               </div>
               <Link href="/about">
                 <button className="btn-outline rounded-none">
-                  Meet the Full Team
+                  Learn More About Our Team
                 </button>
               </Link>
             </div>
@@ -439,7 +408,7 @@ export default function Home() {
           <div className="text-center mb-16 fade-up">
             <p className="section-label mb-4">Patient Outcomes</p>
             <h2
-              className="text-white"
+              className="text-[#F6F5EC]"
               style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(40px, 5vw, 64px)" }}
             >
               REAL RESULTS, REAL PEOPLE
@@ -452,19 +421,19 @@ export default function Home() {
                 name: "Michael R.",
                 role: "Professional Athlete",
                 stars: 5,
-                quote: "After two years of knee pain that was threatening my career, CellRX gave me my life back. Within three months of the stem cell injection, I was back to full training. The level of care and attention was unlike anything I've experienced in traditional medicine.",
+                quote: "After two years of knee pain that was threatening my career, CellRX gave me my life back. Within three months of the stem cell injection, I was back to full training. The level of care was unlike anything I've experienced in traditional medicine.",
                 treatment: "Stem Cell Injection"
               },
               {
                 name: "Sarah T.",
                 role: "CEO & Entrepreneur",
                 stars: 5,
-                quote: "The Black Label membership has completely transformed how I manage my health. Having a dedicated medical team that proactively monitors and optimizes my biology means I can focus entirely on my business and family. The ROI on my health has been extraordinary.",
+                quote: "The Black Label membership has completely transformed how I manage my health. Having a dedicated medical team that proactively monitors and optimizes my biology means I can focus entirely on what matters. The ROI on my health has been extraordinary.",
                 treatment: "Black Label Membership"
               },
               {
                 name: "David L.",
-                role: "Executive, Age 58",
+                role: "Executive",
                 stars: 5,
                 quote: "I was skeptical at first, but the results from the IV therapy have been remarkable. My energy levels, cognitive clarity, and recovery from workouts have all improved dramatically. The team at CellRX is professional, discreet, and genuinely invested in my outcomes.",
                 treatment: "Stem Cell IV Therapy"
@@ -477,13 +446,13 @@ export default function Home() {
               >
                 <div className="flex gap-1 mb-4">
                   {Array.from({ length: t.stars }).map((_, j) => (
-                    <Star key={j} size={14} className="text-[#C9A84C] fill-[#C9A84C]" />
+                    <Star key={j} size={14} className="text-[#FBB217] fill-[#FBB217]" />
                   ))}
                 </div>
-                <p className="text-white/70 text-sm leading-relaxed mb-6 italic">"{t.quote}"</p>
+                <p className="text-[#D6D7D9]/80 text-sm leading-relaxed mb-6 italic">"{t.quote}"</p>
                 <div className="border-t border-white/10 pt-4">
-                  <p className="text-white font-semibold text-sm">{t.name}</p>
-                  <p className="text-white/40 text-xs mt-0.5">{t.role}</p>
+                  <p className="text-[#F6F5EC] font-semibold text-sm">{t.name}</p>
+                  <p className="text-[#D6D7D9]/50 text-xs mt-0.5">{t.role}</p>
                   <p className="text-[#0047BB] text-xs mt-1">{t.treatment}</p>
                 </div>
               </div>
@@ -493,7 +462,7 @@ export default function Home() {
           <div className="text-center mt-10 fade-up">
             <Link href="/testimonials">
               <button className="btn-outline rounded-none">
-                View All Testimonials
+                View All Patient Stories
               </button>
             </Link>
           </div>
@@ -507,13 +476,13 @@ export default function Home() {
             <div className="fade-up">
               <p className="section-label mb-4">FAQ</p>
               <h2
-                className="text-white mb-6"
+                className="text-[#F6F5EC] mb-6"
                 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(36px, 4vw, 52px)" }}
               >
                 YOUR QUESTIONS<br />ANSWERED
               </h2>
-              <p className="text-white/50 text-sm leading-relaxed mb-8">
-                We believe an informed patient is an empowered patient. Find answers to the most common questions about our treatments and protocols.
+              <p className="text-[#D6D7D9]/60 text-sm leading-relaxed mb-8">
+                We believe an informed patient is an empowered patient. Find answers to the most common questions about our treatments, protocols, and what sets CellRX apart.
               </p>
               <Link href="/contact">
                 <button className="btn-primary rounded-none text-xs">
@@ -535,26 +504,26 @@ export default function Home() {
         className="relative py-24 overflow-hidden"
         style={{ backgroundImage: `url(${BG_DARK_IMG})`, backgroundSize: "cover", backgroundPosition: "center" }}
       >
-        <div className="absolute inset-0 bg-[#051229]/88" />
+        <div className="absolute inset-0 bg-[#051229]/90" />
         <div className="container relative z-10 text-center">
-          <p className="section-label mb-4 fade-up">Begin Your Journey</p>
+          <p className="section-label mb-4 fade-up">Your Next Level Awaits</p>
           <h2
-            className="text-white mb-6 fade-up"
+            className="text-[#F6F5EC] mb-6 fade-up"
             style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(40px, 6vw, 80px)", transitionDelay: "0.1s" }}
           >
-            SECURE YOUR PLACE IN<br />
-            <span className="text-[#C9A84C]">OUR ELITE HEALTH PROGRAM</span>
+            THE PEOPLE WHO PERFORM<br />
+            <span className="text-[#FBB217]">AT THE HIGHEST LEVEL INVEST IN THEIR BIOLOGY</span>
           </h2>
           <p
-            className="text-white/60 max-w-xl mx-auto mb-10 leading-relaxed fade-up"
+            className="text-[#D6D7D9]/70 max-w-xl mx-auto mb-10 leading-relaxed fade-up"
             style={{ transitionDelay: "0.2s" }}
           >
-            Our team is available to answer your questions and guide you through our exclusive health programs. Book a private consultation today.
+            A private consultation is the first step. Our Medical Director will review your history, assess your goals, and design a protocol built entirely around your biology. No templates. No shortcuts.
           </p>
           <div className="flex flex-wrap gap-4 justify-center fade-up" style={{ transitionDelay: "0.3s" }}>
             <Link href="/contact">
               <button className="btn-primary rounded-none">
-                Book Your Consultation
+                Book Your Private Consultation
               </button>
             </Link>
             <a href="tel:3857072373">

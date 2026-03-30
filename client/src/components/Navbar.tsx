@@ -64,8 +64,8 @@ export default function Navbar() {
                 href={link.href}
                 className={`text-xs font-medium tracking-widest uppercase transition-colors duration-200 ${
                   location === link.href
-                    ? "text-[#C9A84C]"
-                    : "text-white/80 hover:text-[#C9A84C]"
+                    ? "text-[#FBB217]"
+                    : "text-white/80 hover:text-[#FBB217]"
                 }`}
               >
                 {link.label}
@@ -112,7 +112,7 @@ export default function Navbar() {
               key={link.href}
               href={link.href}
               className={`text-sm font-medium tracking-widest uppercase transition-colors ${
-                location === link.href ? "text-[#C9A84C]" : "text-white/80"
+                location === link.href ? "text-[#FBB217]" : "text-white/80"
               }`}
             >
               {link.label}

@@ -24,7 +24,7 @@ export default function Footer() {
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 border border-white/10 flex items-center justify-center text-white/40 hover:text-[#C9A84C] hover:border-[#C9A84C] transition-colors"
+                className="w-9 h-9 border border-white/10 flex items-center justify-center text-white/40 hover:text-[#FBB217] hover:border-[#FBB217] transition-colors"
                 aria-label="Instagram"
               >
                 <Instagram size={15} />
@@ -33,7 +33,7 @@ export default function Footer() {
                 href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 border border-white/10 flex items-center justify-center text-white/40 hover:text-[#C9A84C] hover:border-[#C9A84C] transition-colors"
+                className="w-9 h-9 border border-white/10 flex items-center justify-center text-white/40 hover:text-[#FBB217] hover:border-[#FBB217] transition-colors"
                 aria-label="Facebook"
               >
                 <Facebook size={15} />
@@ -53,7 +53,7 @@ export default function Footer() {
                 { label: "Longevity Programs", href: "/services" },
               ].map((item) => (
                 <li key={item.label}>
-                  <Link href={item.href} className="text-white/50 text-sm hover:text-[#C9A84C] transition-colors">
+                  <Link href={item.href} className="text-white/50 text-sm hover:text-[#FBB217] transition-colors">
                     {item.label}
                   </Link>
                 </li>
@@ -73,7 +73,7 @@ export default function Footer() {
                 { label: "Contact", href: "/contact" },
               ].map((item) => (
                 <li key={item.label}>
-                  <Link href={item.href} className="text-white/50 text-sm hover:text-[#C9A84C] transition-colors">
+                  <Link href={item.href} className="text-white/50 text-sm hover:text-[#FBB217] transition-colors">
                     {item.label}
                   </Link>
                 </li>
@@ -86,20 +86,20 @@ export default function Footer() {
             <h4 className="text-white text-xs font-semibold tracking-widest uppercase mb-6">Contact</h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <MapPin size={15} className="text-[#C9A84C] mt-0.5 shrink-0" />
+                <MapPin size={15} className="text-[#FBB217] mt-0.5 shrink-0" />
                 <span className="text-white/50 text-sm leading-relaxed">
                   3098 Executive Parkway, Suite 100<br />
                   Lehi, UT 84043
                 </span>
               </li>
               <li className="flex items-center gap-3">
-                <Phone size={15} className="text-[#C9A84C] shrink-0" />
+                <Phone size={15} className="text-[#FBB217] shrink-0" />
                 <a href="tel:3857072373" className="text-white/50 text-sm hover:text-white transition-colors">
                   385-707-2373
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <Mail size={15} className="text-[#C9A84C] shrink-0" />
+                <Mail size={15} className="text-[#FBB217] shrink-0" />
                 <a href="mailto:info@cellrx.bio" className="text-white/50 text-sm hover:text-white transition-colors">
                   info@cellrx.bio
                 </a>

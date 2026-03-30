@@ -100,11 +100,11 @@ export default function Blog() {
         <div className="container relative z-10">
           <p className="section-label mb-4">Knowledge & Research</p>
           <h1
-            className="text-white"
+            className="text-[#F6F5EC]"
             style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(48px, 7vw, 96px)" }}
           >
             INSIGHTS &<br />
-            <span className="text-[#C9A84C]">EDUCATION</span>
+            <span className="text-[#FBB217]">EDUCATION</span>
           </h1>
         </div>
       </section>
@@ -130,12 +130,12 @@ export default function Blog() {
             <div className="bg-[#030d1e] p-10 flex flex-col justify-center">
               <span className="section-label mb-4">{articles[0].category}</span>
               <h2
-                className="text-white mb-4 group-hover:text-[#C9A84C] transition-colors"
+                className="text-white mb-4 group-hover:text-[#FBB217] transition-colors"
                 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(28px, 3vw, 40px)" }}
               >
                 {articles[0].title}
               </h2>
-              <p className="text-white/50 text-sm leading-relaxed mb-6">{articles[0].excerpt}</p>
+              <p className="text-[#D6D7D9]/60 text-sm leading-relaxed mb-6">{articles[0].excerpt}</p>
               <div className="flex items-center gap-6 text-white/30 text-xs mb-6">
                 <span className="flex items-center gap-1.5"><Calendar size={12} />{articles[0].date}</span>
                 <span className="flex items-center gap-1.5"><Clock size={12} />{articles[0].readTime}</span>
@@ -174,12 +174,12 @@ export default function Blog() {
                 </div>
                 <div className="bg-[#030d1e] p-6">
                   <h3
-                    className="text-white mb-3 group-hover:text-[#C9A84C] transition-colors leading-snug"
+                    className="text-white mb-3 group-hover:text-[#FBB217] transition-colors leading-snug"
                     style={{ fontFamily: "'Tenor Sans', serif", fontSize: "17px" }}
                   >
                     {article.title}
                   </h3>
-                  <p className="text-white/50 text-xs leading-relaxed mb-4 line-clamp-3">{article.excerpt}</p>
+                  <p className="text-[#D6D7D9]/60 text-xs leading-relaxed mb-4 line-clamp-3">{article.excerpt}</p>
                   <div className="flex items-center justify-between text-white/30 text-xs pt-4 border-t border-white/5">
                     <span className="flex items-center gap-1.5"><Calendar size={11} />{article.date}</span>
                     <span className="flex items-center gap-1.5"><Clock size={11} />{article.readTime}</span>
@@ -202,7 +202,7 @@ export default function Blog() {
             >
               REGENERATIVE INSIGHTS<br />DELIVERED TO YOU
             </h2>
-            <p className="text-white/50 text-sm mb-8 leading-relaxed">
+            <p className="text-[#D6D7D9]/60 text-sm mb-8 leading-relaxed">
               Subscribe to receive the latest research, clinical insights, and health optimization strategies from the CellRX medical team.
             </p>
             <div className="flex flex-col sm:flex-row gap-0 max-w-md mx-auto">
@@ -229,7 +229,7 @@ export default function Blog() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
               <h2
-                className="text-white"
+                className="text-[#F6F5EC]"
                 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(28px, 3vw, 44px)" }}
               >
                 READY TO EXPERIENCE REGENERATIVE MEDICINE?

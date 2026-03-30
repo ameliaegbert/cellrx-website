@@ -1,9 +1,16 @@
 /*
  * CellRX Design System — Editorial Dark Luxury
  * Design Movement: High-End Medical Concierge / Private Members' Club
- * Primary BG: Navy-black #051229 | Action: CellRX Blue #0047BB
- * Accent: Gold #C9A84C | Text on dark: Cream #F6F5EC
- * Typography: Bebas Neue (display) + Tenor Sans (sub) + Inter (body)
+ *
+ * Official Brand Palette:
+ *   #0047BB — CellRX Blue (primary action, logo RX)
+ *   #F6F5EC — Cream (light text, backgrounds)
+ *   #36454F — Charcoal (secondary text, borders)
+ *   #D6D7D9 — Silver (muted text, dividers)
+ *   #051229 — Navy Black (primary background)
+ *   #FBB217 — Amber Gold (accent, highlights, CTAs)
+ *
+ * Typography: Bebas Neue (display) + Tenor Sans (sub-headings) + Inter (body)
  */
 
 @import "tailwindcss";
@@ -35,36 +42,38 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  /* CellRX Custom Colors */
-  --color-navy: oklch(0.13 0.04 255);
-  --color-navy-light: oklch(0.18 0.04 255);
-  --color-cellrx-blue: oklch(0.38 0.18 258);
-  --color-cellrx-blue-light: oklch(0.50 0.18 258);
-  --color-gold: oklch(0.72 0.12 80);
-  --color-cream: oklch(0.97 0.01 80);
-  --color-cream-dark: oklch(0.92 0.01 80);
+  /* CellRX Official Brand Colors */
+  --color-navy:         oklch(0.13 0.04 255);       /* #051229 */
+  --color-navy-light:   oklch(0.19 0.04 255);       /* slightly lighter navy */
+  --color-cellrx-blue:  oklch(0.38 0.20 258);       /* #0047BB */
+  --color-cellrx-blue-hover: oklch(0.44 0.20 258);
+  --color-charcoal:     oklch(0.35 0.03 220);       /* #36454F */
+  --color-silver:       oklch(0.86 0.005 255);      /* #D6D7D9 */
+  --color-cream:        oklch(0.97 0.01 80);        /* #F6F5EC */
+  --color-amber:        oklch(0.78 0.16 75);        /* #FBB217 */
+  --color-amber-dark:   oklch(0.68 0.16 75);
 }
 
 :root {
   --radius: 0.5rem;
-  --background: oklch(0.13 0.04 255);
-  --foreground: oklch(0.97 0.01 80);
-  --card: oklch(0.18 0.04 255);
+  --background: oklch(0.13 0.04 255);              /* #051229 navy */
+  --foreground: oklch(0.97 0.01 80);               /* #F6F5EC cream */
+  --card: oklch(0.19 0.04 255);
   --card-foreground: oklch(0.97 0.01 80);
-  --popover: oklch(0.18 0.04 255);
+  --popover: oklch(0.19 0.04 255);
   --popover-foreground: oklch(0.97 0.01 80);
-  --primary: oklch(0.38 0.18 258);
+  --primary: oklch(0.38 0.20 258);                 /* #0047BB */
   --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.20 0.04 255);
+  --secondary: oklch(0.35 0.03 220);               /* #36454F charcoal */
   --secondary-foreground: oklch(0.97 0.01 80);
   --muted: oklch(0.22 0.03 255);
-  --muted-foreground: oklch(0.70 0.02 255);
-  --accent: oklch(0.72 0.12 80);
+  --muted-foreground: oklch(0.86 0.005 255);       /* #D6D7D9 silver */
+  --accent: oklch(0.78 0.16 75);                   /* #FBB217 amber */
   --accent-foreground: oklch(0.13 0.04 255);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(1 0 0 / 12%);
+  --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 10%);
-  --ring: oklch(0.38 0.18 258);
+  --ring: oklch(0.38 0.20 258);
 }
 
 @layer base {
@@ -119,11 +128,11 @@
     }
   }
 
-  /* Gold rule divider */
+  /* Amber rule divider — replaces old gold */
   .gold-rule {
     width: 60px;
     height: 2px;
-    background: oklch(0.72 0.12 80);
+    background: oklch(0.78 0.16 75); /* #FBB217 amber */
   }
 
   /* Section label */
@@ -133,7 +142,7 @@
     font-weight: 600;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: oklch(0.72 0.12 80);
+    color: oklch(0.78 0.16 75); /* #FBB217 amber */
   }
 
   /* Frosted glass card */
@@ -143,40 +152,60 @@
     border: 1px solid oklch(1 0 0 / 0.1);
   }
 
-  /* CTA Button */
+  /* Primary CTA Button — CellRX Blue */
   .btn-primary {
-    background: oklch(0.38 0.18 258);
+    background: oklch(0.38 0.20 258); /* #0047BB */
     color: white;
     font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    letter-spacing: 0.08em;
+    font-weight: 700;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    font-size: 0.8rem;
-    padding: 0.85rem 2.5rem;
+    font-size: 0.78rem;
+    padding: 0.9rem 2.5rem;
     transition: all 0.3s ease;
     border: 1px solid transparent;
   }
   .btn-primary:hover {
-    background: oklch(0.45 0.18 258);
+    background: oklch(0.44 0.20 258);
     transform: translateY(-1px);
-    box-shadow: 0 8px 30px oklch(0.38 0.18 258 / 0.4);
+    box-shadow: 0 8px 30px oklch(0.38 0.20 258 / 0.45);
   }
 
+  /* Amber accent button */
+  .btn-amber {
+    background: oklch(0.78 0.16 75); /* #FBB217 */
+    color: oklch(0.13 0.04 255);     /* navy text on amber */
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+    padding: 0.9rem 2.5rem;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+  }
+  .btn-amber:hover {
+    background: oklch(0.68 0.16 75);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 30px oklch(0.78 0.16 75 / 0.4);
+  }
+
+  /* Outline button */
   .btn-outline {
     background: transparent;
-    color: oklch(0.97 0.01 80);
+    color: oklch(0.97 0.01 80); /* cream */
     font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    letter-spacing: 0.08em;
+    font-weight: 700;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    font-size: 0.8rem;
-    padding: 0.85rem 2.5rem;
+    font-size: 0.78rem;
+    padding: 0.9rem 2.5rem;
     border: 1px solid oklch(1 0 0 / 0.3);
     transition: all 0.3s ease;
   }
   .btn-outline:hover {
-    border-color: oklch(0.72 0.12 80);
-    color: oklch(0.72 0.12 80);
+    border-color: oklch(0.78 0.16 75); /* amber on hover */
+    color: oklch(0.78 0.16 75);
   }
 
   /* Grain texture overlay */

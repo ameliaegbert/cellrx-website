@@ -56,7 +56,7 @@ export default function Contact() {
         <div className="container relative z-10">
           <p className="section-label mb-4">Get In Touch</p>
           <h1
-            className="text-white"
+            className="text-[#F6F5EC]"
             style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(48px, 7vw, 96px)" }}
           >
             BEGIN YOUR<br />
@@ -82,12 +82,12 @@ export default function Contact() {
 
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 border border-[#C9A84C]/30 flex items-center justify-center shrink-0">
-                    <MapPin size={16} className="text-[#C9A84C]" />
+                  <div className="w-10 h-10 border border-[#FBB217]/30 flex items-center justify-center shrink-0">
+                    <MapPin size={16} className="text-[#FBB217]" />
                   </div>
                   <div>
                     <p className="text-white text-sm font-semibold mb-1">Location</p>
-                    <p className="text-white/50 text-sm leading-relaxed">
+                    <p className="text-[#D6D7D9]/60 text-sm leading-relaxed">
                       3098 Executive Parkway, Suite 100<br />
                       Lehi, UT 84043
                     </p>
@@ -95,36 +95,36 @@ export default function Contact() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 border border-[#C9A84C]/30 flex items-center justify-center shrink-0">
-                    <Phone size={16} className="text-[#C9A84C]" />
+                  <div className="w-10 h-10 border border-[#FBB217]/30 flex items-center justify-center shrink-0">
+                    <Phone size={16} className="text-[#FBB217]" />
                   </div>
                   <div>
                     <p className="text-white text-sm font-semibold mb-1">Phone</p>
-                    <a href="tel:3857072373" className="text-white/50 text-sm hover:text-white transition-colors">
+                    <a href="tel:3857072373" className="text-[#D6D7D9]/60 text-sm hover:text-white transition-colors">
                       385-707-2373
                     </a>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 border border-[#C9A84C]/30 flex items-center justify-center shrink-0">
-                    <Mail size={16} className="text-[#C9A84C]" />
+                  <div className="w-10 h-10 border border-[#FBB217]/30 flex items-center justify-center shrink-0">
+                    <Mail size={16} className="text-[#FBB217]" />
                   </div>
                   <div>
                     <p className="text-white text-sm font-semibold mb-1">Email</p>
-                    <a href="mailto:info@cellrx.bio" className="text-white/50 text-sm hover:text-white transition-colors">
+                    <a href="mailto:info@cellrx.bio" className="text-[#D6D7D9]/60 text-sm hover:text-white transition-colors">
                       info@cellrx.bio
                     </a>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 border border-[#C9A84C]/30 flex items-center justify-center shrink-0">
-                    <Clock size={16} className="text-[#C9A84C]" />
+                  <div className="w-10 h-10 border border-[#FBB217]/30 flex items-center justify-center shrink-0">
+                    <Clock size={16} className="text-[#FBB217]" />
                   </div>
                   <div>
                     <p className="text-white text-sm font-semibold mb-1">Hours</p>
-                    <p className="text-white/50 text-sm leading-relaxed">
+                    <p className="text-[#D6D7D9]/60 text-sm leading-relaxed">
                       Monday – Friday: 9:00 AM – 5:00 PM<br />
                       Saturday: By appointment<br />
                       Sunday: Closed
@@ -151,7 +151,7 @@ export default function Contact() {
                   ].map((item, i) => (
                     <div key={i} className="flex items-center gap-2">
                       <CheckCircle2 size={13} className="text-[#0047BB] shrink-0" />
-                      <span className="text-white/60 text-xs">{item}</span>
+                      <span className="text-[#D6D7D9]/70 text-xs">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -169,7 +169,7 @@ export default function Contact() {
                   >
                     REQUEST RECEIVED
                   </h3>
-                  <p className="text-white/60 max-w-md leading-relaxed">
+                  <p className="text-[#D6D7D9]/70 max-w-md leading-relaxed">
                     Thank you for reaching out to CellRX. A member of our team will contact you within 24 business hours to schedule your private consultation.
                   </p>
                 </div>
@@ -177,7 +177,7 @@ export default function Contact() {
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-white/50 text-xs tracking-widest uppercase mb-2">First Name *</label>
+                      <label className="block text-[#D6D7D9]/60 text-xs tracking-widest uppercase mb-2">First Name *</label>
                       <input
                         type="text"
                         name="firstName"
@@ -189,7 +189,7 @@ export default function Contact() {
                       />
                     </div>
                     <div>
-                      <label className="block text-white/50 text-xs tracking-widest uppercase mb-2">Last Name *</label>
+                      <label className="block text-[#D6D7D9]/60 text-xs tracking-widest uppercase mb-2">Last Name *</label>
                       <input
                         type="text"
                         name="lastName"
@@ -204,7 +204,7 @@ export default function Contact() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-white/50 text-xs tracking-widest uppercase mb-2">Email *</label>
+                      <label className="block text-[#D6D7D9]/60 text-xs tracking-widest uppercase mb-2">Email *</label>
                       <input
                         type="email"
                         name="email"
@@ -216,7 +216,7 @@ export default function Contact() {
                       />
                     </div>
                     <div>
-                      <label className="block text-white/50 text-xs tracking-widest uppercase mb-2">Phone</label>
+                      <label className="block text-[#D6D7D9]/60 text-xs tracking-widest uppercase mb-2">Phone</label>
                       <input
                         type="tel"
                         name="phone"
@@ -229,7 +229,7 @@ export default function Contact() {
                   </div>
 
                   <div>
-                    <label className="block text-white/50 text-xs tracking-widest uppercase mb-2">I'm Interested In *</label>
+                    <label className="block text-[#D6D7D9]/60 text-xs tracking-widest uppercase mb-2">I'm Interested In *</label>
                     <select
                       name="interest"
                       required
@@ -247,7 +247,7 @@ export default function Contact() {
                   </div>
 
                   <div>
-                    <label className="block text-white/50 text-xs tracking-widest uppercase mb-2">How Did You Hear About Us?</label>
+                    <label className="block text-[#D6D7D9]/60 text-xs tracking-widest uppercase mb-2">How Did You Hear About Us?</label>
                     <select
                       name="hearAbout"
                       value={form.hearAbout}
@@ -264,7 +264,7 @@ export default function Contact() {
                   </div>
 
                   <div>
-                    <label className="block text-white/50 text-xs tracking-widest uppercase mb-2">Tell Us About Your Goals</label>
+                    <label className="block text-[#D6D7D9]/60 text-xs tracking-widest uppercase mb-2">Tell Us About Your Goals</label>
                     <textarea
                       name="message"
                       rows={5}
@@ -279,7 +279,7 @@ export default function Contact() {
                     Request My Private Consultation
                   </button>
 
-                  <p className="text-white/30 text-xs text-center leading-relaxed">
+                  <p className="text-[#D6D7D9]/40 text-xs text-center leading-relaxed">
                     Your information is kept strictly confidential. We will never share your personal data with third parties.
                   </p>
                 </form>

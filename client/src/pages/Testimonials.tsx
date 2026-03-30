@@ -99,7 +99,7 @@ export default function Testimonials() {
             style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(48px, 7vw, 96px)" }}
           >
             REAL RESULTS,<br />
-            <span className="text-[#C9A84C]">REAL PEOPLE</span>
+            <span className="text-[#FBB217]">REAL PEOPLE</span>
           </h1>
         </div>
       </section>
@@ -116,13 +116,13 @@ export default function Testimonials() {
             ].map((stat, i) => (
               <div key={i} className="fade-up" style={{ transitionDelay: `${i * 0.1}s` }}>
                 <p
-                  className="text-white mb-2"
+                  className="text-[#F6F5EC] mb-2"
                   style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(36px, 4vw, 52px)", lineHeight: 1 }}
                 >
                   {stat.value}
                 </p>
                 <div className="gold-rule mx-auto mb-2" />
-                <p className="text-white/50 text-xs tracking-widest uppercase">{stat.label}</p>
+                <p className="text-[#D6D7D9]/60 text-xs tracking-widest uppercase">{stat.label}</p>
               </div>
             ))}
           </div>
@@ -139,13 +139,13 @@ export default function Testimonials() {
                 className="glass-card p-8 fade-up"
                 style={{ transitionDelay: `${(i % 3) * 0.15}s` }}
               >
-                <Quote size={28} className="text-[#C9A84C]/30 mb-4" />
+                <Quote size={28} className="text-[#FBB217]/30 mb-4" />
                 <div className="flex gap-1 mb-4">
                   {Array.from({ length: t.stars }).map((_, j) => (
-                    <Star key={j} size={13} className="text-[#C9A84C] fill-[#C9A84C]" />
+                    <Star key={j} size={13} className="text-[#FBB217] fill-[#FBB217]" />
                   ))}
                 </div>
-                <p className="text-white/70 text-sm leading-relaxed mb-6 italic">"{t.quote}"</p>
+                <p className="text-[#D6D7D9]/80 text-sm leading-relaxed mb-6 italic">"{t.quote}"</p>
 
                 {/* Result callout */}
                 <div className="bg-[#0047BB]/10 border border-[#0047BB]/20 px-4 py-2 mb-6">
@@ -153,9 +153,9 @@ export default function Testimonials() {
                 </div>
 
                 <div className="border-t border-white/10 pt-4">
-                  <p className="text-white font-semibold text-sm">{t.name}</p>
-                  <p className="text-white/40 text-xs mt-0.5">{t.role}, Age {t.age}</p>
-                  <p className="text-[#C9A84C] text-xs mt-1">{t.treatment}</p>
+                  <p className="text-[#F6F5EC] font-semibold text-sm">{t.name}</p>
+                  <p className="text-[#D6D7D9]/50 text-xs mt-0.5">{t.role}, Age {t.age}</p>
+                  <p className="text-[#FBB217] text-xs mt-1">{t.treatment}</p>
                 </div>
               </div>
             ))}
@@ -170,10 +170,10 @@ export default function Testimonials() {
             className="text-white mb-4 fade-up"
             style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(36px, 5vw, 64px)" }}
           >
-            YOUR STORY STARTS HERE
+            YOUR TRANSFORMATION STARTS HERE
           </h2>
           <p className="text-white/70 mb-8 max-w-xl mx-auto fade-up" style={{ transitionDelay: "0.1s" }}>
-            Join hundreds of patients who have transformed their health with CellRX. Book your private consultation today.
+            Join hundreds of patients who have reclaimed their vitality, restored their performance, and invested in a biology that works for them. Book your private consultation today.
           </p>
           <Link href="/contact">
             <button className="bg-white text-[#0047BB] font-bold text-xs tracking-widest uppercase px-10 py-4 hover:bg-[#F6F5EC] transition-colors fade-up" style={{ transitionDelay: "0.2s" }}>
