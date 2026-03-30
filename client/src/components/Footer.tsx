@@ -6,7 +6,7 @@
 import { Link } from "wouter";
 import { MapPin, Phone, Mail, Instagram, Facebook } from "lucide-react";
 
-const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/logo_actual_31b74e80.webp";
+const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/cellrx_logo_white_c7e5a738.png";
 
 export default function Footer() {
   return (
