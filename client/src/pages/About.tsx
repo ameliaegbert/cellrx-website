@@ -121,10 +121,10 @@ export default function About() {
                 <img
                   src={PHYSICIAN_IMG}
                   alt="CellRX Medical Director"
-                  className="w-full object-cover"
-                  style={{ aspectRatio: "3/4", objectFit: "cover" }}
+                  className="w-full object-cover object-top"
+                  style={{ aspectRatio: "2/3", display: "block" }}
                 />
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#030d1e] to-transparent h-1/3" />
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#030d1e] to-transparent h-16" />
               </div>
             </div>
 
@@ -220,8 +220,8 @@ export default function About() {
                 style={{ transitionDelay: `${i * 0.1}s` }}
               >
                 <p
-                  className="text-[#FBB217]/15 mb-4"
-                  style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "64px", lineHeight: 1 }}
+                  className="text-[#FBB217] mb-4"
+                  style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "64px", lineHeight: 1, opacity: 0.6 }}
                 >
                   {val.num}
                 </p>
