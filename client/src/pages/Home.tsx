@@ -1,7 +1,7 @@
 /*
  * CellRX Home Page — Editorial Dark Luxury
  * Brand Colors: #051229 Navy | #0047BB Blue | #FBB217 Amber | #F6F5EC Cream | #36454F Charcoal | #D6D7D9 Silver
- * Fonts: Bebas Neue (display), Tenor Sans (sub), Inter (body)
+ * Fonts: Bebas Neue (display), DM Sans (sub), Inter (body)
  * Copy: Luxury sales psychology — exclusivity, authority, transformation, scarcity
  */
 
@@ -88,7 +88,7 @@ function FAQItem({ q, a }: { q: string; a: string }) {
         className="w-full flex items-center justify-between py-6 text-left gap-4"
         onClick={() => setOpen(!open)}
       >
-        <span className="text-white font-medium text-base leading-snug" style={{ fontFamily: "'Tenor Sans', serif" }}>
+        <span className="text-white font-medium text-base leading-snug" style={{ fontFamily: "'DM Sans', sans-serif" }}>
           {q}
         </span>
         <span className="text-[#FBB217] shrink-0">
@@ -116,7 +116,8 @@ export default function Home() {
           <img
             src={PHYSICIAN_IMG}
             alt="CellRX Medical Director"
-            className="w-full h-full object-cover object-top"
+            className="w-full h-full object-cover"
+            style={{ objectPosition: '50% 10%' }}
           />
           {/* Narrow left-edge fade only — stops at 30% so the doctor's face is fully clear */}
           <div className="absolute inset-y-0 left-0 w-[30%] bg-gradient-to-r from-[#051229] to-transparent" />
@@ -337,7 +338,7 @@ export default function Home() {
               ].map((item, i) => (
                 <div key={i} className="glass-card p-6">
                   <div className="gold-rule mb-4" />
-                  <h4 className="text-[#F6F5EC] mb-2" style={{ fontFamily: "'Tenor Sans', serif", fontSize: "16px" }}>
+                  <h4 className="text-[#F6F5EC] mb-2" style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "16px" }}>
                     {item.title}
                   </h4>
                   <p className="text-[#D6D7D9]/60 text-sm leading-relaxed">{item.desc}</p>

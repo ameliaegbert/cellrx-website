@@ -10,7 +10,7 @@
  *   #051229 — Navy Black (primary background)
  *   #FBB217 — Amber Gold (accent, highlights, CTAs)
  *
- * Typography: Bebas Neue (display) + Tenor Sans (sub-headings) + Inter (body)
+ * Typography: Bebas Neue (titles) + DM Sans/Canva Sans (subtitles) + Libre Franklin (body)
  */
 
 @import "tailwindcss";
@@ -85,7 +85,7 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Libre Franklin', sans-serif;
     -webkit-font-smoothing: antialiased;
   }
   button:not(:disabled),
@@ -98,7 +98,8 @@
     letter-spacing: 0.04em;
   }
   h4, h5, h6 {
-    font-family: 'Tenor Sans', serif;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
   }
 }
 
@@ -137,7 +138,7 @@
 
   /* Section label */
   .section-label {
-    font-family: 'Inter', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.2em;
@@ -156,7 +157,7 @@
   .btn-primary {
     background: oklch(0.38 0.20 258); /* #0047BB */
     color: white;
-    font-family: 'Inter', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -175,7 +176,7 @@
   .btn-amber {
     background: oklch(0.78 0.16 75); /* #FBB217 */
     color: oklch(0.13 0.04 255);     /* navy text on amber */
-    font-family: 'Inter', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -194,7 +195,7 @@
   .btn-outline {
     background: transparent;
     color: oklch(0.97 0.01 80); /* cream */
-    font-family: 'Inter', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;

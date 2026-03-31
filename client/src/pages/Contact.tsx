@@ -137,7 +137,7 @@ export default function Contact() {
               <div className="mt-12 p-6 border border-white/5 bg-[#030d1e]">
                 <h4
                   className="text-white mb-4"
-                  style={{ fontFamily: "'Tenor Sans', serif", fontSize: "16px" }}
+                  style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "16px" }}
                 >
                   What to Expect
                 </h4>

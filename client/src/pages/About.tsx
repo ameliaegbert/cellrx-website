@@ -1,6 +1,8 @@
 /*
  * CellRX About Page — Editorial Dark Luxury
  * Brand Colors: #051229 Navy | #0047BB Blue | #FBB217 Amber | #F6F5EC Cream | #36454F Charcoal | #D6D7D9 Silver
+ * Typography: Bebas Neue (titles/h1-h3) | DM Sans (subtitles/h4-h6, labels, buttons) | Libre Franklin (body text)
+ * Contrast rules: All body text on dark bg uses #D6D7D9 (min 70% opacity). Headings use #F6F5EC. Accent text uses #FBB217.
  * Key: No board certification. Dual Medical Director role (clinic + source company) is the authority differentiator.
  */
 
@@ -12,6 +14,10 @@ import { CheckCircle2, BookOpen, Users, Lock } from "lucide-react";
 
 const PHYSICIAN_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/physician_portrait_d5fe25e9.webp";
 const CLINIC_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/clinic_interior_31c757cf.webp";
+
+const TITLE_FONT = "'Bebas Neue', sans-serif";
+const SUBTITLE_FONT = "'DM Sans', sans-serif";
+const BODY_FONT = "'Libre Franklin', sans-serif";
 
 function useScrollAnimation() {
   useEffect(() => {
@@ -36,12 +42,12 @@ export default function About() {
         className="relative pt-40 pb-24 overflow-hidden"
         style={{ backgroundImage: `url(${CLINIC_IMG})`, backgroundSize: "cover", backgroundPosition: "center" }}
       >
-        <div className="absolute inset-0 bg-[#051229]/85" />
+        <div className="absolute inset-0 bg-[#051229]/88" />
         <div className="container relative z-10">
           <p className="section-label mb-4">About CellRX</p>
           <h1
             className="text-[#F6F5EC]"
-            style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(48px, 7vw, 96px)" }}
+            style={{ fontFamily: TITLE_FONT, fontSize: "clamp(48px, 7vw, 96px)" }}
           >
             BUILT ON SCIENCE.<br />
             <span className="text-[#FBB217]">DRIVEN BY RESULTS.</span>
@@ -57,15 +63,15 @@ export default function About() {
               <p className="section-label mb-4">Our Mission</p>
               <h2
                 className="text-[#F6F5EC] mb-6"
-                style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(36px, 4vw, 52px)" }}
+                style={{ fontFamily: TITLE_FONT, fontSize: "clamp(36px, 4vw, 52px)" }}
               >
                 REDEFINING WHAT<br />HEALTHCARE CAN BE
               </h2>
               <div className="gold-rule mb-6" />
-              <p className="text-[#D6D7D9]/80 leading-relaxed mb-6">
+              <p className="text-[#D6D7D9] leading-relaxed mb-6" style={{ fontFamily: BODY_FONT }}>
                 CellRX was founded on a singular belief: that the most discerning individuals deserve medical care that matches their standards. We exist at the intersection of cutting-edge regenerative science and the discretion, precision, and white-glove service of a private members' club.
               </p>
-              <p className="text-[#D6D7D9]/80 leading-relaxed mb-8">
+              <p className="text-[#D6D7D9] leading-relaxed mb-8" style={{ fontFamily: BODY_FONT }}>
                 Our clinic is located in Lehi, Utah, and serves patients from across the United States who are seeking non-surgical alternatives to chronic pain, accelerated recovery, and proactive longevity optimization. Every protocol we administer is evidence-based, ethically sourced, and tailored to the individual — with a level of provenance and transparency that no other clinic can match.
               </p>
               <div className="space-y-3">
@@ -76,8 +82,8 @@ export default function About() {
                   "Personalized treatment plans for each patient",
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-3">
-                    <CheckCircle2 size={15} className="text-[#0047BB] shrink-0" />
-                    <span className="text-[#D6D7D9]/70 text-sm">{item}</span>
+                    <CheckCircle2 size={15} className="text-[#FBB217] shrink-0" />
+                    <span className="text-[#D6D7D9] text-sm" style={{ fontFamily: BODY_FONT }}>{item}</span>
                   </div>
                 ))}
               </div>
@@ -91,11 +97,11 @@ export default function About() {
               <div className="absolute -bottom-6 -left-6 bg-[#0047BB] p-6 max-w-[200px] hidden lg:block">
                 <p
                   className="text-white"
-                  style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "36px", lineHeight: 1 }}
+                  style={{ fontFamily: TITLE_FONT, fontSize: "36px", lineHeight: 1 }}
                 >
                   10+
                 </p>
-                <p className="text-white/70 text-xs tracking-wide uppercase mt-1">Years of Excellence</p>
+                <p className="text-white/90 text-xs tracking-wide uppercase mt-1" style={{ fontFamily: SUBTITLE_FONT }}>Years of Excellence</p>
               </div>
             </div>
           </div>
@@ -109,7 +115,7 @@ export default function About() {
             <p className="section-label mb-4">Medical Leadership</p>
             <h2
               className="text-[#F6F5EC]"
-              style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(36px, 4vw, 56px)" }}
+              style={{ fontFamily: TITLE_FONT, fontSize: "clamp(36px, 4vw, 56px)" }}
             >
               OUR MEDICAL DIRECTOR
             </h2>
@@ -131,20 +137,20 @@ export default function About() {
             <div className="lg:col-span-3 fade-up">
               <h3
                 className="text-[#F6F5EC] mb-1"
-                style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "40px" }}
+                style={{ fontFamily: TITLE_FONT, fontSize: "40px" }}
               >
                 MEDICAL DIRECTOR
               </h3>
-              <p className="text-[#FBB217] text-sm tracking-widest uppercase mb-6">Regenerative Medicine Specialist</p>
+              <p className="text-[#FBB217] text-sm tracking-widest uppercase mb-6" style={{ fontFamily: SUBTITLE_FONT, fontWeight: 600 }}>Regenerative Medicine Specialist</p>
               <div className="gold-rule mb-6" />
 
-              <p className="text-[#D6D7D9]/80 leading-relaxed mb-6">
+              <p className="text-[#D6D7D9] leading-relaxed mb-6" style={{ fontFamily: BODY_FONT }}>
                 Our Medical Director occupies a position of authority that is genuinely unique in the field of regenerative medicine. He serves simultaneously as the Medical Director of CellRX and as the Medical Director of our stem cell source company — giving him direct, unbroken oversight of every biologic we administer, from the moment of ethical procurement through the moment it enters your body.
               </p>
-              <p className="text-[#D6D7D9]/80 leading-relaxed mb-6">
+              <p className="text-[#D6D7D9] leading-relaxed mb-6" style={{ fontFamily: BODY_FONT }}>
                 This dual role is not a marketing distinction. It is a structural guarantee. When you receive treatment at CellRX, you are not trusting a distributor's documentation. You are trusting a physician who personally ensures the purity, concentration, and provenance of every vial — because he is the one who oversaw its creation.
               </p>
-              <p className="text-[#D6D7D9]/80 leading-relaxed mb-8">
+              <p className="text-[#D6D7D9] leading-relaxed mb-8" style={{ fontFamily: BODY_FONT }}>
                 With over a decade of clinical experience in regenerative and functional medicine, he has helped hundreds of patients avoid surgery, recover faster, and invest in a biology that performs at the level they demand.
               </p>
 
@@ -155,11 +161,11 @@ export default function About() {
                   { icon: <Users size={18} className="text-[#FBB217]" />, title: "500+ Patients", sub: "Successfully Treated" },
                   { icon: <CheckCircle2 size={18} className="text-[#FBB217]" />, title: "10+ Years", sub: "Clinical Experience" },
                 ].map((cred, i) => (
-                  <div key={i} className="flex items-start gap-3 p-4 border border-white/5 bg-[#051229]">
+                  <div key={i} className="flex items-start gap-3 p-4 border border-white/10 bg-[#051229]">
                     {cred.icon}
                     <div>
-                      <p className="text-[#F6F5EC] text-sm font-semibold">{cred.title}</p>
-                      <p className="text-[#D6D7D9]/50 text-xs mt-0.5">{cred.sub}</p>
+                      <p className="text-[#F6F5EC] text-sm font-semibold" style={{ fontFamily: SUBTITLE_FONT }}>{cred.title}</p>
+                      <p className="text-[#D6D7D9] text-xs mt-0.5" style={{ fontFamily: BODY_FONT }}>{cred.sub}</p>
                     </div>
                   </div>
                 ))}
@@ -183,11 +189,11 @@ export default function About() {
             <div>
               <h3
                 className="text-white mb-3"
-                style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(28px, 3vw, 40px)" }}
+                style={{ fontFamily: TITLE_FONT, fontSize: "clamp(28px, 3vw, 40px)" }}
               >
                 THE CHAIN-OF-CUSTODY ADVANTAGE
               </h3>
-              <p className="text-white/80 leading-relaxed max-w-3xl">
+              <p className="text-white leading-relaxed max-w-3xl" style={{ fontFamily: BODY_FONT, opacity: 0.92 }}>
                 Most regenerative clinics source their biologics through third-party distributors — meaning the product has changed hands multiple times before it reaches you, with no verifiable chain of custody, and no guarantee it hasn't been diluted or compromised. At CellRX, our Medical Director's role as Medical Director of our source company means every biologic we administer has been under direct physician oversight from procurement to administration. Never diluted. Never replicated. Always from healthy, consented local births. This is the standard we hold ourselves to — because it is the standard you deserve.
               </p>
             </div>
@@ -202,7 +208,7 @@ export default function About() {
             <p className="section-label mb-4">Our Values</p>
             <h2
               className="text-[#F6F5EC]"
-              style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(36px, 4vw, 56px)" }}
+              style={{ fontFamily: TITLE_FONT, fontSize: "clamp(36px, 4vw, 56px)" }}
             >
               THE CELLRX STANDARD
             </h2>
@@ -216,22 +222,22 @@ export default function About() {
             ].map((val, i) => (
               <div
                 key={i}
-                className="p-8 border border-white/5 bg-[#030d1e] fade-up"
+                className="p-8 border border-white/10 bg-[#030d1e] fade-up"
                 style={{ transitionDelay: `${i * 0.1}s` }}
               >
                 <p
                   className="text-[#FBB217] mb-4"
-                  style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "64px", lineHeight: 1, opacity: 0.6 }}
+                  style={{ fontFamily: TITLE_FONT, fontSize: "64px", lineHeight: 1, opacity: 0.7 }}
                 >
                   {val.num}
                 </p>
                 <h4
                   className="text-[#F6F5EC] mb-3"
-                  style={{ fontFamily: "'Tenor Sans', serif", fontSize: "18px" }}
+                  style={{ fontFamily: SUBTITLE_FONT, fontSize: "17px", fontWeight: 600 }}
                 >
                   {val.title}
                 </h4>
-                <p className="text-[#D6D7D9]/60 text-sm leading-relaxed">{val.desc}</p>
+                <p className="text-[#D6D7D9] text-sm leading-relaxed" style={{ fontFamily: BODY_FONT }}>{val.desc}</p>
               </div>
             ))}
           </div>
@@ -243,11 +249,11 @@ export default function About() {
         <div className="container text-center">
           <h2
             className="text-[#F6F5EC] mb-4 fade-up"
-            style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(36px, 5vw, 64px)" }}
+            style={{ fontFamily: TITLE_FONT, fontSize: "clamp(36px, 5vw, 64px)" }}
           >
             READY TO EXPERIENCE THE CELLRX DIFFERENCE?
           </h2>
-          <p className="text-[#D6D7D9]/70 mb-8 max-w-xl mx-auto fade-up" style={{ transitionDelay: "0.1s" }}>
+          <p className="text-[#D6D7D9] mb-8 max-w-xl mx-auto fade-up" style={{ transitionDelay: "0.1s", fontFamily: BODY_FONT }}>
             Book a private consultation with our Medical Director and discover what precision regenerative medicine — with full chain-of-custody biologics — can do for your health and performance.
           </p>
           <Link href="/contact">

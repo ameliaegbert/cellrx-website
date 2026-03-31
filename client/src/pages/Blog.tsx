@@ -175,7 +175,7 @@ export default function Blog() {
                 <div className="bg-[#030d1e] p-6">
                   <h3
                     className="text-white mb-3 group-hover:text-[#FBB217] transition-colors leading-snug"
-                    style={{ fontFamily: "'Tenor Sans', serif", fontSize: "17px" }}
+                    style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "17px" }}
                   >
                     {article.title}
                   </h3>

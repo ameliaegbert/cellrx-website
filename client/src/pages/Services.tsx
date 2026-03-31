@@ -10,7 +10,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { CheckCircle2, ArrowRight, Clock, Shield, Lock } from "lucide-react";
 
-const INJECTION_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/service_injection_3f039e48.webp";
+const INJECTION_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/doctor_injection_4ec00e57.webp";
 const IV_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/service_iv_9142a5f3.webp";
 const CLINIC_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/clinic_interior_31c757cf.webp";
 
@@ -71,7 +71,8 @@ export default function Services() {
               <img
                 src={INJECTION_IMG}
                 alt="Stem Cell Injection"
-                className="w-full h-96 object-cover"
+                className="w-full object-cover"
+                style={{ height: '520px', objectPosition: '50% 20%' }}
               />
               <div className="absolute top-4 left-4">
                 <span
@@ -284,7 +285,7 @@ export default function Services() {
                 </p>
                 <h4
                   className="text-[#F6F5EC] mb-3"
-                  style={{ fontFamily: "'Tenor Sans', serif", fontSize: "18px" }}
+                  style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "18px" }}
                 >
                   {step.title}
                 </h4>

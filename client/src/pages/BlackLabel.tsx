@@ -88,7 +88,7 @@ export default function BlackLabel() {
                   <div className="mb-3">{item.icon}</div>
                   <h4
                     className="text-[#F6F5EC] mb-2"
-                    style={{ fontFamily: "'Tenor Sans', serif", fontSize: "15px" }}
+                    style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "15px" }}
                   >
                     {item.title}
                   </h4>
@@ -248,7 +248,7 @@ export default function BlackLabel() {
                   <div className="gold-rule mb-4" />
                   <h4
                     className="text-[#F6F5EC] mb-2"
-                    style={{ fontFamily: "'Tenor Sans', serif", fontSize: "16px" }}
+                    style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "16px" }}
                   >
                     {profile.title}
                   </h4>
