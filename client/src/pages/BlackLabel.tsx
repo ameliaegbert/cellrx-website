@@ -2,7 +2,7 @@
  * CellRX Black Label Page — Editorial Dark Luxury
  * Brand Colors: #051229 Navy | #0047BB Blue | #FBB217 Amber | #F6F5EC Cream | #36454F Charcoal | #D6D7D9 Silver
  * Copy: Luxury sales psychology — exclusivity, scarcity, identity-based selling, premium anchoring
- * Pricing: $28,000/year | +$20,000 spouse add-on | Stem cells available as premium add-on
+ * Pricing: Investment Plan Specific | Spouse add-on available | Stem cells available as premium add-on
  */
 
 import { useEffect } from "react";
@@ -117,8 +117,7 @@ export default function BlackLabel() {
             <div className="col-span-1 md:col-span-1 p-8 border border-[#FBB217]/30 bg-[#051229] fade-up">
               <p className="text-[#FBB217] text-xs tracking-widest uppercase mb-4">Individual Investment Plan</p>
               <div className="mb-2">
-                <span className="text-[#F6F5EC] text-4xl font-bold" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>$28,000</span>
-                <span className="text-[#D6D7D9]/50 text-sm ml-2">/ year</span>
+                <span className="text-[#F6F5EC] text-2xl font-bold" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>INVESTMENT PLAN SPECIFIC</span>
               </div>
               <div className="gold-rule mb-6" />
               <ul className="space-y-3 mb-8">
@@ -147,8 +146,7 @@ export default function BlackLabel() {
             <div className="p-8 border border-white/10 bg-[#030d1e] fade-up" style={{ transitionDelay: "0.1s" }}>
               <p className="text-[#D6D7D9]/60 text-xs tracking-widest uppercase mb-4">Spouse Investment Add-On</p>
               <div className="mb-2">
-                <span className="text-[#F6F5EC] text-4xl font-bold" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>+$20,000</span>
-                <span className="text-[#D6D7D9]/50 text-sm ml-2">/ year</span>
+                <span className="text-[#F6F5EC] text-2xl font-bold" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>INVESTMENT PLAN SPECIFIC</span>
               </div>
               <div className="gold-rule mb-6" />
               <p className="text-[#D6D7D9]/70 text-sm leading-relaxed mb-6">
@@ -204,7 +202,7 @@ export default function BlackLabel() {
               "Concierge coordination for specialist referrals",
               "Annual health optimization review and goal-setting session",
               "Stem cell injection and IV therapy available as premium add-ons",
-              "Spouse add-on available for $20,000 per year",
+              "Spouse enrollment available — pricing is investment-plan specific",
               "Discounts on additional regenerative treatments",
               "Access to the most advanced protocols as they become available",
             ].map((benefit, i) => (

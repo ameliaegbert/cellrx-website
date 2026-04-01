@@ -76,7 +76,7 @@ const faqs = [
   },
   {
     q: "What is included in the CellRX Investment Plan?",
-    a: "The Investment Plan is our most comprehensive concierge health program, priced at $28,000 per year. It includes quarterly laboratory panels, personalized longevity protocols, direct physician access, priority scheduling, and unlimited consultations. Stem cell treatments are available as a premium add-on. Spouses may be added for an additional $20,000 per year. Membership is limited to ensure every member receives the full attention and resources they deserve. Referral programs are also available — ask about our referral program during your private consultation."
+    a: "The Investment Plan is our most comprehensive concierge health program. Pricing is investment-plan specific and discussed privately during your consultation. It includes quarterly laboratory panels, personalized longevity protocols, direct physician access, priority scheduling, and unlimited consultations. Stem cell treatments are available as a premium add-on. Spouse enrollment is also available. Membership is limited to ensure every member receives the full attention and resources they deserve. Referral programs are available — ask about our referral program during your private consultation."
   }
 ];
 
@@ -245,7 +245,7 @@ export default function Home() {
                 title: "BLACK LABEL",
                 sub: "Concierge Health Partnership",
                 desc: "For those who refuse to leave their health to chance. An all-encompassing annual membership that delivers proactive optimization, quarterly labs, and direct physician access — with stem cell treatments available as a premium add-on.",
-                price: "$28,000 / year",
+                price: "Investment Plan Specific",
                 features: ["Quarterly biomarker & lab panels", "Personalized longevity protocols", "Stem cell treatments available as add-on"],
                 href: "/black-label"
               }
