@@ -119,8 +119,8 @@ export default function Services() {
                 <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                   <div>
                     <p className="text-[#D6D7D9]/50 text-xs tracking-widest uppercase mb-1">Investment</p>
-                    <p className="text-[#FBB217] text-xl font-semibold">$1,250 per CC</p>
-                    <p className="text-[#D6D7D9]/40 text-xs mt-1">Protocols range from 1–10 CC based on physician assessment</p>
+                    <p className="text-[#FBB217] text-xl font-semibold">Starting at $2,500</p>
+                    <p className="text-[#D6D7D9]/40 text-xs mt-1">$1,250 per CC — protocols range from 1–10 CC based on physician assessment</p>
                   </div>
                   <div className="flex gap-6">
                     <div className="text-center">
@@ -185,8 +185,8 @@ export default function Services() {
                 <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                   <div>
                     <p className="text-[#D6D7D9]/50 text-xs tracking-widest uppercase mb-1">Investment</p>
-                    <p className="text-[#FBB217] text-xl font-semibold">$1,250 per CC</p>
-                    <p className="text-[#D6D7D9]/40 text-xs mt-1">Protocols range from 1–10 CC based on physician assessment</p>
+                    <p className="text-[#FBB217] text-xl font-semibold">Starting at $4,000</p>
+                    <p className="text-[#D6D7D9]/40 text-xs mt-1">$1,250 per CC — protocols range from 1–10 CC based on physician assessment</p>
                   </div>
                   <div className="flex gap-6">
                     <div className="text-center">
@@ -238,7 +238,7 @@ export default function Services() {
               NO HIDDEN FEES. NO SURPRISES.
             </h2>
             <p className="text-[#D6D7D9]/70 leading-relaxed mb-8">
-              Stem cell treatments are priced at <strong className="text-[#FBB217]">$1,250 per CC</strong>, with protocols ranging from 1 CC to a maximum of 10 CC. Your Medical Director will recommend the optimal dose during your private consultation based on your condition, goals, and biology. You will always know exactly what you are investing — and exactly what you are receiving.
+              Stem cell injection therapy starts at <strong className="text-[#FBB217]">$2,500</strong> and IV therapy starts at <strong className="text-[#FBB217]">$4,000</strong>. All protocols are priced at $1,250 per CC, ranging from 1 CC to a maximum of 10 CC. Your Medical Director will recommend the optimal dose during your private consultation. You will always know exactly what you are investing — and exactly what you are receiving.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {[

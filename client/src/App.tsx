@@ -11,6 +11,7 @@ import BlackLabel from "./pages/BlackLabel";
 import Testimonials from "./pages/Testimonials";
 import Contact from "./pages/Contact";
 import Blog from "./pages/Blog";
+import Team from "./pages/Team";
 
 function Router() {
   return (
@@ -22,6 +23,7 @@ function Router() {
       <Route path="/testimonials" component={Testimonials} />
       <Route path="/contact" component={Contact} />
       <Route path="/blog" component={Blog} />
+      <Route path="/team" component={Team} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>

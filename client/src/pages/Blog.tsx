@@ -30,30 +30,36 @@ function useScrollAnimation() {
 const articles = [
   {
     img: INJECTION_IMG,
-    category: "Regenerative Medicine",
-    title: "How Stem Cell Therapy Is Changing the Future of Joint Repair",
-    excerpt: "For decades, patients with chronic joint pain faced a difficult choice: manage symptoms indefinitely or undergo invasive surgery. Stem cell therapy is rewriting that narrative, offering a third path that addresses the root cause of damage rather than the symptoms.",
+    category: "Stem Cell Injection",
+    title: "How Stem Cell Injection Therapy Is Changing the Future of Joint Repair",
+    excerpt: "For decades, patients with chronic joint pain faced a difficult choice: manage symptoms indefinitely or undergo invasive surgery. Stem cell injection therapy is rewriting that narrative, offering a third path that addresses the root cause of damage rather than the symptoms.",
     date: "March 15, 2026",
     readTime: "8 min read",
-    author: "CellRX Medical Team"
+    author: "CellRX Medical Team",
+    serviceLink: "/services",
+    serviceLabel: "Learn About Stem Cell Injection"
   },
   {
     img: IV_IMG,
-    category: "Longevity",
+    category: "Stem Cell IV Therapy",
     title: "The Science of Systemic Regeneration: What Happens During IV Stem Cell Therapy",
     excerpt: "When regenerative biologics are delivered intravenously, they don't simply circulate passively. They actively seek out areas of inflammation and cellular stress, initiating a cascade of repair signals that can affect everything from immune function to cognitive performance.",
     date: "February 28, 2026",
     readTime: "10 min read",
-    author: "CellRX Medical Team"
+    author: "CellRX Medical Team",
+    serviceLink: "/services",
+    serviceLabel: "Learn About IV Therapy"
   },
   {
     img: CLINIC_IMG,
-    category: "Health Optimization",
-    title: "Beyond Symptom Management: The Case for Proactive Regenerative Health",
-    excerpt: "The most sophisticated approach to health is not reactive — it is proactive. The individuals who perform at the highest levels understand that waiting for decline is not a strategy. Regenerative medicine offers a framework for staying ahead of the aging process.",
+    category: "Investment Plan",
+    title: "Why the World's Top Performers Choose Proactive Concierge Medicine",
+    excerpt: "The most sophisticated approach to health is not reactive — it is proactive. The CellRX Investment Plan is built for individuals who understand that quarterly biomarker monitoring, personalized protocols, and direct physician access are not luxuries — they are leverage.",
     date: "February 10, 2026",
     readTime: "6 min read",
-    author: "CellRX Medical Team"
+    author: "CellRX Medical Team",
+    serviceLink: "/black-label",
+    serviceLabel: "Explore the Investment Plan"
   },
   {
     img: PHYSICIAN_IMG,
@@ -62,22 +68,39 @@ const articles = [
     excerpt: "Your first consultation at CellRX is a comprehensive, unhurried conversation about your health history, goals, and concerns. Here's what you can expect from the moment you walk through our doors to the moment you leave with a personalized plan.",
     date: "January 22, 2026",
     readTime: "5 min read",
-    author: "CellRX Medical Team"
+    author: "CellRX Medical Team",
+    serviceLink: "/contact",
+    serviceLabel: "Book Your Consultation"
   },
   {
     img: BG_DARK_IMG,
     category: "Research",
-    title: "Mesenchymal Stem Cells: Understanding the Building Blocks of Regenerative Therapy",
-    excerpt: "Mesenchymal stem cells (MSCs) are at the heart of modern regenerative medicine. Understanding what they are, how they work, and why they are so effective at reducing inflammation and promoting tissue repair is essential for any patient considering regenerative therapy.",
+    title: "Chain of Custody: Why the Source of Your Stem Cells Matters More Than You Think",
+    excerpt: "Not all stem cell products are created equal. The difference between a diluted, replicated biologic and a full-concentration, ethically sourced product from a healthy local birth is the difference between marginal results and transformative outcomes. Here's what to ask.",
     date: "January 8, 2026",
     readTime: "12 min read",
-    author: "CellRX Medical Team"
+    author: "CellRX Medical Team",
+    serviceLink: "/services",
+    serviceLabel: "Our Chain-of-Custody Standard"
   },
   {
     img: INJECTION_IMG,
+    category: "Longevity & Optimization",
+    title: "Quarterly Labs and Longevity: How Biomarker Monitoring Changes Everything",
+    excerpt: "Most people only see a doctor when something is wrong. The most successful longevity strategies are built on the opposite principle: continuous monitoring, early intervention, and personalized protocols that evolve with your biology — not against it.",
+    date: "December 20, 2025",
+    readTime: "7 min read",
+    author: "CellRX Medical Team",
+    serviceLink: "/black-label",
+    serviceLabel: "Explore Quarterly Lab Panels"
+  },
+  {
+    img: IV_IMG,
     category: "Athlete Performance",
     title: "Regenerative Medicine for Elite Athletes: Accelerating Recovery Without Compromise",
     excerpt: "Elite athletes push their bodies to the limit — and the recovery demands are equally extreme. Regenerative therapies are becoming an essential tool in the performance medicine toolkit, offering faster healing, reduced inflammation, and extended career longevity.",
+    serviceLink: "/services",
+    serviceLabel: "Explore Athlete Protocols",
     date: "December 15, 2025",
     readTime: "9 min read",
     author: "CellRX Medical Team"
@@ -140,9 +163,16 @@ export default function Blog() {
                 <span className="flex items-center gap-1.5"><Calendar size={12} />{articles[0].date}</span>
                 <span className="flex items-center gap-1.5"><Clock size={12} />{articles[0].readTime}</span>
               </div>
-              <button className="flex items-center gap-2 text-[#0047BB] text-sm font-semibold group/btn w-fit">
-                Read Article <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
-              </button>
+              <div className="flex items-center gap-4">
+                <button className="flex items-center gap-2 text-[#0047BB] text-sm font-semibold group/btn w-fit">
+                  Read Article <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
+                </button>
+                {articles[0].serviceLink && (
+                  <Link href={articles[0].serviceLink} className="text-[#FBB217] text-xs tracking-widest uppercase hover:underline">
+                    {articles[0].serviceLabel}
+                  </Link>
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -184,6 +214,15 @@ export default function Blog() {
                     <span className="flex items-center gap-1.5"><Calendar size={11} />{article.date}</span>
                     <span className="flex items-center gap-1.5"><Clock size={11} />{article.readTime}</span>
                   </div>
+                  {article.serviceLink && (
+                    <Link
+                      href={article.serviceLink}
+                      className="inline-flex items-center gap-1.5 mt-4 text-[#FBB217] text-xs tracking-widest uppercase hover:underline"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      {article.serviceLabel} <ArrowRight size={10} />
+                    </Link>
+                  )}
                 </div>
               </div>
             ))}

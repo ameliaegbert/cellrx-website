@@ -148,6 +148,7 @@ export default function Contact() {
                     "Personalized treatment recommendations",
                     "Transparent pricing with no hidden fees",
                     "Response within 24 business hours",
+                    "Ask about our referral program",
                   ].map((item, i) => (
                     <div key={i} className="flex items-center gap-2">
                       <CheckCircle2 size={13} className="text-[#0047BB] shrink-0" />
@@ -240,7 +241,7 @@ export default function Contact() {
                       <option value="" disabled>Select a treatment or service</option>
                       <option value="stem-cell-injection">Stem Cell Injection</option>
                       <option value="stem-cell-iv">Stem Cell IV Therapy</option>
-                      <option value="black-label">Black Label Membership</option>
+                      <option value="investment-plan">Investment Plan</option>
                       <option value="general">General Consultation</option>
                       <option value="other">Other</option>
                     </select>
@@ -279,6 +280,9 @@ export default function Contact() {
                     Request My Private Consultation
                   </button>
 
+                  <p className="text-[#FBB217]/70 text-xs text-center leading-relaxed mb-1">
+                    Referral programs are available — ask about our referral program during your consultation.
+                  </p>
                   <p className="text-[#D6D7D9]/40 text-xs text-center leading-relaxed">
                     Your information is kept strictly confidential. We will never share your personal data with third parties.
                   </p>

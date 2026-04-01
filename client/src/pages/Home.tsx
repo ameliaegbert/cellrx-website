@@ -60,7 +60,7 @@ const faqs = [
   },
   {
     q: "How is stem cell therapy priced at CellRX?",
-    a: "Stem cell treatments are priced at $1,250 per CC, with protocols ranging from 1 CC to a maximum of 10 CC depending on your condition, goals, and our physician's recommendation. Your consultation will determine the optimal dose for your specific needs. This transparent, per-CC model ensures you receive exactly what your biology requires — nothing more, nothing less."
+    a: "Stem cell injection therapy starts at $2,500, and IV therapy starts at $4,000. Protocols are priced at $1,250 per CC, with dosing ranging from 1 CC to a maximum of 10 CC based on your condition and goals. Your consultation will determine the optimal dose for your specific needs — and you will always know exactly what you are investing before any commitment is made."
   },
   {
     q: "Are stem cell and regenerative treatments safe?",
@@ -75,8 +75,8 @@ const faqs = [
     a: "Most treatments are completed in under 60 minutes in our private clinic environment. Recovery is minimal — the vast majority of patients resume their normal activities the same day. We provide personalized aftercare guidance to support healing and ensure your results are optimized."
   },
   {
-    q: "What is included in the Black Label Membership?",
-    a: "Black Label is our most comprehensive concierge health program, priced at $28,000 per year. It includes quarterly laboratory panels, personalized longevity protocols, direct physician access, priority scheduling, and unlimited consultations. Stem cell treatments are available as a premium add-on. Spouses may be added for an additional $20,000 per year. Membership is limited to ensure every member receives the full attention and resources they deserve."
+    q: "What is included in the CellRX Investment Plan?",
+    a: "The Investment Plan is our most comprehensive concierge health program, priced at $28,000 per year. It includes quarterly laboratory panels, personalized longevity protocols, direct physician access, priority scheduling, and unlimited consultations. Stem cell treatments are available as a premium add-on. Spouses may be added for an additional $20,000 per year. Membership is limited to ensure every member receives the full attention and resources they deserve. Referral programs are also available — ask about our referral program during your private consultation."
   }
 ];
 
@@ -117,12 +117,12 @@ export default function Home() {
             src={PHYSICIAN_IMG}
             alt="CellRX Medical Director"
             className="w-full h-full object-cover"
-            style={{ objectPosition: '50% 10%' }}
+            style={{ objectPosition: '50% top', objectFit: 'cover' }}
           />
-          {/* Narrow left-edge fade only — stops at 30% so the doctor's face is fully clear */}
-          <div className="absolute inset-y-0 left-0 w-[30%] bg-gradient-to-r from-[#051229] to-transparent" />
+          {/* Narrow left-edge fade only — stops at 28% so the doctor's face is fully clear */}
+          <div className="absolute inset-y-0 left-0 w-[28%] bg-gradient-to-r from-[#051229] to-transparent" />
           {/* Subtle bottom fade */}
-          <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#051229] to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#051229] to-transparent" />
         </div>
 
         <div className="container relative z-10 pt-32 pb-24">
@@ -225,7 +225,7 @@ export default function Home() {
                 title: "STEM CELL INJECTION",
                 sub: "Targeted Joint & Tissue Repair",
                 desc: "Precision-dosed regenerative biologics delivered directly to the site of damage — giving your body the exact signals it needs to repair tissue, eliminate chronic inflammation, and restore function without surgery.",
-                price: "$1,250 per CC",
+                price: "Starting at $2,500",
                 features: ["Addresses root cause, not symptoms", "Eliminates chronic inflammation", "Restores mobility — avoids surgery"],
                 href: "/services"
               },
@@ -235,7 +235,7 @@ export default function Home() {
                 title: "STEM CELL IV THERAPY",
                 sub: "Systemic Regeneration & Optimization",
                 desc: "A full-body regenerative infusion that delivers concentrated biologics through the bloodstream — targeting inflammation, accelerating cellular repair, and restoring the energy and clarity of a younger biology.",
-                price: "$1,250 per CC",
+                price: "Starting at $4,000",
                 features: ["Whole-body cellular restoration", "Elevates energy and cognitive performance", "Accelerates recovery, extends longevity"],
                 href: "/services"
               },
