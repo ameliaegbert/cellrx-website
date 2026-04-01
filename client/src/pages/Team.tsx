@@ -2,7 +2,7 @@
  * CellRX Team Page — Editorial Dark Luxury
  * Brand Colors: #051229 Navy | #0047BB Blue | #FBB217 Amber | #F6F5EC Cream | #36454F Charcoal | #D6D7D9 Silver
  * Typography: Bebas Neue (titles) | DM Sans (subtitles) | Libre Franklin (body)
- * Note: Jason Skeesick excluded. Amelia is COO.
+ * Note: Jason Skeesick excluded. Team: Dr. Jacob Egbert, Amelia Egbert (COO), Samantha Buker (EA), David Fajardo (Social)
  */
 
 import { useEffect } from "react";
@@ -13,6 +13,9 @@ import { ArrowRight } from "lucide-react";
 
 const PHYSICIAN_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/physician_portrait_d5fe25e9.webp";
 const CLINIC_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/clinic_interior_31c757cf.webp";
+const AMELIA_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/Family-64_a5482c5e.webp";
+const SAMANTHA_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/CELLRX_HAPS-18_86b1ad25.webp";
+const DAVID_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/CELLRX_HAPS-20_42821a7a.webp";
 
 const TITLE_FONT = "'Bebas Neue', sans-serif";
 const SUBTITLE_FONT = "'DM Sans', sans-serif";
@@ -28,36 +31,6 @@ function useScrollAnimation() {
     return () => observer.disconnect();
   }, []);
 }
-
-const teamMembers = [
-  {
-    name: "Jacob Haps",
-    title: "Medical Director",
-    subtitle: "Regenerative Medicine Specialist",
-    img: PHYSICIAN_IMG,
-    bio: "Jacob serves as the Medical Director of CellRX and simultaneously as the Medical Director of our stem cell source company — a dual role that gives him direct, unbroken oversight of every biologic administered at our clinic. With over a decade of clinical experience in regenerative and functional medicine, he has helped hundreds of patients avoid surgery, recover faster, and invest in a biology that performs at the level they demand. His commitment to full chain-of-custody biologics and personalized protocols sets the standard for what regenerative medicine can and should be.",
-    credentials: [
-      "Dual Medical Director — Clinic & Source Company",
-      "Regenerative & Functional Medicine Specialist",
-      "10+ Years of Clinical Experience",
-      "500+ Patients Successfully Treated",
-    ],
-    featured: true,
-  },
-  {
-    name: "Amelia",
-    title: "Chief Operating Officer",
-    subtitle: "Operations & Patient Experience",
-    img: null,
-    bio: "Amelia oversees all clinical operations at CellRX, ensuring that every patient interaction reflects the white-glove standard the practice is known for. From intake to follow-up, she is the architect of the seamless, discreet experience that distinguishes CellRX from every other clinic in the space.",
-    credentials: [
-      "Chief Operating Officer",
-      "Patient Experience & Concierge Operations",
-      "Clinical Workflow Optimization",
-    ],
-    featured: false,
-  },
-];
 
 export default function Team() {
   useScrollAnimation();
@@ -98,7 +71,7 @@ export default function Team() {
               <div className="relative">
                 <img
                   src={PHYSICIAN_IMG}
-                  alt="Jacob Haps — Medical Director"
+                  alt="Dr. Jacob Egbert — Medical Director"
                   className="w-full block"
                   style={{ aspectRatio: "2/3", objectFit: "cover", objectPosition: "50% 0%", display: "block" }}
                 />
@@ -108,7 +81,7 @@ export default function Team() {
                     Medical Director
                   </p>
                   <p className="text-white/70 text-xs mt-0.5" style={{ fontFamily: BODY_FONT }}>
-                    Clinic & Source Company
+                    Clinic &amp; Source Company
                   </p>
                 </div>
               </div>
@@ -120,7 +93,7 @@ export default function Team() {
                 className="text-[#F6F5EC] mb-1"
                 style={{ fontFamily: TITLE_FONT, fontSize: "clamp(40px, 5vw, 64px)" }}
               >
-                JACOB HAPS
+                DR. JACOB EGBERT
               </h2>
               <p
                 className="text-[#FBB217] text-sm tracking-widest uppercase mb-6"
@@ -131,10 +104,10 @@ export default function Team() {
               <div className="gold-rule mb-6" />
 
               <p className="text-[#D6D7D9] leading-relaxed mb-6" style={{ fontFamily: BODY_FONT }}>
-                Jacob serves as the Medical Director of CellRX and simultaneously as the Medical Director of our stem cell source company — a dual role that gives him direct, unbroken oversight of every biologic administered at our clinic. This is not a marketing distinction. It is a structural guarantee: when you receive treatment at CellRX, you are trusting a physician who personally ensures the purity, concentration, and provenance of every vial — because he is the one who oversaw its creation.
+                Dr. Egbert serves as the Medical Director of CellRX and simultaneously as the Medical Director of our stem cell source company — a dual role that gives him direct, unbroken oversight of every biologic administered at our clinic. This is not a marketing distinction. It is a structural guarantee: when you receive treatment at CellRX, you are trusting a physician who personally ensures the purity, concentration, and provenance of every vial — because he is the one who oversaw its creation.
               </p>
               <p className="text-[#D6D7D9] leading-relaxed mb-8" style={{ fontFamily: BODY_FONT }}>
-                With over a decade of clinical experience in regenerative and functional medicine, Jacob has helped hundreds of patients avoid surgery, recover faster, and invest in a biology that performs at the level they demand. His commitment to full chain-of-custody biologics, personalized protocols, and never-diluted products sets the standard for what regenerative medicine can and should be.
+                With over a decade of clinical experience in regenerative and functional medicine, Dr. Egbert has helped hundreds of patients avoid surgery, recover faster, and invest in a biology that performs at the level they demand. His commitment to full chain-of-custody biologics, personalized protocols, and never-diluted products sets the standard for what regenerative medicine can and should be.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
@@ -168,7 +141,7 @@ export default function Team() {
       <section className="py-24 bg-[#030d1e]">
         <div className="container">
           <div className="mb-16 fade-up">
-            <p className="section-label mb-4">Operations & Experience</p>
+            <p className="section-label mb-4">Operations &amp; Experience</p>
             <h2
               className="text-[#F6F5EC]"
               style={{ fontFamily: TITLE_FONT, fontSize: "clamp(36px, 4vw, 56px)" }}
@@ -179,43 +152,57 @@ export default function Team() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Amelia */}
+            {/* Amelia Egbert — COO */}
             <div className="fade-up">
-              <div
-                className="w-full bg-[#051229] border border-white/10 mb-6 flex items-center justify-center"
-                style={{ height: "320px" }}
-              >
-                <div className="text-center px-8">
-                  <div
-                    className="w-20 h-20 rounded-full bg-[#0047BB]/20 border border-[#0047BB]/30 flex items-center justify-center mx-auto mb-4"
-                  >
-                    <span
-                      className="text-[#FBB217]"
-                      style={{ fontFamily: TITLE_FONT, fontSize: "32px" }}
-                    >
-                      A
-                    </span>
-                  </div>
-                  <p className="text-[#D6D7D9]/40 text-xs tracking-widest uppercase" style={{ fontFamily: SUBTITLE_FONT }}>
-                    Photo Coming Soon
-                  </p>
-                </div>
+              <div className="w-full mb-6 overflow-hidden" style={{ height: "360px" }}>
+                <img
+                  src={AMELIA_IMG}
+                  alt="Amelia Egbert — Chief Operating Officer"
+                  className="w-full h-full object-cover"
+                  style={{ objectPosition: "50% 0%" }}
+                />
               </div>
               <div className="gold-rule mb-4" />
-              <h3
-                className="text-[#F6F5EC] mb-1"
-                style={{ fontFamily: TITLE_FONT, fontSize: "28px" }}
-              >
-                AMELIA
-              </h3>
-              <p
-                className="text-[#FBB217] text-xs tracking-widest uppercase mb-4"
-                style={{ fontFamily: SUBTITLE_FONT, fontWeight: 600 }}
-              >
-                Chief Operating Officer
-              </p>
+              <h3 className="text-[#F6F5EC] mb-1" style={{ fontFamily: TITLE_FONT, fontSize: "28px" }}>AMELIA EGBERT</h3>
+              <p className="text-[#FBB217] text-xs tracking-widest uppercase mb-4" style={{ fontFamily: SUBTITLE_FONT, fontWeight: 600 }}>Chief Operating Officer</p>
               <p className="text-[#D6D7D9]/70 text-sm leading-relaxed" style={{ fontFamily: BODY_FONT }}>
                 Amelia oversees all clinical operations at CellRX, ensuring that every patient interaction reflects the white-glove standard the practice is known for. From intake to follow-up, she is the architect of the seamless, discreet experience that distinguishes CellRX from every other clinic in the space.
+              </p>
+            </div>
+
+            {/* Samantha Buker — Executive Assistant */}
+            <div className="fade-up" style={{ transitionDelay: "0.1s" }}>
+              <div className="w-full mb-6 overflow-hidden" style={{ height: "360px" }}>
+                <img
+                  src={SAMANTHA_IMG}
+                  alt="Samantha Buker — Executive Assistant"
+                  className="w-full h-full object-cover"
+                  style={{ objectPosition: "50% 0%" }}
+                />
+              </div>
+              <div className="gold-rule mb-4" />
+              <h3 className="text-[#F6F5EC] mb-1" style={{ fontFamily: TITLE_FONT, fontSize: "28px" }}>SAMANTHA BUKER</h3>
+              <p className="text-[#FBB217] text-xs tracking-widest uppercase mb-4" style={{ fontFamily: SUBTITLE_FONT, fontWeight: 600 }}>Executive Assistant</p>
+              <p className="text-[#D6D7D9]/70 text-sm leading-relaxed" style={{ fontFamily: BODY_FONT }}>
+                Samantha ensures that every detail of the CellRX patient experience is handled with precision and care. From scheduling to coordination, she is the first point of contact for many of our clients and sets the tone for the exceptional service that defines our practice.
+              </p>
+            </div>
+
+            {/* David Fajardo — Director of Social Media */}
+            <div className="fade-up" style={{ transitionDelay: "0.2s" }}>
+              <div className="w-full mb-6 overflow-hidden" style={{ height: "360px" }}>
+                <img
+                  src={DAVID_IMG}
+                  alt="David Fajardo — Director of Social Media"
+                  className="w-full h-full object-cover"
+                  style={{ objectPosition: "50% 0%" }}
+                />
+              </div>
+              <div className="gold-rule mb-4" />
+              <h3 className="text-[#F6F5EC] mb-1" style={{ fontFamily: TITLE_FONT, fontSize: "28px" }}>DAVID FAJARDO</h3>
+              <p className="text-[#FBB217] text-xs tracking-widest uppercase mb-4" style={{ fontFamily: SUBTITLE_FONT, fontWeight: 600 }}>Director of Social Media</p>
+              <p className="text-[#D6D7D9]/70 text-sm leading-relaxed" style={{ fontFamily: BODY_FONT }}>
+                David leads CellRX's digital presence, crafting the stories and content that bring our mission to life across every platform. His work ensures that the CellRX brand communicates with the same precision and authority that defines our clinical practice.
               </p>
             </div>
           </div>

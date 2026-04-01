@@ -243,7 +243,7 @@ export default function Home() {
               {
                 img: BLACK_LABEL_IMG,
                 label: "03",
-                title: "BLACK LABEL",
+                title: "INVESTMENT PLAN",
                 sub: "Concierge Health Partnership",
                 desc: "For those who refuse to leave their health to chance. An all-encompassing annual membership that delivers proactive optimization, quarterly labs, and direct physician access — with stem cell treatments available as a premium add-on.",
                 price: "Investment Plan Specific",
@@ -440,8 +440,8 @@ export default function Home() {
                 name: "Sarah T.",
                 role: "CEO & Entrepreneur",
                 stars: 5,
-                quote: "The Black Label membership has completely transformed how I manage my health. Having a dedicated medical team that proactively monitors and optimizes my biology means I can focus entirely on what matters. The ROI on my health has been extraordinary.",
-                treatment: "Black Label Membership"
+                quote: "The Investment Plan membership has completely transformed how I manage my health. Having a dedicated medical team that proactively monitors and optimizes my biology means I can focus entirely on what matters. The ROI on my health has been extraordinary.",
+                treatment: "Investment Plan Membership"
               },
               {
                 name: "David L.",

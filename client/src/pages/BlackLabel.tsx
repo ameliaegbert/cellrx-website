@@ -1,5 +1,5 @@
 /*
- * CellRX Black Label Page — Editorial Dark Luxury
+ * CellRX Investment Plan Page — Editorial Dark Luxury
  * Brand Colors: #051229 Navy | #0047BB Blue | #FBB217 Amber | #F6F5EC Cream | #36454F Charcoal | #D6D7D9 Silver
  * Copy: Luxury sales psychology — exclusivity, scarcity, identity-based selling, premium anchoring
  * Pricing: Investment Plan Specific | Spouse add-on available | Stem cells available as premium add-on
@@ -9,7 +9,7 @@ import { useEffect } from "react";
 import { Link } from "wouter";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { CheckCircle2, Crown, Zap, Shield, Clock, FlaskConical, Plus } from "lucide-react";
+import { CheckCircle2, Crown, Zap, Shield, FlaskConical, Plus } from "lucide-react";
 
 const BLACK_LABEL_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/service_black_label_1c68d442.webp";
 const BG_DARK_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/background_dark_fb24a343.webp";
@@ -44,8 +44,8 @@ export default function BlackLabel() {
             className="text-[#F6F5EC] fade-up"
             style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(56px, 8vw, 120px)", lineHeight: 0.9, transitionDelay: "0.1s" }}
           >
-            BLACK<br />
-            <span className="text-[#FBB217]">LABEL</span>
+            THE<br />
+            <span className="text-[#FBB217]">INVESTMENT PLAN</span>
           </h1>
           <p
             className="text-[#D6D7D9]/80 text-lg max-w-xl mt-6 leading-relaxed fade-up"
@@ -56,7 +56,7 @@ export default function BlackLabel() {
         </div>
       </section>
 
-      {/* What is Black Label */}
+      {/* What is the Investment Plan */}
       <section className="py-24 bg-[#051229]">
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -71,10 +71,10 @@ export default function BlackLabel() {
               </h2>
               <div className="gold-rule mb-6" />
               <p className="text-[#D6D7D9]/80 leading-relaxed mb-6">
-    The CellRX Investment Plan is not a subscription. It is a partnership. A year-round commitment between you and a medical team that is proactively invested in your biology, your performance, and your longevity — not just your symptoms.
+                The CellRX Investment Plan is not a subscription. It is a partnership. A year-round commitment between you and a medical team that is proactively invested in your biology, your performance, and your longevity — not just your symptoms.
               </p>
               <p className="text-[#D6D7D9]/80 leading-relaxed mb-8">
-                As an Investment Plan member, you receive quarterly laboratory panels, personalized optimization protocols, direct physician access, and priority scheduling — all designed around your unique biology and goals. Stem cell treatments are available as a premium add-on, giving you the flexibility to integrate the most advanced regenerative therapies at the pace and intensity that serves you best.
+                As a member, you receive quarterly laboratory panels, personalized optimization protocols, direct physician access, and priority scheduling — all designed around your unique biology and goals. Stem cell treatments are available as a premium add-on, giving you the flexibility to integrate the most advanced regenerative therapies at the pace and intensity that serves you best.
               </p>
             </div>
             <div className="grid grid-cols-2 gap-4 fade-in">
@@ -115,10 +115,11 @@ export default function BlackLabel() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {/* Individual */}
             <div className="col-span-1 md:col-span-1 p-8 border border-[#FBB217]/30 bg-[#051229] fade-up">
-              <p className="text-[#FBB217] text-xs tracking-widest uppercase mb-4">Individual Investment Plan</p>
+              <p className="text-[#FBB217] text-xs tracking-widest uppercase mb-4">Individual Membership</p>
               <div className="mb-2">
-                <span className="text-[#F6F5EC] text-2xl font-bold" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>INVESTMENT PLAN SPECIFIC</span>
+                <span className="text-[#F6F5EC] text-2xl font-bold" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>CUSTOM INVESTMENT</span>
               </div>
+              <p className="text-[#D6D7D9]/50 text-xs mb-4">Pricing determined during your private consultation</p>
               <div className="gold-rule mb-6" />
               <ul className="space-y-3 mb-8">
                 {[
@@ -138,22 +139,23 @@ export default function BlackLabel() {
                 ))}
               </ul>
               <Link href="/contact">
-                <button className="btn-primary rounded-none w-full">Apply for Your Investment Plan</button>
+                <button className="btn-primary rounded-none w-full">Begin the Conversation</button>
               </Link>
             </div>
 
             {/* Spouse Add-On */}
             <div className="p-8 border border-white/10 bg-[#030d1e] fade-up" style={{ transitionDelay: "0.1s" }}>
-              <p className="text-[#D6D7D9]/60 text-xs tracking-widest uppercase mb-4">Spouse Investment Add-On</p>
+              <p className="text-[#D6D7D9]/60 text-xs tracking-widest uppercase mb-4">Spouse Membership Add-On</p>
               <div className="mb-2">
-                <span className="text-[#F6F5EC] text-2xl font-bold" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>INVESTMENT PLAN SPECIFIC</span>
+                <span className="text-[#F6F5EC] text-2xl font-bold" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>CUSTOM INVESTMENT</span>
               </div>
+              <p className="text-[#D6D7D9]/50 text-xs mb-4">Pricing determined during your private consultation</p>
               <div className="gold-rule mb-6" />
               <p className="text-[#D6D7D9]/70 text-sm leading-relaxed mb-6">
-                Extend the full Investment Plan experience to your spouse or partner. They receive all the same benefits — quarterly labs, personalized protocols, direct physician access, and priority scheduling — at a significant value relative to individual enrollment.
+                Extend the full membership experience to your spouse or partner. They receive all the same benefits — quarterly labs, personalized protocols, direct physician access, and priority scheduling — at a significant value relative to individual enrollment.
               </p>
               <p className="text-[#D6D7D9]/50 text-xs leading-relaxed">
-                Available exclusively to existing Investment Plan members. Requires active individual membership.
+                Available exclusively to existing members. Requires active individual membership.
               </p>
             </div>
 
@@ -169,7 +171,7 @@ export default function BlackLabel() {
               </div>
               <div className="gold-rule mb-6" />
               <p className="text-[#D6D7D9]/70 text-sm leading-relaxed mb-6">
-                Stem cell treatments — both injection and IV therapy — are available as a premium add-on to your Black Label membership. Protocols range from 1 to 10 CC, with dosing determined by your physician based on your goals and biology.
+                Stem cell treatments — both injection and IV therapy — are available as a premium add-on to your membership. Protocols range from 1 to 10 CC, with dosing determined by your physician based on your goals and biology.
               </p>
               <p className="text-[#D6D7D9]/50 text-xs leading-relaxed">
                 Every biologic carries full chain of custody. Never diluted. Never replicated. Sourced from healthy, consented local births.
@@ -188,7 +190,7 @@ export default function BlackLabel() {
               className="text-[#F6F5EC]"
               style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(36px, 4vw, 56px)" }}
             >
-              YOUR INVESTMENT PLAN AT A GLANCE
+              WHAT YOUR MEMBERSHIP DELIVERS
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -202,7 +204,7 @@ export default function BlackLabel() {
               "Concierge coordination for specialist referrals",
               "Annual health optimization review and goal-setting session",
               "Stem cell injection and IV therapy available as premium add-ons",
-              "Spouse enrollment available — pricing is investment-plan specific",
+              "Spouse enrollment available — pricing is custom to your plan",
               "Discounts on additional regenerative treatments",
               "Access to the most advanced protocols as they become available",
             ].map((benefit, i) => (
@@ -222,14 +224,15 @@ export default function BlackLabel() {
       {/* Who is it for */}
       <section className="py-24 bg-[#030d1e]">
         <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
             <div className="fade-up">
               <p className="section-label mb-4">Ideal For</p>
               <h2
                 className="text-[#F6F5EC] mb-6"
                 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(32px, 4vw, 48px)" }}
               >
-                IS THE INVESTMENT PLAN<br />RIGHT FOR YOU?
+                IS THIS MEMBERSHIP<br />
+                <span className="text-[#FBB217]">RIGHT FOR YOU?</span>
               </h2>
               <p className="text-[#D6D7D9]/60 text-sm leading-relaxed">
                 The CellRX Investment Plan is designed for high-achieving individuals who understand that health is their most valuable asset — and who are unwilling to leave it to chance or reactive care.
@@ -270,14 +273,14 @@ export default function BlackLabel() {
             className="text-[#F6F5EC] mb-6 fade-up"
             style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(40px, 6vw, 80px)", transitionDelay: "0.1s" }}
           >
-            YOUR INVESTMENT PLAN<br />
-            <span className="text-[#FBB217]">IS LIMITED BY DESIGN</span>
+            MEMBERSHIP IS<br />
+            <span className="text-[#FBB217]">LIMITED BY DESIGN</span>
           </h2>
           <p
             className="text-[#D6D7D9]/70 max-w-xl mx-auto mb-10 leading-relaxed fade-up"
             style={{ transitionDelay: "0.2s" }}
           >
-            We deliberately limit the Investment Plan to ensure every member receives the full attention, resources, and physician access they deserve. If you are ready to invest in your health at the highest level, we invite you to begin the conversation.
+            We deliberately limit membership to ensure every member receives the full attention, resources, and physician access they deserve. If you are ready to invest in your health at the highest level, we invite you to begin the conversation.
           </p>
           <p
             className="text-[#FBB217]/80 text-xs tracking-widest uppercase max-w-md mx-auto mb-8 fade-up"
@@ -287,7 +290,7 @@ export default function BlackLabel() {
           </p>
           <Link href="/contact">
             <button className="btn-amber rounded-none fade-up" style={{ transitionDelay: "0.3s" }}>
-              Inquire About Your Investment Plan
+              Begin the Conversation
             </button>
           </Link>
         </div>

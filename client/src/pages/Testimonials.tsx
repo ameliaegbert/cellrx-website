@@ -36,9 +36,9 @@ const testimonials = [
     name: "Sarah T.",
     role: "CEO & Entrepreneur",
     age: 47,
-    treatment: "Black Label Membership",
+    treatment: "Investment Plan Membership",
     stars: 5,
-    quote: "The Black Label membership has completely transformed how I manage my health. Having a dedicated medical team that proactively monitors and optimizes my biology means I can focus entirely on my business and family. My energy levels, cognitive clarity, and resilience have all improved dramatically. The ROI on my health has been extraordinary.",
+    quote: "The Investment Plan membership has completely transformed how I manage my health. Having a dedicated medical team that proactively monitors and optimizes my biology means I can focus entirely on my business and family. My energy levels, cognitive clarity, and resilience have all improved dramatically. The ROI on my health has been extraordinary.",
     result: "Significant improvement in energy, focus, and resilience"
   },
   {
@@ -63,9 +63,9 @@ const testimonials = [
     name: "Robert K.",
     role: "Real Estate Developer",
     age: 52,
-    treatment: "Black Label Membership",
+    treatment: "Investment Plan Membership",
     stars: 5,
-    quote: "As someone who has always been proactive about health, Black Label is exactly what I was looking for. The personalized protocols, the direct access to the medical team, and the level of sophistication in how they approach longevity medicine is unmatched. This is healthcare the way it should be.",
+    quote: "As someone who has always been proactive about health, the Investment Plan is exactly what I was looking for. The personalized protocols, the direct access to the medical team, and the level of sophistication in how they approach longevity medicine is unmatched. This is healthcare the way it should be.",
     result: "Comprehensive health optimization and longevity protocols"
   },
   {

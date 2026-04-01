@@ -10,7 +10,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { CheckCircle2, ArrowRight, Clock, Shield, Lock } from "lucide-react";
 
-const INJECTION_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/doctor_injection_4ec00e57.webp";
+const INJECTION_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/CELLRX_HAPS-12_94cc8872.webp";
 const IV_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/service_iv_9142a5f3.webp";
 const CLINIC_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/clinic_interior_31c757cf.webp";
 
@@ -72,7 +72,7 @@ export default function Services() {
                 src={INJECTION_IMG}
                 alt="Stem Cell Injection"
                 className="w-full object-cover"
-                style={{ height: '520px', objectPosition: '50% 20%' }}
+                style={{ height: '580px', objectFit: 'cover', objectPosition: '50% 20%' }}
               />
               <div className="absolute top-4 left-4">
                 <span
@@ -278,7 +278,7 @@ export default function Services() {
             ].map((step, i) => (
               <div key={i} className="relative fade-up" style={{ transitionDelay: `${i * 0.1}s` }}>
                 <p
-                  className="text-[#FBB217]/15 mb-4"
+                  className="text-[#FBB217] mb-4"
                   style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "80px", lineHeight: 1 }}
                 >
                   {step.step}
@@ -293,7 +293,7 @@ export default function Services() {
                 {i < 3 && (
                   <ArrowRight
                     size={20}
-                    className="text-[#FBB217]/30 absolute top-8 -right-4 hidden md:block"
+                    className="text-[#FBB217]/60 absolute top-8 -right-4 hidden md:block"
                   />
                 )}
               </div>
@@ -312,7 +312,7 @@ export default function Services() {
                 className="text-white"
                 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(32px, 4vw, 52px)" }}
               >
-                EXPLORE BLACK LABEL
+                EXPLORE THE INVESTMENT PLAN
               </h2>
               <p className="text-white/70 mt-2 max-w-lg">
                 Our concierge health partnership — quarterly labs, personalized longevity protocols, and direct physician access. Stem cell treatments available as a premium add-on.
@@ -320,7 +320,7 @@ export default function Services() {
             </div>
             <Link href="/black-label">
               <button className="bg-[#FBB217] text-[#051229] font-bold text-xs tracking-widest uppercase px-10 py-4 hover:bg-[#e8a510] transition-colors whitespace-nowrap">
-                Learn About Black Label
+                Explore the Investment Plan
               </button>
             </Link>
           </div>
