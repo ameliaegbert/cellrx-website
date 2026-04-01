@@ -127,8 +127,8 @@ export default function About() {
                 <img
                   src={PHYSICIAN_IMG}
                   alt="CellRX Medical Director"
-                  className="w-full object-cover object-top"
-                  style={{ aspectRatio: "2/3", display: "block" }}
+                  className="w-full block"
+                  style={{ aspectRatio: "2/3", objectFit: "cover", objectPosition: "50% 0%", display: "block" }}
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#030d1e] to-transparent h-16" />
               </div>

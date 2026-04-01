@@ -366,10 +366,10 @@ export default function Home() {
               <img
                 src={PHYSICIAN_IMG}
                 alt="CellRX Medical Director"
-                className="w-full max-w-md mx-auto object-cover"
-                style={{ aspectRatio: "3/4", objectFit: "cover" }}
+                className="w-full max-w-md mx-auto block"
+                style={{ aspectRatio: "2/3", objectFit: "cover", objectPosition: "50% 0%" }}
               />
-              <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-[#051229] to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#051229] to-transparent" />
               {/* Authority badge */}
               <div className="absolute top-8 -right-4 bg-[#0047BB] p-4 max-w-[180px] hidden lg:block">
                 <p className="text-white text-xs font-bold tracking-wide uppercase leading-tight">Medical Director</p>
