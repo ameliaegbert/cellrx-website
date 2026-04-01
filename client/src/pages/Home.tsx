@@ -17,6 +17,7 @@ const IV_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBq
 const BLACK_LABEL_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/service_black_label_1c68d442.webp";
 const CLINIC_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/clinic_interior_31c757cf.webp";
 const PHYSICIAN_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/physician_portrait_d5fe25e9.webp";
+const CONSULTATION_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/consultation_photo_de51af6c.webp";
 const BG_DARK_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/background_dark_fb24a343.webp";
 
 function useScrollAnimation() {
@@ -116,8 +117,8 @@ export default function Home() {
           <img
             src={PHYSICIAN_IMG}
             alt="CellRX Medical Director"
-            className="w-full h-full object-cover"
-            style={{ objectPosition: '50% top', objectFit: 'cover' }}
+            className="w-full h-full"
+            style={{ objectFit: 'cover', objectPosition: '50% 0px', display: 'block', width: '100%', height: '100%' }}
           />
           {/* Narrow left-edge fade only — stops at 28% so the doctor's face is fully clear */}
           <div className="absolute inset-y-0 left-0 w-[28%] bg-gradient-to-r from-[#051229] to-transparent" />
@@ -304,13 +305,20 @@ export default function Home() {
       </section>
 
       {/* ─── THE CELLRX DIFFERENCE ─── */}
-      <section
-        className="relative py-24 overflow-hidden"
-        style={{ backgroundImage: `url(${CLINIC_IMG})`, backgroundSize: "cover", backgroundPosition: "center" }}
-      >
-        <div className="absolute inset-0 bg-[#051229]/88" />
-        <div className="container relative z-10">
+      <section className="py-24 bg-[#030d1e]">
+        <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Consultation Photo */}
+            <div className="relative fade-in order-2 lg:order-1">
+              <img
+                src={CONSULTATION_IMG}
+                alt="CellRX physician in consultation"
+                className="w-full"
+                style={{ aspectRatio: '3/4', objectFit: 'cover', objectPosition: '50% 20%', display: 'block' }}
+              />
+              <div className="absolute bottom-0 left-0 right-0 h-1/4 bg-gradient-to-t from-[#030d1e] to-transparent" />
+            </div>
+            <div className="order-1 lg:order-2">
             <div className="fade-up">
               <p className="section-label mb-4">The CellRX Difference</p>
               <h2
@@ -329,7 +337,7 @@ export default function Home() {
                 </button>
               </Link>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 fade-in">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 fade-in mt-8">
               {[
                 { title: "Full Chain of Custody", desc: "Direct oversight from source to syringe. No distributors. No unknowns. Complete transparency." },
                 { title: "Maximum Concentration", desc: "Our biologics are never diluted or replicated — you receive the full therapeutic dose every time." },
@@ -344,6 +352,7 @@ export default function Home() {
                   <p className="text-[#D6D7D9]/60 text-sm leading-relaxed">{item.desc}</p>
                 </div>
               ))}
+            </div>
             </div>
           </div>
         </div>
