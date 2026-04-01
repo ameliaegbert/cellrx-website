@@ -13,9 +13,9 @@ import { ArrowRight } from "lucide-react";
 
 const PHYSICIAN_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/physician_portrait_d5fe25e9.webp";
 const CLINIC_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/clinic_interior_31c757cf.webp";
-const AMELIA_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/Family-64_a5482c5e.webp";
-const SAMANTHA_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/CELLRX_HAPS-18_86b1ad25.webp";
-const DAVID_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/CELLRX_HAPS-20_42821a7a.webp";
+const AMELIA_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/amelia_egbert_7f527cc3.webp";
+const SAMANTHA_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/samantha_buker_013a942e.webp";
+const DAVID_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/david_fajardo_39d545ed.webp";
 
 const TITLE_FONT = "'Bebas Neue', sans-serif";
 const SUBTITLE_FONT = "'DM Sans', sans-serif";
@@ -154,12 +154,12 @@ export default function Team() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Amelia Egbert — COO */}
             <div className="fade-up">
-              <div className="w-full mb-6 overflow-hidden" style={{ height: "360px" }}>
+              <div className="w-full mb-6">
                 <img
                   src={AMELIA_IMG}
                   alt="Amelia Egbert — Chief Operating Officer"
-                  className="w-full h-full object-cover"
-                  style={{ objectPosition: "50% 0%" }}
+                  className="w-full block"
+                  style={{ display: "block" }}
                 />
               </div>
               <div className="gold-rule mb-4" />
@@ -172,12 +172,12 @@ export default function Team() {
 
             {/* Samantha Buker — Executive Assistant */}
             <div className="fade-up" style={{ transitionDelay: "0.1s" }}>
-              <div className="w-full mb-6 overflow-hidden" style={{ height: "360px" }}>
+              <div className="w-full mb-6">
                 <img
                   src={SAMANTHA_IMG}
                   alt="Samantha Buker — Executive Assistant"
-                  className="w-full h-full object-cover"
-                  style={{ objectPosition: "50% 0%" }}
+                  className="w-full block"
+                  style={{ display: "block" }}
                 />
               </div>
               <div className="gold-rule mb-4" />
@@ -190,12 +190,12 @@ export default function Team() {
 
             {/* David Fajardo — Director of Social Media */}
             <div className="fade-up" style={{ transitionDelay: "0.2s" }}>
-              <div className="w-full mb-6 overflow-hidden" style={{ height: "360px" }}>
+              <div className="w-full mb-6">
                 <img
                   src={DAVID_IMG}
                   alt="David Fajardo — Director of Social Media"
-                  className="w-full h-full object-cover"
-                  style={{ objectPosition: "50% 0%" }}
+                  className="w-full block"
+                  style={{ display: "block" }}
                 />
               </div>
               <div className="gold-rule mb-4" />
