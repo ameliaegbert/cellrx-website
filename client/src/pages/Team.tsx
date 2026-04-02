@@ -222,7 +222,7 @@ export default function Team() {
               className="text-[#F6F5EC] mb-6"
               style={{ fontFamily: TITLE_FONT, fontSize: "clamp(36px, 4vw, 56px)" }}
             >
-              SMALL BY DESIGN.<br />
+              EXCLUSIVE BY DESIGN.<br />
               <span className="text-[#FBB217]">EXCEPTIONAL BY STANDARD.</span>
             </h2>
             <p className="text-[#D6D7D9]/80 leading-relaxed mb-8" style={{ fontFamily: BODY_FONT }}>
