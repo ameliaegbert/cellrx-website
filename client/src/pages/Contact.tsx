@@ -241,7 +241,7 @@ export default function Contact() {
                       <option value="" disabled>Select a treatment or service</option>
                       <option value="stem-cell-injection">Stem Cell Injection</option>
                       <option value="stem-cell-iv">Stem Cell IV Therapy</option>
-                      <option value="investment-plan">Investment Plan</option>
+                      <option value="black-label">Black Label Concierge Medicine</option>
                       <option value="general">General Consultation</option>
                       <option value="other">Other</option>
                     </select>

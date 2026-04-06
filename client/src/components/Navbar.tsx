@@ -1,9 +1,8 @@
 /*
  * CellRX Navbar — Editorial Dark Luxury
  * Sticky nav with transparent-to-solid scroll behavior
- * Logo: CELL (black) RX (blue) — uses brand logo image
- * Nav links: white, gold hover
- * CTA: CellRX Blue button
+ * Logo: clickable, returns to home — no separate HOME link
+ * CTA: transparent outline, animates to bright blue on click
  */
 
 import { useState, useEffect } from "react";
@@ -13,12 +12,9 @@ import { Menu, X, Phone } from "lucide-react";
 const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/cellrx_logo_white_c7e5a738.png";
 
 const navLinks = [
-  { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
-  { label: "Team", href: "/team" },
-  { label: "Investment Plan", href: "/black-label" },
-  { label: "Testimonials", href: "/testimonials" },
+  { label: "Concierge Medicine", href: "/black-label" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];
@@ -26,6 +22,7 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [ctaClicked, setCtaClicked] = useState(false);
   const [location] = useLocation();
 
   useEffect(() => {
@@ -38,6 +35,11 @@ export default function Navbar() {
     setMobileOpen(false);
   }, [location]);
 
+  function handleCtaClick() {
+    setCtaClicked(true);
+    setTimeout(() => setCtaClicked(false), 600);
+  }
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
@@ -48,12 +50,12 @@ export default function Navbar() {
     >
       <div className="container">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
+          {/* Logo — clickable, returns to home */}
           <Link href="/">
             <img
               src={LOGO_URL}
               alt="CellRX"
-              className="h-8 w-auto"
+              className="h-8 w-auto cursor-pointer"
             />
           </Link>
 
@@ -74,17 +76,24 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* CTA */}
+          {/* CTA + Phone — single line */}
           <div className="hidden lg:flex items-center gap-4">
             <a
               href="tel:3857072373"
-              className="flex items-center gap-2 text-white/60 hover:text-white text-sm transition-colors"
+              className="flex items-center gap-1.5 text-white/60 hover:text-white transition-colors whitespace-nowrap"
             >
-              <Phone size={14} />
-              <span className="text-xs tracking-wide">385-707-2373</span>
+              <Phone size={13} />
+              <span className="text-xs tracking-wide whitespace-nowrap">385-707-2373</span>
             </a>
             <Link href="/contact">
-              <button className="btn-primary rounded-none text-xs">
+              <button
+                onClick={handleCtaClick}
+                className={`rounded-none text-xs px-5 py-2.5 font-semibold tracking-widest uppercase border transition-all duration-300 ${
+                  ctaClicked
+                    ? "bg-[#0047BB] border-[#0047BB] text-white scale-95"
+                    : "bg-transparent border-white/50 text-white hover:border-[#0047BB] hover:text-[#0047BB]"
+                }`}
+              >
                 Book Consultation
               </button>
             </Link>
@@ -120,7 +129,7 @@ export default function Navbar() {
             </Link>
           ))}
           <Link href="/contact">
-            <button className="btn-primary rounded-none w-full mt-2 text-xs">
+            <button className="border border-white/50 text-white rounded-none w-full mt-2 text-xs px-5 py-2.5 font-semibold tracking-widest uppercase">
               Book Consultation
             </button>
           </Link>

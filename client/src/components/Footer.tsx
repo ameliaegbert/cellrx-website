@@ -60,7 +60,7 @@ export default function Footer() {
               {[
                 { label: "Stem Cell Injection", href: "/services" },
                 { label: "Stem Cell IV Therapy", href: "/services" },
-                { label: "Investment Plan", href: "/black-label" },
+                { label: "Concierge Medicine", href: "/black-label" },
                 { label: "Health Optimization", href: "/services" },
                 { label: "Longevity Programs", href: "/services" },
               ].map((item) => (
@@ -79,8 +79,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {[
                 { label: "About Us", href: "/about" },
-                { label: "Our Team", href: "/team" },
-                { label: "Testimonials", href: "/testimonials" },
+                { label: "Our Team", href: "/about" },
                 { label: "Blog & Research", href: "/blog" },
                 { label: "Contact", href: "/contact" },
               ].map((item) => (

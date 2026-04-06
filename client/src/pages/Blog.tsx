@@ -52,14 +52,14 @@ const articles = [
   },
   {
     img: CLINIC_IMG,
-    category: "Investment Plan",
+    category: "Black Label",
     title: "Why the World's Top Performers Choose Proactive Concierge Medicine",
-    excerpt: "The most sophisticated approach to health is not reactive — it is proactive. The CellRX Investment Plan is built for individuals who understand that quarterly biomarker monitoring, personalized protocols, and direct physician access are not luxuries — they are leverage.",
+    excerpt: "The most sophisticated approach to health is not reactive — it is proactive. Black Label Concierge Medicine is built for individuals who understand that quarterly biomarker monitoring, personalized protocols, and direct physician access are not luxuries — they are leverage.",
     date: "February 10, 2026",
     readTime: "6 min read",
     author: "CellRX Medical Team",
     serviceLink: "/black-label",
-    serviceLabel: "Explore the Investment Plan"
+    serviceLabel: "Explore Black Label"
   },
   {
     img: PHYSICIAN_IMG,

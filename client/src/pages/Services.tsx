@@ -312,7 +312,7 @@ export default function Services() {
                 className="text-white"
                 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(32px, 4vw, 52px)" }}
               >
-                EXPLORE THE INVESTMENT PLAN
+                EXPLORE BLACK LABEL
               </h2>
               <p className="text-white/70 mt-2 max-w-lg">
                 Our concierge health partnership — quarterly labs, personalized longevity protocols, and direct physician access. Stem cell treatments available as a premium add-on.
@@ -320,7 +320,7 @@ export default function Services() {
             </div>
             <Link href="/black-label">
               <button className="bg-[#FBB217] text-[#051229] font-bold text-xs tracking-widest uppercase px-10 py-4 hover:bg-[#e8a510] transition-colors whitespace-nowrap">
-                Explore the Investment Plan
+                Explore Black Label
               </button>
             </Link>
           </div>
