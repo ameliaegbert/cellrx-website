@@ -259,7 +259,7 @@ export default function About() {
                   src={SAMANTHA_IMG}
                   alt="Samantha Buker — Executive Assistant"
                   className="w-full h-full object-cover"
-                  style={{ objectPosition: "50% 10%" }}
+                  style={{ objectPosition: "50% 30%" }}
                 />
               </div>
               <div className="gold-rule mb-4" />
