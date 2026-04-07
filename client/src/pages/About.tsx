@@ -51,8 +51,8 @@ export default function About() {
             className="text-[#F6F5EC]"
             style={{ fontFamily: TITLE_FONT, fontSize: "clamp(48px, 7vw, 96px)" }}
           >
-            BUILT ON SCIENCE.<br />
-            <span className="text-[#FBB217]">DRIVEN BY RESULTS.</span>
+            WHERE SCIENCE MEETS<br />
+            <span className="text-[#FBB217]">EXCEPTIONAL CARE.</span>
           </h1>
         </div>
       </section>
@@ -259,7 +259,7 @@ export default function About() {
                   src={SAMANTHA_IMG}
                   alt="Samantha Buker — Executive Assistant"
                   className="w-full h-full object-cover"
-                  style={{ objectPosition: "50% 18%" }}
+                  style={{ objectPosition: "50% 10%" }}
                 />
               </div>
               <div className="gold-rule mb-4" />
