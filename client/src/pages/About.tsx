@@ -13,6 +13,7 @@ import { CheckCircle2, BookOpen, Users, Lock, ArrowRight } from "lucide-react";
 
 const PHYSICIAN_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/physician_portrait_d5fe25e9.webp";
 const CLINIC_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/clinic_interior_31c757cf.webp";
+const INJECTION_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/CELLRX_HAPS-12_69866f89.webp";
 const AMELIA_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/amelia_egbert_7f527cc3.webp";
 const SAMANTHA_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/samantha_buker_013a942e.webp";
 const DAVID_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/david_fajardo_39d545ed.webp";
@@ -92,9 +93,10 @@ export default function About() {
             </div>
             <div className="relative fade-in">
               <img
-                src={CLINIC_IMG}
-                alt="CellRX Clinic"
-                className="w-full h-96 object-cover"
+                src={INJECTION_IMG}
+                alt="Dr. Egbert administering stem cell injection"
+                className="w-full"
+                style={{ display: "block", width: "100%", height: "auto" }}
               />
               <div className="absolute -bottom-6 -left-6 bg-[#0047BB] p-6 max-w-[200px] hidden lg:block">
                 <p className="text-white" style={{ fontFamily: TITLE_FONT, fontSize: "36px", lineHeight: 1 }}>10+</p>
@@ -259,7 +261,7 @@ export default function About() {
                   src={SAMANTHA_IMG}
                   alt="Samantha Buker — Executive Assistant"
                   className="w-full h-full object-cover"
-                  style={{ objectPosition: "50% 30%" }}
+                  style={{ objectPosition: "50% 25%" }}
                 />
               </div>
               <div className="gold-rule mb-4" />
