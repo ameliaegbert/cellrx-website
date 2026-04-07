@@ -241,7 +241,7 @@ export default function About() {
                   src={AMELIA_IMG}
                   alt="Amelia Egbert — Chief Operating Officer"
                   className="w-full h-full object-cover"
-                  style={{ objectPosition: "50% 0%" }}
+                  style={{ objectPosition: "50% 12%" }}
                 />
               </div>
               <div className="gold-rule mb-4" />
@@ -259,7 +259,7 @@ export default function About() {
                   src={SAMANTHA_IMG}
                   alt="Samantha Buker — Executive Assistant"
                   className="w-full h-full object-cover"
-                  style={{ objectPosition: "50% 0%" }}
+                  style={{ objectPosition: "50% 18%" }}
                 />
               </div>
               <div className="gold-rule mb-4" />
@@ -277,7 +277,7 @@ export default function About() {
                   src={DAVID_IMG}
                   alt="David Fajardo — Director of Social Media"
                   className="w-full h-full object-cover"
-                  style={{ objectPosition: "50% 0%" }}
+                  style={{ objectPosition: "50% 10%" }}
                 />
               </div>
               <div className="gold-rule mb-4" />
