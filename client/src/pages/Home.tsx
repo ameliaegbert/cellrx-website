@@ -17,6 +17,7 @@ const IV_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBq
 const BLACK_LABEL_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/service_black_label_1c68d442.webp";
 const CLINIC_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/clinic_interior_31c757cf.webp";
 const PHYSICIAN_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/physician_portrait_d5fe25e9.webp";
+const HERO_CROP_A = "/manus-storage/hero_crop_a_6cea0e7a.jpg";
 const CONSULTATION_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/consultation_photo_de51af6c.webp";
 const BG_DARK_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/background_dark_fb24a343.webp";
 
@@ -111,19 +112,29 @@ export default function Home() {
       <Navbar />
 
       {/* ─── HERO ─── */}
+      <style>{`
+        @keyframes kenBurns {
+          0%   { transform: scale(1.10) translateY(2%); }
+          100% { transform: scale(1.0)  translateY(0%); }
+        }
+        .hero-ken-burns {
+          animation: kenBurns 12s ease-out forwards;
+          will-change: transform;
+        }
+      `}</style>
       <section className="relative min-h-screen flex items-center overflow-hidden">
-        <div className="absolute inset-0 bg-[#051229]" />
-        <div className="absolute right-0 top-0 bottom-0 w-full lg:w-3/5 overflow-hidden">
+        {/* Full-bleed background: Option A 16:9 crop with Ken Burns */}
+        <div className="absolute inset-0 overflow-hidden">
           <img
-            src={PHYSICIAN_IMG}
-            alt="CellRX Medical Director"
-            className="w-full h-full"
-            style={{ objectFit: 'cover', objectPosition: '50% 0px', display: 'block', width: '100%', height: '100%' }}
+            src={HERO_CROP_A}
+            alt="Dr. Egbert performing stem cell injection"
+            className="w-full h-full hero-ken-burns"
+            style={{ objectFit: 'cover', objectPosition: 'center center', display: 'block' }}
           />
-          {/* Narrow left-edge fade only — stops at 28% so the doctor's face is fully clear */}
-          <div className="absolute inset-y-0 left-0 w-[28%] bg-gradient-to-r from-[#051229] to-transparent" />
-          {/* Subtle bottom fade */}
-          <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#051229] to-transparent" />
+          {/* Dark overlay so text is readable */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#051229]/90 via-[#051229]/60 to-[#051229]/20" />
+          {/* Bottom fade */}
+          <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#051229] to-transparent" />
         </div>
 
         <div className="container relative z-10 pt-32 pb-24">
