@@ -1,12 +1,13 @@
 /*
  * CellRX Contact Page — Editorial Dark Luxury
- * Consultation booking form, location, contact info
+ * Consultation booking form wired to GHL CRM via tRPC
  */
 
 import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { MapPin, Phone, Mail, Clock, CheckCircle2 } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, CheckCircle2, Loader2, AlertCircle } from "lucide-react";
+import { trpc } from "@/lib/trpc";
 
 const CLINIC_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/clinic_interior_31c757cf.webp";
 
@@ -21,17 +22,31 @@ function useScrollAnimation() {
   }, []);
 }
 
+type InterestValue = "stem-cell-injection" | "stem-cell-iv" | "black-label" | "general" | "other";
+
 export default function Contact() {
   useScrollAnimation();
   const [submitted, setSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
     email: "",
     phone: "",
-    interest: "",
+    interest: "" as InterestValue | "",
     message: "",
     hearAbout: "",
+  });
+
+  const submitContact = trpc.contact.submit.useMutation({
+    onSuccess: () => {
+      setSubmitted(true);
+      setErrorMessage("");
+    },
+    onError: (error) => {
+      console.error("[Contact] Submission error:", error);
+      setErrorMessage("We encountered an issue submitting your request. Please try calling us directly at 385-707-2373.");
+    },
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -40,7 +55,22 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setErrorMessage("");
+
+    if (!form.interest) {
+      setErrorMessage("Please select a treatment or service you're interested in.");
+      return;
+    }
+
+    submitContact.mutate({
+      firstName: form.firstName,
+      lastName: form.lastName,
+      email: form.email,
+      phone: form.phone,
+      interest: form.interest as InterestValue,
+      message: form.message,
+      hearAbout: form.hearAbout,
+    });
   };
 
   return (
@@ -276,8 +306,26 @@ export default function Contact() {
                     />
                   </div>
 
-                  <button type="submit" className="btn-primary rounded-none w-full">
-                    Request My Private Consultation
+                  {errorMessage && (
+                    <div className="flex items-start gap-3 p-4 border border-red-500/30 bg-red-500/10">
+                      <AlertCircle size={16} className="text-red-400 shrink-0 mt-0.5" />
+                      <p className="text-red-400 text-sm">{errorMessage}</p>
+                    </div>
+                  )}
+
+                  <button
+                    type="submit"
+                    disabled={submitContact.isPending}
+                    className="btn-primary rounded-none w-full flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
+                  >
+                    {submitContact.isPending ? (
+                      <>
+                        <Loader2 size={16} className="animate-spin" />
+                        Submitting...
+                      </>
+                    ) : (
+                      "Request My Private Consultation"
+                    )}
                   </button>
 
                   <p className="text-[#FBB217]/70 text-xs text-center leading-relaxed mb-1">

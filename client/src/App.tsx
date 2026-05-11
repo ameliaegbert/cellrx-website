@@ -10,8 +10,8 @@ import Services from "./pages/Services";
 import BlackLabel from "./pages/BlackLabel";
 import Contact from "./pages/Contact";
 import Blog from "./pages/Blog";
-
 function Router() {
+  // make sure to consider if you need authentication for certain routes
   return (
     <Switch>
       <Route path="/" component={Home} />
