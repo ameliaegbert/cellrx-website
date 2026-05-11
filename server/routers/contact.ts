@@ -9,7 +9,7 @@ import { publicProcedure, router } from "../_core/trpc";
 import { ENV } from "../_core/env";
 import { notifyOwner } from "../_core/notification";
 
-const GHL_API_BASE = "https://rest.gohighlevel.com/v1";
+const GHL_API_BASE = "https://services.leadconnectorhq.com";
 
 /** Map form interest values to GHL pipeline tags */
 function getLeadTag(interest: string): string {
@@ -60,7 +60,7 @@ async function createGHLContact(data: {
     locationId,
     tags: [tag],
     source: "CellRX Website",
-    customField: [
+    customFields: [
       {
         id: "interest",
         field_value: interestLabel,
@@ -82,6 +82,7 @@ async function createGHLContact(data: {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${apiKey}`,
+        Version: "2021-07-28",
       },
       body: JSON.stringify(payload),
     });
