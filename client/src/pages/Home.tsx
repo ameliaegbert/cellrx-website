@@ -106,6 +106,7 @@ function FAQItem({ q, a }: { q: string; a: string }) {
 
 export default function Home() {
   useScrollAnimation();
+  const [heroLoaded, setHeroLoaded] = useState(false);
 
   return (
     <div className="min-h-screen bg-[#051229]">
@@ -118,18 +119,22 @@ export default function Home() {
           100% { transform: scale(1.0)  translateY(0%); }
         }
         .hero-ken-burns {
-          animation: kenBurns 12s ease-out forwards;
+          animation: kenBurns 14s ease-out forwards;
           will-change: transform;
+        }
+        .hero-img-base {
+          transform: scale(1.10) translateY(2%);
         }
       `}</style>
       <section className="relative min-h-screen flex items-center overflow-hidden">
-        {/* Full-bleed background: Option A 16:9 crop with Ken Burns */}
+        {/* Full-bleed background: Option A 16:9 crop with Ken Burns on load */}
         <div className="absolute inset-0 overflow-hidden">
           <img
             src={HERO_CROP_A}
             alt="Dr. Egbert performing stem cell injection"
-            className="w-full h-full hero-ken-burns"
+            className={`w-full h-full ${heroLoaded ? 'hero-ken-burns' : 'hero-img-base'}`}
             style={{ objectFit: 'cover', objectPosition: 'center center', display: 'block' }}
+            onLoad={() => setHeroLoaded(true)}
           />
           {/* Dark overlay so text is readable */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#051229]/90 via-[#051229]/60 to-[#051229]/20" />
