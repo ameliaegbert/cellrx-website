@@ -25,7 +25,7 @@
 - [x] Build BlogPost.tsx page component with full article content for all 7 articles
 - [x] Build /health-optimization service page (footer link currently goes nowhere)
 - [x] Build /longevity-programs service page (footer link currently goes nowhere)
-- [x] Add GHL calendar embed UI to Contact page (iframe placeholder — awaiting GHL calendar embed URL from client to activate)
+- [x] Add GHL calendar embed UI to Contact page (live with calendar ID ObJ0Y5tw59PrShIJKowv)
 - [x] Update Footer.tsx to add health-optimization and longevity-programs links properly
 - [x] Update Blog.tsx article cards to link to /blog/:slug instead of showing toast
 - [x] Update Home.tsx "View All Patient Stories" CTA to link to /testimonials
