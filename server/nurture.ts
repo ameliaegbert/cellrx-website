@@ -55,7 +55,7 @@ function getStemCellMessage(step: number, firstName: string): string {
     2: `Hi ${firstName} — Samantha again from CellRX. I wanted to share something that might be helpful: our stem cell biologics are never diluted and never replicated, and our Medical Director personally oversees every vial from source to treatment. That's a standard no other clinic in Utah can match. If you're ready to learn more, I'm here: ${BOOKING_LINK}`,
     3: `${firstName}, most of our patients tell us they wish they hadn't waited so long. Whether it's chronic joint pain, fatigue, or just wanting to feel like yourself again — our regenerative protocols are designed to address the root cause, not just the symptoms. Happy to answer any questions: ${BOOKING_LINK}`,
     4: `Hi ${firstName} — just a quick note from CellRX. We have a limited number of consultation slots available this week with Dr. Egbert. If you've been considering stem cell therapy, now is a great time to get your questions answered. Reserve your spot: ${BOOKING_LINK}`,
-    5: `${firstName}, this will be my last follow-up — I don't want to crowd your inbox. If you ever decide you're ready to explore what stem cell therapy could do for you, we're here. No pressure, no hard sell — just a conversation with a physician who genuinely cares about your outcomes. ${BOOKING_LINK}`,
+    5: `${firstName}, this will be my last follow-up — I don't want to crowd your inbox. If you ever decide you're ready to explore what stem cell therapy could do for you, we're here. No pressure, no hard sell — just a conversation with a physician who genuinely cares about your outcomes. Book whenever you're ready: ${BOOKING_LINK}`,
   };
   return msgs[step] ?? msgs[5];
 }
@@ -67,7 +67,7 @@ function getBlackLabelMessage(step: number, firstName: string): string {
     2: `${firstName} — Samantha from CellRX. Black Label members receive quarterly biomarker panels, personalized longevity protocols, direct physician access, and priority scheduling. It's designed for people who refuse to leave their health to chance. Would you like to learn more? ${BOOKING_LINK}`,
     3: `Hi ${firstName}. I wanted to share that Black Label membership is intentionally limited — we cap enrollment to ensure every member receives the full attention and resources they deserve. If you're considering it, I'd encourage you not to wait too long. Let's talk: ${BOOKING_LINK}`,
     4: `${firstName}, Dr. Egbert has a few private consultation slots available this week for prospective Black Label members. This is a no-obligation conversation — just an opportunity to see if the program is the right fit for your goals. Reserve your time: ${BOOKING_LINK}`,
-    5: `${firstName} — last note from me. If Black Label isn't the right fit right now, that's completely fine. But if you ever want to explore what a true health partnership looks like, we'll be here. Wishing you the best. — Samantha, CellRX`,
+    5: `${firstName} — last note from me. If Black Label isn't the right fit right now, that's completely fine. But if you ever want to explore what a true health partnership looks like, we'll be here. Whenever you're ready: ${BOOKING_LINK} — Samantha, CellRX`,
   };
   return msgs[step] ?? msgs[5];
 }

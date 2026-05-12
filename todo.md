@@ -39,7 +39,7 @@
 - [x] Build appointment confirmation + 48hr + 2hr reminder workflow (enqueueAppointmentReminders helper ready)
 - [x] Build post-consultation no-show re-engagement workflow (enqueueNoShowSequence helper ready)
 - [x] Create 7-stage Opportunities pipeline via GHL API (Patient Pipeline already exists with correct stages)
-- [ ] Update sitemap.xml with 9 new pages
+- [x] Update sitemap.xml with 9 new pages
 - [ ] Register hourly heartbeat cron for /api/scheduled/nurture after deploy (requires live production URL)
 - [ ] Wire appointment-booked webhook/event to call enqueueAppointmentReminders (requires GHL webhook or calendar event trigger)
 - [ ] Wire no-show detection to call enqueueNoShowSequence (requires GHL appointment status webhook)
