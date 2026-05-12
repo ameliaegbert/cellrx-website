@@ -29,3 +29,17 @@
 - [x] Update Footer.tsx to add health-optimization and longevity-programs links properly
 - [x] Update Blog.tsx article cards to link to /blog/:slug instead of showing toast
 - [x] Update Home.tsx "View All Patient Stories" CTA to link to /testimonials
+
+## GHL Automations (API Scopes Upgraded)
+- [x] Update welcome SMS in contact router to include direct calendar booking link
+- [x] Verify new GHL API scopes (workflows, opportunities, calendars, tags)
+- [x] Inspect existing GHL workflows (New Lead Form Submitted, Stem Cell Monthly Nurture) for gaps
+- [x] Build Stem Cell 5-day prospect nurture sequence (server-side, enqueues on form submit)
+- [x] Build Black Label 5-day prospect nurture sequence (server-side, enqueues on form submit)
+- [x] Build appointment confirmation + 48hr + 2hr reminder workflow (enqueueAppointmentReminders helper ready)
+- [x] Build post-consultation no-show re-engagement workflow (enqueueNoShowSequence helper ready)
+- [x] Create 7-stage Opportunities pipeline via GHL API (Patient Pipeline already exists with correct stages)
+- [ ] Update sitemap.xml with 9 new pages
+- [ ] Register hourly heartbeat cron for /api/scheduled/nurture after deploy (requires live production URL)
+- [ ] Wire appointment-booked webhook/event to call enqueueAppointmentReminders (requires GHL webhook or calendar event trigger)
+- [ ] Wire no-show detection to call enqueueNoShowSequence (requires GHL appointment status webhook)

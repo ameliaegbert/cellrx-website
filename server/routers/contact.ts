@@ -11,6 +11,7 @@ import { z } from "zod";
 import { publicProcedure, router } from "../_core/trpc";
 import { ENV } from "../_core/env";
 import { notifyOwner } from "../_core/notification";
+import { enqueueNurtureSequence } from "../nurture";
 
 const GHL_API_BASE = "https://services.leadconnectorhq.com";
 const SAMANTHA_USER_ID = "2hbeJA839rk6Md45RgXk";
@@ -39,9 +40,9 @@ function getInterestLabel(interest: string): string {
 /** Build the SMS greeting message based on prospect type */
 function buildSmsGreeting(firstName: string, isBlackLabel: boolean): string {
   if (isBlackLabel) {
-    return `Hi ${firstName} — this is an automated text from CellRX. Please save this number — it is the direct line for Samantha, Dr. Jacob Egbert's personal assistant. Thank you for your interest in our Black Label Concierge Medicine program. Samantha will be reaching out to you personally. Our team is available Monday–Friday, 10am–5pm MT. If you are contacting us outside of business hours, we will be in touch on the next business day. The next step is booking your complementary consultation. Please respond with best days and times for your schedule.`;
+    return `Hi ${firstName} — this is an automated text from CellRX. Please save this number — it is the direct line for Samantha, Dr. Jacob Egbert's personal assistant. Thank you for your interest in our Black Label Concierge Medicine program. Samantha will be reaching out to you personally. Our team is available Monday–Friday, 10am–5pm MT. If you are contacting us outside of business hours, we will be in touch on the next business day. The next step is booking your complimentary consultation — you can book directly here: https://api.leadconnectorhq.com/widget/booking/ObJ0Y5tw59PrShIJKowv`;
   }
-  return `Hi ${firstName} — this is an automated text from CellRX. Please save this number — it is the direct line for Samantha, Dr. Jacob Egbert's personal assistant. Thank you for reaching out about our regenerative stem cell therapies. Samantha will be in touch with you shortly. Our team is available Monday–Friday, 10am–5pm MT. If you are contacting us outside of business hours, we will respond on the next business day. The next step is booking your complementary consultation. Please respond with best days and times for your schedule.`;
+  return `Hi ${firstName} — this is an automated text from CellRX. Please save this number — it is the direct line for Samantha, Dr. Jacob Egbert's personal assistant. Thank you for reaching out about our regenerative stem cell therapies. Samantha will be in touch with you shortly. Our team is available Monday–Friday, 10am–5pm MT. If you are contacting us outside of business hours, we will respond on the next business day. The next step is booking your complimentary consultation — you can book directly here: https://api.leadconnectorhq.com/widget/booking/ObJ0Y5tw59PrShIJKowv`;
 }
 
 /** Submit a contact to GoHighLevel CRM */
@@ -271,6 +272,18 @@ export const contactRouter = router({
           tag,
           contactId,
         });
+
+        // Enqueue 5-day nurture SMS sequence (starts Day 1, fires hourly via heartbeat)
+        if (input.phone) {
+          const sequenceType = isBlackLabel ? "black-label" : "stem-cell";
+          await enqueueNurtureSequence({
+            ghlContactId: contactId,
+            phone: input.phone,
+            firstName: input.firstName,
+            email: input.email,
+            sequenceType,
+          });
+        }
       }
 
       // 3. Notify Manus project owner (non-fatal)

@@ -8,6 +8,13 @@
       "when": 1778538253270,
       "tag": "0000_colorful_lifeguard",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1778551876519,
+      "tag": "0001_premium_paladin",
+      "breakpoints": true
     }
   ]
 }
