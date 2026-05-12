@@ -9,6 +9,7 @@ import { Link, useParams } from "wouter";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
+import { useSEO, getBlogPostSEO } from "@/hooks/useSEO";
 
 const INJECTION_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/service_injection_3f039e48.webp";
 const IV_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/service_iv_9142a5f3.webp";
@@ -41,6 +42,8 @@ interface ArticleData {
   headings: { after: number; text: string }[];
   cta: { label: string; href: string };
   relatedSlugs: string[];
+  internalLinks?: { label: string; href: string; desc: string }[];
+  serviceLinks?: { label: string; href: string }[];
 }
 
 const articles: ArticleData[] = [
@@ -76,6 +79,14 @@ const articles: ArticleData[] = [
     ],
     cta: { label: "Learn About Stem Cell Injection", href: "/services" },
     relatedSlugs: ["iv-stem-cell-therapy-science", "chain-of-custody-stem-cells", "regenerative-medicine-athletes"],
+    internalLinks: [
+      { label: "Why Chain of Custody Matters", href: "/blog/chain-of-custody-stem-cells", desc: "How CellRX ensures unbroken biologic integrity from source to syringe" },
+      { label: "IV Therapy vs. Injection: Which Is Right for You?", href: "/blog/iv-stem-cell-therapy-science", desc: "Compare systemic and targeted delivery methods" },
+    ],
+    serviceLinks: [
+      { label: "View Stem Cell Injection Pricing", href: "/services" },
+      { label: "Book a Consultation", href: "/contact" },
+    ],
   },
   {
     slug: "iv-stem-cell-therapy-science",
@@ -107,6 +118,14 @@ const articles: ArticleData[] = [
     ],
     cta: { label: "Learn About IV Therapy", href: "/services" },
     relatedSlugs: ["stem-cell-injection-joint-repair", "quarterly-labs-longevity", "regenerative-medicine-athletes"],
+    internalLinks: [
+      { label: "Stem Cell Injection for Joint Repair", href: "/blog/stem-cell-injection-joint-repair", desc: "How targeted injection compares to systemic IV delivery" },
+      { label: "Quarterly Labs & Longevity", href: "/blog/quarterly-labs-longevity", desc: "Combining IV therapy with biomarker monitoring for optimal results" },
+    ],
+    serviceLinks: [
+      { label: "View IV Therapy Pricing", href: "/services" },
+      { label: "Book a Consultation", href: "/contact" },
+    ],
   },
   {
     slug: "top-performers-concierge-medicine",
@@ -137,6 +156,14 @@ const articles: ArticleData[] = [
     ],
     cta: { label: "Explore Black Label", href: "/black-label" },
     relatedSlugs: ["quarterly-labs-longevity", "first-cellrx-consultation", "iv-stem-cell-therapy-science"],
+    internalLinks: [
+      { label: "Quarterly Labs & Longevity", href: "/blog/quarterly-labs-longevity", desc: "How biomarker monitoring drives personalized health protocols" },
+      { label: "What to Expect at Your First Consultation", href: "/blog/first-cellrx-consultation", desc: "A step-by-step guide to beginning your Black Label journey" },
+    ],
+    serviceLinks: [
+      { label: "Black Label Membership Details", href: "/black-label" },
+      { label: "Health Optimization Programs", href: "/health-optimization" },
+    ],
   },
   {
     slug: "first-cellrx-consultation",
@@ -167,6 +194,14 @@ const articles: ArticleData[] = [
     ],
     cta: { label: "Book Your Consultation", href: "/contact" },
     relatedSlugs: ["stem-cell-injection-joint-repair", "iv-stem-cell-therapy-science", "top-performers-concierge-medicine"],
+    internalLinks: [
+      { label: "Stem Cell Injection Therapy", href: "/blog/stem-cell-injection-joint-repair", desc: "Understand the treatment you may be considering" },
+      { label: "Why Top Performers Choose Concierge Medicine", href: "/blog/top-performers-concierge-medicine", desc: "The case for proactive, personalized health investment" },
+    ],
+    serviceLinks: [
+      { label: "View All Services & Pricing", href: "/services" },
+      { label: "Book Your Consultation Now", href: "/contact" },
+    ],
   },
   {
     slug: "chain-of-custody-stem-cells",
@@ -198,6 +233,14 @@ const articles: ArticleData[] = [
     ],
     cta: { label: "Our Chain-of-Custody Standard", href: "/services" },
     relatedSlugs: ["stem-cell-injection-joint-repair", "iv-stem-cell-therapy-science", "first-cellrx-consultation"],
+    internalLinks: [
+      { label: "Stem Cell Injection Therapy", href: "/blog/stem-cell-injection-joint-repair", desc: "How full chain-of-custody biologics perform in targeted treatment" },
+      { label: "IV Stem Cell Therapy", href: "/blog/iv-stem-cell-therapy-science", desc: "Systemic delivery of verified, full-concentration biologics" },
+    ],
+    serviceLinks: [
+      { label: "View Our Biologic Standards", href: "/services" },
+      { label: "Ask Us About Our Source", href: "/contact" },
+    ],
   },
   {
     slug: "quarterly-labs-longevity",
@@ -229,6 +272,14 @@ const articles: ArticleData[] = [
     ],
     cta: { label: "Explore Quarterly Lab Panels", href: "/black-label" },
     relatedSlugs: ["top-performers-concierge-medicine", "first-cellrx-consultation", "iv-stem-cell-therapy-science"],
+    internalLinks: [
+      { label: "Why Top Performers Choose Concierge Medicine", href: "/blog/top-performers-concierge-medicine", desc: "The ROI of proactive health investment" },
+      { label: "Longevity Programs at CellRX", href: "/longevity-programs", desc: "Science-backed longevity protocols built on biomarker data" },
+    ],
+    serviceLinks: [
+      { label: "Black Label Concierge Membership", href: "/black-label" },
+      { label: "Health Optimization Programs", href: "/health-optimization" },
+    ],
   },
   {
     slug: "regenerative-medicine-athletes",
@@ -260,6 +311,14 @@ const articles: ArticleData[] = [
     ],
     cta: { label: "Explore Athlete Protocols", href: "/services" },
     relatedSlugs: ["stem-cell-injection-joint-repair", "iv-stem-cell-therapy-science", "chain-of-custody-stem-cells"],
+    internalLinks: [
+      { label: "Stem Cell Injection for Joint Repair", href: "/blog/stem-cell-injection-joint-repair", desc: "Targeted treatment for sports injuries and joint degeneration" },
+      { label: "IV Stem Cell Therapy", href: "/blog/iv-stem-cell-therapy-science", desc: "Systemic recovery optimization for elite performance" },
+    ],
+    serviceLinks: [
+      { label: "View Athlete Treatment Protocols", href: "/services" },
+      { label: "Book a Consultation", href: "/contact" },
+    ],
   },
 ];
 
@@ -267,6 +326,7 @@ function ArticleContent({ article }: { article: ArticleData }) {
   const paragraphs = article.body;
   const headingMap: Record<number, string> = {};
   article.headings.forEach(h => { headingMap[h.after] = h.text; });
+  const INTERNAL_LINK_AFTER = 3; // Insert callout after 4th paragraph
 
   return (
     <div className="space-y-0">
@@ -283,6 +343,38 @@ function ArticleContent({ article }: { article: ArticleData }) {
           <p className="text-[#D6D7D9]/80 leading-relaxed mb-5" style={{ fontFamily: "'Libre Franklin', sans-serif", fontSize: "17px" }}>
             {para}
           </p>
+          {/* Internal links callout block after 4th paragraph */}
+          {idx === INTERNAL_LINK_AFTER && article.internalLinks && article.internalLinks.length > 0 && (
+            <div className="my-8 border border-[#0047BB]/30 bg-[#0047BB]/5 p-6">
+              <p className="text-[#FBB217] text-xs font-semibold tracking-widest uppercase mb-4" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                Related Reading
+              </p>
+              <div className="space-y-3">
+                {article.internalLinks.map((link) => (
+                  <Link key={link.href} href={link.href} className="group flex items-start gap-3 hover:text-[#FBB217] transition-colors">
+                    <ArrowLeft size={14} className="text-[#0047BB] mt-1 shrink-0 rotate-180 group-hover:text-[#FBB217] transition-colors" />
+                    <div>
+                      <p className="text-[#F6F5EC] text-sm font-medium group-hover:text-[#FBB217] transition-colors" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                        {link.label}
+                      </p>
+                      <p className="text-[#D6D7D9]/50 text-xs mt-0.5" style={{ fontFamily: "'Libre Franklin', sans-serif" }}>
+                        {link.desc}
+                      </p>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+              {article.serviceLinks && (
+                <div className="flex flex-wrap gap-3 mt-5 pt-4 border-t border-white/10">
+                  {article.serviceLinks.map((sl) => (
+                    <Link key={sl.href} href={sl.href}>
+                      <button className="btn-outline rounded-none text-xs px-4 py-2">{sl.label}</button>
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
         </div>
       ))}
     </div>
@@ -291,7 +383,8 @@ function ArticleContent({ article }: { article: ArticleData }) {
 
 export default function BlogPost() {
   const params = useParams<{ slug: string }>();
-  const slug = params.slug;
+  const slug = params.slug ?? "";
+  useSEO(getBlogPostSEO(slug));
   useScrollAnimation();
 
   const article = articles.find(a => a.slug === slug);

@@ -19,11 +19,11 @@ function TikTokIcon({ size = 15 }: { size?: number }) {
 }
 
 const socialLinks = [
-  { href: "https://www.youtube.com/@cellrx", label: "YouTube", icon: <Youtube size={15} /> },
-  { href: "https://www.tiktok.com/@cellrx", label: "TikTok", icon: <TikTokIcon size={15} /> },
-  { href: "https://www.instagram.com/cellrx.bio", label: "Instagram", icon: <Instagram size={15} /> },
-  { href: "https://www.facebook.com/cellrxbio", label: "Facebook", icon: <Facebook size={15} /> },
-  { href: "https://www.linkedin.com/company/cellrx", label: "LinkedIn", icon: <Linkedin size={15} /> },
+  { href: "https://www.youtube.com/@CellRxbio", label: "YouTube", icon: <Youtube size={15} /> },
+  { href: "https://www.tiktok.com/@cellrx.bio", label: "TikTok", icon: <TikTokIcon size={15} /> },
+  { href: "https://www.instagram.com/cellrx.bio/", label: "Instagram", icon: <Instagram size={15} /> },
+  { href: "https://www.facebook.com/p/CellRx-61582063796150/", label: "Facebook", icon: <Facebook size={15} /> },
+  { href: "https://www.linkedin.com/company/113543963/", label: "LinkedIn", icon: <Linkedin size={15} /> },
 ];
 
 export default function Footer() {
@@ -124,10 +124,15 @@ export default function Footer() {
           <p className="text-white/30 text-xs tracking-wide" style={{ fontFamily: "'Libre Franklin', sans-serif" }}>
             © 2026 CellRX. All rights reserved.
           </p>
-          <div className="flex gap-6">
-            {["Privacy Policy", "Terms of Service", "FDA Disclaimer"].map((item) => (
-              <Link key={item} href="/contact" className="text-white/30 text-xs hover:text-white/60 transition-colors" style={{ fontFamily: "'Libre Franklin', sans-serif" }}>
-                {item}
+          <div className="flex gap-6 flex-wrap justify-center md:justify-end">
+            {[
+              { label: "Privacy Policy", href: "/contact" },
+              { label: "Terms of Service", href: "/contact" },
+              { label: "FDA Disclaimer", href: "/contact" },
+              { label: "Sitemap", href: "/sitemap" },
+            ].map((item) => (
+              <Link key={item.label} href={item.href} className="text-white/30 text-xs hover:text-white/60 transition-colors" style={{ fontFamily: "'Libre Franklin', sans-serif" }}>
+                {item.label}
               </Link>
             ))}
           </div>

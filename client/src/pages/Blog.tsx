@@ -5,6 +5,7 @@
  */
 
 import { useEffect } from "react";
+import { useSEO, PAGE_SEO } from "@/hooks/useSEO";
 import { Link } from "wouter";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -116,6 +117,7 @@ const articles = [
 ];
 
 export default function Blog() {
+  useSEO(PAGE_SEO.blog);
   useScrollAnimation();
 
   return (

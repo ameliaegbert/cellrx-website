@@ -10,6 +10,7 @@ import { Link } from "wouter";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ChevronDown, Shield, Zap, Clock, Star, ArrowRight, CheckCircle2, Plus, Minus } from "lucide-react";
+import { useSEO, PAGE_SEO } from "@/hooks/useSEO";
 
 // CDN URLs
 const INJECTION_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/service_injection_3f039e48.webp";
@@ -105,6 +106,7 @@ function FAQItem({ q, a }: { q: string; a: string }) {
 }
 
 export default function Home() {
+  useSEO(PAGE_SEO.home);
   useScrollAnimation();
   const [heroLoaded, setHeroLoaded] = useState(false);
 

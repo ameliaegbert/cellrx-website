@@ -5,6 +5,7 @@
  */
 
 import { useEffect } from "react";
+import { useSEO, PAGE_SEO } from "@/hooks/useSEO";
 import { Link } from "wouter";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -26,6 +27,7 @@ function useScrollAnimation() {
 }
 
 export default function Services() {
+  useSEO(PAGE_SEO.services);
   useScrollAnimation();
 
   return (

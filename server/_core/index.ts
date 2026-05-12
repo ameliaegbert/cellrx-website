@@ -10,6 +10,7 @@ import { createContext } from "./context";
 import { serveStatic, setupVite } from "./vite";
 import { sdk } from "./sdk";
 import { processNurtureQueue } from "../nurture";
+import { ghlWebhookHandler } from "../ghlWebhook";
 
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
@@ -38,6 +39,9 @@ async function startServer() {
   app.use(express.urlencoded({ limit: "50mb", extended: true }));
   registerStorageProxy(app);
   registerOAuthRoutes(app);
+  // ─── GHL Webhook: appointment booked + no-show events ───
+  app.post("/api/webhooks/ghl", ghlWebhookHandler);
+
   // ─── Scheduled heartbeat: nurture queue processor (runs hourly) ───
   app.post("/api/scheduled/nurture", async (req: Request, res: Response) => {
     try {

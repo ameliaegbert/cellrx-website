@@ -4,6 +4,7 @@
  */
 
 import { useEffect, useState } from "react";
+import { useSEO, PAGE_SEO } from "@/hooks/useSEO";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { MapPin, Phone, Mail, Clock, CheckCircle2, Loader2, AlertCircle } from "lucide-react";
@@ -25,6 +26,7 @@ function useScrollAnimation() {
 type InterestValue = "stem-cell-injection" | "stem-cell-iv" | "black-label" | "general" | "other";
 
 export default function Contact() {
+  useSEO(PAGE_SEO.contact);
   useScrollAnimation();
   const [submitted, setSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");

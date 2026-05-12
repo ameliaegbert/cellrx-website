@@ -5,6 +5,7 @@
  */
 
 import { useEffect } from "react";
+import { useSEO, PAGE_SEO } from "@/hooks/useSEO";
 import { Link } from "wouter";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -103,6 +104,7 @@ const stats = [
 ];
 
 export default function LongevityPrograms() {
+  useSEO(PAGE_SEO.longevityPrograms);
   useScrollAnimation();
 
   return (

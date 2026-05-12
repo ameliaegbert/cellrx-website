@@ -43,3 +43,13 @@
 - [ ] Register hourly heartbeat cron for /api/scheduled/nurture after deploy (requires live production URL)
 - [ ] Wire appointment-booked webhook/event to call enqueueAppointmentReminders (requires GHL webhook or calendar event trigger)
 - [ ] Wire no-show detection to call enqueueNoShowSequence (requires GHL appointment status webhook)
+
+## Autonomous Build Session — Round 2
+- [x] Add social media links (Instagram, LinkedIn, TikTok, YouTube, Facebook) to Footer and Navbar
+- [x] Build /sitemap page (human-readable, linked from footer)
+- [x] Implement unique SEO meta tags (title + description) for all 11 pages via useSEO hook
+- [x] Add Open Graph / social share tags to all pages (og:title, og:description, og:image, og:url, og:type)
+- [x] Add internal linking throughout all 7 blog post articles (Related Reading callout + service CTAs)
+- [ ] Register hourly heartbeat cron for /api/scheduled/nurture (PENDING DEPLOY — must deploy first)
+- [x] Build /api/webhooks/ghl endpoint for appointment confirmation and no-show re-engagement
+- [ ] Configure GHL webhook URL in GHL Settings → Integrations → Webhooks (PENDING DEPLOY)

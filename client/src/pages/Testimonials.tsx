@@ -4,6 +4,7 @@
  */
 
 import { useEffect } from "react";
+import { useSEO, PAGE_SEO } from "@/hooks/useSEO";
 import { Link } from "wouter";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -80,6 +81,7 @@ const testimonials = [
 ];
 
 export default function Testimonials() {
+  useSEO(PAGE_SEO.testimonials);
   useScrollAnimation();
 
   return (

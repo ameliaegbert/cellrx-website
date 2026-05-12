@@ -7,7 +7,23 @@
 
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone, Instagram, Facebook, Linkedin, Youtube } from "lucide-react";
+
+function TikTokIcon({ size = 14 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.79 1.54V6.78a4.85 4.85 0 01-1.02-.09z"/>
+    </svg>
+  );
+}
+
+const socialLinks = [
+  { href: "https://www.instagram.com/cellrx.bio/", label: "Instagram", icon: <Instagram size={14} /> },
+  { href: "https://www.tiktok.com/@cellrx.bio", label: "TikTok", icon: <TikTokIcon size={14} /> },
+  { href: "https://www.youtube.com/@CellRxbio", label: "YouTube", icon: <Youtube size={14} /> },
+  { href: "https://www.facebook.com/p/CellRx-61582063796150/", label: "Facebook", icon: <Facebook size={14} /> },
+  { href: "https://www.linkedin.com/company/113543963/", label: "LinkedIn", icon: <Linkedin size={14} /> },
+];
 
 const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/cellrx_logo_white_c7e5a738.png";
 
@@ -140,6 +156,20 @@ export default function Navbar() {
             <Phone size={14} />
             385-707-2373
           </a>
+          <div className="flex gap-3 pt-2 border-t border-white/10">
+            {socialLinks.map((s) => (
+              <a
+                key={s.label}
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 border border-white/10 flex items-center justify-center text-white/40 hover:text-[#FBB217] hover:border-[#FBB217] transition-colors"
+                aria-label={s.label}
+              >
+                {s.icon}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </nav>
