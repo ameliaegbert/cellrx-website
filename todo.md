@@ -11,10 +11,10 @@
 
 ## In Progress
 - [x] Add GHL contact submission tRPC mutation in server/routers.ts
-- [ ] Store GHL API key as secret (GHL_API_KEY) — needs user to provide from GHL dashboard
+- [x] Store GHL API key as secret (GHL_API_KEY) — full-scope private integration created in GHL
 - [x] Update Contact.tsx form to call tRPC mutation instead of local state
 - [x] Tag contacts: "Stem Cell Prospect" vs "Black Label Prospect" based on service
 - [x] Add owner notification on new lead submission
-- [ ] Save checkpoint and provide webhook URL to user
+- [x] Save checkpoint and site live at cellrx.bio with GHL integration active
 - [x] Run pnpm db:push to sync schema
 - [x] Write vitest for contact submission mutation (8/8 tests passing)

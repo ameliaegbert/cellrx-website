@@ -39,9 +39,9 @@ function getInterestLabel(interest: string): string {
 /** Build the SMS greeting message based on prospect type */
 function buildSmsGreeting(firstName: string, isBlackLabel: boolean): string {
   if (isBlackLabel) {
-    return `Hi ${firstName}, this is an automated message from CellRX. Thank you for your interest in our Black Label Concierge Medicine program. Samantha, Dr. Jacob's assistant, will be reaching out to you personally. Our team is available Monday–Friday, 10am–5pm MT. If you're contacting us outside of business hours, we'll be in touch on the next business day. Can we schedule a private consultation for you?`;
+    return `Hi ${firstName} — this is an automated text from CellRX. Please save this number — it is the direct line for Samantha, Dr. Jacob Egbert's personal assistant. Thank you for your interest in our Black Label Concierge Medicine program. Samantha will be reaching out to you personally. Our team is available Monday–Friday, 10am–5pm MT. If you are contacting us outside of business hours, we will be in touch on the next business day. The next step is booking your complementary consultation. Please respond with best days and times for your schedule.`;
   }
-  return `Hi ${firstName}, this is an automated message from CellRX. Thank you for reaching out about our regenerative stem cell therapies. Samantha, Dr. Jacob's assistant, will be in touch with you shortly. Our team is available Monday–Friday, 10am–5pm MT. If you're contacting us outside of business hours, we'll respond on the next business day. Are you available to schedule a consultation?`;
+  return `Hi ${firstName} — this is an automated text from CellRX. Please save this number — it is the direct line for Samantha, Dr. Jacob Egbert's personal assistant. Thank you for reaching out about our regenerative stem cell therapies. Samantha will be in touch with you shortly. Our team is available Monday–Friday, 10am–5pm MT. If you are contacting us outside of business hours, we will respond on the next business day. The next step is booking your complementary consultation. Please respond with best days and times for your schedule.`;
 }
 
 /** Submit a contact to GoHighLevel CRM */
