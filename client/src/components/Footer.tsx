@@ -61,8 +61,8 @@ export default function Footer() {
                 { label: "Stem Cell Injection", href: "/services" },
                 { label: "Stem Cell IV Therapy", href: "/services" },
                 { label: "Concierge Medicine", href: "/black-label" },
-                { label: "Health Optimization", href: "/services" },
-                { label: "Longevity Programs", href: "/services" },
+                { label: "Health Optimization", href: "/health-optimization" },
+                { label: "Longevity Programs", href: "/longevity-programs" },
               ].map((item) => (
                 <li key={item.label}>
                   <Link href={item.href} className="text-white/50 text-sm hover:text-[#FBB217] transition-colors" style={{ fontFamily: "'Libre Franklin', sans-serif" }}>

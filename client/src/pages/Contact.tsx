@@ -341,6 +341,41 @@ export default function Contact() {
         </div>
       </section>
 
+      {/* Calendar Booking Section */}
+      <section className="py-20 bg-[#030d1e] border-t border-white/5">
+        <div className="container">
+          <div className="text-center mb-12 fade-up">
+            <p className="section-label mb-4">Prefer to Book Directly?</p>
+            <h2
+              className="text-[#F6F5EC] mb-4"
+              style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(32px, 4vw, 52px)" }}
+            >
+              SELECT YOUR APPOINTMENT TIME
+            </h2>
+            <p className="text-[#D6D7D9]/60 text-sm max-w-lg mx-auto leading-relaxed" style={{ fontFamily: "'Libre Franklin', sans-serif" }}>
+              Choose a time that works for you and book your private consultation instantly. No waiting for a callback.
+            </p>
+          </div>
+          {/* GHL Calendar Embed — replace the src below with your GHL calendar embed URL */}
+          {/* To get your embed URL: GHL → Settings → Calendars → your calendar → Share → Embed */}
+          <div
+            className="fade-up border border-white/5 overflow-hidden"
+            style={{ minHeight: "600px", background: "#030d1e" }}
+          >
+            <iframe
+              src="https://api.leadconnectorhq.com/widget/booking/REPLACE_WITH_YOUR_CALENDAR_ID"
+              style={{ width: "100%", minHeight: "600px", border: "none" }}
+              scrolling="no"
+              id="cellrx-calendar-embed"
+              title="Book a CellRX Consultation"
+            />
+          </div>
+          <p className="text-[#D6D7D9]/30 text-xs text-center mt-4" style={{ fontFamily: "'Libre Franklin', sans-serif" }}>
+            All consultations are private and confidential. You will receive a confirmation by email and SMS.
+          </p>
+        </div>
+      </section>
+
       <Footer />
     </div>
   );

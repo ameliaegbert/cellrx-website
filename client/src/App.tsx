@@ -1,7 +1,7 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
-import { Route, Switch, Redirect } from "wouter";
+import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
@@ -10,6 +10,11 @@ import Services from "./pages/Services";
 import BlackLabel from "./pages/BlackLabel";
 import Contact from "./pages/Contact";
 import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
+import Testimonials from "./pages/Testimonials";
+import HealthOptimization from "./pages/HealthOptimization";
+import LongevityPrograms from "./pages/LongevityPrograms";
+
 function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
@@ -20,9 +25,12 @@ function Router() {
       <Route path="/black-label" component={BlackLabel} />
       <Route path="/contact" component={Contact} />
       <Route path="/blog" component={Blog} />
+      <Route path="/blog/:slug" component={BlogPost} />
+      <Route path="/testimonials" component={Testimonials} />
+      <Route path="/health-optimization" component={HealthOptimization} />
+      <Route path="/longevity-programs" component={LongevityPrograms} />
       {/* Legacy redirects */}
-      <Route path="/team">{() => <Redirect to="/about" />}</Route>
-      <Route path="/testimonials">{() => <Redirect to="/" />}</Route>
+      <Route path="/team" component={About} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>

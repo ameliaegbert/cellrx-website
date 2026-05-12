@@ -18,3 +18,14 @@
 - [x] Save checkpoint and site live at cellrx.bio with GHL integration active
 - [x] Run pnpm db:push to sync schema
 - [x] Write vitest for contact submission mutation (8/8 tests passing)
+
+## Tier 1 Website Improvements (Competitive Audit)
+- [x] Wire /testimonials route in App.tsx (page exists, currently redirects to home)
+- [x] Add /blog/:slug route for individual blog post pages
+- [x] Build BlogPost.tsx page component with full article content for all 7 articles
+- [x] Build /health-optimization service page (footer link currently goes nowhere)
+- [x] Build /longevity-programs service page (footer link currently goes nowhere)
+- [x] Add GHL calendar embed UI to Contact page (iframe placeholder — awaiting GHL calendar embed URL from client to activate)
+- [x] Update Footer.tsx to add health-optimization and longevity-programs links properly
+- [x] Update Blog.tsx article cards to link to /blog/:slug instead of showing toast
+- [x] Update Home.tsx "View All Patient Stories" CTA to link to /testimonials
