@@ -15,6 +15,13 @@
       "when": 1778551876519,
       "tag": "0001_premium_paladin",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1778640313580,
+      "tag": "0002_windy_makkari",
+      "breakpoints": true
     }
   ]
 }

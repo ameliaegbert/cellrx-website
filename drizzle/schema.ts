@@ -59,3 +59,38 @@ export const nurtureQueue = mysqlTable("nurture_queue", {
 
 export type NurtureQueueRow = typeof nurtureQueue.$inferSelect;
 export type InsertNurtureQueueRow = typeof nurtureQueue.$inferInsert;
+
+/**
+ * Appointment tracking — records GHL appointments seen during calendar polling.
+ * Prevents duplicate reminder/no-show sequences from firing on the same appointment.
+ *
+ * The hourly cron polls GHL Calendars API, upserts rows here, and enqueues
+ * nurture sequences only when transitioning to a new state.
+ */
+export const appointmentTracking = mysqlTable("appointment_tracking", {
+  id: int("id").autoincrement().primaryKey(),
+
+  // GHL identifiers
+  ghlAppointmentId: varchar("ghlAppointmentId", { length: 128 }).notNull().unique(),
+  ghlContactId: varchar("ghlContactId", { length: 64 }).notNull(),
+  ghlCalendarId: varchar("ghlCalendarId", { length: 128 }).notNull(),
+
+  // Contact info (denormalized for SMS sending without extra API calls)
+  phone: varchar("phone", { length: 32 }).notNull(),
+  firstName: varchar("firstName", { length: 128 }).notNull(),
+  email: varchar("email", { length: 320 }),
+
+  // Appointment details
+  scheduledAt: bigint("scheduledAt", { mode: "number" }).notNull(), // UTC ms
+  status: varchar("status", { length: 64 }).notNull().default("booked"), // booked | confirmed | cancelled | noshow | showed
+
+  // Sequence tracking — prevents duplicate enqueuing
+  remindersEnqueued: boolean("remindersEnqueued").default(false).notNull(),
+  noshowEnqueued: boolean("noshowEnqueued").default(false).notNull(),
+
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type AppointmentTrackingRow = typeof appointmentTracking.$inferSelect;
+export type InsertAppointmentTrackingRow = typeof appointmentTracking.$inferInsert;

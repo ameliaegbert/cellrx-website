@@ -11,6 +11,7 @@ import { serveStatic, setupVite } from "./vite";
 import { sdk } from "./sdk";
 import { processNurtureQueue } from "../nurture";
 import { ghlWebhookHandler } from "../ghlWebhook";
+import { pollCalendarAppointments } from "../calendarPoller";
 
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
@@ -49,8 +50,12 @@ async function startServer() {
       if (!user.isCron || !user.taskUid) {
         return res.status(403).json({ error: "cron-only" });
       }
-      const result = await processNurtureQueue();
-      return res.json({ ok: true, ...result });
+      // Run both: process pending SMS queue + poll GHL for new/updated appointments
+      const [nurtureResult, calendarResult] = await Promise.all([
+        processNurtureQueue(),
+        pollCalendarAppointments(),
+      ]);
+      return res.json({ ok: true, nurture: nurtureResult, calendar: calendarResult });
     } catch (e) {
       console.error("[/api/scheduled/nurture] Error:", e);
       return res.status(500).json({
