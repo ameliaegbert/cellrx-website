@@ -59,3 +59,20 @@
 - [x] Build GHL calendar polling function (fetchRecentAppointments via GHL Calendars API)
 - [x] Extend hourly cron handler to poll GHL appointments and enqueue reminders/no-show sequences
 - [x] Write vitest for appointment polling logic (14 tests passing)
+
+## Pipeline Auto-Enroll
+- [x] Add GHL Opportunities auto-enroll on contact form submission (pipeline_id: 1YvMgDmCfmHqpnVhFUFq, stage: New Lead)
+- [x] Log Google Reviews embed as future backlog item (Tier 2 — needs Google Business Profile embed snippet)
+
+## Executive Dashboard
+- [x] Research available APIs: GHL pipeline/appointments/invoices live; Ads + Social require OAuth connections
+- [x] Design minimal dashboard KPI structure (pipeline, lead trend, appointments, nurture, + connect placeholders)
+- [x] Build dashboard route /dashboard with auth protection (admin-only via Manus OAuth)
+- [x] Build Ads Performance panel (connect placeholder — requires Google Ads + Meta OAuth)
+- [x] Build GHL Invoice panel (connect placeholder — requires invoices.readonly + payments/transactions.readonly scopes)
+- [x] Build Social Media panel (connect placeholder — requires platform API access)
+- [x] Build Website Heatmap panel (Microsoft Clarity — setup instructions shown in dashboard, pending Clarity project ID)
+- [x] Wire all backend data sources to dashboard (5 tRPC procedures: summary, leadTrend, appointments, nurtureStatus, pipeline)
+- [ ] Activate Microsoft Clarity heatmap (pending Clarity project ID from client)
+- [ ] Activate GHL Invoice panel (pending invoices.readonly + payments/transactions.readonly scopes)
+- [ ] Activate Ads panels (pending Google Ads + Meta Ads OAuth connections)

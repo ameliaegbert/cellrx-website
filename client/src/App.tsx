@@ -15,6 +15,7 @@ import Testimonials from "./pages/Testimonials";
 import HealthOptimization from "./pages/HealthOptimization";
 import LongevityPrograms from "./pages/LongevityPrograms";
 import Sitemap from "./pages/Sitemap";
+import Dashboard from "./pages/Dashboard";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -31,6 +32,7 @@ function Router() {
       <Route path="/health-optimization" component={HealthOptimization} />
       <Route path="/longevity-programs" component={LongevityPrograms} />
       <Route path="/sitemap" component={Sitemap} />
+      <Route path="/dashboard" component={Dashboard} />
       {/* Legacy redirects */}
       <Route path="/team" component={About} />
       <Route path="/404" component={NotFound} />

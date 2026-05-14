@@ -17,6 +17,10 @@ const GHL_API_BASE = "https://services.leadconnectorhq.com";
 const SAMANTHA_USER_ID = "2hbeJA839rk6Md45RgXk";
 const NOTIFY_EMAIL = "info@cellrx.bio";
 
+// Patient Pipeline constants
+const PATIENT_PIPELINE_ID = "NBqu4y9ct8y8sPQZWcPr";
+const PIPELINE_STAGE_NEW_LEAD = "4a0028de-ef0d-4381-9f43-401437202651";
+
 /** Map form interest values to GHL pipeline tags */
 function getLeadTag(interest: string): string {
   if (interest === "black-label") {
@@ -43,6 +47,54 @@ function buildSmsGreeting(firstName: string, isBlackLabel: boolean): string {
     return `Hi ${firstName} — this is an automated text from CellRX. Please save this number — it is the direct line for Samantha, Dr. Jacob Egbert's personal assistant. Thank you for your interest in our Black Label Concierge Medicine program. Samantha will be reaching out to you personally. Our team is available Monday–Friday, 10am–5pm MT. If you are contacting us outside of business hours, we will be in touch on the next business day. The next step is booking your complimentary consultation — you can book directly here: https://api.leadconnectorhq.com/widget/booking/ObJ0Y5tw59PrShIJKowv`;
   }
   return `Hi ${firstName} — this is an automated text from CellRX. Please save this number — it is the direct line for Samantha, Dr. Jacob Egbert's personal assistant. Thank you for reaching out about our regenerative stem cell therapies. Samantha will be in touch with you shortly. Our team is available Monday–Friday, 10am–5pm MT. If you are contacting us outside of business hours, we will respond on the next business day. The next step is booking your complimentary consultation — you can book directly here: https://api.leadconnectorhq.com/widget/booking/ObJ0Y5tw59PrShIJKowv`;
+}
+
+/** Create an Opportunity in the Patient Pipeline — "New Lead" stage */
+async function createGHLOpportunity(data: {
+  contactId: string;
+  firstName: string;
+  lastName: string;
+  interest: string;
+  tag: string;
+}): Promise<void> {
+  const apiKey = ENV.ghlApiKey;
+  const locationId = ENV.ghlLocationId;
+  if (!apiKey || !data.contactId) return;
+
+  const interestLabel = getInterestLabel(data.interest);
+
+  const payload = {
+    pipelineId: PATIENT_PIPELINE_ID,
+    pipelineStageId: PIPELINE_STAGE_NEW_LEAD,
+    contactId: data.contactId,
+    locationId,
+    name: `${data.firstName} ${data.lastName} — ${interestLabel}`,
+    status: "open",
+    assignedTo: SAMANTHA_USER_ID,
+    monetaryValue: 0,
+  };
+
+  try {
+    const response = await fetch(`${GHL_API_BASE}/opportunities/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${apiKey}`,
+        Version: "2021-07-28",
+      },
+      body: JSON.stringify(payload),
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.warn(`[GHL] Opportunity creation failed: ${response.status} ${errorText}`);
+    } else {
+      const result = await response.json() as { opportunity?: { id?: string } };
+      console.log(`[GHL] Opportunity created in Patient Pipeline — New Lead stage: ${result?.opportunity?.id}`);
+    }
+  } catch (error) {
+    console.warn("[GHL] Error creating opportunity:", error);
+  }
 }
 
 /** Submit a contact to GoHighLevel CRM */
@@ -271,6 +323,15 @@ export const contactRouter = router({
           ...input,
           tag,
           contactId,
+        });
+
+        // Create opportunity in Patient Pipeline — New Lead stage
+        await createGHLOpportunity({
+          contactId,
+          firstName: input.firstName,
+          lastName: input.lastName,
+          interest: input.interest,
+          tag,
         });
 
         // Enqueue 5-day nurture SMS sequence (starts Day 1, fires hourly via heartbeat)
