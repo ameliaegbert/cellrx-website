@@ -175,6 +175,7 @@ export default function Dashboard() {
   const appointmentsQ = trpc.dashboard.appointments.useQuery(undefined, { refetchInterval: 5 * 60 * 1000 });
   const nurtureQ = trpc.dashboard.nurtureStatus.useQuery(undefined, { refetchInterval: 5 * 60 * 1000 });
   const pipelineQ = trpc.dashboard.pipeline.useQuery(undefined, { refetchInterval: 5 * 60 * 1000 });
+  const revenueQ = trpc.dashboard.revenue.useQuery(undefined, { refetchInterval: 10 * 60 * 1000 });
 
   const isLoading =
     summaryQ.isLoading || leadTrendQ.isLoading || appointmentsQ.isLoading || nurtureQ.isLoading || pipelineQ.isLoading;
@@ -186,6 +187,7 @@ export default function Dashboard() {
   const nurture = nurtureQ.data;
   const pipeline = pipelineQ.data ?? [];
   const leadTrend = leadTrendQ.data ?? [];
+  const rev = revenueQ.data;
 
   return (
     <DashboardLayout>
@@ -411,19 +413,72 @@ export default function Dashboard() {
           </div>
         </div>
 
+        {/* ── Revenue & Invoices Panel ── */}
+        <div className="bg-card border border-border rounded-lg p-6">
+          <SectionHeader title="Revenue & Invoices" sub="Live from GHL — invoices and payment transactions" />
+          {revenueQ.isLoading ? (
+            <div className="text-sm text-muted-foreground">Loading revenue data...</div>
+          ) : revenueQ.error ? (
+            <div className="text-sm text-red-400">Failed to load revenue data</div>
+          ) : (
+            <div className="space-y-6">
+              {/* KPI row */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div>
+                  <p className="text-2xl font-bold text-green-400" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                    {formatCurrency(rev?.totalRevenue ?? 0)}
+                  </p>
+                  <p className="text-xs text-muted-foreground mt-1">Total collected</p>
+                </div>
+                <div>
+                  <p className="text-2xl font-bold text-amber-400" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                    {formatCurrency(rev?.outstandingRevenue ?? 0)}
+                  </p>
+                  <p className="text-xs text-muted-foreground mt-1">Outstanding</p>
+                </div>
+                <div>
+                  <p className="text-2xl font-bold text-foreground" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                    {formatCurrency(rev?.revenue30d ?? 0)}
+                  </p>
+                  <p className="text-xs text-muted-foreground mt-1">Collected (30d)</p>
+                </div>
+                <div>
+                  <p className="text-2xl font-bold text-foreground" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                    {rev?.totalInvoices ?? "—"}
+                  </p>
+                  <p className="text-xs text-muted-foreground mt-1">
+                    Invoices ({rev?.paidInvoices ?? 0} paid · {rev?.overdueInvoices ?? 0} overdue)
+                  </p>
+                </div>
+              </div>
+              {/* Recent transactions */}
+              {rev?.recentTransactions && rev.recentTransactions.length > 0 && (
+                <div>
+                  <p className="text-xs font-medium text-muted-foreground uppercase tracking-widest mb-3">Recent Payments</p>
+                  <div className="space-y-2">
+                    {rev.recentTransactions.slice(0, 5).map(t => (
+                      <div key={t.id} className="flex items-center justify-between py-2 border-b border-border last:border-0">
+                        <div>
+                          <p className="text-sm font-medium text-foreground">{t.contactName}</p>
+                          <p className="text-xs text-muted-foreground">{t.description}</p>
+                        </div>
+                        <p className="text-sm font-bold text-green-400">{formatCurrency(t.amount)}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+
         {/* ── Connect Panels ── */}
         <div>
           <SectionHeader
             title="Connect More Data Sources"
             sub="Activate these panels to get the full picture"
           />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <ConnectCard
-              icon={DollarSign}
-              title="Revenue & Invoices"
-              description="Add invoices.readonly + payments/transactions.readonly scopes to your GHL private integration."
-              action="GHL Settings → Private Integrations"
-            />
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <ConnectCard
               icon={BarChart2}
               title="Google Ads"

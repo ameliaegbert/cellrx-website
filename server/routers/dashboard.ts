@@ -218,6 +218,84 @@ export const dashboardRouter = router({
   }),
 
   /**
+   * Revenue & Invoices — live from GHL
+   */
+  revenue: adminProcedure.query(async () => {
+    const loc = ENV.ghlLocationId;
+
+    const [invoicesData, paymentsData] = await Promise.all([
+      fetch(`${GHL_BASE}/invoices/?altId=${loc}&altType=location&limit=100&offset=0`, { headers: GHL_HEADERS })
+        .then(r => r.ok ? r.json() : { invoices: [] }),
+      fetch(`${GHL_BASE}/payments/transactions/?altId=${loc}&altType=location&limit=100`, { headers: GHL_HEADERS })
+        .then(r => r.ok ? r.json() : { data: [] }),
+    ]);
+
+    const invoices: Array<{
+      _id: string;
+      status: string;
+      total?: number;
+      amountPaid?: number;
+      amountDue?: number;
+      currency?: string;
+      invoiceNumber?: string;
+      contactDetails?: { name?: string };
+      issueDate?: string;
+      dueDate?: string;
+    }> = invoicesData?.invoices ?? [];
+
+    const transactions: Array<{
+      _id: string;
+      amount: number;
+      status: string;
+      currency?: string;
+      contactName?: string;
+      entitySourceName?: string;
+      createdAt?: string;
+    }> = paymentsData?.data ?? [];
+
+    // Invoice stats
+    const totalInvoices = invoices.length;
+    const paidInvoices = invoices.filter(i => i.status === 'paid').length;
+    const sentInvoices = invoices.filter(i => i.status === 'sent').length;
+    const overdueInvoices = invoices.filter(i => i.status === 'overdue').length;
+    const totalRevenue = invoices
+      .filter(i => i.status === 'paid')
+      .reduce((sum, i) => sum + (i.amountPaid ?? i.total ?? 0), 0);
+    const outstandingRevenue = invoices
+      .filter(i => i.status === 'sent' || i.status === 'overdue')
+      .reduce((sum, i) => sum + (i.amountDue ?? i.total ?? 0), 0);
+
+    // Recent transactions (last 10)
+    const recentTransactions = transactions
+      .filter(t => t.status === 'succeeded')
+      .slice(0, 10)
+      .map(t => ({
+        id: t._id,
+        amount: t.amount / 100, // GHL stores in cents
+        contactName: t.contactName ?? 'Unknown',
+        description: t.entitySourceName ?? 'Payment',
+        date: t.createdAt ?? '',
+      }));
+
+    // 30-day revenue
+    const thirtyDaysAgo = Date.now() - 30 * 24 * 60 * 60 * 1000;
+    const revenue30d = transactions
+      .filter(t => t.status === 'succeeded' && t.createdAt && new Date(t.createdAt).getTime() >= thirtyDaysAgo)
+      .reduce((sum, t) => sum + t.amount / 100, 0);
+
+    return {
+      totalInvoices,
+      paidInvoices,
+      sentInvoices,
+      overdueInvoices,
+      totalRevenue,
+      outstandingRevenue,
+      revenue30d,
+      recentTransactions,
+    };
+  }),
+
+  /**
    * Pipeline stage breakdown for the funnel chart
    */
   pipeline: adminProcedure.query(async () => {
