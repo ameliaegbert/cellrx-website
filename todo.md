@@ -73,6 +73,6 @@
 - [x] Build Social Media panel (connect placeholder — requires platform API access)
 - [x] Build Website Heatmap panel (Microsoft Clarity — setup instructions shown in dashboard, pending Clarity project ID)
 - [x] Wire all backend data sources to dashboard (5 tRPC procedures: summary, leadTrend, appointments, nurtureStatus, pipeline)
-- [ ] Activate Microsoft Clarity heatmap (pending Clarity project ID from client)
+- [x] Activate Microsoft Clarity heatmap (project ID: wr6mdwhjnk — script in index.html, dashboard panel active)
 - [ ] Activate GHL Invoice panel (pending invoices.readonly + payments/transactions.readonly scopes)
 - [ ] Activate Ads panels (pending Google Ads + Meta Ads OAuth connections)

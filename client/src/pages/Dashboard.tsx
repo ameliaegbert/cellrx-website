@@ -45,11 +45,10 @@ import { useEffect } from "react";
 import DashboardLayout from "@/components/DashboardLayout";
 
 // ─── Clarity injection ───────────────────────────────────────────────────────
-const CLARITY_PROJECT_ID = "PENDING_SETUP"; // Replace with your Clarity project ID
+const CLARITY_PROJECT_ID = "wr6mdwhjnk"; // Microsoft Clarity — CellRX project
 
 function useMicrosoftClarity() {
   useEffect(() => {
-    if (CLARITY_PROJECT_ID === "PENDING_SETUP") return;
     if ((window as any).clarity) return; // already loaded
 
     const script = document.createElement("script");
@@ -454,21 +453,7 @@ export default function Dashboard() {
                 title="Website Heatmap"
                 sub="Click maps, scroll depth, and session recordings via Microsoft Clarity"
               />
-              {CLARITY_PROJECT_ID === "PENDING_SETUP" ? (
-                <div className="flex items-start gap-3 mt-2">
-                  <AlertCircle className="h-4 w-4 text-amber-400 shrink-0 mt-0.5" />
-                  <div className="text-sm text-muted-foreground">
-                    <p className="font-medium text-foreground mb-1">Setup required (free, 2 minutes)</p>
-                    <ol className="list-decimal list-inside space-y-1 text-xs">
-                      <li>Go to <a href="https://clarity.microsoft.com" target="_blank" rel="noopener noreferrer" className="text-primary underline">clarity.microsoft.com</a> and sign in with Microsoft</li>
-                      <li>Click <strong>New project</strong> → enter "CellRX" → URL: cellrx.bio</li>
-                      <li>Copy your Project ID (looks like: <code className="bg-muted px-1 rounded">abc1defgh</code>)</li>
-                      <li>Share the Project ID here — I'll activate the heatmap in 30 seconds</li>
-                    </ol>
-                  </div>
-                </div>
-              ) : (
-                <div className="mt-2">
+              <div className="mt-2">
                   <a
                     href={`https://clarity.microsoft.com/projects/view/${CLARITY_PROJECT_ID}/dashboard`}
                     target="_blank"
@@ -482,7 +467,6 @@ export default function Dashboard() {
                     Heatmap tracking is active on cellrx.bio
                   </p>
                 </div>
-              )}
             </div>
           </div>
         </div>
