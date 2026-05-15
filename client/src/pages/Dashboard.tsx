@@ -44,6 +44,8 @@ import {
 import { useEffect, useState } from "react";
 import DashboardLayout from "@/components/DashboardLayout";
 import { useNoIndex } from "@/hooks/useSEO";
+import PanelErrorBoundary from "@/components/PanelErrorBoundary";
+import { Skeleton } from "@/components/ui/skeleton";
 
 // ─── Clarity injection ───────────────────────────────────────────────────────
 const CLARITY_PROJECT_ID = "wr6mdwhjnk"; // Microsoft Clarity — CellRX project
@@ -552,9 +554,49 @@ export default function Dashboard() {
             sub="TikTok and YouTube — live public stats"
           />
           {socialQ.isLoading ? (
-            <div className="text-sm text-muted-foreground">Loading social stats...</div>
-          ) : socialQ.error ? (
-            <div className="text-sm text-red-400">Failed to load social stats</div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-card border border-border rounded-lg p-5 space-y-4">
+                <div className="flex items-center gap-2">
+                  <Skeleton className="h-4 w-4 rounded-full" />
+                  <Skeleton className="h-4 w-20" />
+                </div>
+                <div className="grid grid-cols-3 gap-3">
+                  {[0,1,2].map(i => (
+                    <div key={i}>
+                      <Skeleton className="h-7 w-16 mb-1" />
+                      <Skeleton className="h-3 w-12" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="bg-card border border-border rounded-lg p-5 space-y-4">
+                <div className="flex items-center gap-2">
+                  <Skeleton className="h-4 w-4 rounded-full" />
+                  <Skeleton className="h-4 w-24" />
+                </div>
+                <div className="grid grid-cols-3 gap-3">
+                  {[0,1,2].map(i => (
+                    <div key={i}>
+                      <Skeleton className="h-7 w-16 mb-1" />
+                      <Skeleton className="h-3 w-12" />
+                    </div>
+                  ))}
+                </div>
+                <div className="space-y-2">
+                  {[0,1,2].map(i => <Skeleton key={i} className="h-8 w-full" />)}
+                </div>
+              </div>
+            </div>
+          ) : (
+          <PanelErrorBoundary title="Social stats failed to load">
+          {socialQ.error ? (
+            <div className="bg-card border border-destructive/30 rounded-lg p-6 flex items-center gap-3">
+              <AlertCircle className="h-5 w-5 text-destructive/70 shrink-0" />
+              <div>
+                <p className="text-sm font-medium text-foreground">Social stats unavailable</p>
+                <p className="text-xs text-muted-foreground mt-0.5">{(socialQ.error as unknown as Error).message}</p>
+              </div>
+            </div>
           ) : (
             <div className="space-y-6">
               {/* Platform cards */}
@@ -699,6 +741,8 @@ export default function Dashboard() {
                 </div>
               </div>
             </div>
+          )}
+          </PanelErrorBoundary>
           )}
         </div>
 

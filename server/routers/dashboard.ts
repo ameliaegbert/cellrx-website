@@ -31,15 +31,16 @@ async function ghlGet(path: string) {
   return r.json();
 }
 
-// Stage name map for the Patient Pipeline
+// Stage name map for the Patient Pipeline (NBqu4y9ct8y8sPQZWcPr)
+// Stage IDs verified live from GHL API on 2026-05-15
 const STAGE_NAMES: Record<string, string> = {
   "4a0028de-ef0d-4381-9f43-401437202651": "New Lead",
-  "b2c3d4e5-f6a7-8901-bcde-f01234567890": "Consultation Booked",
-  "c3d4e5f6-a7b8-9012-cdef-012345678901": "Post-Consult Nurture",
-  "d4e5f6a7-b8c9-0123-def0-123456789012": "Closed Won",
-  "e5f6a7b8-c9d0-1234-ef01-234567890123": "Closed Lost",
-  "f6a7b8c9-d0e1-2345-f012-345678901234": "Purgatory",
-  "a7b8c9d0-e1f2-3456-0123-456789012345": "Applicant",
+  "73279642-0392-4278-9aee-3f23b8545a49": "Consultation Booked",
+  "2e681210-c7d7-4ebb-82f0-b7c2c6fb2361": "Post-Consult Nurture",
+  "43abb0ac-4a53-4a06-a3a4-afb9dfa36605": "Closed Won",
+  "b06eed29-7db3-4da4-8374-1c01190b6b61": "Closed Lost",
+  "cbf746c3-6f9c-48b0-9e36-e5b3ca22893c": "Purgatory",
+  "7e458773-12c1-4068-8944-9a9cc07e44b0": "Applicant",
 };
 
 export const dashboardRouter = router({

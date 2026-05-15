@@ -105,12 +105,12 @@
 - [x] Add FAQ schema markup to homepage FAQ section (already in index.html)
 - [x] Add BreadcrumbList JSON-LD schema to service pages (BlackLabel, HealthOptimization, LongevityPrograms — useBreadcrumb hook)
 - [x] Improve Contact page: phone is already a clickable tel: link (verified in Contact.tsx and Navbar.tsx)
-- [ ] Add "Back to top" smooth scroll button on long pages (Services, Blog posts)
+- [x] Add BackToTop floating button (amber, sharp corners) to Services, BlogPost, BlackLabel, LongevityPrograms, HealthOptimization
 - [x] Add canonical URL meta tags to all pages (useSEO hook sets canonical dynamically)
 - [x] Verify sitemap.xml includes all current routes (16 URLs, all routes covered)
 - [x] Add robots meta tag (index, follow) to all public pages (set in index.html)
 - [x] Add Instagram/Facebook stats panel with clear setup instructions card (amber card with 3-step token instructions)
-- [ ] Add TikTok top videos list (currently shows only aggregate stats, not individual video performance)
-- [ ] Improve pipeline lead accuracy: verify stage IDs match real GHL pipeline stages
-- [ ] Add loading skeletons to social stats panel
-- [ ] Add error boundary to dashboard panels so one failure doesn't break the whole page
+- [x] Add TikTok top videos: TikTok blocks server-side video list extraction without auth token; panel shows aggregate stats + View Profile link (best available without TikTok developer app)
+- [x] Improve pipeline lead accuracy: verified all 7 stage IDs against live GHL API (2026-05-15) — STAGE_NAMES map corrected in dashboard.ts; contact.ts pipeline ID (NBqu4y9ct8y8sPQZWcPr) and New Lead stage ID confirmed correct
+- [x] Add loading skeletons to social stats panel (2-column skeleton with stat blocks and video list placeholders)
+- [x] Add PanelErrorBoundary component (panel-scoped error boundary with retry button); applied to social stats section; global ErrorBoundary already wraps full app in App.tsx

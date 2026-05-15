@@ -9,6 +9,7 @@ import { useSEO, PAGE_SEO, useBreadcrumb } from "@/hooks/useSEO";
 import { Link } from "wouter";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import BackToTop from "@/components/BackToTop";
 import { CheckCircle2, Activity, Brain, Zap, Shield, Heart, TrendingUp } from "lucide-react";
 
 const CLINIC_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/clinic_interior_31c757cf.webp";
@@ -308,6 +309,7 @@ export default function HealthOptimization() {
         </div>
       </section>
 
+      <BackToTop />
       <Footer />
     </div>
   );

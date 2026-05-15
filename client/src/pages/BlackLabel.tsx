@@ -11,6 +11,7 @@ import { useSEO, PAGE_SEO, useBreadcrumb } from "@/hooks/useSEO";
 import { Link } from "wouter";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import BackToTop from "@/components/BackToTop";
 import { CheckCircle2, Crown, Zap, Shield, FlaskConical, Plus, Lock, ArrowRight } from "lucide-react";
 
 const BLACK_LABEL_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/service_black_label_1c68d442.webp";
@@ -344,6 +345,7 @@ export default function BlackLabel() {
         </div>
       </section>
 
+      <BackToTop />
       <Footer />
     </div>
   );

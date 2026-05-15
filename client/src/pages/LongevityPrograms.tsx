@@ -9,6 +9,7 @@ import { useSEO, PAGE_SEO, useBreadcrumb } from "@/hooks/useSEO";
 import { Link } from "wouter";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import BackToTop from "@/components/BackToTop";
 import { CheckCircle2, Clock, ArrowRight } from "lucide-react";
 
 const BG_DARK_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/background_dark_fb24a343.webp";
@@ -315,6 +316,7 @@ export default function LongevityPrograms() {
         </div>
       </section>
 
+      <BackToTop />
       <Footer />
     </div>
   );

@@ -9,6 +9,7 @@ import { useSEO, PAGE_SEO, useBreadcrumb } from "@/hooks/useSEO";
 import { Link } from "wouter";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import BackToTop from "@/components/BackToTop";
 import { CheckCircle2, ArrowRight, Clock, Shield, Lock } from "lucide-react";
 
 const INJECTION_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/CELLRX_HAPS-12_94cc8872.webp";
@@ -333,6 +334,7 @@ export default function Services() {
         </div>
       </section>
 
+      <BackToTop />
       <Footer />
     </div>
   );

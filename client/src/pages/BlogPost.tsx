@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { Link, useParams } from "wouter";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import BackToTop from "@/components/BackToTop";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { useSEO, getBlogPostSEO } from "@/hooks/useSEO";
 
@@ -405,7 +406,8 @@ export default function BlogPost() {
             <button className="btn-outline rounded-none">Back to Blog</button>
           </Link>
         </div>
-        <Footer />
+        <BackToTop />
+      <Footer />
       </div>
     );
   }
@@ -529,6 +531,7 @@ export default function BlogPost() {
         </section>
       )}
 
+      <BackToTop />
       <Footer />
     </div>
   );
