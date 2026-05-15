@@ -41,7 +41,7 @@ import {
   RefreshCw,
   ExternalLink,
 } from "lucide-react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import DashboardLayout from "@/components/DashboardLayout";
 
 // ─── Clarity injection ───────────────────────────────────────────────────────
@@ -193,6 +193,7 @@ export default function Dashboard() {
   const nurtureQ = trpc.dashboard.nurtureStatus.useQuery(undefined, { refetchInterval: 5 * 60 * 1000 });
   const pipelineQ = trpc.dashboard.pipeline.useQuery(undefined, { refetchInterval: 5 * 60 * 1000 });
   const revenueQ = trpc.dashboard.revenue.useQuery(undefined, { refetchInterval: 10 * 60 * 1000 });
+  const [revPeriod, setRevPeriod] = useState<'30d' | '60d' | '90d' | 'ytd' | 'lifetime'>('30d');
 
   const isLoading =
     summaryQ.isLoading || leadTrendQ.isLoading || appointmentsQ.isLoading || nurtureQ.isLoading || pipelineQ.isLoading;
@@ -431,8 +432,26 @@ export default function Dashboard() {
         </div>
 
         {/* ── Revenue & Invoices Panel ── */}
-        <div className="bg-card border border-border rounded-lg p-6">
-          <SectionHeader title="Revenue & Invoices" sub="Live from GHL — invoices and payment transactions" />
+        <div id="revenue" className="bg-card border border-border rounded-lg p-6">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
+            <SectionHeader title="Revenue & Invoices" sub="Live from GHL — invoices and payment transactions" />
+            {/* Period selector */}
+            <div className="flex gap-1 bg-muted rounded-lg p-1 self-start sm:self-auto">
+              {(['30d', '60d', '90d', 'ytd', 'lifetime'] as const).map(p => (
+                <button
+                  key={p}
+                  onClick={() => setRevPeriod(p)}
+                  className={`px-2.5 py-1 rounded-md text-xs font-medium transition-colors ${
+                    revPeriod === p
+                      ? 'bg-background text-foreground shadow-sm'
+                      : 'text-muted-foreground hover:text-foreground'
+                  }`}
+                >
+                  {p === 'ytd' ? 'YTD' : p === 'lifetime' ? 'All Time' : p.toUpperCase()}
+                </button>
+              ))}
+            </div>
+          </div>
           {revenueQ.isLoading ? (
             <div className="text-sm text-muted-foreground">Loading revenue data...</div>
           ) : revenueQ.error ? (
@@ -443,9 +462,17 @@ export default function Dashboard() {
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div>
                   <p className="text-2xl font-bold text-green-400" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-                    {formatCurrency(rev?.totalRevenue ?? 0)}
+                    {formatCurrency(
+                      revPeriod === '30d' ? (rev?.revenue30d ?? 0)
+                      : revPeriod === '60d' ? (rev?.revenue60d ?? 0)
+                      : revPeriod === '90d' ? (rev?.revenue90d ?? 0)
+                      : revPeriod === 'ytd' ? (rev?.revenueYTD ?? 0)
+                      : (rev?.revenueLifetime ?? 0)
+                    )}
                   </p>
-                  <p className="text-xs text-muted-foreground mt-1">Total collected</p>
+                  <p className="text-xs text-muted-foreground mt-1">
+                    Collected ({revPeriod === 'ytd' ? 'YTD' : revPeriod === 'lifetime' ? 'All Time' : revPeriod.toUpperCase()})
+                  </p>
                 </div>
                 <div>
                   <p className="text-2xl font-bold text-amber-400" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
@@ -455,9 +482,9 @@ export default function Dashboard() {
                 </div>
                 <div>
                   <p className="text-2xl font-bold text-foreground" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-                    {formatCurrency(rev?.revenue30d ?? 0)}
+                    {formatCurrency(rev?.totalRevenue ?? 0)}
                   </p>
-                  <p className="text-xs text-muted-foreground mt-1">Collected (30d)</p>
+                  <p className="text-xs text-muted-foreground mt-1">Lifetime collected</p>
                 </div>
                 <div>
                   <p className="text-2xl font-bold text-foreground" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
@@ -473,11 +500,11 @@ export default function Dashboard() {
                 <div>
                   <p className="text-xs font-medium text-muted-foreground uppercase tracking-widest mb-3">Recent Payments</p>
                   <div className="space-y-2">
-                    {rev.recentTransactions.slice(0, 5).map(t => (
+                    {rev.recentTransactions.slice(0, 8).map(t => (
                       <div key={t.id} className="flex items-center justify-between py-2 border-b border-border last:border-0">
                         <div>
                           <p className="text-sm font-medium text-foreground">{t.contactName}</p>
-                          <p className="text-xs text-muted-foreground">{t.description}</p>
+                          <p className="text-xs text-muted-foreground">{t.description} · {t.date ? new Date(t.date).toLocaleDateString() : ''}</p>
                         </div>
                         <p className="text-sm font-bold text-green-400">{formatCurrency(t.amount)}</p>
                       </div>
@@ -532,28 +559,51 @@ export default function Dashboard() {
         </div>
 
         {/* ── Heatmap Panel ── */}
-        <div className="bg-card border border-border rounded-lg p-6">
-          <div className="flex items-start justify-between gap-4">
-            <div>
-              <SectionHeader
-                title="Website Heatmap"
-                sub="Click maps, scroll depth, and session recordings via Microsoft Clarity"
-              />
-              <div className="mt-2">
-                  <a
-                    href={`https://clarity.microsoft.com/projects/view/${CLARITY_PROJECT_ID}/dashboard`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-sm text-primary hover:underline"
-                  >
-                    <ExternalLink className="h-4 w-4" />
-                    View Clarity Dashboard
-                  </a>
-                  <p className="text-xs text-muted-foreground mt-1">
-                    Heatmap tracking is active on cellrx.bio
-                  </p>
-                </div>
-            </div>
+        <div id="heatmap" className="bg-card border border-border rounded-lg p-6 space-y-4">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <SectionHeader
+              title="Website Heatmap"
+              sub="Click maps, scroll depth, and session recordings via Microsoft Clarity"
+            />
+            <a
+              href={`https://clarity.microsoft.com/projects/view/${CLARITY_PROJECT_ID}/dashboard`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs text-primary hover:underline shrink-0"
+            >
+              <ExternalLink className="h-3 w-3" />
+              Open full Clarity dashboard
+            </a>
+          </div>
+
+          {/* Quick-access tiles */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            {[
+              { label: 'Heatmaps', desc: 'Click & hover maps for every page', path: 'heatmaps' },
+              { label: 'Session Recordings', desc: 'Watch real visitor sessions', path: 'recordings' },
+              { label: 'Insights', desc: 'Dead clicks, rage clicks, scroll depth', path: 'insights' },
+            ].map(tile => (
+              <a
+                key={tile.path}
+                href={`https://clarity.microsoft.com/projects/view/${CLARITY_PROJECT_ID}/${tile.path}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-col gap-1 bg-muted hover:bg-muted/80 rounded-lg p-4 transition-colors cursor-pointer border border-border hover:border-primary/40"
+              >
+                <p className="text-sm font-medium text-foreground">{tile.label}</p>
+                <p className="text-xs text-muted-foreground">{tile.desc}</p>
+                <span className="text-xs text-primary mt-1 flex items-center gap-1">
+                  <ExternalLink className="h-3 w-3" />
+                  Open in Clarity
+                </span>
+              </a>
+            ))}
+          </div>
+
+          {/* Status bar */}
+          <div className="flex items-center gap-2 text-xs text-muted-foreground pt-1">
+            <span className="h-2 w-2 rounded-full bg-green-400 animate-pulse" />
+            Tracking active on cellrx.bio · Project ID: {CLARITY_PROJECT_ID}
           </div>
         </div>
 

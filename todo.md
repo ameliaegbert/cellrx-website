@@ -80,3 +80,12 @@
 ## Ads Dashboard Panels
 - [x] Build Meta Ads panel (GHL deep-link card — opens GHL Ads Reporting for Facebook/Instagram)
 - [x] Build Google Ads panel (GHL deep-link card — opens GHL Ads Reporting for Google)
+
+## Dashboard Improvements (Round 2)
+- [x] Fix dashboard sidebar nav — Overview, Pipeline & Leads, Revenue, Ads Performance, Heatmap
+- [x] Remove any nav link to dashboard from main website nav (confirmed: Navbar.tsx has no dashboard link)
+- [x] Add revenue time segmentation: 30d, 60d, 90d, YTD, All Time tab selector with live data
+- [ ] Fix lead data accuracy (verify GHL pipeline data is correct)
+- [x] Embed Clarity heatmap panel with 3 quick-access tiles (Heatmaps, Session Recordings, Insights) + live status indicator
+  NOTE: Microsoft Clarity does NOT support iframe embedding (confirmed via official GitHub issue #705 — open as of Nov 2024). The quick-link panel is the correct approach.
+- [ ] Connect social stats: Instagram + Facebook via Meta system user token

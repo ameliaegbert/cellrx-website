@@ -289,11 +289,22 @@ export const dashboardRouter = router({
         date: t.createdAt ?? '',
       }));
 
-    // 30-day revenue
-    const thirtyDaysAgo = Date.now() - 30 * 24 * 60 * 60 * 1000;
-    const revenue30d = transactions
-      .filter(t => t.status === 'succeeded' && t.createdAt && new Date(t.createdAt).getTime() >= thirtyDaysAgo)
-      .reduce((sum, t) => sum + t.amount / 100, 0);
+    // Time-segmented revenue from transactions
+    const now = Date.now();
+    const ms = (days: number) => days * 24 * 60 * 60 * 1000;
+    const ytdStart = new Date(new Date().getFullYear(), 0, 1).getTime();
+
+    const revenueInWindow = (from: number) =>
+      transactions
+        .filter(t => t.status === 'succeeded' && t.createdAt && new Date(t.createdAt).getTime() >= from)
+        .reduce((sum, t) => sum + t.amount / 100, 0);
+
+    const revenue30d  = revenueInWindow(now - ms(30));
+    const revenue60d  = revenueInWindow(now - ms(60));
+    const revenue90d  = revenueInWindow(now - ms(90));
+    const revenueYTD  = revenueInWindow(ytdStart);
+    // Lifetime = all paid invoices (most reliable for total collected)
+    const revenueLifetime = totalRevenue;
 
     return {
       totalInvoices,
@@ -303,6 +314,10 @@ export const dashboardRouter = router({
       totalRevenue,
       outstandingRevenue,
       revenue30d,
+      revenue60d,
+      revenue90d,
+      revenueYTD,
+      revenueLifetime,
       recentTransactions,
     };
   }),

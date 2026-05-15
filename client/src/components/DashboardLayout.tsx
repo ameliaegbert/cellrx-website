@@ -21,15 +21,18 @@ import {
 } from "@/components/ui/sidebar";
 import { getLoginUrl } from "@/const";
 import { useIsMobile } from "@/hooks/useMobile";
-import { LayoutDashboard, LogOut, PanelLeft, Users } from "lucide-react";
+import { LayoutDashboard, LogOut, PanelLeft, TrendingUp, DollarSign, BarChart2, Activity } from "lucide-react";
 import { CSSProperties, useEffect, useRef, useState } from "react";
 import { useLocation } from "wouter";
 import { DashboardLayoutSkeleton } from './DashboardLayoutSkeleton';
 import { Button } from "./ui/button";
 
 const menuItems = [
-  { icon: LayoutDashboard, label: "Page 1", path: "/" },
-  { icon: Users, label: "Page 2", path: "/some-path" },
+  { icon: LayoutDashboard, label: "Overview", path: "/dashboard" },
+  { icon: TrendingUp, label: "Pipeline & Leads", path: "/dashboard#pipeline" },
+  { icon: DollarSign, label: "Revenue", path: "/dashboard#revenue" },
+  { icon: BarChart2, label: "Ads Performance", path: "/dashboard#ads" },
+  { icon: Activity, label: "Heatmap", path: "/dashboard#heatmap" },
 ];
 
 const SIDEBAR_WIDTH_KEY = "sidebar-width";
@@ -112,7 +115,7 @@ function DashboardLayoutContent({
   const isCollapsed = state === "collapsed";
   const [isResizing, setIsResizing] = useState(false);
   const sidebarRef = useRef<HTMLDivElement>(null);
-  const activeMenuItem = menuItems.find(item => item.path === location);
+  const activeMenuItem = menuItems.find(item => item.path === location) ?? menuItems[0];
   const isMobile = useIsMobile();
 
   useEffect(() => {
@@ -186,7 +189,18 @@ function DashboardLayoutContent({
                   <SidebarMenuItem key={item.path}>
                     <SidebarMenuButton
                       isActive={isActive}
-                      onClick={() => setLocation(item.path)}
+                      onClick={() => {
+                        const hash = item.path.split('#')[1];
+                        if (hash) {
+                          setLocation('/dashboard');
+                          setTimeout(() => {
+                            document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                          }, 100);
+                        } else {
+                          setLocation(item.path);
+                          window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }
+                      }}
                       tooltip={item.label}
                       className={`h-10 transition-all font-normal`}
                     >
