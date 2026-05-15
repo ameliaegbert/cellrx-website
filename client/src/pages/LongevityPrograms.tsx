@@ -5,7 +5,7 @@
  */
 
 import { useEffect } from "react";
-import { useSEO, PAGE_SEO } from "@/hooks/useSEO";
+import { useSEO, PAGE_SEO, useBreadcrumb } from "@/hooks/useSEO";
 import { Link } from "wouter";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -105,6 +105,10 @@ const stats = [
 
 export default function LongevityPrograms() {
   useSEO(PAGE_SEO.longevityPrograms);
+  useBreadcrumb([
+    { name: "Home", url: "https://www.cellrx.bio/" },
+    { name: "Longevity Programs", url: "https://www.cellrx.bio/longevity-programs" },
+  ]);
   useScrollAnimation();
 
   return (

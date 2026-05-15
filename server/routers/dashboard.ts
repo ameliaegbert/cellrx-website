@@ -9,6 +9,7 @@
  */
 
 import { adminProcedure, router } from "../_core/trpc";
+import { callDataApi } from "../_core/dataApi";
 import { ENV } from "../_core/env";
 import { getDb } from "../db";
 import { nurtureQueue, appointmentTracking } from "../../drizzle/schema";
@@ -404,7 +405,7 @@ export const dashboardRouter = router({
         }
         // Fallback: regex extraction
         if (!tiktok) {
-          const followers = html.match(/"followerCount":(\ d+)/)?.[1];
+          const followers = html.match(/"followerCount":(\d+)/)?.[1];
           if (followers) {
             tiktok = {
               followers: parseInt(followers),
@@ -420,32 +421,49 @@ export const dashboardRouter = router({
       // TikTok scrape failed — return null
     }
 
-    // ── YouTube RSS ─────────────────────────────────────────────────────────
+    // ── YouTube (Data API + RSS) ────────────────────────────────────────────
     const YT_CHANNEL_ID = 'UCK0H7ZgSBUTeB-xpxiRixEw';
     let youtube: {
       channelName: string;
+      subscribers: number;
+      subscribersText: string;
+      totalViews: number;
+      videoCount: number;
       topVideos: Array<{ title: string; videoId: string; views: number; published: string; url: string }>;
     } | null = null;
 
     try {
+      // Fetch channel stats via Manus Data API (subscribers, views, video count)
+      const channelData = await callDataApi('Youtube/get_channel_details', {
+        query: { id: 'https://www.youtube.com/@CellRxbio', hl: 'en' },
+      }) as Record<string, unknown>;
+
+      const stats = (channelData?.stats ?? {}) as Record<string, unknown>;
+      const subscribers = typeof stats.subscribers === 'number' ? stats.subscribers : 0;
+      const subscribersText = typeof stats.subscribersText === 'string' ? stats.subscribersText : `${subscribers} subscribers`;
+      const totalViews = typeof stats.views === 'number' ? stats.views : 0;
+      const videoCount = typeof stats.videos === 'number' ? stats.videos : 0;
+      const channelName = typeof channelData?.title === 'string' ? channelData.title : 'CellRXbio';
+
+      // Fetch top videos via RSS (free, no auth)
       const rssRes = await fetch(`https://www.youtube.com/feeds/videos.xml?channel_id=${YT_CHANNEL_ID}`);
+      let topVideos: Array<{ title: string; videoId: string; views: number; published: string; url: string }> = [];
       if (rssRes.ok) {
         const xml = await rssRes.text();
-        const channelName = xml.match(/<title>([^<]+)<\/title>/)?.[1] ?? 'CellRXbio';
         const entries = Array.from(xml.matchAll(/<entry>([\s\S]*?)<\/entry>/g));
-        const topVideos = entries.slice(0, 10).map(e => ({
+        topVideos = entries.slice(0, 15).map(e => ({
           title: e[1].match(/<title>([^<]+)<\/title>/)?.[1] ?? '',
           videoId: e[1].match(/<yt:videoId>([^<]+)<\/yt:videoId>/)?.[1] ?? '',
           views: parseInt(e[1].match(/views="(\d+)"/)?.[1] ?? '0'),
           published: e[1].match(/<published>([^<]+)<\/published>/)?.[1]?.split('T')[0] ?? '',
           url: `https://www.youtube.com/watch?v=${e[1].match(/<yt:videoId>([^<]+)<\/yt:videoId>/)?.[1] ?? ''}`,
         }));
-        // Sort by views descending for top performing
         topVideos.sort((a, b) => b.views - a.views);
-        youtube = { channelName, topVideos };
       }
+
+      youtube = { channelName, subscribers, subscribersText, totalViews, videoCount, topVideos };
     } catch (_) {
-      // YouTube RSS failed
+      // YouTube fetch failed
     }
 
     return { tiktok, youtube };

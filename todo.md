@@ -95,3 +95,22 @@
 - [x] Test TikTok integration via GHL API (social-posting OAuth not accessible via private key)
 - [x] Build Meta Ads live stats panel (deep-link to GHL; full stats pending Meta access token)
 - [x] Build TikTok stats panel (live: 155 followers, 8,188 likes, 57 videos via public page scrape)
+
+## Autonomous Build Session — Round 3 (May 15, 2026)
+- [x] Fix TikTok fallback regex (stray space in pattern fixed)
+- [ ] Add YouTube subscriber count (YouTube Data API v3 — free key via Google Cloud)
+- [x] Add sidebar nav item for Social Media section in DashboardLayout (Share2 icon added)
+- [x] Audit all website pages for missing SEO meta descriptions and OG images (all 11 pages have useSEO with title, desc, canonical, OG tags)
+- [x] Add LocalBusiness + MedicalBusiness JSON-LD schema to homepage (already in index.html)
+- [x] Add FAQ schema markup to homepage FAQ section (already in index.html)
+- [x] Add BreadcrumbList JSON-LD schema to service pages (BlackLabel, HealthOptimization, LongevityPrograms — useBreadcrumb hook)
+- [x] Improve Contact page: phone is already a clickable tel: link (verified in Contact.tsx and Navbar.tsx)
+- [ ] Add "Back to top" smooth scroll button on long pages (Services, Blog posts)
+- [x] Add canonical URL meta tags to all pages (useSEO hook sets canonical dynamically)
+- [x] Verify sitemap.xml includes all current routes (16 URLs, all routes covered)
+- [x] Add robots meta tag (index, follow) to all public pages (set in index.html)
+- [x] Add Instagram/Facebook stats panel with clear setup instructions card (amber card with 3-step token instructions)
+- [ ] Add TikTok top videos list (currently shows only aggregate stats, not individual video performance)
+- [ ] Improve pipeline lead accuracy: verify stage IDs match real GHL pipeline stages
+- [ ] Add loading skeletons to social stats panel
+- [ ] Add error boundary to dashboard panels so one failure doesn't break the whole page

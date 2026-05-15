@@ -43,6 +43,7 @@ import {
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import DashboardLayout from "@/components/DashboardLayout";
+import { useNoIndex } from "@/hooks/useSEO";
 
 // ─── Clarity injection ───────────────────────────────────────────────────────
 const CLARITY_PROJECT_ID = "wr6mdwhjnk"; // Microsoft Clarity — CellRX project
@@ -186,6 +187,7 @@ const STAGE_COLORS: Record<string, string> = {
 // ─── Main Dashboard ───────────────────────────────────────────────────────────
 export default function Dashboard() {
   useMicrosoftClarity();
+  useNoIndex(); // Prevent search engines from indexing the admin dashboard
 
   const summaryQ = trpc.dashboard.summary.useQuery(undefined, { refetchInterval: 5 * 60 * 1000 });
   const leadTrendQ = trpc.dashboard.leadTrend.useQuery(undefined, { refetchInterval: 5 * 60 * 1000 });
@@ -623,6 +625,27 @@ export default function Dashboard() {
                         <ExternalLink className="h-3 w-3" /> View Channel
                       </a>
                     </div>
+                    {/* Channel stats row */}
+                    <div className="grid grid-cols-3 gap-3">
+                      <div>
+                        <p className="text-xl font-bold text-foreground" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                          {(socialQ.data.youtube.subscribers ?? 0).toLocaleString()}
+                        </p>
+                        <p className="text-xs text-muted-foreground mt-0.5">Subscribers</p>
+                      </div>
+                      <div>
+                        <p className="text-xl font-bold text-foreground" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                          {(socialQ.data.youtube.totalViews ?? 0).toLocaleString()}
+                        </p>
+                        <p className="text-xs text-muted-foreground mt-0.5">Total Views</p>
+                      </div>
+                      <div>
+                        <p className="text-xl font-bold text-foreground" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                          {(socialQ.data.youtube.videoCount ?? 0).toLocaleString()}
+                        </p>
+                        <p className="text-xs text-muted-foreground mt-0.5">Videos</p>
+                      </div>
+                    </div>
                     <div>
                       <p className="text-xs font-medium text-muted-foreground uppercase tracking-widest mb-3">Top Performing Videos</p>
                       <div className="space-y-2">
@@ -654,14 +677,25 @@ export default function Dashboard() {
               </div>
 
               {/* Instagram + Facebook — pending token */}
-              <div className="bg-muted/30 border border-dashed border-border rounded-lg p-4 flex items-center justify-between gap-4">
-                <div>
-                  <p className="text-sm font-medium text-foreground">Instagram &amp; Facebook Stats</p>
-                  <p className="text-xs text-muted-foreground mt-0.5">Followers, reach, and post performance will appear here once the Meta access token is connected.</p>
+              <div className="bg-amber-500/5 border border-amber-500/30 rounded-lg p-5 space-y-3">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <p className="text-sm font-semibold text-foreground flex items-center gap-2">
+                      <span className="inline-block w-2 h-2 rounded-full bg-amber-400"></span>
+                      Instagram &amp; Facebook Stats — Setup Required
+                    </p>
+                    <p className="text-xs text-muted-foreground mt-1">Followers, reach, engagement, and top posts will appear here once a Meta access token is connected.</p>
+                  </div>
+                  <div className="flex gap-2 shrink-0">
+                    <a href="https://www.instagram.com/cellrx.bio/" target="_blank" rel="noopener noreferrer" className="text-xs text-primary hover:underline">Instagram →</a>
+                    <a href="https://www.facebook.com/p/CellRx-61582063796150/" target="_blank" rel="noopener noreferrer" className="text-xs text-primary hover:underline">Facebook →</a>
+                  </div>
                 </div>
-                <div className="flex gap-2 shrink-0">
-                  <a href="https://www.instagram.com/cellrx.bio/" target="_blank" rel="noopener noreferrer" className="text-xs text-primary hover:underline">Instagram →</a>
-                  <a href="https://www.facebook.com/p/CellRx-61582063796150/" target="_blank" rel="noopener noreferrer" className="text-xs text-primary hover:underline">Facebook →</a>
+                <div className="text-xs text-muted-foreground space-y-1 border-t border-amber-500/20 pt-3">
+                  <p className="font-medium text-foreground/70 mb-2">To activate — 3 steps:</p>
+                  <p>1. Go to <a href="https://developers.facebook.com/tools/explorer" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">developers.facebook.com/tools/explorer</a></p>
+                  <p>2. Select your app → switch token to <strong>Page</strong> → select CellRX Facebook Page → add permissions: <code className="bg-muted px-1 rounded">instagram_basic</code>, <code className="bg-muted px-1 rounded">instagram_manage_insights</code>, <code className="bg-muted px-1 rounded">read_insights</code></p>
+                  <p>3. Click <strong>Generate Access Token</strong> → paste it in the chat with your Manus agent</p>
                 </div>
               </div>
             </div>

@@ -75,6 +75,49 @@ export function useSEO({
   }, [title, description, canonical, ogImage, ogType, keywords]);
 }
 
+// ─── Breadcrumb structured data hook ─────────────────────────────────────────
+export interface BreadcrumbItem {
+  name: string;
+  url: string;
+}
+
+export function useBreadcrumb(items: BreadcrumbItem[]) {
+  useEffect(() => {
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: items.map((item, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: item.name,
+        item: item.url,
+      })),
+    };
+    const id = "breadcrumb-schema";
+    let el = document.getElementById(id) as HTMLScriptElement | null;
+    if (!el) {
+      el = document.createElement("script");
+      el.id = id;
+      el.type = "application/ld+json";
+      document.head.appendChild(el);
+    }
+    el.textContent = JSON.stringify(schema);
+    return () => {
+      document.getElementById(id)?.remove();
+    };
+  }, [items]);
+}
+
+// ─── noindex hook (for admin/internal pages) ──────────────────────────────────
+export function useNoIndex() {
+  useEffect(() => {
+    setMeta("robots", "noindex, nofollow");
+    return () => {
+      setMeta("robots", "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1");
+    };
+  }, []);
+}
+
 // ─── Per-page SEO configs ──────────────────────────────────────────────────
 
 export const PAGE_SEO = {

@@ -7,7 +7,7 @@
  */
 
 import { useEffect } from "react";
-import { useSEO, PAGE_SEO } from "@/hooks/useSEO";
+import { useSEO, PAGE_SEO, useBreadcrumb } from "@/hooks/useSEO";
 import { Link } from "wouter";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -34,6 +34,10 @@ function useScrollAnimation() {
 
 export default function BlackLabel() {
   useSEO(PAGE_SEO.blackLabel);
+  useBreadcrumb([
+    { name: "Home", url: "https://www.cellrx.bio/" },
+    { name: "Black Label Concierge", url: "https://www.cellrx.bio/black-label" },
+  ]);
   useScrollAnimation();
 
   return (

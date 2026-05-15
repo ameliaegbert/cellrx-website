@@ -21,7 +21,7 @@ import {
 } from "@/components/ui/sidebar";
 import { getLoginUrl } from "@/const";
 import { useIsMobile } from "@/hooks/useMobile";
-import { LayoutDashboard, LogOut, PanelLeft, TrendingUp, DollarSign, BarChart2, Activity } from "lucide-react";
+import { LayoutDashboard, LogOut, PanelLeft, TrendingUp, DollarSign, BarChart2, Activity, Share2 } from "lucide-react";
 import { CSSProperties, useEffect, useRef, useState } from "react";
 import { useLocation } from "wouter";
 import { DashboardLayoutSkeleton } from './DashboardLayoutSkeleton';
@@ -33,6 +33,7 @@ const menuItems = [
   { icon: DollarSign, label: "Revenue", path: "/dashboard#revenue" },
   { icon: BarChart2, label: "Ads Performance", path: "/dashboard#ads" },
   { icon: Activity, label: "Heatmap", path: "/dashboard#heatmap" },
+  { icon: Share2, label: "Social Media", path: "/dashboard#social" },
 ];
 
 const SIDEBAR_WIDTH_KEY = "sidebar-width";
