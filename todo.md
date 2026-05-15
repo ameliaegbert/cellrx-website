@@ -74,5 +74,9 @@
 - [x] Build Website Heatmap panel (Microsoft Clarity — setup instructions shown in dashboard, pending Clarity project ID)
 - [x] Wire all backend data sources to dashboard (5 tRPC procedures: summary, leadTrend, appointments, nurtureStatus, pipeline)
 - [x] Activate Microsoft Clarity heatmap (project ID: wr6mdwhjnk — script in index.html, dashboard panel active)
-- [ ] Activate GHL Invoice panel (pending invoices.readonly + payments/transactions.readonly scopes)
-- [ ] Activate Ads panels (pending Google Ads + Meta Ads OAuth connections)
+- [x] Activate GHL Invoice panel (live — revenue, outstanding, 30d collected, invoice counts, recent transactions via altId params)
+- [x] Activate Ads panels (GHL deep-link cards — click-through to GHL Ads Reporting for both Google and Meta)
+
+## Ads Dashboard Panels
+- [x] Build Meta Ads panel (GHL deep-link card — opens GHL Ads Reporting for Facebook/Instagram)
+- [x] Build Google Ads panel (GHL deep-link card — opens GHL Ads Reporting for Google)

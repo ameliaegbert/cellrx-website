@@ -132,29 +132,46 @@ function ConnectCard({
   title,
   description,
   action,
+  href,
+  badge,
 }: {
   icon: React.ElementType;
   title: string;
   description: string;
   action?: string;
+  href?: string;
+  badge?: string;
 }) {
-  return (
-    <div className="bg-card border border-dashed border-border rounded-lg p-6 flex flex-col items-center text-center gap-3">
+  const inner = (
+    <div className={`bg-card border ${href ? 'border-border hover:border-primary/50 transition-colors cursor-pointer' : 'border-dashed border-border'} rounded-lg p-6 flex flex-col items-center text-center gap-3 h-full`}>
       <div className="h-10 w-10 rounded-full bg-muted flex items-center justify-center">
         <Icon className="h-5 w-5 text-muted-foreground" />
       </div>
-      <div>
-        <p className="text-sm font-medium text-foreground">{title}</p>
+      <div className="flex-1">
+        <div className="flex items-center justify-center gap-2">
+          <p className="text-sm font-medium text-foreground">{title}</p>
+          {badge && (
+            <span className="text-[10px] font-semibold bg-green-500/15 text-green-400 px-1.5 py-0.5 rounded-full">{badge}</span>
+          )}
+        </div>
         <p className="text-xs text-muted-foreground mt-1 max-w-xs">{description}</p>
       </div>
       {action && (
-        <span className="text-xs text-primary flex items-center gap-1 cursor-default">
+        <span className="text-xs text-primary flex items-center gap-1">
           <ExternalLink className="h-3 w-3" />
           {action}
         </span>
       )}
     </div>
   );
+  if (href) {
+    return (
+      <a href={href} target="_blank" rel="noopener noreferrer" className="block h-full">
+        {inner}
+      </a>
+    );
+  }
+  return inner;
 }
 
 const STAGE_COLORS: Record<string, string> = {
@@ -472,28 +489,42 @@ export default function Dashboard() {
           )}
         </div>
 
-        {/* ── Connect Panels ── */}
+        {/* ── Ads Performance ── */}
         <div>
           <SectionHeader
-            title="Connect More Data Sources"
-            sub="Activate these panels to get the full picture"
+            title="Ads Performance"
+            sub="Click a panel to open live reporting in GHL — full spend, clicks, and conversion data"
           />
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <ConnectCard
               icon={BarChart2}
               title="Google Ads"
-              description="Connect your Google Ads Manager account to see spend, clicks, and conversions."
-              action="Requires Google Ads OAuth"
+              badge="Live in GHL"
+              description="Spend, impressions, clicks, conversions, and campaign performance. Opens directly in GHL Ads Reporting."
+              action="Open Google Ads Reporting →"
+              href="https://app.gohighlevel.com/v2/location/nANRD9sxSutEDIdeosHo/reporting/ads-reporting?platform=google"
             />
             <ConnectCard
               icon={BarChart2}
               title="Meta Ads"
-              description="Connect your Meta Business Manager to see Facebook and Instagram ad performance."
-              action="Requires Meta Business OAuth"
+              badge="Live in GHL"
+              description="Facebook and Instagram ad performance — spend, reach, leads, and cost per result. Opens directly in GHL Ads Reporting."
+              action="Open Meta Ads Reporting →"
+              href="https://app.gohighlevel.com/v2/location/nANRD9sxSutEDIdeosHo/reporting/ads-reporting?platform=facebook"
             />
+          </div>
+        </div>
+
+        {/* ── Coming Soon ── */}
+        <div>
+          <SectionHeader
+            title="Coming Soon"
+            sub="Additional data sources to activate"
+          />
+          <div className="grid grid-cols-1 sm:grid-cols-1 gap-4 max-w-sm">
             <ConnectCard
               icon={Share2}
-              title="Social Media"
+              title="Social Media Analytics"
               description="Connect Instagram, TikTok, YouTube, and Facebook to track followers, reach, and engagement."
               action="Requires platform API access"
             />

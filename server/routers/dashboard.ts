@@ -223,11 +223,23 @@ export const dashboardRouter = router({
   revenue: adminProcedure.query(async () => {
     const loc = ENV.ghlLocationId;
 
+    const [invoicesResp, paymentsResp] = await Promise.all([
+      fetch(`${GHL_BASE}/invoices/?altId=${loc}&altType=location&limit=100&offset=0`, { headers: GHL_HEADERS }),
+      fetch(`${GHL_BASE}/payments/transactions/?altId=${loc}&altType=location&limit=100`, { headers: GHL_HEADERS }),
+    ]);
+
+    if (!invoicesResp.ok) {
+      const err = await invoicesResp.text();
+      throw new Error(`GHL invoices API → ${invoicesResp.status}: ${err}`);
+    }
+    if (!paymentsResp.ok) {
+      const err = await paymentsResp.text();
+      throw new Error(`GHL payments API → ${paymentsResp.status}: ${err}`);
+    }
+
     const [invoicesData, paymentsData] = await Promise.all([
-      fetch(`${GHL_BASE}/invoices/?altId=${loc}&altType=location&limit=100&offset=0`, { headers: GHL_HEADERS })
-        .then(r => r.ok ? r.json() : { invoices: [] }),
-      fetch(`${GHL_BASE}/payments/transactions/?altId=${loc}&altType=location&limit=100`, { headers: GHL_HEADERS })
-        .then(r => r.ok ? r.json() : { data: [] }),
+      invoicesResp.json(),
+      paymentsResp.json(),
     ]);
 
     const invoices: Array<{
