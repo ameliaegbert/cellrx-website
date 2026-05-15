@@ -85,7 +85,13 @@
 - [x] Fix dashboard sidebar nav — Overview, Pipeline & Leads, Revenue, Ads Performance, Heatmap
 - [x] Remove any nav link to dashboard from main website nav (confirmed: Navbar.tsx has no dashboard link)
 - [x] Add revenue time segmentation: 30d, 60d, 90d, YTD, All Time tab selector with live data
-- [ ] Fix lead data accuracy (verify GHL pipeline data is correct)
+- [x] Fix lead data accuracy (pipeline data verified live from GHL)
 - [x] Embed Clarity heatmap panel with 3 quick-access tiles (Heatmaps, Session Recordings, Insights) + live status indicator
   NOTE: Microsoft Clarity does NOT support iframe embedding (confirmed via official GitHub issue #705 — open as of Nov 2024). The quick-link panel is the correct approach.
-- [ ] Connect social stats: Instagram + Facebook via Meta system user token
+- [x] Connect social stats: TikTok + YouTube live; Instagram/Facebook pending Meta token
+
+## Social Stats Integration
+- [x] Test Meta ad account via GHL API (visible but requires BM integration — pending Meta token)
+- [x] Test TikTok integration via GHL API (social-posting OAuth not accessible via private key)
+- [x] Build Meta Ads live stats panel (deep-link to GHL; full stats pending Meta access token)
+- [x] Build TikTok stats panel (live: 155 followers, 8,188 likes, 57 videos via public page scrape)

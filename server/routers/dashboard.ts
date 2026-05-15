@@ -365,4 +365,89 @@ export const dashboardRouter = router({
         value: stageCounts[s].value,
       }));
   }),
+
+  /**
+   * Social stats — TikTok (page scrape) + YouTube (RSS feed)
+   * No auth tokens required; uses public data only.
+   */
+  socialStats: adminProcedure.query(async () => {
+    const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
+
+    // ── TikTok ──────────────────────────────────────────────────────────────
+    let tiktok: {
+      followers: number;
+      likes: number;
+      videos: number;
+      bio: string;
+      handle: string;
+    } | null = null;
+
+    try {
+      const ttRes = await fetch('https://www.tiktok.com/@cellrx.bio', {
+        headers: { 'User-Agent': UA, 'Accept': 'text/html', 'Accept-Language': 'en-US,en;q=0.9' },
+      });
+      if (ttRes.ok) {
+        const html = await ttRes.text();
+        const dataMatch = html.match(/<script id="__UNIVERSAL_DATA_FOR_REHYDRATION__"[^>]*>([^<]+)<\/script>/);
+        if (dataMatch) {
+          const data = JSON.parse(dataMatch[1]);
+          const userInfo = data.__DEFAULT_SCOPE__?.['webapp.user-detail']?.userInfo;
+          if (userInfo) {
+            tiktok = {
+              followers: userInfo.stats?.followerCount ?? 0,
+              likes: userInfo.stats?.heartCount ?? 0,
+              videos: userInfo.stats?.videoCount ?? 0,
+              bio: userInfo.user?.signature ?? '',
+              handle: '@' + (userInfo.user?.uniqueId ?? 'cellrx.bio'),
+            };
+          }
+        }
+        // Fallback: regex extraction
+        if (!tiktok) {
+          const followers = html.match(/"followerCount":(\ d+)/)?.[1];
+          if (followers) {
+            tiktok = {
+              followers: parseInt(followers),
+              likes: parseInt(html.match(/"heartCount":(\d+)/)?.[1] ?? '0'),
+              videos: parseInt(html.match(/"videoCount":(\d+)/)?.[1] ?? '0'),
+              bio: 'Utah\'s #1 Stem Cell Clinic',
+              handle: '@cellrx.bio',
+            };
+          }
+        }
+      }
+    } catch (_) {
+      // TikTok scrape failed — return null
+    }
+
+    // ── YouTube RSS ─────────────────────────────────────────────────────────
+    const YT_CHANNEL_ID = 'UCK0H7ZgSBUTeB-xpxiRixEw';
+    let youtube: {
+      channelName: string;
+      topVideos: Array<{ title: string; videoId: string; views: number; published: string; url: string }>;
+    } | null = null;
+
+    try {
+      const rssRes = await fetch(`https://www.youtube.com/feeds/videos.xml?channel_id=${YT_CHANNEL_ID}`);
+      if (rssRes.ok) {
+        const xml = await rssRes.text();
+        const channelName = xml.match(/<title>([^<]+)<\/title>/)?.[1] ?? 'CellRXbio';
+        const entries = Array.from(xml.matchAll(/<entry>([\s\S]*?)<\/entry>/g));
+        const topVideos = entries.slice(0, 10).map(e => ({
+          title: e[1].match(/<title>([^<]+)<\/title>/)?.[1] ?? '',
+          videoId: e[1].match(/<yt:videoId>([^<]+)<\/yt:videoId>/)?.[1] ?? '',
+          views: parseInt(e[1].match(/views="(\d+)"/)?.[1] ?? '0'),
+          published: e[1].match(/<published>([^<]+)<\/published>/)?.[1]?.split('T')[0] ?? '',
+          url: `https://www.youtube.com/watch?v=${e[1].match(/<yt:videoId>([^<]+)<\/yt:videoId>/)?.[1] ?? ''}`,
+        }));
+        // Sort by views descending for top performing
+        topVideos.sort((a, b) => b.views - a.views);
+        youtube = { channelName, topVideos };
+      }
+    } catch (_) {
+      // YouTube RSS failed
+    }
+
+    return { tiktok, youtube };
+  }),
 });

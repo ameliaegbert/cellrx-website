@@ -193,6 +193,7 @@ export default function Dashboard() {
   const nurtureQ = trpc.dashboard.nurtureStatus.useQuery(undefined, { refetchInterval: 5 * 60 * 1000 });
   const pipelineQ = trpc.dashboard.pipeline.useQuery(undefined, { refetchInterval: 5 * 60 * 1000 });
   const revenueQ = trpc.dashboard.revenue.useQuery(undefined, { refetchInterval: 10 * 60 * 1000 });
+  const socialQ = trpc.dashboard.socialStats.useQuery(undefined, { refetchInterval: 30 * 60 * 1000 });
   const [revPeriod, setRevPeriod] = useState<'30d' | '60d' | '90d' | 'ytd' | 'lifetime'>('30d');
 
   const isLoading =
@@ -542,20 +543,129 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* ── Coming Soon ── */}
-        <div>
+        {/* ── Social Stats ── */}
+        <div id="social">
           <SectionHeader
-            title="Coming Soon"
-            sub="Additional data sources to activate"
+            title="Social Media"
+            sub="TikTok and YouTube — live public stats"
           />
-          <div className="grid grid-cols-1 sm:grid-cols-1 gap-4 max-w-sm">
-            <ConnectCard
-              icon={Share2}
-              title="Social Media Analytics"
-              description="Connect Instagram, TikTok, YouTube, and Facebook to track followers, reach, and engagement."
-              action="Requires platform API access"
-            />
-          </div>
+          {socialQ.isLoading ? (
+            <div className="text-sm text-muted-foreground">Loading social stats...</div>
+          ) : socialQ.error ? (
+            <div className="text-sm text-red-400">Failed to load social stats</div>
+          ) : (
+            <div className="space-y-6">
+              {/* Platform cards */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                {/* TikTok */}
+                {socialQ.data?.tiktok ? (
+                  <div className="bg-card border border-border rounded-lg p-5 space-y-4">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <Share2 className="h-4 w-4 text-[#FBB217]" />
+                        <p className="text-sm font-semibold text-foreground">TikTok</p>
+                        <span className="text-xs text-muted-foreground">{socialQ.data.tiktok.handle}</span>
+                      </div>
+                      <a
+                        href="https://www.tiktok.com/@cellrx.bio"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs text-primary hover:underline flex items-center gap-1"
+                      >
+                        <ExternalLink className="h-3 w-3" /> View Profile
+                      </a>
+                    </div>
+                    <div className="grid grid-cols-3 gap-3">
+                      <div>
+                        <p className="text-xl font-bold text-foreground" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                          {socialQ.data.tiktok.followers.toLocaleString()}
+                        </p>
+                        <p className="text-xs text-muted-foreground mt-0.5">Followers</p>
+                      </div>
+                      <div>
+                        <p className="text-xl font-bold text-foreground" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                          {socialQ.data.tiktok.likes.toLocaleString()}
+                        </p>
+                        <p className="text-xs text-muted-foreground mt-0.5">Total Likes</p>
+                      </div>
+                      <div>
+                        <p className="text-xl font-bold text-foreground" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                          {socialQ.data.tiktok.videos.toLocaleString()}
+                        </p>
+                        <p className="text-xs text-muted-foreground mt-0.5">Videos</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2 pt-1">
+                      <span className="h-1.5 w-1.5 rounded-full bg-green-400" />
+                      <p className="text-xs text-muted-foreground italic">{socialQ.data.tiktok.bio}</p>
+                    </div>
+                  </div>
+                ) : (
+                  <ConnectCard icon={Share2} title="TikTok" description="Stats temporarily unavailable." action="View Profile" href="https://www.tiktok.com/@cellrx.bio" />
+                )}
+
+                {/* YouTube */}
+                {socialQ.data?.youtube ? (
+                  <div className="bg-card border border-border rounded-lg p-5 space-y-4">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <Share2 className="h-4 w-4 text-red-500" />
+                        <p className="text-sm font-semibold text-foreground">YouTube</p>
+                        <span className="text-xs text-muted-foreground">@CellRxbio</span>
+                      </div>
+                      <a
+                        href="https://www.youtube.com/@CellRxbio"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs text-primary hover:underline flex items-center gap-1"
+                      >
+                        <ExternalLink className="h-3 w-3" /> View Channel
+                      </a>
+                    </div>
+                    <div>
+                      <p className="text-xs font-medium text-muted-foreground uppercase tracking-widest mb-3">Top Performing Videos</p>
+                      <div className="space-y-2">
+                        {socialQ.data.youtube.topVideos.slice(0, 5).map((v, i) => (
+                          <a
+                            key={v.videoId}
+                            href={v.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center justify-between py-2 border-b border-border last:border-0 hover:bg-muted/30 rounded px-1 transition-colors"
+                          >
+                            <div className="flex items-center gap-2 min-w-0">
+                              <span className="text-xs text-muted-foreground shrink-0 w-4">{i + 1}.</span>
+                              <p className="text-sm text-foreground truncate">{v.title}</p>
+                            </div>
+                            <div className="flex items-center gap-3 shrink-0 ml-2">
+                              <span className="text-xs text-muted-foreground">{v.views.toLocaleString()} views</span>
+                              <span className="text-xs text-muted-foreground hidden sm:block">{v.published}</span>
+                            </div>
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <ConnectCard icon={Share2} title="YouTube" description="Stats temporarily unavailable." action="View Channel" href="https://www.youtube.com/@CellRxbio" />
+                )}
+
+              </div>
+
+              {/* Instagram + Facebook — pending token */}
+              <div className="bg-muted/30 border border-dashed border-border rounded-lg p-4 flex items-center justify-between gap-4">
+                <div>
+                  <p className="text-sm font-medium text-foreground">Instagram &amp; Facebook Stats</p>
+                  <p className="text-xs text-muted-foreground mt-0.5">Followers, reach, and post performance will appear here once the Meta access token is connected.</p>
+                </div>
+                <div className="flex gap-2 shrink-0">
+                  <a href="https://www.instagram.com/cellrx.bio/" target="_blank" rel="noopener noreferrer" className="text-xs text-primary hover:underline">Instagram →</a>
+                  <a href="https://www.facebook.com/p/CellRx-61582063796150/" target="_blank" rel="noopener noreferrer" className="text-xs text-primary hover:underline">Facebook →</a>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* ── Heatmap Panel ── */}
