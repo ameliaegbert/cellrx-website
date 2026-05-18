@@ -6,6 +6,7 @@ import { contactRouter } from "./routers/contact";
 import { dashboardRouter } from "./routers/dashboard";
 import { searchConsoleRouter } from "./routers/searchConsole";
 import { analyticsRouter } from "./routers/analytics";
+import { clarityRouter } from "./routers/clarity";
 
 export const appRouter = router({
   system: systemRouter,
@@ -24,6 +25,7 @@ export const appRouter = router({
   dashboard: dashboardRouter,
   searchConsole: searchConsoleRouter,
   analytics: analyticsRouter,
+  clarity: clarityRouter,
 });
 
 export type AppRouter = typeof appRouter;

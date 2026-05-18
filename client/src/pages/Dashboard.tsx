@@ -40,6 +40,12 @@ import {
   AlertCircle,
   RefreshCw,
   ExternalLink,
+  MousePointerClick,
+  Scroll,
+  Zap,
+  Monitor,
+  Smartphone,
+  Tablet,
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import DashboardLayout from "@/components/DashboardLayout";
@@ -197,6 +203,7 @@ export default function Dashboard() {
   const nurtureQ = trpc.dashboard.nurtureStatus.useQuery(undefined, { refetchInterval: 5 * 60 * 1000 });
   const pipelineQ = trpc.dashboard.pipeline.useQuery(undefined, { refetchInterval: 5 * 60 * 1000 });
   const socialQ = trpc.dashboard.socialStats.useQuery(undefined, { refetchInterval: 30 * 60 * 1000 });
+  const clarityQ = trpc.clarity.metrics.useQuery(undefined, { refetchInterval: 6 * 60 * 60 * 1000 }); // 6h cache matches API limit
 
   const isLoading =
     summaryQ.isLoading || leadTrendQ.isLoading || appointmentsQ.isLoading || nurtureQ.isLoading || pipelineQ.isLoading;
@@ -765,53 +772,118 @@ export default function Dashboard() {
           )}
         </div>
 
-        {/* ── Heatmap Panel ── */}
-        <div id="heatmap" className="bg-card border border-border rounded-lg p-6 space-y-4">
+        {/* ── Heatmap / CRO Panel ── */}
+        <div id="heatmap" className="bg-card border border-border rounded-lg p-6 space-y-5">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
             <SectionHeader
-              title="Website Heatmap"
-              sub="Click maps, scroll depth, and session recordings via Microsoft Clarity"
+              title="CRO & Heatmap"
+              sub="Live session behavior from Microsoft Clarity · last 24 hours"
             />
-            <a
-              href={`https://clarity.microsoft.com/projects/view/${CLARITY_PROJECT_ID}/dashboard`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs text-primary hover:underline shrink-0"
-            >
-              <ExternalLink className="h-3 w-3" />
-              Open full Clarity dashboard
-            </a>
-          </div>
-
-          {/* Quick-access tiles */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            {[
-              { label: 'Heatmaps', desc: 'Click & hover maps for every page', path: 'heatmaps' },
-              { label: 'Session Recordings', desc: 'Watch real visitor sessions', path: 'recordings' },
-              { label: 'Insights', desc: 'Dead clicks, rage clicks, scroll depth', path: 'insights' },
-            ].map(tile => (
+            <div className="flex items-center gap-3">
+              <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                <span className="h-2 w-2 rounded-full bg-green-400 animate-pulse" />
+                Live
+              </div>
               <a
-                key={tile.path}
-                href={`https://clarity.microsoft.com/projects/view/${CLARITY_PROJECT_ID}/${tile.path}`}
+                href={`https://clarity.microsoft.com/projects/view/${CLARITY_PROJECT_ID}/dashboard`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex flex-col gap-1 bg-muted hover:bg-muted/80 rounded-lg p-4 transition-colors cursor-pointer border border-border hover:border-primary/40"
+                className="inline-flex items-center gap-1.5 text-xs text-primary hover:underline shrink-0"
               >
-                <p className="text-sm font-medium text-foreground">{tile.label}</p>
-                <p className="text-xs text-muted-foreground">{tile.desc}</p>
-                <span className="text-xs text-primary mt-1 flex items-center gap-1">
-                  <ExternalLink className="h-3 w-3" />
-                  Open in Clarity
-                </span>
+                <ExternalLink className="h-3 w-3" />
+                Open Clarity
               </a>
-            ))}
+            </div>
           </div>
 
-          {/* Status bar */}
-          <div className="flex items-center gap-2 text-xs text-muted-foreground pt-1">
-            <span className="h-2 w-2 rounded-full bg-green-400 animate-pulse" />
-            Tracking active on cellrx.bio · Project ID: {CLARITY_PROJECT_ID}
-          </div>
+          {clarityQ.isLoading ? (
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              {[0,1,2,3].map(i => <div key={i} className="h-20 bg-muted rounded-lg animate-pulse" />)}
+            </div>
+          ) : clarityQ.error || !(clarityQ.data as any)?.configured ? (
+            <div className="text-xs text-muted-foreground bg-muted rounded-lg p-4">
+              Clarity metrics unavailable. Check CLARITY_API_KEY in secrets.
+            </div>
+          ) : (() => {
+            const c = clarityQ.data as any;
+            const deviceIcon = (d: string) => {
+              if (d?.toLowerCase().includes('mobile') || d?.toLowerCase().includes('phone')) return <Smartphone className="h-3 w-3" />;
+              if (d?.toLowerCase().includes('tablet')) return <Tablet className="h-3 w-3" />;
+              return <Monitor className="h-3 w-3" />;
+            };
+            return (
+              <div className="space-y-5">
+                {/* KPI row */}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                  {[
+                    { icon: Users, label: 'Sessions', value: c.sessions?.toLocaleString() ?? '—', sub: `${c.botSessions?.toLocaleString() ?? 0} bots filtered` },
+                    { icon: Scroll, label: 'Scroll Depth', value: `${c.scrollDepth ?? 0}%`, sub: `${c.pagesPerSession ?? 0} pages/session` },
+                    { icon: MousePointerClick, label: 'Rage Clicks', value: c.rageClicks?.toLocaleString() ?? '—', sub: `${c.deadClicks?.toLocaleString() ?? 0} dead clicks` },
+                    { icon: Zap, label: 'Engagement', value: (() => { const s = c.engagementTimeSec ?? 0; return s >= 60 ? `${Math.floor(s/60)}m ${s%60}s` : `${s}s`; })(), sub: `${c.quickbackClicks ?? 0} quickbacks` },
+                  ].map((kpi, i) => (
+                    <div key={i} className="bg-muted rounded-lg p-4 space-y-1">
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs text-muted-foreground uppercase tracking-widest">{kpi.label}</span>
+                        <kpi.icon className="h-3.5 w-3.5 text-muted-foreground" />
+                      </div>
+                      <div className="text-2xl font-bold text-foreground" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>{kpi.value}</div>
+                      <div className="text-xs text-muted-foreground">{kpi.sub}</div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Device breakdown + quick links */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {/* Device breakdown */}
+                  <div className="space-y-2">
+                    <p className="text-xs font-medium text-muted-foreground uppercase tracking-widest">Sessions by Device</p>
+                    {(c.byDevice ?? []).slice(0, 4).map((d: any, i: number) => {
+                      const total = (c.byDevice ?? []).reduce((acc: number, x: any) => acc + x.sessions, 0);
+                      const pct = total > 0 ? Math.round((d.sessions / total) * 100) : 0;
+                      return (
+                        <div key={i} className="space-y-0.5">
+                          <div className="flex items-center justify-between text-xs">
+                            <span className="flex items-center gap-1.5 text-foreground">{deviceIcon(d.device)}{d.device}</span>
+                            <span className="text-muted-foreground">{d.sessions.toLocaleString()} ({pct}%)</span>
+                          </div>
+                          <div className="h-1.5 bg-muted rounded-full overflow-hidden">
+                            <div className="h-full rounded-full bg-[#0078D4]" style={{ width: `${pct}%` }} />
+                          </div>
+                        </div>
+                      );
+                    })}
+                    {(c.byDevice ?? []).length === 0 && <p className="text-xs text-muted-foreground">No device data yet</p>}
+                  </div>
+
+                  {/* Quick-access tiles */}
+                  <div className="space-y-2">
+                    <p className="text-xs font-medium text-muted-foreground uppercase tracking-widest">Deep Dive</p>
+                    <div className="grid grid-cols-1 gap-2">
+                      {[
+                        { label: 'Heatmaps', desc: 'Click & scroll maps', path: 'heatmaps' },
+                        { label: 'Session Recordings', desc: 'Watch real visitor sessions', path: 'recordings' },
+                        { label: 'Insights', desc: 'Friction & behavior analysis', path: 'insights' },
+                      ].map(tile => (
+                        <a
+                          key={tile.path}
+                          href={`https://clarity.microsoft.com/projects/view/${CLARITY_PROJECT_ID}/${tile.path}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center justify-between bg-muted hover:bg-muted/70 rounded-lg px-4 py-2.5 transition-colors border border-border hover:border-primary/40"
+                        >
+                          <div>
+                            <p className="text-sm font-medium text-foreground">{tile.label}</p>
+                            <p className="text-xs text-muted-foreground">{tile.desc}</p>
+                          </div>
+                          <ExternalLink className="h-3.5 w-3.5 text-primary shrink-0" />
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })()}
         </div>
 
       </div>

@@ -143,10 +143,10 @@
 - [x] Build Google Analytics panel in /dashboard/seo (KPIs, daily session trend, traffic sources, top pages)
 
 ### 4. Clarity CRO Integration (Enhanced Panel)
-- [ ] Get Clarity API key from clarity.microsoft.com → Settings → API
-- [ ] Store CLARITY_API_KEY as secret
-- [ ] Build tRPC procedure: session count, pages/session, scroll depth, rage clicks, dead clicks
-- [ ] Upgrade Clarity panel in dashboard from link-out tiles to live CRO metrics
+- [x] Get Clarity API key from clarity.microsoft.com → Settings → Data Export (token: cellrx_heatmap)
+- [x] Store CLARITY_API_KEY as secret
+- [x] Build tRPC procedure: sessions, bot sessions, pages/session, scroll depth, rage clicks, dead clicks, engagement time, quickbacks, device breakdown, channel breakdown
+- [x] Upgrade Clarity panel in dashboard from link-out tiles to live CRO metrics (4 KPI cards + device bars + deep-dive links)
 
 ## Financials Separation (May 18, 2026)
 - [x] Move Revenue & Invoices panel from main dashboard to a separate private /dashboard/financials page
