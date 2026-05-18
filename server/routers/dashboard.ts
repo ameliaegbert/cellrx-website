@@ -369,8 +369,7 @@ export const dashboardRouter = router({
   }),
 
   /**
-   * Social stats — TikTok (page scrape) + YouTube (RSS feed)
-   * No auth tokens required; uses public data only.
+   * Social stats — TikTok (page scrape) + YouTube (RSS feed) + Instagram (Meta Graph API)
    */
   socialStats: adminProcedure.query(async () => {
     const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
@@ -467,6 +466,114 @@ export const dashboardRouter = router({
       // YouTube fetch failed
     }
 
-    return { tiktok, youtube };
+    // ── Instagram (Meta Graph API) ──────────────────────────────────────────
+    const IG_ID = '17841476254543340';
+    const META_TOKEN = ENV.metaAccessToken;
+    let instagram: {
+      username: string;
+      followers: number;
+      mediaCount: number;
+      biography: string;
+      website: string;
+      profilePicture: string;
+      reach30d: number;
+      profileViews30d: number;
+      websiteClicks30d: number;
+      topPosts: Array<{
+        id: string;
+        caption: string;
+        mediaType: string;
+        likeCount: number;
+        commentsCount: number;
+        timestamp: string;
+        permalink: string;
+      }>;
+    } | null = null;
+
+    if (META_TOKEN) {
+      try {
+        const META_BASE = 'https://graph.facebook.com/v19.0';
+        const since30d = Math.floor((Date.now() - 30 * 24 * 60 * 60 * 1000) / 1000);
+        const until = Math.floor(Date.now() / 1000);
+
+        // Fetch account info and top media in parallel
+        // - media: fetch 25 items so we can filter to VIDEO/REEL only and pick true top 6
+        // - insights: reach uses period=day; profile_views + website_clicks need metric_type=total_value separately
+        const [accountRes, mediaRes, reachRes, profileViewsRes, websiteClicksRes] = await Promise.all([
+          fetch(`${META_BASE}/${IG_ID}?fields=id,username,followers_count,media_count,biography,website,profile_picture_url&access_token=${META_TOKEN}`),
+          fetch(`${META_BASE}/${IG_ID}/media?fields=id,caption,media_type,like_count,comments_count,timestamp,permalink&limit=25&access_token=${META_TOKEN}`),
+          fetch(`${META_BASE}/${IG_ID}/insights?metric=reach&period=day&since=${since30d}&until=${until}&access_token=${META_TOKEN}`),
+          fetch(`${META_BASE}/${IG_ID}/insights?metric=profile_views&period=day&metric_type=total_value&since=${since30d}&until=${until}&access_token=${META_TOKEN}`),
+          fetch(`${META_BASE}/${IG_ID}/insights?metric=website_clicks&period=day&metric_type=total_value&since=${since30d}&until=${until}&access_token=${META_TOKEN}`),
+        ]);
+
+        if (!accountRes.ok) throw new Error(`IG account fetch failed: ${accountRes.status}`);
+        if (!mediaRes.ok) throw new Error(`IG media fetch failed: ${mediaRes.status}`);
+
+        const account = await accountRes.json() as Record<string, unknown>;
+        const media = await mediaRes.json() as { data?: unknown[] };
+
+        // Reach: sum daily values over 30 days
+        let reach30d = 0;
+        if (reachRes.ok) {
+          const reachData = await reachRes.json() as { data?: Array<{ values?: Array<{ value: number }> }> };
+          for (const metric of reachData.data ?? []) {
+            for (const v of metric.values ?? []) reach30d += Number(v.value ?? 0);
+          }
+        }
+
+        // Profile views: total_value over 30 days
+        let profileViews30d = 0;
+        if (profileViewsRes.ok) {
+          const pvData = await profileViewsRes.json() as { data?: Array<{ total_value?: { value: number } }> };
+          for (const metric of pvData.data ?? []) {
+            profileViews30d += Number(metric.total_value?.value ?? 0);
+          }
+        }
+
+        // Website clicks: total_value over 30 days
+        let websiteClicks30d = 0;
+        if (websiteClicksRes.ok) {
+          const wcData = await websiteClicksRes.json() as { data?: Array<{ total_value?: { value: number } }> };
+          for (const metric of wcData.data ?? []) {
+            websiteClicks30d += Number(metric.total_value?.value ?? 0);
+          }
+        }
+
+        // Filter to VIDEO/REEL only, sort by engagement, take top 6
+        const rawPosts = (media.data ?? []) as Array<Record<string, unknown>>;
+        const topPosts = rawPosts
+          .filter(p => ['VIDEO', 'REEL'].includes(String(p.media_type ?? '')))
+          .map(p => ({
+            id: String(p.id ?? ''),
+            caption: String(p.caption ?? '').slice(0, 120),
+            mediaType: String(p.media_type ?? 'VIDEO'),
+            likeCount: Number(p.like_count ?? 0),
+            commentsCount: Number(p.comments_count ?? 0),
+            timestamp: String(p.timestamp ?? '').split('T')[0],
+            permalink: String(p.permalink ?? ''),
+          }))
+          .sort((a, b) => (b.likeCount + b.commentsCount) - (a.likeCount + a.commentsCount))
+          .slice(0, 6);
+
+        instagram = {
+          username: String(account.username ?? 'cellrx.bio'),
+          followers: Number(account.followers_count ?? 0),
+          mediaCount: Number(account.media_count ?? 0),
+          biography: String(account.biography ?? ''),
+          website: String(account.website ?? 'https://cellrx.bio'),
+          profilePicture: String(account.profile_picture_url ?? ''),
+          reach30d,
+          profileViews30d,
+          websiteClicks30d,
+          topPosts,
+        };
+      } catch (err) {
+        console.error('[Instagram] fetch failed:', err);
+        // Return null — panel will show a graceful error state
+      }
+    }
+
+    return { tiktok, youtube, instagram };
   }),
 });

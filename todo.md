@@ -114,3 +114,10 @@
 - [x] Improve pipeline lead accuracy: verified all 7 stage IDs against live GHL API (2026-05-15) — STAGE_NAMES map corrected in dashboard.ts; contact.ts pipeline ID (NBqu4y9ct8y8sPQZWcPr) and New Lead stage ID confirmed correct
 - [x] Add loading skeletons to social stats panel (2-column skeleton with stat blocks and video list placeholders)
 - [x] Add PanelErrorBoundary component (panel-scoped error boundary with retry button); applied to social stats section; global ErrorBoundary already wraps full app in App.tsx
+
+## Instagram / Meta Integration (May 18, 2026)
+- [x] Store META_ACCESS_TOKEN as secret (env var set via webdev_request_secrets)
+- [x] Add Instagram data to socialStats tRPC procedure (followers, reach 30d, website_clicks, profile_views, top 6 reels via Meta Graph API v19.0)
+- [x] Build live Instagram stats panel in dashboard (replaces amber setup card — shows followers, posts, reach, profile views, link clicks, top posts grid)
+- [x] Show top 6 reels sorted by likes + comments
+- [ ] Add 30-day reach sparkline chart to Instagram panel (future enhancement)

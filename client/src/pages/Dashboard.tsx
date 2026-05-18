@@ -718,28 +718,82 @@ export default function Dashboard() {
 
               </div>
 
-              {/* Instagram + Facebook — pending token */}
-              <div className="bg-amber-500/5 border border-amber-500/30 rounded-lg p-5 space-y-3">
-                <div className="flex items-start justify-between gap-4">
+              {/* Instagram — live when META_ACCESS_TOKEN is set */}
+              {socialQ.data?.instagram ? (
+                <div className="bg-card border border-border rounded-lg p-5 space-y-4 md:col-span-2">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      {socialQ.data.instagram.profilePicture && (
+                        <img
+                          src={socialQ.data.instagram.profilePicture}
+                          alt="Instagram profile"
+                          className="w-8 h-8 rounded-full object-cover"
+                        />
+                      )}
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <p className="text-sm font-semibold text-foreground">Instagram</p>
+                          <span className="text-xs text-muted-foreground">@{socialQ.data.instagram.username}</span>
+                          <span className="h-1.5 w-1.5 rounded-full bg-green-400" />
+                          <span className="text-xs text-green-400">Live</span>
+                        </div>
+                        <p className="text-xs text-muted-foreground mt-0.5 max-w-md truncate">{socialQ.data.instagram.biography}</p>
+                      </div>
+                    </div>
+                    <a
+                      href={`https://www.instagram.com/${socialQ.data.instagram.username}/`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs text-primary hover:underline flex items-center gap-1 shrink-0"
+                    >
+                      <ExternalLink className="h-3 w-3" /> View Profile
+                    </a>
+                  </div>
+
+                  {/* Stats row */}
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
+                    {[
+                      { label: 'Followers', value: socialQ.data.instagram.followers.toLocaleString() },
+                      { label: 'Posts', value: socialQ.data.instagram.mediaCount.toLocaleString() },
+                      { label: '30d Reach', value: socialQ.data.instagram.reach30d.toLocaleString() },
+                      { label: 'Profile Views', value: socialQ.data.instagram.profileViews30d.toLocaleString() },
+                      { label: 'Link Clicks', value: socialQ.data.instagram.websiteClicks30d.toLocaleString() },
+                      { label: 'Top Post Likes', value: (socialQ.data.instagram.topPosts[0]?.likeCount ?? 0).toLocaleString() },
+                    ].map(s => (
+                      <div key={s.label}>
+                        <p className="text-xl font-bold text-foreground" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>{s.value}</p>
+                        <p className="text-xs text-muted-foreground mt-0.5">{s.label}</p>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Top posts */}
                   <div>
-                    <p className="text-sm font-semibold text-foreground flex items-center gap-2">
-                      <span className="inline-block w-2 h-2 rounded-full bg-amber-400"></span>
-                      Instagram &amp; Facebook Stats — Setup Required
-                    </p>
-                    <p className="text-xs text-muted-foreground mt-1">Followers, reach, engagement, and top posts will appear here once a Meta access token is connected.</p>
-                  </div>
-                  <div className="flex gap-2 shrink-0">
-                    <a href="https://www.instagram.com/cellrx.bio/" target="_blank" rel="noopener noreferrer" className="text-xs text-primary hover:underline">Instagram →</a>
-                    <a href="https://www.facebook.com/p/CellRx-61582063796150/" target="_blank" rel="noopener noreferrer" className="text-xs text-primary hover:underline">Facebook →</a>
+                    <p className="text-xs font-medium text-muted-foreground uppercase tracking-widest mb-3">Top Posts by Engagement</p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+                      {socialQ.data.instagram.topPosts.map((post, i) => (
+                        <a
+                          key={post.id}
+                          href={post.permalink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-start gap-2 p-2 rounded border border-border hover:bg-muted/30 transition-colors"
+                        >
+                          <span className="text-xs text-muted-foreground shrink-0 w-4 mt-0.5">{i + 1}.</span>
+                          <div className="min-w-0">
+                            <p className="text-xs text-foreground line-clamp-2">{post.caption || '(No caption)'}</p>
+                            <div className="flex items-center gap-3 mt-1">
+                              <span className="text-xs text-muted-foreground">♥ {post.likeCount}</span>
+                              <span className="text-xs text-muted-foreground">💬 {post.commentsCount}</span>
+                              <span className="text-xs text-muted-foreground">{post.timestamp}</span>
+                            </div>
+                          </div>
+                        </a>
+                      ))}
+                    </div>
                   </div>
                 </div>
-                <div className="text-xs text-muted-foreground space-y-1 border-t border-amber-500/20 pt-3">
-                  <p className="font-medium text-foreground/70 mb-2">To activate — 3 steps:</p>
-                  <p>1. Go to <a href="https://developers.facebook.com/tools/explorer" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">developers.facebook.com/tools/explorer</a></p>
-                  <p>2. Select your app → switch token to <strong>Page</strong> → select CellRX Facebook Page → add permissions: <code className="bg-muted px-1 rounded">instagram_basic</code>, <code className="bg-muted px-1 rounded">instagram_manage_insights</code>, <code className="bg-muted px-1 rounded">read_insights</code></p>
-                  <p>3. Click <strong>Generate Access Token</strong> → paste it in the chat with your Manus agent</p>
-                </div>
-              </div>
+              ) : null}
             </div>
           )}
           </PanelErrorBoundary>

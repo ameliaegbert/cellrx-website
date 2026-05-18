@@ -9,4 +9,5 @@ export const ENV = {
   forgeApiKey: process.env.BUILT_IN_FORGE_API_KEY ?? "",
   ghlApiKey: process.env.GHL_API_KEY ?? "",
   ghlLocationId: process.env.GHL_LOCATION_ID ?? "nANRD9sxSutEDIdeosHo",
+  metaAccessToken: process.env.META_ACCESS_TOKEN ?? "",
 };
