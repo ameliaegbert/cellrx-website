@@ -196,9 +196,7 @@ export default function Dashboard() {
   const appointmentsQ = trpc.dashboard.appointments.useQuery(undefined, { refetchInterval: 5 * 60 * 1000 });
   const nurtureQ = trpc.dashboard.nurtureStatus.useQuery(undefined, { refetchInterval: 5 * 60 * 1000 });
   const pipelineQ = trpc.dashboard.pipeline.useQuery(undefined, { refetchInterval: 5 * 60 * 1000 });
-  const revenueQ = trpc.dashboard.revenue.useQuery(undefined, { refetchInterval: 10 * 60 * 1000 });
   const socialQ = trpc.dashboard.socialStats.useQuery(undefined, { refetchInterval: 30 * 60 * 1000 });
-  const [revPeriod, setRevPeriod] = useState<'30d' | '60d' | '90d' | 'ytd' | 'lifetime'>('30d');
 
   const isLoading =
     summaryQ.isLoading || leadTrendQ.isLoading || appointmentsQ.isLoading || nurtureQ.isLoading || pipelineQ.isLoading;
@@ -210,8 +208,6 @@ export default function Dashboard() {
   const nurture = nurtureQ.data;
   const pipeline = pipelineQ.data ?? [];
   const leadTrend = leadTrendQ.data ?? [];
-  const rev = revenueQ.data;
-
   return (
     <DashboardLayout>
       <div className="max-w-7xl mx-auto space-y-8 pb-12">
@@ -436,89 +432,33 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* ── Revenue & Invoices Panel ── */}
-        <div id="revenue" className="bg-card border border-border rounded-lg p-6">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
-            <SectionHeader title="Revenue & Invoices" sub="Live from GHL — invoices and payment transactions" />
-            {/* Period selector */}
-            <div className="flex gap-1 bg-muted rounded-lg p-1 self-start sm:self-auto">
-              {(['30d', '60d', '90d', 'ytd', 'lifetime'] as const).map(p => (
-                <button
-                  key={p}
-                  onClick={() => setRevPeriod(p)}
-                  className={`px-2.5 py-1 rounded-md text-xs font-medium transition-colors ${
-                    revPeriod === p
-                      ? 'bg-background text-foreground shadow-sm'
-                      : 'text-muted-foreground hover:text-foreground'
-                  }`}
-                >
-                  {p === 'ytd' ? 'YTD' : p === 'lifetime' ? 'All Time' : p.toUpperCase()}
-                </button>
-              ))}
-            </div>
-          </div>
-          {revenueQ.isLoading ? (
-            <div className="text-sm text-muted-foreground">Loading revenue data...</div>
-          ) : revenueQ.error ? (
-            <div className="text-sm text-red-400">Failed to load revenue data</div>
-          ) : (
-            <div className="space-y-6">
-              {/* KPI row */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div>
-                  <p className="text-2xl font-bold text-green-400" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-                    {formatCurrency(
-                      revPeriod === '30d' ? (rev?.revenue30d ?? 0)
-                      : revPeriod === '60d' ? (rev?.revenue60d ?? 0)
-                      : revPeriod === '90d' ? (rev?.revenue90d ?? 0)
-                      : revPeriod === 'ytd' ? (rev?.revenueYTD ?? 0)
-                      : (rev?.revenueLifetime ?? 0)
-                    )}
-                  </p>
-                  <p className="text-xs text-muted-foreground mt-1">
-                    Collected ({revPeriod === 'ytd' ? 'YTD' : revPeriod === 'lifetime' ? 'All Time' : revPeriod.toUpperCase()})
-                  </p>
-                </div>
-                <div>
-                  <p className="text-2xl font-bold text-amber-400" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-                    {formatCurrency(rev?.outstandingRevenue ?? 0)}
-                  </p>
-                  <p className="text-xs text-muted-foreground mt-1">Outstanding</p>
-                </div>
-                <div>
-                  <p className="text-2xl font-bold text-foreground" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-                    {formatCurrency(rev?.totalRevenue ?? 0)}
-                  </p>
-                  <p className="text-xs text-muted-foreground mt-1">Lifetime collected</p>
-                </div>
-                <div>
-                  <p className="text-2xl font-bold text-foreground" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-                    {rev?.totalInvoices ?? "—"}
-                  </p>
-                  <p className="text-xs text-muted-foreground mt-1">
-                    Invoices ({rev?.paidInvoices ?? 0} paid · {rev?.overdueInvoices ?? 0} overdue)
-                  </p>
-                </div>
+        {/* ── Financials — Private Page Link ── */}
+        <div id="revenue" className="bg-card border border-amber-500/20 rounded-lg p-6">
+          <div className="flex items-start justify-between gap-4">
+            <div className="flex items-start gap-3">
+              <div className="h-10 w-10 rounded-full bg-amber-500/10 flex items-center justify-center shrink-0">
+                <DollarSign className="h-5 w-5 text-amber-400" />
               </div>
-              {/* Recent transactions */}
-              {rev?.recentTransactions && rev.recentTransactions.length > 0 && (
-                <div>
-                  <p className="text-xs font-medium text-muted-foreground uppercase tracking-widest mb-3">Recent Payments</p>
-                  <div className="space-y-2">
-                    {rev.recentTransactions.slice(0, 8).map(t => (
-                      <div key={t.id} className="flex items-center justify-between py-2 border-b border-border last:border-0">
-                        <div>
-                          <p className="text-sm font-medium text-foreground">{t.contactName}</p>
-                          <p className="text-xs text-muted-foreground">{t.description} · {t.date ? new Date(t.date).toLocaleDateString() : ''}</p>
-                        </div>
-                        <p className="text-sm font-bold text-green-400">{formatCurrency(t.amount)}</p>
-                      </div>
-                    ))}
-                  </div>
+              <div>
+                <div className="flex items-center gap-2">
+                  <p className="text-sm font-semibold text-foreground">Revenue &amp; Invoices</p>
+                  <span className="text-[10px] font-semibold bg-amber-500/15 text-amber-400 px-1.5 py-0.5 rounded-full">PRIVATE PAGE</span>
                 </div>
-              )}
+                <p className="text-xs text-muted-foreground mt-1 max-w-md">
+                  Financial data has been moved to a separate private page. Open it in a new tab to keep it out of shared meeting views.
+                </p>
+              </div>
             </div>
-          )}
+            <a
+              href="/dashboard/financials"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs font-medium text-amber-400 hover:text-amber-300 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 px-3 py-2 rounded-lg transition-colors shrink-0"
+            >
+              <ExternalLink className="h-3 w-3" />
+              Open Financials
+            </a>
+          </div>
         </div>
 
         {/* ── Ads Performance ── */}

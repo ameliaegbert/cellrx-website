@@ -10,4 +10,11 @@ export const ENV = {
   ghlApiKey: process.env.GHL_API_KEY ?? "",
   ghlLocationId: process.env.GHL_LOCATION_ID ?? "nANRD9sxSutEDIdeosHo",
   metaAccessToken: process.env.META_ACCESS_TOKEN ?? "",
+  googleServiceAccountEmail: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL ?? "",
+  googleServiceAccountPrivateKey: process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY ?? "",
+  gaPropertyId: process.env.GA_PROPERTY_ID ?? "",
+  gscSiteUrl: process.env.GSC_SITE_URL ?? "sc-domain:cellrx.bio",
+  googleOAuthClientId: process.env.GOOGLE_OAUTH_CLIENT_ID ?? "",
+  googleOAuthClientSecret: process.env.GOOGLE_OAUTH_CLIENT_SECRET ?? "",
+  googleOAuthRefreshToken: process.env.GOOGLE_OAUTH_REFRESH_TOKEN ?? "",
 };

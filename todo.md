@@ -129,17 +129,18 @@
 - [ ] Build Lifehouse dashboard panel (patient metrics, appointments, or billing depending on API)
 
 ### 2. Google Search Console (Site Indexing Panel)
-- [ ] Create Google Cloud project + enable Search Console API + create service account
-- [ ] Add service account email to Search Console as owner
-- [ ] Store GOOGLE_SERVICE_ACCOUNT_JSON as secret
-- [ ] Build tRPC procedure: fetch indexed pages, click-through rate, impressions, top queries
-- [ ] Build Search Console panel in dashboard (indexed pages, top queries, CTR, avg position)
+- [x] Create Google Cloud project + enable Search Console API + create service account
+- [x] Add service account email to Search Console as owner (switched to OAuth2 refresh token — GSC UI only accepts regular Google accounts)
+- [x] Store GOOGLE_OAUTH_CLIENT_ID, GOOGLE_OAUTH_CLIENT_SECRET, GOOGLE_OAUTH_REFRESH_TOKEN as secrets
+- [x] Build tRPC procedure: click-through rate, impressions, top queries, avg position, daily trend
+- [x] Build Search Console panel in /dashboard/seo (KPIs, daily click trend, top queries, top pages)
 
 ### 3. Google Analytics (Traffic Panel)
-- [ ] Enable Google Analytics Data API v1 in same Google Cloud project
-- [ ] Add service account to GA4 property as Viewer
-- [ ] Build tRPC procedure: sessions, users, bounce rate, top pages, traffic sources (last 30d)
-- [ ] Build Google Analytics panel in dashboard (sessions, users, top pages, channel breakdown)
+- [x] Enable Google Analytics Data API v1 in same Google Cloud project
+- [x] Add service account to GA4 property as Viewer (switched to OAuth2 — GA4 also requires regular Google account)
+- [x] Store GA_PROPERTY_ID (538233710) as secret
+- [x] Build tRPC procedure: sessions, users, bounce rate, top pages, traffic sources (last 28d)
+- [x] Build Google Analytics panel in /dashboard/seo (KPIs, daily session trend, traffic sources, top pages)
 
 ### 4. Clarity CRO Integration (Enhanced Panel)
 - [ ] Get Clarity API key from clarity.microsoft.com → Settings → API
@@ -148,10 +149,10 @@
 - [ ] Upgrade Clarity panel in dashboard from link-out tiles to live CRO metrics
 
 ## Financials Separation (May 18, 2026)
-- [ ] Move Revenue & Invoices panel from main dashboard to a separate private /dashboard/financials page
-- [ ] Add "Financials" nav item to DashboardLayout sidebar (protected, not visible in public meetings)
-- [ ] Remove Revenue & Invoices section from main /dashboard overview
-- [ ] Ensure /dashboard/financials is protected (requires login) and noindex
+- [x] Move Revenue & Invoices panel from main dashboard to a separate private /dashboard/financials page
+- [x] Add "Financials" nav item to DashboardLayout sidebar (protected, not visible in public meetings)
+- [x] Remove Revenue & Invoices section from main /dashboard overview
+- [x] Ensure /dashboard/financials is protected (requires login) and noindex
 
 ## Lighthouse Integration (May 18, 2026)
 - [ ] Clarify which Lighthouse platform is being used (VA Lighthouse API, or other)

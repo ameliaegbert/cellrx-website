@@ -16,6 +16,8 @@ import HealthOptimization from "./pages/HealthOptimization";
 import LongevityPrograms from "./pages/LongevityPrograms";
 import Sitemap from "./pages/Sitemap";
 import Dashboard from "./pages/Dashboard";
+import DashboardFinancials from "./pages/DashboardFinancials";
+import DashboardSEO from "./pages/DashboardSEO";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -33,6 +35,8 @@ function Router() {
       <Route path="/longevity-programs" component={LongevityPrograms} />
       <Route path="/sitemap" component={Sitemap} />
       <Route path="/dashboard" component={Dashboard} />
+      <Route path="/dashboard/financials" component={DashboardFinancials} />
+      <Route path="/dashboard/seo" component={DashboardSEO} />
       {/* Legacy redirects */}
       <Route path="/team" component={About} />
       <Route path="/404" component={NotFound} />

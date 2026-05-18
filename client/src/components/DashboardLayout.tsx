@@ -21,7 +21,7 @@ import {
 } from "@/components/ui/sidebar";
 import { getLoginUrl } from "@/const";
 import { useIsMobile } from "@/hooks/useMobile";
-import { LayoutDashboard, LogOut, PanelLeft, TrendingUp, DollarSign, BarChart2, Activity, Share2 } from "lucide-react";
+import { LayoutDashboard, LogOut, PanelLeft, TrendingUp, DollarSign, BarChart2, Activity, Share2, Lock, Search } from "lucide-react";
 import { CSSProperties, useEffect, useRef, useState } from "react";
 import { useLocation } from "wouter";
 import { DashboardLayoutSkeleton } from './DashboardLayoutSkeleton';
@@ -30,10 +30,11 @@ import { Button } from "./ui/button";
 const menuItems = [
   { icon: LayoutDashboard, label: "Overview", path: "/dashboard" },
   { icon: TrendingUp, label: "Pipeline & Leads", path: "/dashboard#pipeline" },
-  { icon: DollarSign, label: "Revenue", path: "/dashboard#revenue" },
+  { icon: Search, label: "SEO & Analytics", path: "/dashboard/seo" },
   { icon: BarChart2, label: "Ads Performance", path: "/dashboard#ads" },
   { icon: Activity, label: "Heatmap", path: "/dashboard#heatmap" },
   { icon: Share2, label: "Social Media", path: "/dashboard#social" },
+  { icon: Lock, label: "Financials", path: "/dashboard/financials", private: true },
 ];
 
 const SIDEBAR_WIDTH_KEY = "sidebar-width";
@@ -184,33 +185,44 @@ function DashboardLayoutContent({
 
           <SidebarContent className="gap-0">
             <SidebarMenu className="px-2 py-1">
-              {menuItems.map(item => {
+              {menuItems.map((item, idx) => {
                 const isActive = location === item.path;
+                const isPrivate = (item as any).private === true;
+                const prevItem = menuItems[idx - 1] as any;
+                const showDivider = isPrivate && (!prevItem || !prevItem.private);
                 return (
-                  <SidebarMenuItem key={item.path}>
-                    <SidebarMenuButton
-                      isActive={isActive}
-                      onClick={() => {
-                        const hash = item.path.split('#')[1];
-                        if (hash) {
-                          setLocation('/dashboard');
-                          setTimeout(() => {
-                            document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                          }, 100);
-                        } else {
-                          setLocation(item.path);
-                          window.scrollTo({ top: 0, behavior: 'smooth' });
-                        }
-                      }}
-                      tooltip={item.label}
-                      className={`h-10 transition-all font-normal`}
-                    >
-                      <item.icon
-                        className={`h-4 w-4 ${isActive ? "text-primary" : ""}`}
-                      />
-                      <span>{item.label}</span>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
+                  <div key={item.path}>
+                    {showDivider && !isCollapsed && (
+                      <div className="mx-2 my-2 border-t border-border/50" />
+                    )}
+                    <SidebarMenuItem>
+                      <SidebarMenuButton
+                        isActive={isActive}
+                        onClick={() => {
+                          const hash = item.path.split('#')[1];
+                          if (hash) {
+                            setLocation('/dashboard');
+                            setTimeout(() => {
+                              document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            }, 100);
+                          } else {
+                            setLocation(item.path);
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                          }
+                        }}
+                        tooltip={item.label}
+                        className="h-10 transition-all font-normal"
+                      >
+                        <item.icon
+                          className={`h-4 w-4 ${isActive ? 'text-primary' : isPrivate ? 'text-amber-400/70' : ''}`}
+                        />
+                        <span className={isPrivate ? 'text-amber-400/80' : ''}>{item.label}</span>
+                        {isPrivate && !isCollapsed && (
+                          <span className="ml-auto text-[9px] font-semibold bg-amber-500/15 text-amber-400 px-1.5 py-0.5 rounded-full">PRIVATE</span>
+                        )}
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                  </div>
                 );
               })}
             </SidebarMenu>
