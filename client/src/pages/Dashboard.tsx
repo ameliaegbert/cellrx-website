@@ -767,6 +767,31 @@ export default function Dashboard() {
                     ))}
                   </div>
 
+                  {/* 30-day Reach Sparkline */}
+                  {socialQ.data.instagram.reachSeries && socialQ.data.instagram.reachSeries.length > 0 && (
+                    <div>
+                      <p className="text-xs font-medium text-muted-foreground uppercase tracking-widest mb-2">Daily Reach — Last 30 Days</p>
+                      <ResponsiveContainer width="100%" height={80}>
+                        <AreaChart data={socialQ.data.instagram.reachSeries} margin={{ top: 4, right: 4, left: 0, bottom: 0 }}>
+                          <defs>
+                            <linearGradient id="igReachGrad" x1="0" y1="0" x2="0" y2="1">
+                              <stop offset="5%" stopColor="#E1306C" stopOpacity={0.4} />
+                              <stop offset="95%" stopColor="#E1306C" stopOpacity={0} />
+                            </linearGradient>
+                          </defs>
+                          <XAxis dataKey="date" hide />
+                          <YAxis hide />
+                          <Tooltip
+                            contentStyle={{ background: 'hsl(var(--card))', border: '1px solid hsl(var(--border))', borderRadius: '6px', fontSize: '11px' }}
+                            formatter={(v: number) => [v.toLocaleString(), 'Reach']}
+                            labelFormatter={(l: string) => l}
+                          />
+                          <Area type="monotone" dataKey="value" stroke="#E1306C" strokeWidth={1.5} fill="url(#igReachGrad)" dot={false} />
+                        </AreaChart>
+                      </ResponsiveContainer>
+                    </div>
+                  )}
+
                   {/* Top posts */}
                   <div>
                     <p className="text-xs font-medium text-muted-foreground uppercase tracking-widest mb-3">Top Posts by Engagement</p>

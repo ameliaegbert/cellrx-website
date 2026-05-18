@@ -477,6 +477,7 @@ export const dashboardRouter = router({
       website: string;
       profilePicture: string;
       reach30d: number;
+      reachSeries: Array<{ date: string; value: number }>;
       profileViews30d: number;
       websiteClicks30d: number;
       topPosts: Array<{
@@ -513,13 +514,23 @@ export const dashboardRouter = router({
         const account = await accountRes.json() as Record<string, unknown>;
         const media = await mediaRes.json() as { data?: unknown[] };
 
-        // Reach: sum daily values over 30 days
+        // Reach: sum daily values over 30 days and build series for sparkline
         let reach30d = 0;
+        let reachSeries: Array<{ date: string; value: number }> = [];
         if (reachRes.ok) {
-          const reachData = await reachRes.json() as { data?: Array<{ values?: Array<{ value: number }> }> };
+          const reachData = await reachRes.json() as { data?: Array<{ values?: Array<{ value: number; end_time: string }> }> };
           for (const metric of reachData.data ?? []) {
-            for (const v of metric.values ?? []) reach30d += Number(v.value ?? 0);
+            for (const v of metric.values ?? []) {
+              const val = Number(v.value ?? 0);
+              reach30d += val;
+              reachSeries.push({
+                date: String(v.end_time ?? '').split('T')[0],
+                value: val,
+              });
+            }
           }
+          // Sort by date ascending
+          reachSeries.sort((a, b) => a.date.localeCompare(b.date));
         }
 
         // Profile views: total_value over 30 days
@@ -564,6 +575,7 @@ export const dashboardRouter = router({
           website: String(account.website ?? 'https://cellrx.bio'),
           profilePicture: String(account.profile_picture_url ?? ''),
           reach30d,
+          reachSeries,
           profileViews30d,
           websiteClicks30d,
           topPosts,

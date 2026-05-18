@@ -120,4 +120,40 @@
 - [x] Add Instagram data to socialStats tRPC procedure (followers, reach 30d, website_clicks, profile_views, top 6 reels via Meta Graph API v19.0)
 - [x] Build live Instagram stats panel in dashboard (replaces amber setup card — shows followers, posts, reach, profile views, link clicks, top posts grid)
 - [x] Show top 6 reels sorted by likes + comments
-- [ ] Add 30-day reach sparkline chart to Instagram panel (future enhancement)
+- [x] Add 30-day reach sparkline chart to Instagram panel (AreaChart with Instagram pink gradient, tooltip with date + reach value, backend returns reachSeries with daily end_time values)
+
+## New Integrations (May 18, 2026)
+
+### 1. Lifehouse Integration
+- [ ] Identify Lifehouse platform (EHR, practice management, or other) and find API docs
+- [ ] Build Lifehouse dashboard panel (patient metrics, appointments, or billing depending on API)
+
+### 2. Google Search Console (Site Indexing Panel)
+- [ ] Create Google Cloud project + enable Search Console API + create service account
+- [ ] Add service account email to Search Console as owner
+- [ ] Store GOOGLE_SERVICE_ACCOUNT_JSON as secret
+- [ ] Build tRPC procedure: fetch indexed pages, click-through rate, impressions, top queries
+- [ ] Build Search Console panel in dashboard (indexed pages, top queries, CTR, avg position)
+
+### 3. Google Analytics (Traffic Panel)
+- [ ] Enable Google Analytics Data API v1 in same Google Cloud project
+- [ ] Add service account to GA4 property as Viewer
+- [ ] Build tRPC procedure: sessions, users, bounce rate, top pages, traffic sources (last 30d)
+- [ ] Build Google Analytics panel in dashboard (sessions, users, top pages, channel breakdown)
+
+### 4. Clarity CRO Integration (Enhanced Panel)
+- [ ] Get Clarity API key from clarity.microsoft.com → Settings → API
+- [ ] Store CLARITY_API_KEY as secret
+- [ ] Build tRPC procedure: session count, pages/session, scroll depth, rage clicks, dead clicks
+- [ ] Upgrade Clarity panel in dashboard from link-out tiles to live CRO metrics
+
+## Financials Separation (May 18, 2026)
+- [ ] Move Revenue & Invoices panel from main dashboard to a separate private /dashboard/financials page
+- [ ] Add "Financials" nav item to DashboardLayout sidebar (protected, not visible in public meetings)
+- [ ] Remove Revenue & Invoices section from main /dashboard overview
+- [ ] Ensure /dashboard/financials is protected (requires login) and noindex
+
+## Lighthouse Integration (May 18, 2026)
+- [ ] Clarify which Lighthouse platform is being used (VA Lighthouse API, or other)
+- [ ] Research Lighthouse API endpoints and authentication
+- [ ] Build Lighthouse dashboard panel once platform is confirmed
