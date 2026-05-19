@@ -52,15 +52,49 @@ export const dashboardRouter = router({
     const thirtyDaysAgo = now - 30 * 24 * 60 * 60 * 1000;
     const sevenDaysAgo = now - 7 * 24 * 60 * 60 * 1000;
 
-    // Fetch contacts (total + recent)
-    const [contactsData, oppsData] = await Promise.all([
-      ghlGet(`/contacts/?locationId=${ENV.ghlLocationId}&limit=1`),
+    // Fetch contacts (paginated, sorted by date_added desc) + opportunities
+    // We paginate contacts to count new ones by dateAdded (GHL doesn't support server-side date filtering)
+    async function countNewContacts(cutoffMs: number): Promise<{ total: number; newCount: number }> {
+      let page = 1;
+      let newCount = 0;
+      let totalContacts = 0;
+      let keepGoing = true;
+
+      while (keepGoing) {
+        const data = await ghlGet(`/contacts/?locationId=${ENV.ghlLocationId}&limit=100&sortBy=date_added&page=${page}`);
+        const contacts: Array<{ dateAdded: string }> = data?.contacts ?? [];
+        if (page === 1) totalContacts = data?.meta?.total ?? 0;
+        if (contacts.length === 0) break;
+
+        for (const c of contacts) {
+          const added = new Date(c.dateAdded).getTime();
+          if (added >= cutoffMs) {
+            newCount++;
+          } else {
+            keepGoing = false; // sorted oldest-first, stop once we pass the cutoff
+            break;
+          }
+        }
+        page++;
+        if (page > 10) break; // safety cap at 1000 contacts
+      }
+      return { total: totalContacts, newCount };
+    }
+
+    const [contactStats, oppsData] = await Promise.all([
+      countNewContacts(thirtyDaysAgo),
       ghlGet(`/opportunities/search?location_id=${ENV.ghlLocationId}&limit=100`),
     ]);
 
-    const totalContacts: number = contactsData?.meta?.total ?? 0;
+    const totalContacts = contactStats.total;
+    const newLeads30d = contactStats.newCount;
 
-    // Opportunities breakdown
+    // Count new contacts in last 7 days (subset of 30d batch — re-count from same data by fetching again with tighter cutoff)
+    // For efficiency, re-use the 30d fetch: count those within 7d
+    const contactStats7d = await countNewContacts(sevenDaysAgo);
+    const newLeads7d = contactStats7d.newCount;
+
+    // Opportunities breakdown (pipeline stages)
     const opportunities: Array<{
       id: string;
       name: string;
@@ -73,17 +107,6 @@ export const dashboardRouter = router({
     const openOpps = opportunities.filter(o => o.status === "open");
     const wonOpps = opportunities.filter(o => o.status === "won");
     const lostOpps = opportunities.filter(o => o.status === "abandoned" || o.status === "lost");
-
-    // New leads in last 30 days (by dateAdded)
-    const newLeads30d = opportunities.filter(o => {
-      const added = new Date(o.dateAdded).getTime();
-      return added >= thirtyDaysAgo;
-    }).length;
-
-    const newLeads7d = opportunities.filter(o => {
-      const added = new Date(o.dateAdded).getTime();
-      return added >= sevenDaysAgo;
-    }).length;
 
     // Pipeline value
     const totalPipelineValue = openOpps.reduce((sum, o) => sum + (o.monetaryValue || 0), 0);
@@ -113,21 +136,14 @@ export const dashboardRouter = router({
   }),
 
   /**
-   * Lead trend — new opportunities per day for the last 30 days
+   * Lead trend — new CRM contacts added per day for the last 30 days
    */
   leadTrend: adminProcedure.query(async () => {
     const thirtyDaysAgo = Date.now() - 30 * 24 * 60 * 60 * 1000;
-    const data = await ghlGet(
-      `/opportunities/search?location_id=${ENV.ghlLocationId}&limit=100`
-    );
 
-    const opportunities: Array<{ dateAdded: string; status: string }> =
-      data?.opportunities ?? [];
-
-    // Build daily counts for last 30 days
+    // Build daily counts scaffold
     const dailyCounts: Record<string, number> = {};
     const today = new Date();
-
     for (let i = 29; i >= 0; i--) {
       const d = new Date(today);
       d.setDate(d.getDate() - i);
@@ -135,15 +151,27 @@ export const dashboardRouter = router({
       dailyCounts[key] = 0;
     }
 
-    opportunities.forEach(o => {
-      const added = new Date(o.dateAdded).getTime();
-      if (added >= thirtyDaysAgo) {
-        const key = new Date(o.dateAdded).toISOString().split("T")[0];
-        if (key in dailyCounts) {
-          dailyCounts[key]++;
+    // Paginate contacts sorted by date_added (newest first) and count by day
+    let page = 1;
+    let keepGoing = true;
+    while (keepGoing) {
+      const data = await ghlGet(`/contacts/?locationId=${ENV.ghlLocationId}&limit=100&sortBy=date_added&page=${page}`);
+      const contacts: Array<{ dateAdded: string }> = data?.contacts ?? [];
+      if (contacts.length === 0) break;
+
+      for (const c of contacts) {
+        const added = new Date(c.dateAdded).getTime();
+        if (added >= thirtyDaysAgo) {
+          const key = new Date(c.dateAdded).toISOString().split("T")[0];
+          if (key in dailyCounts) dailyCounts[key]++;
+        } else {
+          keepGoing = false;
+          break;
         }
       }
-    });
+      page++;
+      if (page > 10) break; // safety cap
+    }
 
     return Object.entries(dailyCounts).map(([date, count]) => ({
       date,

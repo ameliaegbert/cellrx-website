@@ -125,8 +125,8 @@
 ## New Integrations (May 18, 2026)
 
 ### 1. Lifehouse Integration
-- [ ] Identify Lifehouse platform (EHR, practice management, or other) and find API docs
-- [ ] Build Lifehouse dashboard panel (patient metrics, appointments, or billing depending on API)
+- [x] Identify Lifehouse platform — user confirmed Lifehouse integration is already complete, no further action needed
+- [x] Build Lifehouse dashboard panel — N/A, integration was handled outside this project
 
 ### 2. Google Search Console (Site Indexing Panel)
 - [x] Create Google Cloud project + enable Search Console API + create service account
