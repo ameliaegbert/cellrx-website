@@ -19,6 +19,7 @@ const sections = [
       { label: "Our Team", href: "/team", desc: "Meet Dr. Jacob Egbert and the CellRX team" },
       { label: "Contact", href: "/contact", desc: "Book a consultation or reach our team" },
       { label: "Patient Testimonials", href: "/testimonials", desc: "Real patient outcomes and stories" },
+      { label: "FAQ", href: "/faq", desc: "Answers to common questions about stem cell therapy, pricing, safety, and more" },
     ],
   },
   {

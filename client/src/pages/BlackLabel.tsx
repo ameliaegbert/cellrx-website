@@ -126,6 +126,28 @@ export default function BlackLabel() {
         </div>
       </section>
 
+      {/* Key Takeaways */}
+      <section className="py-10 bg-[#030d1e] border-b border-white/5">
+        <div className="container">
+          <p className="text-[#FBB217] text-xs font-semibold tracking-widest uppercase mb-4" style={{ fontFamily: BODY_FONT }}>Key Takeaways</p>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            {[
+              "Exclusive annual membership — limited enrollment by design",
+              "Quarterly comprehensive laboratory panels included",
+              "Direct physician access — secure messaging and same-week appointments",
+              "Personalized longevity protocols tailored to your biology",
+              "Stem cell treatments available as a premium add-on",
+              "Pricing is custom and discussed privately during consultation",
+            ].map((point, i) => (
+              <li key={i} className="flex items-start gap-2 text-[#D6D7D9]/80 text-sm" style={{ fontFamily: BODY_FONT }}>
+                <span className="text-[#FBB217] shrink-0 mt-0.5" aria-hidden="true">•</span>
+                {point}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
       {/* ─── THE PROBLEM (StoryBrand: Name the villain) ─── */}
       <section className="py-24 bg-[#051229]">
         <div className="container">

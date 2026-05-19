@@ -76,6 +76,18 @@ CellRX offers protocols up to 10 CC — the maximum dose available. Dosing is de
 
 CellRX uses ethically sourced, rigorously screened biologic products with full chain-of-custody documentation. All treatments are administered by Dr. Jacob Egbert, MD. Stem cell therapies are considered investigational by the FDA; results may vary. Patients receive a thorough consultation and informed consent process before any treatment.
 
+## Pages
+
+- [Home](https://www.cellrx.bio/) — Overview of CellRX services and differentiators
+- [Services](https://www.cellrx.bio/services) — Stem cell injection and IV therapy details and pricing
+- [Black Label Concierge Medicine](https://www.cellrx.bio/black-label) — Exclusive annual membership program
+- [Health Optimization](https://www.cellrx.bio/health-optimization) — Biomarker-driven health optimization
+- [Longevity Programs](https://www.cellrx.bio/longevity-programs) — Anti-aging and longevity protocols
+- [FAQ](https://www.cellrx.bio/faq) — 20 common questions answered about stem cell therapy, pricing, safety, and more
+- [About](https://www.cellrx.bio/about) — Dr. Egbert's background and the CellRX story
+- [Testimonials](https://www.cellrx.bio/testimonials) — Patient outcomes and stories
+- [Contact](https://www.cellrx.bio/contact) — Book a consultation
+
 ## Schema & Structured Data
 
-This site includes structured data markup (schema.org) for: MedicalBusiness, LocalBusiness, Physician, FAQPage, and individual service Offers. Canonical URL: https://www.cellrx.bio/
+This site includes structured data markup (schema.org) for: MedicalBusiness, LocalBusiness, Physician, FAQPage (global + page-specific), MedicalProcedure (Services page), BreadcrumbList (all pages), and Article (blog posts). Canonical URL: https://www.cellrx.bio/

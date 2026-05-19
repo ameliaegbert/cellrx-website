@@ -214,6 +214,28 @@ export default function LongevityPrograms() {
         </div>
       </section>
 
+      {/* Key Takeaways */}
+      <section className="py-10 bg-[#030d1e] border-b border-white/5">
+        <div className="container">
+          <p className="text-[#FBB217] text-xs font-semibold tracking-widest uppercase mb-4" style={{ fontFamily: "'DM Sans', sans-serif" }}>Key Takeaways</p>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            {[
+              "Combines stem cell biologics, NAD+, peptides, and hormone optimization",
+              "Protocols built around your biomarkers — not a generic template",
+              "Targets cellular repair, mitochondrial function, and systemic resilience",
+              "Advanced diagnostics included — track biological age, not just calendar age",
+              "Designed for individuals who refuse to accept biological decline",
+              "Physician-directed by Dr. Jacob Egbert — 10+ years in regenerative medicine",
+            ].map((point, i) => (
+              <li key={i} className="flex items-start gap-2 text-[#D6D7D9]/80 text-sm" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                <span className="text-[#FBB217] shrink-0 mt-0.5" aria-hidden="true">•</span>
+                {point}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
       {/* Programs */}
       <section className="py-24 bg-[#051229]">
         <div className="container">

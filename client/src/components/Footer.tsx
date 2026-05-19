@@ -81,6 +81,7 @@ export default function Footer() {
                 { label: "About Us", href: "/about" },
                 { label: "Our Team", href: "/team" },
                 { label: "Blog & Research", href: "/blog" },
+                { label: "FAQ", href: "/faq" },
                 { label: "Contact", href: "/contact" },
               ].map((item) => (
                 <li key={item.label}>

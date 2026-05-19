@@ -15,6 +15,7 @@ import Testimonials from "./pages/Testimonials";
 import HealthOptimization from "./pages/HealthOptimization";
 import LongevityPrograms from "./pages/LongevityPrograms";
 import Sitemap from "./pages/Sitemap";
+import FAQ from "./pages/FAQ";
 import Dashboard from "./pages/Dashboard";
 import DashboardFinancials from "./pages/DashboardFinancials";
 import DashboardSEO from "./pages/DashboardSEO";
@@ -35,6 +36,7 @@ function Router() {
       <Route path="/health-optimization" component={HealthOptimization} />
       <Route path="/longevity-programs" component={LongevityPrograms} />
       <Route path="/sitemap" component={Sitemap} />
+      <Route path="/faq" component={FAQ} />
       <Route path="/dashboard" component={Dashboard} />
       <Route path="/dashboard/financials" component={DashboardFinancials} />
       <Route path="/dashboard/seo" component={DashboardSEO} />

@@ -144,6 +144,51 @@ export function useFAQSchema(faqs: FAQItem[], pageId: string) {
   }, [faqs, pageId]);
 }
 
+// ─── MedicalProcedure schema hook ───────────────────────────────────────────
+export interface MedicalProcedureData {
+  name: string;
+  description: string;
+  bodyLocation?: string;
+  preparation?: string;
+  followup?: string;
+  howPerformed?: string;
+  procedureType?: string;
+}
+
+export function useMedicalProcedureSchema(procedures: MedicalProcedureData[], pageId: string) {
+  useEffect(() => {
+    const schemas = procedures.map((p) => ({
+      "@context": "https://schema.org",
+      "@type": "MedicalProcedure",
+      "name": p.name,
+      "description": p.description,
+      ...(p.bodyLocation ? { "bodyLocation": p.bodyLocation } : {}),
+      ...(p.preparation ? { "preparation": p.preparation } : {}),
+      ...(p.followup ? { "followup": p.followup } : {}),
+      ...(p.howPerformed ? { "howPerformed": p.howPerformed } : {}),
+      ...(p.procedureType ? { "procedureType": p.procedureType } : {}),
+      "performedBy": {
+        "@type": "Physician",
+        "name": "Dr. Jacob Egbert",
+        "worksFor": { "@id": "https://www.cellrx.bio/#organization" }
+      },
+      "provider": { "@id": "https://www.cellrx.bio/#organization" }
+    }));
+    const id = `medical-procedure-schema-${pageId}`;
+    let el = document.getElementById(id) as HTMLScriptElement | null;
+    if (!el) {
+      el = document.createElement("script");
+      el.id = id;
+      el.type = "application/ld+json";
+      document.head.appendChild(el);
+    }
+    el.textContent = JSON.stringify(schemas.length === 1 ? schemas[0] : schemas);
+    return () => {
+      document.getElementById(id)?.remove();
+    };
+  }, [procedures, pageId]);
+}
+
 // ─── noindex hook (for admin/internal pages) ──────────────────────────────────
 export function useNoIndex() {
   useEffect(() => {
@@ -232,6 +277,14 @@ export const PAGE_SEO = {
     title: "Site Map — CellRX Regenerative Medicine",
     description: "A complete directory of all pages on the CellRX website.",
     canonical: "/sitemap",
+  },
+  faq: {
+    title: "Stem Cell Therapy FAQ — CellRX Regenerative Medicine",
+    description:
+      "Answers to the most common questions about stem cell therapy, IV therapy, Black Label concierge medicine, pricing, safety, and what to expect at CellRX in Lehi, Utah.",
+    canonical: "/faq",
+    keywords:
+      "stem cell therapy FAQ, stem cell therapy cost Utah, is stem cell therapy safe, stem cell therapy questions, CellRX FAQ",
   },
 } as const;
 

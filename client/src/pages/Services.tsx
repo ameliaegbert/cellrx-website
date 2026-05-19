@@ -5,7 +5,7 @@
  */
 
 import { useEffect, useState } from "react";
-import { useSEO, PAGE_SEO, useBreadcrumb, useFAQSchema } from "@/hooks/useSEO";
+import { useSEO, PAGE_SEO, useBreadcrumb, useFAQSchema, useMedicalProcedureSchema } from "@/hooks/useSEO";
 import { Link } from "wouter";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -87,6 +87,26 @@ export default function Services() {
     SERVICE_FAQS.map((f) => ({ question: f.q, answer: f.a })),
     "services"
   );
+  useMedicalProcedureSchema([
+    {
+      name: "Stem Cell Injection Therapy",
+      description: "Physician-directed stem cell injections delivering concentrated biologics directly to the site of tissue damage. Used for joint pain, tendon injuries, osteoarthritis, and localized degenerative conditions. Biologics are never diluted, never replicated, and sourced from healthy, consented local births.",
+      bodyLocation: "Joints, tendons, and soft tissue",
+      howPerformed: "Ultrasound-guided injection of concentrated mesenchymal stem cell biologics directly to the target site under sterile conditions.",
+      preparation: "Private consultation with Medical Director to assess candidacy and determine optimal dosing (1–10 CC at $1,250 per CC).",
+      followup: "Personalized aftercare guidance provided. Most patients resume normal activities same day. Full regenerative benefit unfolds over 3–6 months.",
+      procedureType: "Regenerative Medicine",
+    },
+    {
+      name: "Stem Cell IV Therapy",
+      description: "Intravenous delivery of concentrated stem cell biologics for systemic regeneration. Targets whole-body inflammation, cellular aging, energy, and cognitive performance. Biologics are never diluted, never replicated, and sourced from healthy, consented local births.",
+      bodyLocation: "Systemic — intravenous delivery",
+      howPerformed: "Intravenous infusion of concentrated mesenchymal stem cell biologics administered in a private clinical setting.",
+      preparation: "Private consultation with Medical Director to assess candidacy and determine optimal dosing (1–10 CC at $1,250 per CC).",
+      followup: "Personalized aftercare guidance provided. Most patients resume normal activities same day. Full regenerative benefit unfolds over 3–6 months.",
+      procedureType: "Regenerative Medicine",
+    },
+  ], "services");
   useScrollAnimation();
 
   return (
@@ -112,6 +132,28 @@ export default function Services() {
           <p className="text-[#D6D7D9] text-base leading-relaxed mt-6 max-w-2xl" style={{ fontFamily: "'DM Sans', sans-serif" }}>
             CellRX offers physician-directed stem cell injection therapy starting at $2,500 and IV therapy starting at $4,000 in Lehi, Utah. All protocols are priced at $1,250 per CC and dosed from 1 to 10 CC based on your condition. Unlike most clinics, our Medical Director oversees both the clinic and the stem cell source company, ensuring full chain-of-custody biologics that are never diluted and never replicated.
           </p>
+        </div>
+      </section>
+
+      {/* Key Takeaways */}
+      <section className="py-10 bg-[#030d1e] border-b border-white/5">
+        <div className="container">
+          <p className="text-[#FBB217] text-xs font-semibold tracking-widest uppercase mb-4" style={{ fontFamily: "'DM Sans', sans-serif" }}>Key Takeaways</p>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            {[
+              "Stem cell injection therapy starts at $2,500 — targeted joint and tissue repair",
+              "IV therapy starts at $4,000 — systemic whole-body regeneration",
+              "All protocols priced at $1,250 per CC, 1–10 CC based on physician assessment",
+              "Medical Director oversees both clinic and stem cell source company",
+              "Biologics are never diluted, never replicated — maximum therapeutic concentration",
+              "Most treatments completed in under 60 minutes — same-day return to activities",
+            ].map((point, i) => (
+              <li key={i} className="flex items-start gap-2 text-[#D6D7D9]/80 text-sm" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                <span className="text-[#FBB217] shrink-0 mt-0.5" aria-hidden="true">•</span>
+                {point}
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 

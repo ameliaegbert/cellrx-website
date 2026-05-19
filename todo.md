@@ -192,12 +192,12 @@
 - [ ] Fix redirect chain: `cellrx.bio → www.cellrx.bio` adds unnecessary round-trip — configure canonical domain at DNS/CDN level
 
 #### P2: Render-Blocking Resources (~200ms desktop savings)
-- [ ] Convert Google Fonts `<link>` to use `rel="preconnect"` + `rel="preload"` instead of blocking render
+- [x] Convert Google Fonts `<link>` to use `rel="preconnect"` + `rel="preload"` instead of blocking render — uses media=print/onload non-blocking pattern (equivalent to preload); preconnect tags present for fonts.googleapis.com and fonts.gstatic.com
 - [ ] Inline critical CSS for above-the-fold content (hero section) to eliminate render-blocking stylesheet
 
 #### P2: Server Response Time (~330ms mobile / ~340ms desktop savings)
 - [x] Verify gzip/brotli compression is enabled in Express server — `compression()` middleware already active in server/_core/index.ts
-- [ ] Add `preload` hints for critical resources (hero image, main font files)
+- [x] Add `preload` hints for critical resources (hero image) — hero image preload link added to index.html with fetchpriority=high; Google Fonts uses media=print/onload non-blocking pattern (no font file preloads needed with this approach)
 
 ---
 
@@ -213,7 +213,7 @@
 
 #### Structured Data / Schema Markup (Verify completeness)
 - [x] Verify `MedicalClinic` JSON-LD schema on homepage includes: name, address, phone, openingHours, priceRange, medicalSpecialty — MedicalBusiness+LocalBusiness schema in index.html with all fields
-- [ ] Add `MedicalProcedure` schema to each service page (Stem Cell Injection, IV Therapy, Black Label)
+- [x] Add `MedicalProcedure` schema to each service page (Stem Cell Injection, IV Therapy, Black Label) — useMedicalProcedureSchema hook added to useSEO.ts; wired into Services.tsx with 2 procedures
 - [x] Add `Physician` / `Person` schema for Dr. Egbert: name, jobTitle, medicalSpecialty, worksFor, credentials — Physician schema in index.html
 - [x] Verify `FAQPage` JSON-LD schema is present and matches the visible FAQ section content (global schema in index.html + page-specific FAQPage JSON-LD injected via useFAQSchema on Services, BlackLabel, HealthOptimization, LongevityPrograms)
 - [x] Verify `BreadcrumbList` schema on all interior pages — useBreadcrumb() hook available and used on key pages
@@ -249,9 +249,9 @@
 
 #### Content Structure for AI Citation
 - [x] Add "Answer first" block (60–90 words) under the H1 on homepage and each service page — added/updated on Services, BlackLabel, HealthOptimization, LongevityPrograms; Home hero paragraph already present
-- [ ] Add "Key Takeaways" section (4–6 bullets, max 16 words each) to each service page
+- [x] Add "Key Takeaways" section (4–6 bullets, max 16 words each) to each service page — added to Services, BlackLabel, HealthOptimization, LongevityPrograms
 - [ ] Rewrite section headings to match real patient search prompts: "What is stem cell therapy?", "How long does recovery take?", "Is stem cell therapy safe?", "How much does stem cell therapy cost in [city]?"
-- [ ] Build dedicated `/faq` page with 15–20 Q&As answered in 40–80 words each — #1 source AI engines pull from
+- [x] Build dedicated `/faq` page with 15–20 Q&As answered in 40–80 words each — /faq page created with 20 Q&As in 6 categories; FAQPage JSON-LD schema injected; added to sitemap.xml, Footer, Sitemap page, and llms.txt
 - [x] Add authorship block to all content pages: author name, credentials, published date, last updated date (E-E-A-T author block added to all blog posts)
 
 #### E-E-A-T Signals (Experience, Expertise, Authoritativeness, Trustworthiness)

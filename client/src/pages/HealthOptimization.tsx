@@ -164,6 +164,28 @@ export default function HealthOptimization() {
         </div>
       </section>
 
+      {/* Key Takeaways */}
+      <section className="py-10 bg-[#030d1e] border-b border-white/5">
+        <div className="container">
+          <p className="text-[#FBB217] text-xs font-semibold tracking-widest uppercase mb-4" style={{ fontFamily: "'DM Sans', sans-serif" }}>Key Takeaways</p>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            {[
+              "Physician-directed program — protocols designed around your unique lab results",
+              "Comprehensive biomarker testing — hormones, metabolic markers, inflammation, and more",
+              "Targets energy, cognitive clarity, metabolic function, and resilience",
+              "Hormone optimization included — evidence-based, personalized dosing",
+              "Stem cell therapy available as a regenerative add-on",
+              "Ongoing monitoring and protocol adjustment as your biology evolves",
+            ].map((point, i) => (
+              <li key={i} className="flex items-start gap-2 text-[#D6D7D9]/80 text-sm" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                <span className="text-[#FBB217] shrink-0 mt-0.5" aria-hidden="true">•</span>
+                {point}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
       {/* Philosophy */}
       <section className="py-24 bg-[#030d1e]">
         <div className="container">
