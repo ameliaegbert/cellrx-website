@@ -12,6 +12,7 @@ import { sdk } from "./sdk";
 import { processNurtureQueue } from "../nurture";
 import { ghlWebhookHandler } from "../ghlWebhook";
 import { pollCalendarAppointments } from "../calendarPoller";
+import { runMetaTokenRefresh } from "../metaTokenRefresh";
 
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
@@ -42,6 +43,25 @@ async function startServer() {
   registerOAuthRoutes(app);
   // ─── GHL Webhook: appointment booked + no-show events ───
   app.post("/api/webhooks/ghl", ghlWebhookHandler);
+
+  // ─── Scheduled heartbeat: Meta token auto-refresh (runs every 45 days) ───
+  app.post("/api/scheduled/meta-token-refresh", async (req: Request, res: Response) => {
+    try {
+      const user = await sdk.authenticateRequest(req);
+      if (!user.isCron || !user.taskUid) {
+        return res.status(403).json({ error: "cron-only" });
+      }
+      const result = await runMetaTokenRefresh();
+      return res.json(result);
+    } catch (e) {
+      console.error("[/api/scheduled/meta-token-refresh] Error:", e);
+      return res.status(500).json({
+        error: String(e),
+        context: { url: "/api/scheduled/meta-token-refresh" },
+        timestamp: new Date().toISOString(),
+      });
+    }
+  });
 
   // ─── Scheduled heartbeat: nurture queue processor (runs hourly) ───
   app.post("/api/scheduled/nurture", async (req: Request, res: Response) => {

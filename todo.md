@@ -158,3 +158,10 @@
 - [ ] Clarify which Lighthouse platform is being used (VA Lighthouse API, or other)
 - [ ] Research Lighthouse API endpoints and authentication
 - [ ] Build Lighthouse dashboard panel once platform is confirmed
+
+## Meta Token Auto-Refresh (May 18, 2026)
+- [ ] Exchange short-lived Meta token for long-lived token (60 days)
+- [ ] Store META_APP_ID and META_APP_SECRET as secrets
+- [ ] Build heartbeat job that refreshes the token every 45 days automatically
+- [ ] Store refreshed token back to secrets so it never expires
+- [ ] Test that Instagram panel shows live data again

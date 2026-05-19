@@ -10,6 +10,8 @@ export const ENV = {
   ghlApiKey: process.env.GHL_API_KEY ?? "",
   ghlLocationId: process.env.GHL_LOCATION_ID ?? "nANRD9sxSutEDIdeosHo",
   metaAccessToken: process.env.META_ACCESS_TOKEN ?? "",
+  metaAppId: process.env.META_APP_ID ?? "",
+  metaAppSecret: process.env.META_APP_SECRET ?? "",
   googleServiceAccountEmail: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL ?? "",
   googleServiceAccountPrivateKey: process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY ?? "",
   gaPropertyId: process.env.GA_PROPERTY_ID ?? "",
