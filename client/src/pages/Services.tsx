@@ -471,6 +471,68 @@ export default function Services() {
         </div>
       </section>
 
+      {/* ─── SOURCES & REFERENCES ─── */}
+      <section className="py-16 bg-[#051229] border-t border-white/5">
+        <div className="container">
+          <div className="max-w-3xl">
+            <p className="section-label mb-4">Evidence Base</p>
+            <h2 className="text-[#F6F5EC] mb-6" style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(28px, 3vw, 40px)" }}>
+              SOURCES & REFERENCES
+            </h2>
+            <p className="text-[#D6D7D9]/60 text-sm leading-relaxed mb-8" style={{ fontFamily: "'Libre Franklin', sans-serif" }}>
+              CellRX protocols are grounded in peer-reviewed research. The following publications represent the scientific foundation for the regenerative therapies we offer.
+            </p>
+            <ol className="space-y-4">
+              {[
+                {
+                  num: "1",
+                  citation: "Centeno, C.J., et al. (2018). \"A multi-center analysis of adverse events among two thousand, three hundred and seventy two adult patients undergoing adult autologous stem cell therapy for orthopaedic conditions.\" ",
+                  journal: "International Orthopaedics, 40(8), 1755–1765.",
+                  url: "https://pubmed.ncbi.nlm.nih.gov/27197691/"
+                },
+                {
+                  num: "2",
+                  citation: "Pas, H.I., et al. (2017). \"Stem cell injections in knee osteoarthritis: a systematic review of the literature.\" ",
+                  journal: "British Journal of Sports Medicine, 51(15), 1125–1133.",
+                  url: "https://pubmed.ncbi.nlm.nih.gov/27821714/"
+                },
+                {
+                  num: "3",
+                  citation: "Lalu, M.M., et al. (2012). \"Safety of cell therapy with mesenchymal stromal cells (SafeCell): a systematic review and meta-analysis of clinical trials.\" ",
+                  journal: "PLOS ONE, 7(10), e47559.",
+                  url: "https://pubmed.ncbi.nlm.nih.gov/23133515/"
+                },
+                {
+                  num: "4",
+                  citation: "Caplan, A.I. (2017). \"Mesenchymal stem cells: time to change the name!\" ",
+                  journal: "Stem Cells Translational Medicine, 6(6), 1445–1451.",
+                  url: "https://pubmed.ncbi.nlm.nih.gov/28452199/"
+                },
+                {
+                  num: "5",
+                  citation: "Uccelli, A., Moretta, L., & Pistoia, V. (2008). \"Mesenchymal stem cells in health and disease.\" ",
+                  journal: "Nature Reviews Immunology, 8(9), 726–736.",
+                  url: "https://pubmed.ncbi.nlm.nih.gov/19172693/"
+                },
+              ].map((ref, i) => (
+                <li key={i} className="flex gap-4">
+                  <span className="text-[#FBB217] text-xs font-bold shrink-0 mt-0.5" style={{ fontFamily: "'DM Sans', sans-serif" }}>[{ref.num}]</span>
+                  <p className="text-[#D6D7D9]/60 text-xs leading-relaxed" style={{ fontFamily: "'Libre Franklin', sans-serif" }}>
+                    {ref.citation}
+                    <a href={ref.url} target="_blank" rel="noopener noreferrer" className="text-[#6DB3F2] hover:text-[#FBB217] transition-colors">
+                      {ref.journal}
+                    </a>
+                  </p>
+                </li>
+              ))}
+            </ol>
+            <p className="text-[#D6D7D9]/30 text-xs mt-8 leading-relaxed" style={{ fontFamily: "'Libre Franklin', sans-serif" }}>
+              <em>Disclaimer: Stem cell therapies are considered investigational by the FDA. Individual results may vary. The above references are provided for educational purposes. CellRX does not claim that its treatments replicate the exact protocols described in these publications.</em>
+            </p>
+          </div>
+        </div>
+      </section>
+
       <BackToTop />
       <Footer />
     </div>

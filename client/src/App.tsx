@@ -1,51 +1,69 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
+import { lazy, Suspense } from "react";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
+
+// ─── Eagerly loaded (critical path — homepage) ────────────────────────────────
 import Home from "./pages/Home";
-import About from "./pages/About";
-import Services from "./pages/Services";
-import BlackLabel from "./pages/BlackLabel";
-import Contact from "./pages/Contact";
-import Blog from "./pages/Blog";
-import BlogPost from "./pages/BlogPost";
-import Testimonials from "./pages/Testimonials";
-import HealthOptimization from "./pages/HealthOptimization";
-import LongevityPrograms from "./pages/LongevityPrograms";
-import Sitemap from "./pages/Sitemap";
-import FAQ from "./pages/FAQ";
-import Dashboard from "./pages/Dashboard";
-import DashboardFinancials from "./pages/DashboardFinancials";
-import DashboardSEO from "./pages/DashboardSEO";
-import DashboardLighthouse from "./pages/DashboardLighthouse";
+
+// ─── Lazily loaded (code-split — reduces initial bundle) ─────────────────────
+const About = lazy(() => import("./pages/About"));
+const Services = lazy(() => import("./pages/Services"));
+const BlackLabel = lazy(() => import("./pages/BlackLabel"));
+const Contact = lazy(() => import("./pages/Contact"));
+const Blog = lazy(() => import("./pages/Blog"));
+const BlogPost = lazy(() => import("./pages/BlogPost"));
+const Testimonials = lazy(() => import("./pages/Testimonials"));
+const HealthOptimization = lazy(() => import("./pages/HealthOptimization"));
+const LongevityPrograms = lazy(() => import("./pages/LongevityPrograms"));
+const Sitemap = lazy(() => import("./pages/Sitemap"));
+const FAQ = lazy(() => import("./pages/FAQ"));
+const DrEgbert = lazy(() => import("./pages/DrEgbert"));
+const Dashboard = lazy(() => import("./pages/Dashboard"));
+const DashboardFinancials = lazy(() => import("./pages/DashboardFinancials"));
+const DashboardSEO = lazy(() => import("./pages/DashboardSEO"));
+const DashboardLighthouse = lazy(() => import("./pages/DashboardLighthouse"));
+
+// Minimal page-level loading skeleton — matches site background
+function PageLoader() {
+  return (
+    <div className="min-h-screen bg-[#051229] flex items-center justify-center">
+      <div className="w-8 h-8 border-2 border-[#FBB217] border-t-transparent rounded-full animate-spin" />
+    </div>
+  );
+}
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
-    <Switch>
-      <Route path="/" component={Home} />
-      <Route path="/about" component={About} />
-      <Route path="/services" component={Services} />
-      <Route path="/black-label" component={BlackLabel} />
-      <Route path="/contact" component={Contact} />
-      <Route path="/blog" component={Blog} />
-      <Route path="/blog/:slug" component={BlogPost} />
-      <Route path="/testimonials" component={Testimonials} />
-      <Route path="/health-optimization" component={HealthOptimization} />
-      <Route path="/longevity-programs" component={LongevityPrograms} />
-      <Route path="/sitemap" component={Sitemap} />
-      <Route path="/faq" component={FAQ} />
-      <Route path="/dashboard" component={Dashboard} />
-      <Route path="/dashboard/financials" component={DashboardFinancials} />
-      <Route path="/dashboard/seo" component={DashboardSEO} />
-      <Route path="/dashboard/lighthouse" component={DashboardLighthouse} />
-      {/* Legacy redirects */}
-      <Route path="/team" component={About} />
-      <Route path="/404" component={NotFound} />
-      <Route component={NotFound} />
-    </Switch>
+    <Suspense fallback={<PageLoader />}>
+      <Switch>
+        <Route path="/" component={Home} />
+        <Route path="/about" component={About} />
+        <Route path="/about/dr-egbert" component={DrEgbert} />
+        <Route path="/services" component={Services} />
+        <Route path="/black-label" component={BlackLabel} />
+        <Route path="/contact" component={Contact} />
+        <Route path="/blog" component={Blog} />
+        <Route path="/blog/:slug" component={BlogPost} />
+        <Route path="/testimonials" component={Testimonials} />
+        <Route path="/health-optimization" component={HealthOptimization} />
+        <Route path="/longevity-programs" component={LongevityPrograms} />
+        <Route path="/sitemap" component={Sitemap} />
+        <Route path="/faq" component={FAQ} />
+        <Route path="/dashboard" component={Dashboard} />
+        <Route path="/dashboard/financials" component={DashboardFinancials} />
+        <Route path="/dashboard/seo" component={DashboardSEO} />
+        <Route path="/dashboard/lighthouse" component={DashboardLighthouse} />
+        {/* Legacy redirects */}
+        <Route path="/team" component={About} />
+        <Route path="/404" component={NotFound} />
+        <Route component={NotFound} />
+      </Switch>
+    </Suspense>
   );
 }
 

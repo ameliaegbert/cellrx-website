@@ -255,8 +255,8 @@
 - [x] Add authorship block to all content pages: author name, credentials, published date, last updated date (E-E-A-T author block added to all blog posts)
 
 #### E-E-A-T Signals (Experience, Expertise, Authoritativeness, Trustworthiness)
-- [ ] Create dedicated `/about/dr-egbert` page: full bio, credentials, medical school, board certifications, publications
-- [ ] Add "Sources & References" section to service pages citing peer-reviewed research on stem cell therapy
+- [x] Create dedicated `/about/dr-egbert` page: full bio, credentials, medical school, board certifications, publications — DrEgbert.tsx created with Physician JSON-LD schema, full bio, dual-role section, credentials card; route at /about/dr-egbert
+- [x] Add "Sources & References" section to service pages citing peer-reviewed research on stem cell therapy — 5 PubMed-linked citations added to Services.tsx with FDA disclaimer
 - [x] Add "Last Updated" date to all service and blog pages (lastUpdated field added to all 7 blog articles)
 - [ ] Publish at least 2 long-form blog posts per month targeting specific patient questions
 
@@ -271,4 +271,4 @@
 - [ ] Claim and fully optimize Google Business Profile: photos, services, hours, Q&A, weekly posts
 - [ ] Ensure NAP (Name, Address, Phone) is consistent across website, GBP, and all directories
 - [ ] Submit to medical directories: Healthgrades, Zocdoc, Vitals, RateMDs, WebMD Find a Doctor
-- [ ] Add location-specific content mentioning city/region served on homepage and contact page
+- [x] Add location-specific content mentioning city/region served on homepage and contact page — "Serving Patients Across Utah" section added to Home.tsx (with clinic info card) and Contact.tsx (12-city grid + NAP)

@@ -552,6 +552,52 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ─── LOCAL SEO: SERVING UTAH ─── */}
+      <section className="py-16 bg-[#051229] border-t border-white/5">
+        <div className="container">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="fade-up">
+              <p className="section-label mb-4">Stem Cell Therapy in Utah</p>
+              <h2
+                className="text-[#F6F5EC] mb-4"
+                style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(32px, 4vw, 52px)" }}
+              >
+                LEHI, UTAH'S PREMIER<br />
+                <span className="text-[#FBB217]">REGENERATIVE MEDICINE CLINIC</span>
+              </h2>
+              <p className="text-[#D6D7D9]/70 text-sm leading-relaxed mb-6" style={{ fontFamily: "'Libre Franklin', sans-serif" }}>
+                CellRX is located at 3098 Executive Parkway, Suite 100, Lehi, Utah 84043 — conveniently accessible from Salt Lake City, Provo, Orem, and the entire Wasatch Front. We serve patients from across Utah and welcome those traveling from out of state for access to our exclusive protocols.
+              </p>
+              <div className="grid grid-cols-2 gap-2">
+                {["Lehi", "Salt Lake City", "Provo", "Orem", "Sandy", "Draper", "American Fork", "Park City"].map((city, i) => (
+                  <div key={i} className="flex items-center gap-2">
+                    <CheckCircle2 size={12} className="text-[#6DB3F2] shrink-0" />
+                    <span className="text-[#D6D7D9]/60 text-xs" style={{ fontFamily: "'DM Sans', sans-serif" }}>{city}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="fade-up" style={{ transitionDelay: "0.1s" }}>
+              <div className="bg-[#030d1e] border border-white/5 p-8 space-y-4">
+                <h3 className="text-[#FBB217] text-xs font-semibold tracking-widest uppercase" style={{ fontFamily: "'DM Sans', sans-serif" }}>Clinic Information</h3>
+                {[
+                  { label: "Address", value: "3098 Executive Parkway, Suite 100, Lehi, UT 84043" },
+                  { label: "Phone", value: "(385) 707-2373" },
+                  { label: "Email", value: "info@cellrx.bio" },
+                  { label: "Hours", value: "Monday – Friday, 9:00 AM – 5:00 PM MST" },
+                  { label: "Parking", value: "Free parking available on-site" },
+                ].map((item, i) => (
+                  <div key={i} className="flex gap-4">
+                    <span className="text-[#D6D7D9]/40 text-xs w-16 shrink-0 pt-0.5" style={{ fontFamily: "'DM Sans', sans-serif" }}>{item.label}</span>
+                    <span className="text-[#D6D7D9]/80 text-xs leading-relaxed" style={{ fontFamily: "'Libre Franklin', sans-serif" }}>{item.value}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ─── CTA BANNER ─── */}
       <section
         className="relative py-24 overflow-hidden"

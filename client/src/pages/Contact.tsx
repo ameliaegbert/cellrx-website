@@ -378,6 +378,44 @@ export default function Contact() {
         </div>
       </section>
 
+      {/* ─── SERVING UTAH ─── */}
+      <section className="py-16 bg-[#051229] border-t border-white/5">
+        <div className="container">
+          <div className="text-center mb-10 fade-up">
+            <p className="section-label mb-4">Service Area</p>
+            <h2 className="text-[#F6F5EC]" style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(28px, 3.5vw, 44px)" }}>
+              SERVING PATIENTS ACROSS UTAH
+            </h2>
+            <p className="text-[#D6D7D9]/60 text-sm max-w-2xl mx-auto mt-4 leading-relaxed" style={{ fontFamily: "'Libre Franklin', sans-serif" }}>
+              CellRX is conveniently located in Lehi, Utah — at the heart of the Wasatch Front — making it easily accessible for patients from Salt Lake City, Provo, Orem, and surrounding communities. We also welcome patients traveling from out of state.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 text-center">
+            {[
+              "Lehi",
+              "Salt Lake City",
+              "Provo",
+              "Orem",
+              "Sandy",
+              "Draper",
+              "American Fork",
+              "Pleasant Grove",
+              "Lindon",
+              "Murray",
+              "Ogden",
+              "Park City",
+            ].map((city, i) => (
+              <div key={i} className="bg-[#030d1e] border border-white/5 py-3 px-4 text-center">
+                <p className="text-[#D6D7D9]/70 text-xs tracking-wide" style={{ fontFamily: "'DM Sans', sans-serif" }}>{city}</p>
+              </div>
+            ))}
+          </div>
+          <p className="text-center text-[#D6D7D9]/40 text-xs mt-6" style={{ fontFamily: "'Libre Franklin', sans-serif" }}>
+            3098 Executive Parkway, Suite 100, Lehi, Utah 84043 &middot; (385) 707-2373 &middot; info@cellrx.bio
+          </p>
+        </div>
+      </section>
+
       <Footer />
     </div>
   );
