@@ -21,6 +21,10 @@ const SITE_URL = "https://www.cellrx.bio";
 const cache: Record<string, { data: LighthouseResult; fetchedAt: number }> = {};
 const CACHE_TTL_MS = 60 * 60 * 1000; // 1 hour
 
+// Clear cache on startup so stale errors from previous deploys don't persist
+delete cache["mobile"];
+delete cache["desktop"];
+
 export interface CoreWebVital {
   id: string;
   title: string;
@@ -72,10 +76,10 @@ async function fetchLighthouse(strategy: "mobile" | "desktop"): Promise<Lighthou
     return cache[strategy].data;
   }
 
-  const categories = "performance,accessibility,best-practices,seo";
   const apiKey = ENV.pagespeedApiKey;
   const keyParam = apiKey ? `&key=${apiKey}` : "";
-  const url = `${PSI_API}?url=${encodeURIComponent(SITE_URL)}&strategy=${strategy}&category=${categories}${keyParam}`;
+  const categoryParams = "&category=performance&category=accessibility&category=best-practices&category=seo";
+  const url = `${PSI_API}?url=${encodeURIComponent(SITE_URL)}&strategy=${strategy}${categoryParams}${keyParam}`;
 
   const res = await fetch(url, {
     headers: { "Accept": "application/json" },
