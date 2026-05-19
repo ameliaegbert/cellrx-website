@@ -155,9 +155,10 @@
 - [x] Ensure /dashboard/financials is protected (requires login) and noindex
 
 ## Lighthouse Integration (May 18, 2026)
-- [ ] Clarify which Lighthouse platform is being used (VA Lighthouse API, or other)
-- [ ] Research Lighthouse API endpoints and authentication
-- [ ] Build Lighthouse dashboard panel once platform is confirmed
+- [x] Clarify which Lighthouse platform is being used — Google Lighthouse (PageSpeed Insights / Core Web Vitals)
+- [x] Build Lighthouse tRPC router using Google PageSpeed Insights API (free, no key needed, 1-hour cache)
+- [x] Build /dashboard/lighthouse page with performance scores, Core Web Vitals, and top recommendations
+- [x] Add Lighthouse nav item to DashboardLayout sidebar
 
 ## Meta Token Auto-Refresh (May 18, 2026)
 - [x] Exchange short-lived Meta token for long-lived token (60 days)

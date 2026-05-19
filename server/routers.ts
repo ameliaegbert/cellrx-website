@@ -7,6 +7,7 @@ import { dashboardRouter } from "./routers/dashboard";
 import { searchConsoleRouter } from "./routers/searchConsole";
 import { analyticsRouter } from "./routers/analytics";
 import { clarityRouter } from "./routers/clarity";
+import { lighthouseRouter } from "./routers/lighthouse";
 
 export const appRouter = router({
   system: systemRouter,
@@ -26,6 +27,7 @@ export const appRouter = router({
   searchConsole: searchConsoleRouter,
   analytics: analyticsRouter,
   clarity: clarityRouter,
+  lighthouse: lighthouseRouter,
 });
 
 export type AppRouter = typeof appRouter;

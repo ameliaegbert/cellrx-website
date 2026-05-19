@@ -18,6 +18,7 @@ import Sitemap from "./pages/Sitemap";
 import Dashboard from "./pages/Dashboard";
 import DashboardFinancials from "./pages/DashboardFinancials";
 import DashboardSEO from "./pages/DashboardSEO";
+import DashboardLighthouse from "./pages/DashboardLighthouse";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -37,6 +38,7 @@ function Router() {
       <Route path="/dashboard" component={Dashboard} />
       <Route path="/dashboard/financials" component={DashboardFinancials} />
       <Route path="/dashboard/seo" component={DashboardSEO} />
+      <Route path="/dashboard/lighthouse" component={DashboardLighthouse} />
       {/* Legacy redirects */}
       <Route path="/team" component={About} />
       <Route path="/404" component={NotFound} />
