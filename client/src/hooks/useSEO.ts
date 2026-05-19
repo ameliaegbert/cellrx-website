@@ -202,61 +202,61 @@ export const PAGE_SEO = {
 // Blog post SEO
 export function getBlogPostSEO(slug: string): SEOProps {
   const posts: Record<string, SEOProps> = {
-    "stem-cell-therapy-utah-guide": {
-      title: "Complete Guide to Stem Cell Therapy in Utah (2026)",
+    "stem-cell-injection-joint-repair": {
+      title: "How Stem Cell Injection Therapy Is Changing Joint Repair (2026)",
       description:
-        "What to expect, how much it costs, and how to choose the right stem cell clinic in Utah. Expert guidance from CellRX Medical Director Dr. Jacob Egbert.",
-      canonical: "/blog/stem-cell-therapy-utah-guide",
+        "For decades, patients with chronic joint pain faced surgery or lifelong management. Stem cell injection therapy is rewriting that narrative. Learn how at CellRX.",
+      canonical: "/blog/stem-cell-injection-joint-repair",
       ogType: "article",
-      keywords: "stem cell therapy Utah guide, stem cell cost Utah, stem cell clinic Utah",
+      keywords: "stem cell injection joint repair, stem cell therapy joint pain Utah, regenerative biologics joints",
     },
-    "stem-cell-chain-of-custody": {
+    "iv-stem-cell-therapy-science": {
+      title: "The Science Behind IV Stem Cell Therapy — Systemic Regeneration",
+      description:
+        "How intravenous stem cell delivery targets inflammation, accelerates cellular repair, and restores the energy and clarity of a younger biology. Expert insight from CellRX.",
+      canonical: "/blog/iv-stem-cell-therapy-science",
+      ogType: "article",
+      keywords: "IV stem cell therapy science, systemic stem cell treatment, stem cell IV Utah",
+    },
+    "top-performers-concierge-medicine": {
+      title: "Why Top Performers Choose Concierge Medicine — CellRX",
+      description:
+        "High-achieving individuals demand more from their healthcare. Discover why elite performers, athletes, and executives choose concierge medicine at CellRX.",
+      canonical: "/blog/top-performers-concierge-medicine",
+      ogType: "article",
+      keywords: "concierge medicine top performers, executive health Utah, personalized medicine high performers",
+    },
+    "first-cellrx-consultation": {
+      title: "What to Expect at Your First CellRX Consultation",
+      description:
+        "A step-by-step guide to your first visit with Dr. Jacob Egbert at CellRX — from intake to treatment planning. Know exactly what to expect.",
+      canonical: "/blog/first-cellrx-consultation",
+      ogType: "article",
+      keywords: "CellRX consultation, first stem cell appointment Utah, what to expect stem cell therapy",
+    },
+    "chain-of-custody-stem-cells": {
       title: "Why Chain of Custody Matters in Stem Cell Therapy",
       description:
         "Most clinics can't tell you where their biologics came from. CellRX can — because our Medical Director oversees every step from source to syringe.",
-      canonical: "/blog/stem-cell-chain-of-custody",
+      canonical: "/blog/chain-of-custody-stem-cells",
       ogType: "article",
       keywords: "stem cell chain of custody, biologic sourcing, stem cell safety, CellRX",
     },
-    "iv-therapy-vs-injection-stem-cells": {
-      title: "Stem Cell IV Therapy vs. Injection: Which Is Right for You?",
+    "quarterly-labs-longevity": {
+      title: "Quarterly Lab Work and the Future of Longevity — CellRX",
       description:
-        "Comparing systemic IV delivery and targeted injection for stem cell therapy. Learn which protocol matches your health goals and condition.",
-      canonical: "/blog/iv-therapy-vs-injection-stem-cells",
+        "How regular biomarker testing enables personalized longevity protocols — and why measuring is the first step to optimizing your biology at CellRX.",
+      canonical: "/blog/quarterly-labs-longevity",
       ogType: "article",
-      keywords: "stem cell IV therapy vs injection, systemic stem cell treatment, targeted stem cell therapy",
+      keywords: "quarterly lab work longevity, biomarker testing Utah, longevity protocols CellRX",
     },
-    "concierge-medicine-longevity": {
-      title: "Concierge Medicine and the Future of Longevity",
+    "regenerative-medicine-athletes": {
+      title: "Regenerative Medicine for Athletes & High Performers — CellRX",
       description:
-        "How personalized, physician-directed medicine is redefining preventive health and longevity — and why the standard of care is no longer enough.",
-      canonical: "/blog/concierge-medicine-longevity",
+        "How stem cell therapy accelerates recovery, reduces chronic injury risk, and extends peak performance for athletes and high performers.",
+      canonical: "/blog/regenerative-medicine-athletes",
       ogType: "article",
-      keywords: "concierge medicine longevity, personalized medicine, preventive health Utah",
-    },
-    "stem-cell-therapy-joint-pain": {
-      title: "Stem Cell Therapy for Joint Pain & Sports Injuries",
-      description:
-        "How regenerative biologics address the root cause of chronic joint pain, arthritis, and sports injuries — without surgery or long recovery times.",
-      canonical: "/blog/stem-cell-therapy-joint-pain",
-      ogType: "article",
-      keywords: "stem cell therapy joint pain, stem cell arthritis treatment, regenerative medicine sports injury",
-    },
-    "what-to-expect-stem-cell-treatment": {
-      title: "What to Expect During Your Stem Cell Treatment at CellRX",
-      description:
-        "A step-by-step guide to the CellRX treatment experience — from your first consultation through your procedure and recovery.",
-      canonical: "/blog/what-to-expect-stem-cell-treatment",
-      ogType: "article",
-      keywords: "stem cell treatment process, what to expect stem cell therapy, CellRX consultation",
-    },
-    "biomarkers-longevity-optimization": {
-      title: "Biomarkers, Longevity, and the Science of Optimization",
-      description:
-        "How advanced biomarker testing enables personalized longevity protocols — and why measuring is the first step to optimizing your biology.",
-      canonical: "/blog/biomarkers-longevity-optimization",
-      ogType: "article",
-      keywords: "biomarkers longevity, health optimization testing, longevity science, personalized medicine",
+      keywords: "regenerative medicine athletes Utah, stem cell therapy sports performance, athlete recovery stem cells",
     },
   };
   return (

@@ -16,6 +16,7 @@ const sections = [
     links: [
       { label: "Home", href: "/", desc: "CellRX concierge regenerative medicine overview" },
       { label: "About Us", href: "/about", desc: "Our story, mission, and medical team" },
+      { label: "Our Team", href: "/team", desc: "Meet Dr. Jacob Egbert and the CellRX team" },
       { label: "Contact", href: "/contact", desc: "Book a consultation or reach our team" },
       { label: "Patient Testimonials", href: "/testimonials", desc: "Real patient outcomes and stories" },
     ],
@@ -35,13 +36,13 @@ const sections = [
     title: "Blog & Research",
     links: [
       { label: "Blog Index", href: "/blog", desc: "All articles on stem cell therapy and regenerative medicine" },
-      { label: "Complete Guide to Stem Cell Therapy in Utah", href: "/blog/stem-cell-therapy-utah-guide", desc: "What to expect, costs, and how to choose a provider" },
-      { label: "Why Chain of Custody Matters in Stem Cell Therapy", href: "/blog/stem-cell-chain-of-custody", desc: "The critical difference in biologic sourcing and safety" },
-      { label: "IV vs. Injection: Which Stem Cell Delivery Is Right for You?", href: "/blog/iv-therapy-vs-injection-stem-cells", desc: "Comparing systemic and targeted delivery methods" },
-      { label: "Concierge Medicine and the Future of Longevity", href: "/blog/concierge-medicine-longevity", desc: "How personalized medicine is redefining preventive health" },
-      { label: "Stem Cell Therapy for Joint Pain and Sports Injuries", href: "/blog/stem-cell-therapy-joint-pain", desc: "How regenerative biologics address the root cause of pain" },
-      { label: "What to Expect During Your Stem Cell Treatment", href: "/blog/what-to-expect-stem-cell-treatment", desc: "A step-by-step guide to the CellRX treatment experience" },
-      { label: "Biomarkers, Longevity, and the Science of Optimization", href: "/blog/biomarkers-longevity-optimization", desc: "Using data to build a personalized longevity protocol" },
+      { label: "How Stem Cell Injection Therapy Is Changing Joint Repair", href: "/blog/stem-cell-injection-joint-repair", desc: "The science behind targeted regenerative biologics for joints" },
+      { label: "The Science Behind IV Stem Cell Therapy", href: "/blog/iv-stem-cell-therapy-science", desc: "How systemic delivery unlocks whole-body regeneration" },
+      { label: "Why Top Performers Choose Concierge Medicine", href: "/blog/top-performers-concierge-medicine", desc: "The case for personalized, proactive healthcare" },
+      { label: "What to Expect at Your First CellRX Consultation", href: "/blog/first-cellrx-consultation", desc: "A step-by-step guide to your first visit" },
+      { label: "Why Chain of Custody Matters in Stem Cell Therapy", href: "/blog/chain-of-custody-stem-cells", desc: "The critical difference in biologic sourcing and safety" },
+      { label: "Quarterly Lab Work and the Future of Longevity", href: "/blog/quarterly-labs-longevity", desc: "Using biomarker data to build a personalized longevity protocol" },
+      { label: "Regenerative Medicine for Athletes and High Performers", href: "/blog/regenerative-medicine-athletes", desc: "How stem cell therapy accelerates recovery and extends careers" },
     ],
   },
 ];

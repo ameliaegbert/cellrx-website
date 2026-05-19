@@ -1,21 +1,31 @@
 # CellRX
 
-> Concierge regenerative medicine clinic in Lehi, Utah, specializing in physician-directed stem cell therapy.
+> Concierge regenerative medicine clinic in Lehi, Utah, specializing in physician-directed stem cell therapy, IV therapy, and personalized longevity protocols.
 
-CellRX is a private, appointment-only regenerative medicine practice led by Dr. Jacob Egbert, who serves simultaneously as Medical Director of CellRX and Medical Director of the stem cell source company. This dual role provides unbroken chain-of-custody oversight from ethical procurement to administration — biologics are never diluted, never replicated, and sourced exclusively from healthy, consented local births.
+CellRX is a private, appointment-only regenerative medicine practice led by Dr. Jacob Egbert, MD. Dr. Egbert serves simultaneously as Medical Director of CellRX and Medical Director of the stem cell source company — the only clinic in Utah with this structure. This dual role provides unbroken chain-of-custody oversight from ethical procurement to administration. Biologics are never diluted, never replicated, and sourced exclusively from healthy, consented local births.
 
 ## Services
 
-- **Stem Cell Injection Therapy** — Targeted regenerative injections starting at $2,500. Priced at $1,250 per CC; protocols range from 1–10 CC based on physician assessment.
-- **Stem Cell IV Therapy** — Systemic intravenous delivery starting at $4,000. Same per-CC pricing structure.
-- **Black Label Concierge Medicine** — Exclusive annual membership including quarterly lab panels, personalized longevity protocols, direct physician access, priority scheduling, and unlimited consultations. Membership is limited by design. Pricing is custom and determined during a private consultation.
+- **Stem Cell Injection Therapy** — Targeted regenerative injections for joint pain, tissue repair, and chronic inflammation. Starting at $2,500. Priced at $1,250 per CC; protocols range from 1–10 CC based on physician assessment. Procedure completed in under 60 minutes; same-day return to normal activities.
+- **Stem Cell IV Therapy** — Systemic intravenous delivery for whole-body cellular restoration, energy optimization, and cognitive clarity. Starting at $4,000. Same per-CC pricing structure.
+- **Black Label Concierge Medicine** — Exclusive annual membership including quarterly laboratory panels, personalized longevity protocols, direct physician access, priority scheduling, and unlimited consultations. Stem cell treatments available as a premium add-on. Spouse enrollment available. Membership is limited by design. Pricing is custom and determined during a private consultation.
+- **Health Optimization** — Biomarker-driven health optimization using comprehensive lab panels, hormone balancing, and personalized supplementation protocols.
+- **Longevity Programs** — Science-backed anti-aging and longevity protocols including NAD+ therapy, peptide protocols, and cellular rejuvenation programs.
 
 ## Key Differentiators
 
 - Medical Director oversees both the clinic and the stem cell source company — the only clinic in Utah with this structure.
-- Full chain-of-custody biologics: ethically sourced, never diluted, never replicated.
+- Full chain-of-custody biologics: ethically sourced from healthy, consented local births; never diluted, never replicated.
 - Concierge model: every patient receives direct, unhurried access to Dr. Egbert.
 - Protocols are individualized — no one-size-fits-all dosing.
+- Maximum dose available: 10 CC per protocol.
+- Over 500 patients treated with 98% satisfaction rate.
+- 10+ years of clinical excellence.
+
+## Medical Team
+
+**Dr. Jacob Egbert, MD — Medical Director**
+Dr. Egbert is board-certified and specializes in regenerative medicine, functional medicine, and personalized longevity protocols. He holds the unique distinction of serving as Medical Director of both CellRX and the stem cell source company, ensuring complete chain-of-custody integrity for every patient. He has over 10 years of experience in regenerative and functional medicine.
 
 ## Location & Contact
 
@@ -23,10 +33,18 @@ CellRX is a private, appointment-only regenerative medicine practice led by Dr. 
 - Phone: (385) 707-2373
 - Email: info@cellrx.bio
 - Website: https://www.cellrx.bio
+- Hours: Monday–Friday, 9:00 AM – 5:00 PM MST
+- Serving: Lehi, Provo, Salt Lake City, and all of Utah
 
-## About Dr. Jacob Egbert
+## Blog Articles & Research
 
-Dr. Jacob Egbert is the Medical Director of CellRX and simultaneously the Medical Director of the stem cell source company. He specializes in regenerative medicine, functional medicine, and personalized longevity protocols. His dual role ensures that every patient at CellRX receives biologics with full chain-of-custody integrity — from ethical procurement through physician-administered treatment.
+- [How Stem Cell Injection Therapy Is Changing Joint Repair](https://www.cellrx.bio/blog/stem-cell-injection-joint-repair) — The science behind targeted regenerative biologics for joint pain and tissue damage.
+- [The Science Behind IV Stem Cell Therapy](https://www.cellrx.bio/blog/iv-stem-cell-therapy-science) — How systemic delivery unlocks whole-body regeneration and cellular restoration.
+- [Why Top Performers Choose Concierge Medicine](https://www.cellrx.bio/blog/top-performers-concierge-medicine) — The case for personalized, proactive healthcare for high-achieving individuals.
+- [What to Expect at Your First CellRX Consultation](https://www.cellrx.bio/blog/first-cellrx-consultation) — A step-by-step guide to your first visit with Dr. Egbert.
+- [Why Chain of Custody Matters in Stem Cell Therapy](https://www.cellrx.bio/blog/chain-of-custody-stem-cells) — The critical difference in biologic sourcing, safety, and efficacy.
+- [Quarterly Lab Work and the Future of Longevity](https://www.cellrx.bio/blog/quarterly-labs-longevity) — Using biomarker data to build a personalized longevity protocol.
+- [Regenerative Medicine for Athletes and High Performers](https://www.cellrx.bio/blog/regenerative-medicine-athletes) — How stem cell therapy accelerates recovery and extends peak performance.
 
 ## Frequently Asked Questions
 
@@ -34,7 +52,7 @@ Dr. Jacob Egbert is the Medical Director of CellRX and simultaneously the Medica
 Stem cell injection therapy starts at $2,500 and IV therapy starts at $4,000. All protocols are priced at $1,250 per CC, ranging from 1 to a maximum of 10 CC. Your Medical Director recommends the optimal dose during your private consultation.
 
 **What makes CellRX different from other stem cell clinics?**
-Dr. Jacob Egbert serves simultaneously as Medical Director of CellRX and Medical Director of the stem cell source company. This dual role ensures full chain-of-custody oversight — biologics are never diluted, never replicated, and sourced exclusively from healthy, consented local births.
+Dr. Jacob Egbert serves simultaneously as Medical Director of CellRX and Medical Director of the stem cell source company. This dual role ensures full chain-of-custody oversight — biologics are never diluted, never replicated, and sourced exclusively from healthy, consented local births. Most clinics purchase stem cells through third-party distributors with no direct oversight.
 
 **What is CellRX Black Label Concierge Medicine?**
 CellRX Black Label is an exclusive annual concierge health membership including quarterly laboratory panels, personalized longevity protocols, direct physician access, priority scheduling, and unlimited consultations. Membership is limited by design. Pricing is custom and determined during a private consultation.
@@ -43,4 +61,21 @@ CellRX Black Label is an exclusive annual concierge health membership including 
 Yes. CellRX biologics are sourced exclusively from healthy, consented local births. They are never diluted and never replicated, ensuring maximum therapeutic concentration and full ethical compliance.
 
 **Where is CellRX located?**
-CellRX is located at 3098 Executive Parkway, Suite 100, Lehi, Utah 84043.
+CellRX is located at 3098 Executive Parkway, Suite 100, Lehi, Utah 84043. We serve patients from across Utah including Provo, Salt Lake City, and the greater Wasatch Front.
+
+**When will I see results from stem cell therapy?**
+Many patients report meaningful improvements in pain, mobility, energy, and cognitive clarity within the first few weeks. The full arc of benefit often continues to unfold over three to six months as your body rebuilds and restores function at the cellular level.
+
+**How long does a stem cell procedure take?**
+Most treatments are completed in under 60 minutes. Recovery is minimal — the vast majority of patients resume normal activities the same day.
+
+**What is the maximum dose available at CellRX?**
+CellRX offers protocols up to 10 CC — the maximum dose available. Dosing is determined by your physician based on your condition and goals.
+
+## Regulatory & Safety Information
+
+CellRX uses ethically sourced, rigorously screened biologic products with full chain-of-custody documentation. All treatments are administered by Dr. Jacob Egbert, MD. Stem cell therapies are considered investigational by the FDA; results may vary. Patients receive a thorough consultation and informed consent process before any treatment.
+
+## Schema & Structured Data
+
+This site includes structured data markup (schema.org) for: MedicalBusiness, LocalBusiness, Physician, FAQPage, and individual service Offers. Canonical URL: https://www.cellrx.bio/

@@ -125,9 +125,13 @@ export default function HealthOptimization() {
             <div className="fade-in">
               <img
                 src={IV_IMG}
-                alt="CellRX health optimization treatment"
+                alt="CellRX IV stem cell therapy for health optimization"
                 className="w-full"
                 style={{ aspectRatio: "4/3", objectFit: "cover" }}
+                loading="lazy"
+                decoding="async"
+                width="800"
+                height="600"
               />
             </div>
             <div className="fade-up">
@@ -269,9 +273,13 @@ export default function HealthOptimization() {
             <div className="relative fade-in">
               <img
                 src={PHYSICIAN_IMG}
-                alt="CellRX Medical Director"
+                alt="Dr. Jacob Egbert — CellRX Medical Director, health optimization specialist"
                 className="w-full max-w-md mx-auto block"
                 style={{ aspectRatio: "3/4", objectFit: "cover", objectPosition: "50% 0%" }}
+                loading="lazy"
+                decoding="async"
+                width="600"
+                height="800"
               />
               <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#051229] to-transparent" />
             </div>

@@ -77,9 +77,13 @@ export default function Services() {
             <div className="relative fade-in">
               <img
                 src={INJECTION_IMG}
-                alt="Stem Cell Injection"
+                alt="Stem cell injection therapy being administered at CellRX clinic"
                 className="w-full object-cover"
                 style={{ height: '580px', objectFit: 'cover', objectPosition: '50% 20%' }}
+                fetchPriority="high"
+                decoding="async"
+                width="800"
+                height="580"
               />
               <div className="absolute top-4 left-4">
                 <span
@@ -217,8 +221,12 @@ export default function Services() {
             <div className="order-1 lg:order-2 relative fade-in">
               <img
                 src={IV_IMG}
-                alt="Stem Cell IV Therapy"
+                alt="Stem cell IV therapy infusion at CellRX regenerative medicine clinic"
                 className="w-full h-96 object-cover"
+                loading="lazy"
+                decoding="async"
+                width="800"
+                height="384"
               />
               <div className="absolute top-4 right-4">
                 <span

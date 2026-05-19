@@ -137,6 +137,10 @@ export default function Home() {
             className={`w-full h-full ${heroLoaded ? 'hero-ken-burns' : 'hero-img-base'}`}
             style={{ objectFit: 'cover', objectPosition: 'center center', display: 'block' }}
             onLoad={() => setHeroLoaded(true)}
+            fetchPriority="high"
+            decoding="async"
+            width="1920"
+            height="1080"
           />
           {/* Dark overlay so text is readable */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#051229]/90 via-[#051229]/60 to-[#051229]/20" />
@@ -279,6 +283,10 @@ export default function Home() {
                     src={service.img}
                     alt={service.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
+                    decoding="async"
+                    width="800"
+                    height="600"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#030d1e] via-[#030d1e]/30 to-transparent" />
                   <div className="absolute top-4 left-4">
@@ -333,6 +341,10 @@ export default function Home() {
                 alt="CellRX physician in consultation"
                 className="w-full"
                 style={{ aspectRatio: '3/4', objectFit: 'cover', objectPosition: '50% 20%', display: 'block' }}
+                loading="lazy"
+                decoding="async"
+                width="600"
+                height="800"
               />
               <div className="absolute bottom-0 left-0 right-0 h-1/4 bg-gradient-to-t from-[#030d1e] to-transparent" />
             </div>
@@ -383,9 +395,13 @@ export default function Home() {
             <div className="relative fade-in">
               <img
                 src={PHYSICIAN_IMG}
-                alt="CellRX Medical Director"
+                alt="Dr. Jacob Egbert, Medical Director of CellRX Regenerative Medicine"
                 className="w-full max-w-md mx-auto block"
                 style={{ aspectRatio: "2/3", objectFit: "cover", objectPosition: "50% 0%" }}
+                loading="lazy"
+                decoding="async"
+                width="600"
+                height="900"
               />
               <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#051229] to-transparent" />
               {/* Authority badge */}

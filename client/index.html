@@ -3,7 +3,7 @@
 
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- ═══════════════════════════════════════════════════════════
          PRIMARY SEO METADATA
@@ -12,6 +12,15 @@
     <meta name="description" content="CellRX offers physician-directed stem cell injections and IV therapy in Lehi, Utah. Never diluted. Never replicated. Full chain-of-custody biologics from healthy local births. Starting at $2,500." />
     <meta name="keywords" content="stem cell therapy Utah, stem cell injections Lehi, regenerative medicine Utah, stem cell IV therapy, concierge medicine Utah, longevity medicine Utah, stem cell treatment cost, CellRX, Dr. Jacob Egbert, stem cell clinic Utah, anti-aging medicine, health optimization Utah" />
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <!-- AI search engine crawlers -->
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large" />
+    <meta name="bingbot" content="index, follow" />
+    <!-- Allow ChatGPT, Perplexity, Claude, and other AI crawlers -->
+    <meta name="GPTBot" content="index, follow" />
+    <meta name="PerplexityBot" content="index, follow" />
+    <meta name="ClaudeBot" content="index, follow" />
+    <meta name="anthropic-ai" content="index, follow" />
+    <meta name="CCBot" content="index, follow" />
     <meta name="author" content="CellRX Regenerative Medicine" />
     <link rel="canonical" href="https://www.cellrx.bio/" />
 
@@ -231,8 +240,14 @@
     ═══════════════════════════════════════════════════════════ -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- DNS prefetch for CDN image domains -->
+    <link rel="dns-prefetch" href="https://d2xsxph8kpxj0f.cloudfront.net" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="https://www.clarity.ms" />
     <!-- Fonts: Bebas Neue (titles) | DM Sans (subtitles) | Libre Franklin (body) -->
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&family=Libre+Franklin:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <!-- font-display=swap prevents render-blocking -->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Libre+Franklin:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Libre+Franklin:wght@300;400;500;600;700&display=swap" rel="stylesheet" /></noscript>
   </head>
 
   <body>

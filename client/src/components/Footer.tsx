@@ -33,7 +33,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <img src={LOGO_URL} alt="CellRX" className="h-8 w-auto mb-6" />
+            <img src={LOGO_URL} alt="CellRX Regenerative Medicine" className="h-8 w-auto mb-6" loading="lazy" decoding="async" width="160" height="32" />
             <p className="text-white/50 text-sm leading-relaxed mb-6" style={{ fontFamily: "'Libre Franklin', sans-serif" }}>
               Concierge regenerative medicine and stem cell therapy for elite performers, athletes, and discerning individuals who demand the best in health optimization.
             </p>
@@ -79,7 +79,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {[
                 { label: "About Us", href: "/about" },
-                { label: "Our Team", href: "/about" },
+                { label: "Our Team", href: "/team" },
                 { label: "Blog & Research", href: "/blog" },
                 { label: "Contact", href: "/contact" },
               ].map((item) => (

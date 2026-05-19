@@ -195,6 +195,10 @@ export default function LongevityPrograms() {
                     alt={program.title}
                     className="w-full"
                     style={{ aspectRatio: "16/9", objectFit: "cover" }}
+                    loading="lazy"
+                    decoding="async"
+                    width="800"
+                    height="450"
                   />
                   <div className="absolute top-4 left-4">
                     <span

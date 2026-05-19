@@ -10,6 +10,7 @@ import { Link } from "wouter";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ArrowRight } from "lucide-react";
+import { useSEO } from "@/hooks/useSEO";
 
 const PHYSICIAN_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/physician_portrait_d5fe25e9.webp";
 const CLINIC_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/clinic_interior_31c757cf.webp";
@@ -33,6 +34,12 @@ function useScrollAnimation() {
 }
 
 export default function Team() {
+  useSEO({
+    title: "Our Team — CellRX Regenerative Medicine | Lehi, Utah",
+    description: "Meet the CellRX team: Dr. Jacob Egbert (Medical Director), Amelia Egbert (COO), Samantha Buker, and David Fajardo. A small, intentional team built for exceptional results.",
+    canonical: "https://www.cellrx.bio/team",
+    ogImage: "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/physician_portrait_d5fe25e9.webp",
+  });
   useScrollAnimation();
 
   return (
@@ -71,9 +78,13 @@ export default function Team() {
               <div className="relative">
                 <img
                   src={PHYSICIAN_IMG}
-                  alt="Dr. Jacob Egbert — Medical Director"
+                  alt="Dr. Jacob Egbert — Medical Director, CellRX Regenerative Medicine"
                   className="w-full block"
                   style={{ aspectRatio: "2/3", objectFit: "cover", objectPosition: "50% 0%", display: "block" }}
+                  loading="eager"
+                  decoding="async"
+                  width="600"
+                  height="900"
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#051229] to-transparent h-16" />
                 <div className="absolute top-6 -right-4 bg-[#0047BB] px-4 py-3 hidden lg:block">
@@ -157,9 +168,13 @@ export default function Team() {
               <div className="w-full mb-6">
                 <img
                   src={AMELIA_IMG}
-                  alt="Amelia Egbert — Chief Operating Officer"
+                  alt="Amelia Egbert — Chief Operating Officer, CellRX"
                   className="w-full block"
                   style={{ display: "block" }}
+                  loading="lazy"
+                  decoding="async"
+                  width="600"
+                  height="750"
                 />
               </div>
               <div className="gold-rule mb-4" />
@@ -175,9 +190,13 @@ export default function Team() {
               <div className="w-full mb-6">
                 <img
                   src={SAMANTHA_IMG}
-                  alt="Samantha Buker — Executive Assistant"
+                  alt="Samantha Buker — Executive Assistant, CellRX"
                   className="w-full block"
                   style={{ display: "block" }}
+                  loading="lazy"
+                  decoding="async"
+                  width="600"
+                  height="750"
                 />
               </div>
               <div className="gold-rule mb-4" />
@@ -193,9 +212,13 @@ export default function Team() {
               <div className="w-full mb-6">
                 <img
                   src={DAVID_IMG}
-                  alt="David Fajardo — Director of Social Media"
+                  alt="David Fajardo — Director of Social Media, CellRX"
                   className="w-full block"
                   style={{ display: "block" }}
+                  loading="lazy"
+                  decoding="async"
+                  width="600"
+                  height="750"
                 />
               </div>
               <div className="gold-rule mb-4" />

@@ -213,6 +213,23 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
+    rollupOptions: {
+      output: {
+        // Manual chunk splitting for better caching and smaller initial bundle
+        manualChunks: {
+          // React core — changes rarely, gets cached longest
+          "vendor-react": ["react", "react-dom"],
+          // Routing
+          "vendor-router": ["wouter"],
+          // tRPC + React Query — changes with API updates
+          "vendor-trpc": ["@trpc/client", "@trpc/react-query", "@tanstack/react-query"],
+          // UI components
+          "vendor-ui": ["lucide-react", "class-variance-authority", "clsx", "tailwind-merge"],
+          // Charts
+          "vendor-charts": ["recharts"],
+        },
+      },
+    },
   },
   server: {
     host: true,

@@ -1,31 +1,57 @@
 # CellRX — Concierge Regenerative Medicine
 # www.cellrx.bio
 
-# Allow all crawlers (Google, Bing, ChatGPT, Perplexity, Claude, etc.)
+# ─── Allow all crawlers ───────────────────────────────────────
 User-agent: *
 Allow: /
+Disallow: /dashboard
+Disallow: /dashboard/
+Disallow: /dashboard/*
 
-# Explicitly allow AI crawlers
+# ─── Explicitly allow AI search crawlers ─────────────────────
 User-agent: GPTBot
 Allow: /
+Disallow: /dashboard
 
 User-agent: ChatGPT-User
 Allow: /
+Disallow: /dashboard
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /dashboard
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /dashboard
 
 User-agent: ClaudeBot
 Allow: /
+Disallow: /dashboard
 
 User-agent: anthropic-ai
 Allow: /
+Disallow: /dashboard
+
+User-agent: cohere-ai
+Allow: /
+Disallow: /dashboard
 
 User-agent: Googlebot
 Allow: /
+Disallow: /dashboard
 
 User-agent: Bingbot
 Allow: /
+Disallow: /dashboard
 
-# Sitemap
+User-agent: DuckAssistBot
+Allow: /
+Disallow: /dashboard
+
+User-agent: YouBot
+Allow: /
+Disallow: /dashboard
+
+# ─── Sitemap ──────────────────────────────────────────────────
 Sitemap: https://www.cellrx.bio/sitemap.xml

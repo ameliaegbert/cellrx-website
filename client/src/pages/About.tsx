@@ -96,9 +96,13 @@ export default function About() {
             <div className="relative fade-in">
               <img
                 src={INJECTION_IMG}
-                alt="Dr. Egbert administering stem cell injection"
+                alt="Dr. Jacob Egbert administering stem cell injection therapy at CellRX clinic in Lehi, Utah"
                 className="w-full"
                 style={{ display: "block", width: "100%", height: "auto" }}
+                loading="lazy"
+                decoding="async"
+                width="800"
+                height="600"
               />
               <div className="absolute -bottom-6 -left-6 bg-[#0047BB] p-6 max-w-[200px] hidden lg:block">
                 <p className="text-white" style={{ fontFamily: TITLE_FONT, fontSize: "36px", lineHeight: 1 }}>10+</p>
@@ -124,9 +128,13 @@ export default function About() {
               <div className="relative">
                 <img
                   src={PHYSICIAN_IMG}
-                  alt="Dr. Jacob Egbert — Medical Director, CellRX"
+                  alt="Dr. Jacob Egbert, Medical Director of CellRX Regenerative Medicine and stem cell source company"
                   className="w-full block"
                   style={{ aspectRatio: "2/3", objectFit: "cover", objectPosition: "50% 0%", display: "block" }}
+                  loading="lazy"
+                  decoding="async"
+                  width="600"
+                  height="900"
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#030d1e] to-transparent h-16" />
                 <div className="absolute top-6 -right-4 bg-[#0047BB] px-4 py-3 hidden lg:block">
@@ -243,9 +251,13 @@ export default function About() {
               <div className="w-full mb-6 overflow-hidden" style={{ aspectRatio: "3/4" }}>
                 <img
                   src={AMELIA_IMG}
-                  alt="Amelia Egbert — Chief Operating Officer"
+                  alt="Amelia Egbert, Chief Operating Officer at CellRX Regenerative Medicine"
                   className="w-full h-full object-cover"
                   style={{ objectPosition: "50% 12%" }}
+                  loading="lazy"
+                  decoding="async"
+                  width="600"
+                  height="800"
                 />
               </div>
               <div className="gold-rule mb-4" />
@@ -261,9 +273,13 @@ export default function About() {
               <div className="w-full mb-6 overflow-hidden" style={{ aspectRatio: "3/4" }}>
                 <img
                   src={SAMANTHA_IMG}
-                  alt="Samantha Buker — Executive Assistant"
+                  alt="Samantha Buker, Executive Assistant at CellRX Regenerative Medicine"
                   className="w-full h-full object-cover"
                   style={{ objectPosition: "50% 45%" }}
+                  loading="lazy"
+                  decoding="async"
+                  width="600"
+                  height="800"
                 />
               </div>
               <div className="gold-rule mb-4" />
@@ -279,9 +295,13 @@ export default function About() {
               <div className="w-full mb-6 overflow-hidden" style={{ aspectRatio: "3/4" }}>
                 <img
                   src={DAVID_IMG}
-                  alt="David Fajardo — Director of Social Media"
+                  alt="David Fajardo, Director of Social Media at CellRX Regenerative Medicine"
                   className="w-full h-full object-cover"
                   style={{ objectPosition: "50% 10%" }}
+                  loading="lazy"
+                  decoding="async"
+                  width="600"
+                  height="800"
                 />
               </div>
               <div className="gold-rule mb-4" />
