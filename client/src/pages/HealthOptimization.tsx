@@ -4,13 +4,55 @@
  * Route: /health-optimization
  */
 
-import { useEffect } from "react";
-import { useSEO, PAGE_SEO, useBreadcrumb } from "@/hooks/useSEO";
+import { useEffect, useState } from "react";
+import { useSEO, PAGE_SEO, useBreadcrumb, useFAQSchema } from "@/hooks/useSEO";
 import { Link } from "wouter";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
-import { CheckCircle2, Activity, Brain, Zap, Shield, Heart, TrendingUp } from "lucide-react";
+import { CheckCircle2, Activity, Brain, Zap, Shield, Heart, TrendingUp, Plus, Minus } from "lucide-react";
+
+const HEALTH_OPT_FAQS = [
+  {
+    q: "What is health optimization at CellRX?",
+    a: "Health optimization at CellRX is a physician-directed program that uses advanced biomarker testing, personalized protocols, and targeted interventions to help you perform at your biological peak. It goes beyond treating disease — it is about identifying and addressing the subtle imbalances that limit your energy, cognitive performance, and longevity before they become clinical problems."
+  },
+  {
+    q: "What biomarkers does CellRX test for health optimization?",
+    a: "A comprehensive health optimization panel at CellRX includes a full metabolic panel, complete blood count, lipid panel with particle sizing, inflammatory markers (CRP, homocysteine, IL-6), hormone panel (testosterone, estrogen, DHEA, cortisol, thyroid), insulin and glucose metabolism markers, nutrient status (vitamin D, B12, magnesium, zinc), and longevity biomarkers including biological age assessments."
+  },
+  {
+    q: "How is CellRX health optimization different from a standard annual physical?",
+    a: "A standard annual physical is designed to detect disease. CellRX health optimization is designed to prevent it and optimize performance. We test 40+ biomarkers (versus the 8-10 in a typical physical), interpret them in the context of your personal trend over time, and design interventions — not just referrals. You leave with a specific, actionable protocol, not a list of 'normal' results."
+  },
+  {
+    q: "Can health optimization be combined with stem cell therapy?",
+    a: "Yes. Many patients combine health optimization protocols with stem cell therapy for comprehensive results. Biomarker data helps guide stem cell dosing and timing, and the systemic effects of IV stem cell therapy complement hormone balancing, anti-inflammatory protocols, and metabolic optimization. Your Medical Director will design an integrated protocol if appropriate."
+  },
+];
+
+function HealthOptFAQItem({ q, a }: { q: string; a: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="border-b border-white/10">
+      <button
+        className="w-full flex items-center justify-between py-6 text-left gap-4"
+        onClick={() => setOpen(!open)}
+        aria-expanded={open}
+      >
+        <span className="text-white font-medium text-base leading-snug" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+          {q}
+        </span>
+        <span className="text-[#FBB217] shrink-0">
+          {open ? <Minus size={18} /> : <Plus size={18} />}
+        </span>
+      </button>
+      <div className={`overflow-hidden transition-all duration-300 ${open ? "max-h-96 pb-6" : "max-h-0"}`}>
+        <p className="text-[#D6D7D9] text-sm leading-relaxed">{a}</p>
+      </div>
+    </div>
+  );
+}
 
 const CLINIC_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/clinic_interior_31c757cf.webp";
 const IV_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/service_iv_9142a5f3.webp";
@@ -84,6 +126,10 @@ const outcomes = [
 
 export default function HealthOptimization() {
   useSEO(PAGE_SEO.healthOptimization);
+  useFAQSchema(
+    HEALTH_OPT_FAQS.map((f) => ({ question: f.q, answer: f.a })),
+    "health-optimization"
+  );
   useBreadcrumb([
     { name: "Home", url: "https://www.cellrx.bio/" },
     { name: "Health Optimization", url: "https://www.cellrx.bio/health-optimization" },
@@ -282,6 +328,36 @@ export default function HealthOptimization() {
                 height="800"
               />
               <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#051229] to-transparent" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-24 bg-[#051229]">
+        <div className="container">
+          <div className="max-w-3xl mx-auto">
+            <div className="mb-12 fade-up">
+              <p className="section-label mb-4">Common Questions</p>
+              <h2
+                className="text-[#F6F5EC]"
+                style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(36px, 4vw, 56px)" }}
+              >
+                HEALTH OPTIMIZATION FAQ
+              </h2>
+              <p className="text-[#D6D7D9]/60 text-sm mt-4 leading-relaxed">
+                Answers to the most common questions about CellRX health optimization — what we test, how it works, and how it compares to conventional medicine.
+              </p>
+            </div>
+            <div className="fade-up">
+              {HEALTH_OPT_FAQS.map((faq, i) => (
+                <HealthOptFAQItem key={i} q={faq.q} a={faq.a} />
+              ))}
+            </div>
+            <div className="mt-10 text-center fade-up">
+              <Link href="/contact">
+                <button className="btn-primary rounded-none">Book Your Private Consultation</button>
+              </Link>
             </div>
           </div>
         </div>

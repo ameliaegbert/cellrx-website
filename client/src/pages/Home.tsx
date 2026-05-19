@@ -376,9 +376,9 @@ export default function Home() {
               ].map((item, i) => (
                 <div key={i} className="glass-card p-6">
                   <div className="gold-rule mb-4" />
-                  <h4 className="text-[#F6F5EC] mb-2" style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "16px" }}>
+                  <h3 className="text-[#F6F5EC] mb-2" style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "16px" }}>
                     {item.title}
-                  </h4>
+                  </h3>
                   <p className="text-[#D6D7D9]/60 text-sm leading-relaxed">{item.desc}</p>
                 </div>
               ))}

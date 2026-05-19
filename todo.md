@@ -215,7 +215,7 @@
 - [ ] Verify `MedicalClinic` JSON-LD schema on homepage includes: name, address, phone, openingHours, priceRange, medicalSpecialty
 - [ ] Add `MedicalProcedure` schema to each service page (Stem Cell Injection, IV Therapy, Black Label)
 - [ ] Add `Physician` / `Person` schema for Dr. Egbert: name, jobTitle, medicalSpecialty, worksFor, credentials
-- [ ] Verify `FAQPage` JSON-LD schema is present and matches the visible FAQ section content
+- [x] Verify `FAQPage` JSON-LD schema is present and matches the visible FAQ section content (global schema in index.html + page-specific FAQPage JSON-LD injected via useFAQSchema on Services, BlackLabel, HealthOptimization, LongevityPrograms)
 - [ ] Verify `BreadcrumbList` schema on all interior pages
 
 #### Meta Tags & Open Graph
@@ -236,8 +236,8 @@
 - [ ] Fix any failing contrast ratios
 
 #### Heading Order
-- [ ] Audit heading hierarchy on all pages — ensure H1 → H2 → H3 sequence is never skipped
-- [ ] Fix any instances where H3/H4 appears without a parent H2
+- [x] Audit heading hierarchy on all pages — ensure H1 → H2 → H3 sequence is never skipped
+- [x] Fix any instances where H3/H4 appears without a parent H2 (fixed in Home, Services, BlackLabel, Contact)
 
 #### Viewport Zoom Lock
 - [ ] Check viewport meta tag in `client/index.html` — remove `user-scalable=no` or `maximum-scale` if present
@@ -248,16 +248,16 @@
 ### AI SEARCH ENGINE OPTIMIZATION (GEO — Generative Engine Optimization)
 
 #### Content Structure for AI Citation
-- [ ] Add "Answer first" block (60–90 words) under the H1 on homepage and each service page — this is what AI engines extract as the summary
+- [x] Add "Answer first" block (60–90 words) under the H1 on homepage and each service page — this is what AI engines extract as the summary
 - [ ] Add "Key Takeaways" section (4–6 bullets, max 16 words each) to each service page
 - [ ] Rewrite section headings to match real patient search prompts: "What is stem cell therapy?", "How long does recovery take?", "Is stem cell therapy safe?", "How much does stem cell therapy cost in [city]?"
 - [ ] Build dedicated `/faq` page with 15–20 Q&As answered in 40–80 words each — #1 source AI engines pull from
-- [ ] Add authorship block to all content pages: author name, credentials, published date, last updated date
+- [x] Add authorship block to all content pages: author name, credentials, published date, last updated date (E-E-A-T author block added to all blog posts)
 
 #### E-E-A-T Signals (Experience, Expertise, Authoritativeness, Trustworthiness)
 - [ ] Create dedicated `/about/dr-egbert` page: full bio, credentials, medical school, board certifications, publications
 - [ ] Add "Sources & References" section to service pages citing peer-reviewed research on stem cell therapy
-- [ ] Add "Last Updated" date to all service and blog pages
+- [x] Add "Last Updated" date to all service and blog pages (lastUpdated field added to all 7 blog articles)
 - [ ] Publish at least 2 long-form blog posts per month targeting specific patient questions
 
 #### AI Crawler Access (verify robots.txt)

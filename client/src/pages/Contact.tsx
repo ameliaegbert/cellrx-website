@@ -167,12 +167,12 @@ export default function Contact() {
 
               {/* What to expect */}
               <div className="mt-12 p-6 border border-white/5 bg-[#030d1e]">
-                <h4
+                <h3
                   className="text-white mb-4"
                   style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "16px" }}
                 >
                   What to Expect
-                </h4>
+                </h3>
                 <div className="space-y-3">
                   {[
                     "A private, confidential consultation",

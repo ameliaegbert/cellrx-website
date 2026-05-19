@@ -4,13 +4,55 @@
  * Route: /longevity-programs
  */
 
-import { useEffect } from "react";
-import { useSEO, PAGE_SEO, useBreadcrumb } from "@/hooks/useSEO";
+import { useEffect, useState } from "react";
+import { useSEO, PAGE_SEO, useBreadcrumb, useFAQSchema } from "@/hooks/useSEO";
 import { Link } from "wouter";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
-import { CheckCircle2, Clock, ArrowRight } from "lucide-react";
+import { CheckCircle2, Clock, ArrowRight, Plus, Minus } from "lucide-react";
+
+const LONGEVITY_FAQS = [
+  {
+    q: "What is a longevity program at CellRX?",
+    a: "A CellRX longevity program is a physician-directed protocol designed to extend your healthspan — the years you spend in peak biological function. It combines advanced diagnostics, regenerative biologics, hormone optimization, precision nutrition, and targeted supplementation into a personalized plan that evolves with your biology over time."
+  },
+  {
+    q: "What does a CellRX longevity protocol include?",
+    a: "Longevity protocols at CellRX are highly individualized, but typically include comprehensive biomarker testing (40+ markers), hormone optimization, IV stem cell therapy for cellular rejuvenation, NAD+ therapy, peptide protocols, anti-inflammatory interventions, and quarterly monitoring to track biological age and adjust the protocol as your biology responds."
+  },
+  {
+    q: "How does stem cell therapy fit into a longevity program?",
+    a: "Stem cell therapy is a cornerstone of CellRX longevity protocols. IV stem cell delivery provides systemic cellular rejuvenation — reducing biological age markers, improving mitochondrial function, reducing chronic inflammation, and restoring the regenerative capacity that declines with age. Many longevity patients receive annual or semi-annual IV therapy as part of their ongoing protocol."
+  },
+  {
+    q: "How do I know if a longevity program is right for me?",
+    a: "If you are a high-performing individual who wants to maintain peak function as you age — or if you are experiencing the early signs of biological decline (fatigue, cognitive fog, reduced recovery, hormonal changes) — a longevity program may be appropriate. A private consultation with our Medical Director is the starting point. He will assess your current biological status and determine whether a longevity protocol is the right investment for your goals."
+  },
+];
+
+function LongevityFAQItem({ q, a }: { q: string; a: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="border-b border-white/10">
+      <button
+        className="w-full flex items-center justify-between py-6 text-left gap-4"
+        onClick={() => setOpen(!open)}
+        aria-expanded={open}
+      >
+        <span className="text-white font-medium text-base leading-snug" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+          {q}
+        </span>
+        <span className="text-[#FBB217] shrink-0">
+          {open ? <Minus size={18} /> : <Plus size={18} />}
+        </span>
+      </button>
+      <div className={`overflow-hidden transition-all duration-300 ${open ? "max-h-96 pb-6" : "max-h-0"}`}>
+        <p className="text-[#D6D7D9] text-sm leading-relaxed">{a}</p>
+      </div>
+    </div>
+  );
+}
 
 const BG_DARK_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/background_dark_fb24a343.webp";
 const IV_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/service_iv_9142a5f3.webp";
@@ -106,6 +148,10 @@ const stats = [
 
 export default function LongevityPrograms() {
   useSEO(PAGE_SEO.longevityPrograms);
+  useFAQSchema(
+    LONGEVITY_FAQS.map((f) => ({ question: f.q, answer: f.a })),
+    "longevity-programs"
+  );
   useBreadcrumb([
     { name: "Home", url: "https://www.cellrx.bio/" },
     { name: "Longevity Programs", url: "https://www.cellrx.bio/longevity-programs" },
@@ -316,6 +362,36 @@ export default function LongevityPrograms() {
             <a href="tel:3857072373">
               <button className="btn-outline rounded-none">Call 385-707-2373</button>
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-24 bg-[#051229]">
+        <div className="container">
+          <div className="max-w-3xl mx-auto">
+            <div className="mb-12 fade-up">
+              <p className="section-label mb-4">Common Questions</p>
+              <h2
+                className="text-[#F6F5EC]"
+                style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(36px, 4vw, 56px)" }}
+              >
+                LONGEVITY PROGRAMS FAQ
+              </h2>
+              <p className="text-[#D6D7D9]/60 text-sm mt-4 leading-relaxed">
+                Answers to the most common questions about CellRX longevity programs — what is included, how stem cell therapy fits in, and how to get started.
+              </p>
+            </div>
+            <div className="fade-up">
+              {LONGEVITY_FAQS.map((faq, i) => (
+                <LongevityFAQItem key={i} q={faq.q} a={faq.a} />
+              ))}
+            </div>
+            <div className="mt-10 text-center fade-up">
+              <Link href="/contact">
+                <button className="btn-primary rounded-none">Book Your Private Consultation</button>
+              </Link>
+            </div>
           </div>
         </div>
       </section>

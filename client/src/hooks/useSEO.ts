@@ -108,6 +108,42 @@ export function useBreadcrumb(items: BreadcrumbItem[]) {
   }, [items]);
 }
 
+// ─── FAQ Schema hook (page-specific FAQPage JSON-LD) ────────────────────────
+export interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+export function useFAQSchema(faqs: FAQItem[], pageId: string) {
+  useEffect(() => {
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "@id": `https://www.cellrx.bio${window.location.pathname}#faq`,
+      mainEntity: faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: faq.answer,
+        },
+      })),
+    };
+    const id = `faq-schema-${pageId}`;
+    let el = document.getElementById(id) as HTMLScriptElement | null;
+    if (!el) {
+      el = document.createElement("script");
+      el.id = id;
+      el.type = "application/ld+json";
+      document.head.appendChild(el);
+    }
+    el.textContent = JSON.stringify(schema);
+    return () => {
+      document.getElementById(id)?.remove();
+    };
+  }, [faqs, pageId]);
+}
+
 // ─── noindex hook (for admin/internal pages) ──────────────────────────────────
 export function useNoIndex() {
   useEffect(() => {

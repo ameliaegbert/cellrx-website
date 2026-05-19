@@ -223,7 +223,7 @@ export default function About() {
                 style={{ transitionDelay: `${i * 0.1}s` }}
               >
                 <p className="text-[#FBB217] mb-4" style={{ fontFamily: TITLE_FONT, fontSize: "64px", lineHeight: 1, opacity: 0.7 }}>{val.num}</p>
-                <h4 className="text-[#F6F5EC] mb-3" style={{ fontFamily: SUBTITLE_FONT, fontSize: "17px", fontWeight: 600 }}>{val.title}</h4>
+                <h3 className="text-[#F6F5EC] mb-3" style={{ fontFamily: SUBTITLE_FONT, fontSize: "17px", fontWeight: 600 }}>{val.title}</h3>
                 <p className="text-[#D6D7D9] text-sm leading-relaxed" style={{ fontFamily: BODY_FONT }}>{val.desc}</p>
               </div>
             ))}

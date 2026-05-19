@@ -4,13 +4,63 @@
  * Copy: Luxury sales psychology — authority, exclusivity, chain-of-custody differentiator, transparent pricing
  */
 
-import { useEffect } from "react";
-import { useSEO, PAGE_SEO, useBreadcrumb } from "@/hooks/useSEO";
+import { useEffect, useState } from "react";
+import { useSEO, PAGE_SEO, useBreadcrumb, useFAQSchema } from "@/hooks/useSEO";
 import { Link } from "wouter";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
-import { CheckCircle2, ArrowRight, Clock, Shield, Lock } from "lucide-react";
+import { CheckCircle2, ArrowRight, Clock, Shield, Lock, Plus, Minus } from "lucide-react";
+
+const SERVICE_FAQS = [
+  {
+    q: "How much does stem cell therapy cost at CellRX?",
+    a: "Stem cell injection therapy starts at $2,500 and IV therapy starts at $4,000. All protocols are priced at $1,250 per CC, ranging from 1 CC to a maximum of 10 CC. Your Medical Director determines the optimal dose during your private consultation based on your condition and goals."
+  },
+  {
+    q: "What is the difference between stem cell injection and IV therapy?",
+    a: "Stem cell injection delivers concentrated biologics directly to a specific site of tissue damage — ideal for joint pain, tendon injuries, and localized conditions. IV therapy delivers biologics systemically through the bloodstream, targeting whole-body inflammation, cellular aging, energy, and cognitive performance. Many patients combine both approaches for comprehensive results."
+  },
+  {
+    q: "How long does a stem cell procedure take?",
+    a: "Most treatments are completed in under 60 minutes in our private clinic. There is no general anesthesia, no hospital stay, and no surgical incision. The vast majority of patients return to normal activities the same day."
+  },
+  {
+    q: "When will I see results from stem cell therapy?",
+    a: "Many patients report initial improvements in pain and inflammation within two to four weeks. The more significant structural repair — rebuilding of cartilage and connective tissue — continues to unfold over three to six months. Results are not a temporary mask; they represent genuine biological repair that tends to be durable at one and two-year follow-up."
+  },
+  {
+    q: "Are CellRX stem cells safe and ethically sourced?",
+    a: "Yes. CellRX biologics are sourced exclusively from healthy, consented local births. They are never diluted and never replicated, ensuring maximum therapeutic concentration and full ethical compliance. Our Medical Director serves simultaneously as Medical Director of the stem cell source company, providing unbroken chain-of-custody oversight from procurement to administration."
+  },
+  {
+    q: "What conditions can be treated with stem cell therapy at CellRX?",
+    a: "Common conditions treated include knee osteoarthritis, hip osteoarthritis, rotator cuff tears and tendinopathy, Achilles tendinopathy, plantar fasciitis, degenerative disc disease, chronic systemic inflammation, post-COVID syndrome, chronic fatigue, and cognitive decline. Your consultation will determine whether your specific condition makes you a strong candidate."
+  },
+];
+
+function ServiceFAQItem({ q, a }: { q: string; a: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="border-b border-white/10">
+      <button
+        className="w-full flex items-center justify-between py-6 text-left gap-4"
+        onClick={() => setOpen(!open)}
+        aria-expanded={open}
+      >
+        <span className="text-white font-medium text-base leading-snug" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+          {q}
+        </span>
+        <span className="text-[#FBB217] shrink-0">
+          {open ? <Minus size={18} /> : <Plus size={18} />}
+        </span>
+      </button>
+      <div className={`overflow-hidden transition-all duration-300 ${open ? "max-h-96 pb-6" : "max-h-0"}`}>
+        <p className="text-[#D6D7D9] text-sm leading-relaxed">{a}</p>
+      </div>
+    </div>
+  );
+}
 
 const INJECTION_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/CELLRX_HAPS-12_94cc8872.webp";
 const IV_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/service_iv_9142a5f3.webp";
@@ -33,6 +83,10 @@ export default function Services() {
     { name: "Home", url: "https://www.cellrx.bio/" },
     { name: "Services", url: "https://www.cellrx.bio/services" },
   ]);
+  useFAQSchema(
+    SERVICE_FAQS.map((f) => ({ question: f.q, answer: f.a })),
+    "services"
+  );
   useScrollAnimation();
 
   return (
@@ -298,12 +352,12 @@ export default function Services() {
                 >
                   {step.step}
                 </p>
-                <h4
+                <h3
                   className="text-[#F6F5EC] mb-3"
                   style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "18px" }}
                 >
                   {step.title}
-                </h4>
+                </h3>
                 <p className="text-[#D6D7D9]/60 text-sm leading-relaxed">{step.desc}</p>
                 {i < 3 && (
                   <ArrowRight
@@ -313,6 +367,36 @@ export default function Services() {
                 )}
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-24 bg-[#051229]">
+        <div className="container">
+          <div className="max-w-3xl mx-auto">
+            <div className="mb-12 fade-up">
+              <p className="section-label mb-4">Common Questions</p>
+              <h2
+                className="text-[#F6F5EC]"
+                style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(36px, 4vw, 56px)" }}
+              >
+                STEM CELL THERAPY FAQ
+              </h2>
+              <p className="text-[#D6D7D9]/60 text-sm mt-4 leading-relaxed">
+                Answers to the most common questions about CellRX stem cell injection and IV therapy — pricing, safety, results, and what to expect.
+              </p>
+            </div>
+            <div className="fade-up">
+              {SERVICE_FAQS.map((faq, i) => (
+                <ServiceFAQItem key={i} q={faq.q} a={faq.a} />
+              ))}
+            </div>
+            <div className="mt-10 text-center fade-up">
+              <Link href="/contact">
+                <button className="btn-primary rounded-none">Book Your Private Consultation</button>
+              </Link>
+            </div>
           </div>
         </div>
       </section>

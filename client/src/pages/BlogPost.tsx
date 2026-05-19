@@ -9,8 +9,10 @@ import { Link, useParams } from "wouter";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
-import { ArrowLeft, Calendar, Clock } from "lucide-react";
+import { ArrowLeft, Calendar, Clock, Award } from "lucide-react";
 import { useSEO, getBlogPostSEO } from "@/hooks/useSEO";
+
+const PHYSICIAN_PORTRAIT = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/physician_portrait_d5fe25e9.webp";
 
 const INJECTION_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/service_injection_3f039e48.webp";
 const IV_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/service_iv_9142a5f3.webp";
@@ -36,8 +38,10 @@ interface ArticleData {
   category: string;
   title: string;
   date: string;
+  lastUpdated?: string;
   readTime: string;
   author: string;
+  authorTitle?: string;
   excerpt: string;
   body: string[];
   headings: { after: number; text: string }[];
@@ -54,8 +58,10 @@ const articles: ArticleData[] = [
     category: "Stem Cell Injection",
     title: "How Stem Cell Injection Therapy Is Changing the Future of Joint Repair",
     date: "March 15, 2026",
+    lastUpdated: "May 2026",
     readTime: "8 min read",
-    author: "CellRX Medical Team",
+    author: "Dr. Jacob Egbert, MD",
+    authorTitle: "Medical Director, CellRX",
     excerpt: "For decades, patients with chronic joint pain faced a difficult choice: manage symptoms indefinitely or undergo invasive surgery. Stem cell injection therapy is rewriting that narrative.",
     headings: [
       { after: 0, text: "Understanding the Biology of Joint Degeneration" },
@@ -96,7 +102,9 @@ const articles: ArticleData[] = [
     title: "The Science of Systemic Regeneration: What Happens During IV Stem Cell Therapy",
     date: "February 28, 2026",
     readTime: "10 min read",
-    author: "CellRX Medical Team",
+    author: "Dr. Jacob Egbert, MD",
+    authorTitle: "Medical Director, CellRX",
+    lastUpdated: "May 2026",
     excerpt: "When regenerative biologics are delivered intravenously, they actively seek out areas of inflammation and cellular stress, initiating a cascade of repair signals that can affect everything from immune function to cognitive performance.",
     headings: [
       { after: 0, text: "The Homing Mechanism" },
@@ -135,7 +143,9 @@ const articles: ArticleData[] = [
     title: "Why the World's Top Performers Choose Proactive Concierge Medicine",
     date: "February 10, 2026",
     readTime: "6 min read",
-    author: "CellRX Medical Team",
+    author: "Dr. Jacob Egbert, MD",
+    authorTitle: "Medical Director, CellRX",
+    lastUpdated: "May 2026",
     excerpt: "The most sophisticated approach to health is not reactive — it is proactive. Black Label Concierge Medicine is built for individuals who understand that quarterly biomarker monitoring, personalized protocols, and direct physician access are not luxuries — they are leverage.",
     headings: [
       { after: 0, text: "The Problem With Conventional Healthcare" },
@@ -173,7 +183,9 @@ const articles: ArticleData[] = [
     title: "What to Expect at Your First CellRX Consultation",
     date: "January 22, 2026",
     readTime: "5 min read",
-    author: "CellRX Medical Team",
+    author: "Dr. Jacob Egbert, MD",
+    authorTitle: "Medical Director, CellRX",
+    lastUpdated: "May 2026",
     excerpt: "Your first consultation at CellRX is a comprehensive, unhurried conversation about your health history, goals, and concerns.",
     headings: [
       { after: 0, text: "Before You Arrive" },
@@ -211,7 +223,9 @@ const articles: ArticleData[] = [
     title: "Chain of Custody: Why the Source of Your Stem Cells Matters More Than You Think",
     date: "January 8, 2026",
     readTime: "12 min read",
-    author: "CellRX Medical Team",
+    author: "Dr. Jacob Egbert, MD",
+    authorTitle: "Medical Director, CellRX",
+    lastUpdated: "May 2026",
     excerpt: "Not all stem cell products are created equal. The difference between a diluted, replicated biologic and a full-concentration, ethically sourced product is the difference between marginal results and transformative outcomes.",
     headings: [
       { after: 0, text: "How Most Clinics Source Their Biologics" },
@@ -250,7 +264,9 @@ const articles: ArticleData[] = [
     title: "Quarterly Labs and Longevity: How Biomarker Monitoring Changes Everything",
     date: "December 20, 2025",
     readTime: "7 min read",
-    author: "CellRX Medical Team",
+    author: "Dr. Jacob Egbert, MD",
+    authorTitle: "Medical Director, CellRX",
+    lastUpdated: "May 2026",
     excerpt: "Most people only see a doctor when something is wrong. The most successful longevity strategies are built on the opposite principle: continuous monitoring, early intervention, and personalized protocols.",
     headings: [
       { after: 0, text: "The Limits of Annual Checkups" },
@@ -289,7 +305,9 @@ const articles: ArticleData[] = [
     title: "Regenerative Medicine for Elite Athletes: Accelerating Recovery Without Compromise",
     date: "December 15, 2025",
     readTime: "9 min read",
-    author: "CellRX Medical Team",
+    author: "Dr. Jacob Egbert, MD",
+    authorTitle: "Medical Director, CellRX",
+    lastUpdated: "May 2026",
     excerpt: "Elite athletes push their bodies to the limit — and the recovery demands are equally extreme. Regenerative therapies are becoming an essential tool in the performance medicine toolkit.",
     headings: [
       { after: 0, text: "The Recovery Problem in Elite Sport" },
@@ -452,7 +470,35 @@ export default function BlogPost() {
             <div className="flex items-center gap-6 text-[#D6D7D9]/40 text-xs mb-8 pb-8 border-b border-white/10">
               <span className="flex items-center gap-1.5"><Calendar size={12} />{article.date}</span>
               <span className="flex items-center gap-1.5"><Clock size={12} />{article.readTime}</span>
-              <span className="text-[#D6D7D9]/40">{article.author}</span>
+              {article.lastUpdated && (
+                <span className="text-[#D6D7D9]/30">Updated {article.lastUpdated}</span>
+              )}
+            </div>
+
+            {/* E-E-A-T Author Block */}
+            <div className="flex items-start gap-4 p-5 bg-[#0a1628] border border-white/5 mb-10 fade-up">
+              <img
+                src={PHYSICIAN_PORTRAIT}
+                alt="Dr. Jacob Egbert, MD — Medical Director, CellRX"
+                className="w-14 h-14 object-cover object-top rounded-full shrink-0"
+                width={56}
+                height={56}
+                loading="lazy"
+              />
+              <div>
+                <div className="flex items-center gap-2 mb-1">
+                  <p className="text-[#F6F5EC] text-sm font-semibold" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                    {article.author}
+                  </p>
+                  <Award size={12} className="text-[#FBB217]" />
+                </div>
+                <p className="text-[#FBB217] text-xs tracking-wide mb-1" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                  {article.authorTitle || "Medical Director, CellRX"}
+                </p>
+                <p className="text-[#D6D7D9]/50 text-xs leading-relaxed" style={{ fontFamily: "'Libre Franklin', sans-serif" }}>
+                  Dr. Egbert serves simultaneously as Medical Director of CellRX and Medical Director of the stem cell source company, providing unbroken chain-of-custody oversight from ethical procurement to physician-administered treatment. Board-certified with 10+ years in regenerative and functional medicine.
+                </p>
+              </div>
             </div>
 
             {/* Lead paragraph */}

@@ -6,13 +6,59 @@
  * Pricing: Custom / plan-specific — never disclosed publicly
  */
 
-import { useEffect } from "react";
-import { useSEO, PAGE_SEO, useBreadcrumb } from "@/hooks/useSEO";
+import { useEffect, useState } from "react";
+import { useSEO, PAGE_SEO, useBreadcrumb, useFAQSchema } from "@/hooks/useSEO";
 import { Link } from "wouter";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
-import { CheckCircle2, Crown, Zap, Shield, FlaskConical, Plus, Lock, ArrowRight } from "lucide-react";
+import { CheckCircle2, Crown, Zap, Shield, FlaskConical, Plus, Minus, Lock, ArrowRight } from "lucide-react";
+
+const BLACK_LABEL_FAQS = [
+  {
+    q: "What is included in CellRX Black Label Concierge Medicine?",
+    a: "Black Label includes quarterly comprehensive laboratory panels, personalized longevity protocols, direct physician access (secure messaging and same-week appointments), priority scheduling, and unlimited consultations. Stem cell treatments are available as a premium add-on. Spouse enrollment is also available. Membership is limited by design to ensure every member receives the full attention and resources they deserve."
+  },
+  {
+    q: "How much does Black Label Concierge Medicine cost?",
+    a: "Black Label membership pricing is custom and discussed privately during your consultation — because your protocol is not generic, and neither is your investment. Pricing reflects the level of physician access, the comprehensiveness of your quarterly panels, and any add-on services included in your personalized plan."
+  },
+  {
+    q: "Who is Black Label Concierge Medicine designed for?",
+    a: "Black Label is designed for high-performing individuals — executives, entrepreneurs, athletes, and professionals — who understand that proactive health investment is leverage, not luxury. It is for those who are not satisfied with the reactive model of conventional healthcare and who want a physician who knows their biology intimately and monitors it continuously."
+  },
+  {
+    q: "What does a quarterly lab panel include at CellRX?",
+    a: "A comprehensive quarterly lab panel at CellRX goes far beyond the standard annual physical. It includes a full metabolic panel, complete blood count, lipid panel with particle sizing, inflammatory markers, hormone panel, insulin and glucose metabolism markers, nutrient status, and longevity biomarkers including biological age assessments."
+  },
+  {
+    q: "Is stem cell therapy included in Black Label membership?",
+    a: "Stem cell treatments are available as a premium add-on to Black Label membership. Injection therapy starts at $2,500 and IV therapy starts at $4,000, priced at $1,250 per CC. Black Label members receive priority scheduling and physician-directed protocol design for all regenerative treatments."
+  },
+];
+
+function BlackLabelFAQItem({ q, a }: { q: string; a: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="border-b border-white/10">
+      <button
+        className="w-full flex items-center justify-between py-6 text-left gap-4"
+        onClick={() => setOpen(!open)}
+        aria-expanded={open}
+      >
+        <span className="text-white font-medium text-base leading-snug" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+          {q}
+        </span>
+        <span className="text-[#FBB217] shrink-0">
+          {open ? <Minus size={18} /> : <Plus size={18} />}
+        </span>
+      </button>
+      <div className={`overflow-hidden transition-all duration-300 ${open ? "max-h-96 pb-6" : "max-h-0"}`}>
+        <p className="text-[#D6D7D9] text-sm leading-relaxed">{a}</p>
+      </div>
+    </div>
+  );
+}
 
 const BLACK_LABEL_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/service_black_label_1c68d442.webp";
 const BG_DARK_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/background_dark_fb24a343.webp";
@@ -39,6 +85,10 @@ export default function BlackLabel() {
     { name: "Home", url: "https://www.cellrx.bio/" },
     { name: "Black Label Concierge", url: "https://www.cellrx.bio/black-label" },
   ]);
+  useFAQSchema(
+    BLACK_LABEL_FAQS.map((f) => ({ question: f.q, answer: f.a })),
+    "black-label"
+  );
   useScrollAnimation();
 
   return (
@@ -106,7 +156,7 @@ export default function BlackLabel() {
               ].map((item, i) => (
                 <div key={i} className="p-6 border border-[#FBB217]/20 bg-[#030d1e]">
                   <div className="mb-3">{item.icon}</div>
-                  <h4 className="text-[#F6F5EC] mb-2" style={{ fontFamily: SUBTITLE_FONT, fontSize: "15px" }}>{item.title}</h4>
+                  <h3 className="text-[#F6F5EC] mb-2" style={{ fontFamily: SUBTITLE_FONT, fontSize: "15px" }}>{item.title}</h3>
                   <p className="text-[#D6D7D9]/60 text-xs leading-relaxed" style={{ fontFamily: BODY_FONT }}>{item.desc}</p>
                 </div>
               ))}
@@ -275,7 +325,7 @@ export default function BlackLabel() {
               ].map((profile, i) => (
                 <div key={i} className="p-6 border border-[#FBB217]/15 bg-[#030d1e]">
                   <div className="gold-rule mb-4" />
-                  <h4 className="text-[#F6F5EC] mb-2" style={{ fontFamily: SUBTITLE_FONT, fontSize: "16px", fontWeight: 600 }}>{profile.title}</h4>
+                  <h3 className="text-[#F6F5EC] mb-2" style={{ fontFamily: SUBTITLE_FONT, fontSize: "16px", fontWeight: 600 }}>{profile.title}</h3>
                   <p className="text-[#D6D7D9]/60 text-sm leading-relaxed" style={{ fontFamily: BODY_FONT }}>{profile.desc}</p>
                 </div>
               ))}
@@ -342,6 +392,36 @@ export default function BlackLabel() {
               Begin the Conversation <ArrowRight size={14} />
             </button>
           </Link>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-24 bg-[#030d1e]">
+        <div className="container">
+          <div className="max-w-3xl mx-auto">
+            <div className="mb-12 fade-up">
+              <p className="section-label mb-4">Common Questions</p>
+              <h2
+                className="text-[#F6F5EC]"
+                style={{ fontFamily: TITLE_FONT, fontSize: "clamp(36px, 4vw, 56px)" }}
+              >
+                BLACK LABEL FAQ
+              </h2>
+              <p className="text-[#D6D7D9]/60 text-sm mt-4 leading-relaxed">
+                Answers to the most common questions about CellRX Black Label Concierge Medicine — what is included, who it is for, and how to get started.
+              </p>
+            </div>
+            <div className="fade-up">
+              {BLACK_LABEL_FAQS.map((faq, i) => (
+                <BlackLabelFAQItem key={i} q={faq.q} a={faq.a} />
+              ))}
+            </div>
+            <div className="mt-10 text-center fade-up">
+              <Link href="/contact">
+                <button className="btn-amber rounded-none">Begin the Conversation</button>
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 
