@@ -12,6 +12,7 @@
 
 import { z } from "zod";
 import { adminProcedure, router } from "../_core/trpc";
+import { ENV } from "../_core/env";
 
 const PSI_API = "https://www.googleapis.com/pagespeedonline/v5/runPagespeed";
 const SITE_URL = "https://www.cellrx.bio";
@@ -72,7 +73,9 @@ async function fetchLighthouse(strategy: "mobile" | "desktop"): Promise<Lighthou
   }
 
   const categories = "performance,accessibility,best-practices,seo";
-  const url = `${PSI_API}?url=${encodeURIComponent(SITE_URL)}&strategy=${strategy}&category=${categories}`;
+  const apiKey = ENV.pagespeedApiKey;
+  const keyParam = apiKey ? `&key=${apiKey}` : "";
+  const url = `${PSI_API}?url=${encodeURIComponent(SITE_URL)}&strategy=${strategy}&category=${categories}${keyParam}`;
 
   const res = await fetch(url, {
     headers: { "Accept": "application/json" },

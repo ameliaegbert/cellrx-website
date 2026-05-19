@@ -20,4 +20,5 @@ export const ENV = {
   googleOAuthClientSecret: process.env.GOOGLE_OAUTH_CLIENT_SECRET ?? "",
   googleOAuthRefreshToken: process.env.GOOGLE_OAUTH_REFRESH_TOKEN ?? "",
   clarityApiKey: process.env.CLARITY_API_KEY ?? "",
+  pagespeedApiKey: process.env.PAGESPEED_API_KEY ?? "",
 };

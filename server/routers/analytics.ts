@@ -1,15 +1,18 @@
 /**
  * Google Analytics 4 tRPC Router
  * Provides website traffic data for the executive dashboard.
- * Uses OAuth2 refresh token (amelia@cellrx.bio) via the GA4 Data API.
+ * Uses OAuth2 refresh token (amelia@cellrx.bio) via the GA4 Data REST API.
+ *
+ * NOTE: Uses the REST API directly instead of @google-analytics/data gRPC client
+ * because the gRPC client does not support googleapis OAuth2Client auth objects.
  */
 
 import { adminProcedure, router } from "../_core/trpc";
 import { ENV } from "../_core/env";
-import { BetaAnalyticsDataClient } from "@google-analytics/data";
 import { google } from "googleapis";
 
 const GA_PROPERTY_ID = ENV.gaPropertyId;
+const GA4_REST_BASE = "https://analyticsdata.googleapis.com/v1beta";
 
 function getOAuth2Client() {
   const client = new google.auth.OAuth2(
@@ -18,6 +21,29 @@ function getOAuth2Client() {
   );
   client.setCredentials({ refresh_token: ENV.googleOAuthRefreshToken });
   return client;
+}
+
+async function ga4Request(endpoint: string, body: object) {
+  const auth = getOAuth2Client();
+  const { token } = await auth.getAccessToken();
+  if (!token) throw new Error("Failed to get GA4 access token");
+
+  const res = await fetch(`${GA4_REST_BASE}/properties/${GA_PROPERTY_ID}${endpoint}`, {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(body),
+    signal: AbortSignal.timeout(30_000),
+  });
+
+  if (!res.ok) {
+    const err = await res.text();
+    throw new Error(`GA4 API error ${res.status}: ${err}`);
+  }
+
+  return res.json() as Promise<any>;
 }
 
 function formatDate(d: Date) {
@@ -40,12 +66,6 @@ export const analyticsRouter = router({
       return { configured: false, message: "GA_PROPERTY_ID not set" };
     }
 
-    const auth = getOAuth2Client();
-
-    const analyticsDataClient = new BetaAnalyticsDataClient({
-      authClient: auth as any,
-    });
-
     const endDate = formatDate(new Date());
     const startDate28 = formatDate(daysAgo(28));
     const startDatePrev = formatDate(daysAgo(56));
@@ -53,8 +73,7 @@ export const analyticsRouter = router({
 
     const [currentRes, previousRes, topPagesRes, trafficSourceRes] = await Promise.all([
       // Current 28-day totals
-      analyticsDataClient.runReport({
-        property: `properties/${GA_PROPERTY_ID}`,
+      ga4Request(":runReport", {
         dateRanges: [{ startDate: startDate28, endDate }],
         metrics: [
           { name: "sessions" },
@@ -65,8 +84,7 @@ export const analyticsRouter = router({
         ],
       }),
       // Previous 28-day totals
-      analyticsDataClient.runReport({
-        property: `properties/${GA_PROPERTY_ID}`,
+      ga4Request(":runReport", {
         dateRanges: [{ startDate: startDatePrev, endDate: endDatePrev }],
         metrics: [
           { name: "sessions" },
@@ -76,8 +94,7 @@ export const analyticsRouter = router({
         ],
       }),
       // Top pages by sessions
-      analyticsDataClient.runReport({
-        property: `properties/${GA_PROPERTY_ID}`,
+      ga4Request(":runReport", {
         dateRanges: [{ startDate: startDate28, endDate }],
         dimensions: [{ name: "pagePath" }],
         metrics: [{ name: "sessions" }, { name: "screenPageViews" }],
@@ -85,8 +102,7 @@ export const analyticsRouter = router({
         limit: 10,
       }),
       // Traffic by channel
-      analyticsDataClient.runReport({
-        property: `properties/${GA_PROPERTY_ID}`,
+      ga4Request(":runReport", {
         dateRanges: [{ startDate: startDate28, endDate }],
         dimensions: [{ name: "sessionDefaultChannelGrouping" }],
         metrics: [{ name: "sessions" }],
@@ -95,8 +111,8 @@ export const analyticsRouter = router({
       }),
     ]);
 
-    const curRow = currentRes[0]?.rows?.[0]?.metricValues ?? [];
-    const prevRow = previousRes[0]?.rows?.[0]?.metricValues ?? [];
+    const curRow = currentRes?.rows?.[0]?.metricValues ?? [];
+    const prevRow = previousRes?.rows?.[0]?.metricValues ?? [];
 
     const getVal = (row: any[], idx: number) => parseFloat(row[idx]?.value ?? "0");
     const delta = (a: number, b: number) =>
@@ -117,13 +133,13 @@ export const analyticsRouter = router({
       bounceRate: parseFloat((getVal(prevRow, 3) * 100).toFixed(1)),
     };
 
-    const topPages = (topPagesRes[0]?.rows ?? []).map((r: any) => ({
+    const topPages = (topPagesRes?.rows ?? []).map((r: any) => ({
       page: r.dimensionValues?.[0]?.value ?? "",
       sessions: Math.round(parseFloat(r.metricValues?.[0]?.value ?? "0")),
       pageviews: Math.round(parseFloat(r.metricValues?.[1]?.value ?? "0")),
     }));
 
-    const trafficSources = (trafficSourceRes[0]?.rows ?? []).map((r: any) => ({
+    const trafficSources = (trafficSourceRes?.rows ?? []).map((r: any) => ({
       channel: r.dimensionValues?.[0]?.value ?? "",
       sessions: Math.round(parseFloat(r.metricValues?.[0]?.value ?? "0")),
     }));
@@ -151,23 +167,17 @@ export const analyticsRouter = router({
       return [];
     }
 
-    const auth = getOAuth2Client();
-    const analyticsDataClient = new BetaAnalyticsDataClient({
-      authClient: auth as any,
-    });
-
     const endDate = formatDate(new Date());
     const startDate = formatDate(daysAgo(28));
 
-    const res = await analyticsDataClient.runReport({
-      property: `properties/${GA_PROPERTY_ID}`,
+    const res = await ga4Request(":runReport", {
       dateRanges: [{ startDate, endDate }],
       dimensions: [{ name: "date" }],
       metrics: [{ name: "sessions" }, { name: "totalUsers" }],
       orderBys: [{ dimension: { dimensionName: "date" }, desc: false }],
     });
 
-    return (res[0]?.rows ?? []).map((r: any) => ({
+    return (res?.rows ?? []).map((r: any) => ({
       date: r.dimensionValues?.[0]?.value ?? "",
       sessions: Math.round(parseFloat(r.metricValues?.[0]?.value ?? "0")),
       users: Math.round(parseFloat(r.metricValues?.[1]?.value ?? "0")),
