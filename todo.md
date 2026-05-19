@@ -160,8 +160,8 @@
 - [ ] Build Lighthouse dashboard panel once platform is confirmed
 
 ## Meta Token Auto-Refresh (May 18, 2026)
-- [ ] Exchange short-lived Meta token for long-lived token (60 days)
-- [ ] Store META_APP_ID and META_APP_SECRET as secrets
-- [ ] Build heartbeat job that refreshes the token every 45 days automatically
-- [ ] Store refreshed token back to secrets so it never expires
-- [ ] Test that Instagram panel shows live data again
+- [x] Exchange short-lived Meta token for long-lived token (60 days)
+- [x] Store META_APP_ID and META_APP_SECRET as secrets
+- [x] Build heartbeat job that refreshes the token every 45 days automatically (cron task_uid: dQzPLT4ae7fd9WWFAVYFHy, next run: 2026-06-01)
+- [x] Store refreshed token back to secrets so it never expires
+- [x] Test that Instagram panel shows live data again
