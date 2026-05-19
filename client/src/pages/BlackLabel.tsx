@@ -213,7 +213,7 @@ export default function BlackLabel() {
               className="text-[#F6F5EC]"
               style={{ fontFamily: TITLE_FONT, fontSize: "clamp(36px, 4vw, 56px)" }}
             >
-              EVERYTHING YOUR MEMBERSHIP DELIVERS
+              WHAT IS INCLUDED IN CONCIERGE MEDICINE?
             </h2>
             <p className="text-[#D6D7D9]/60 max-w-2xl mx-auto mt-4" style={{ fontFamily: BODY_FONT }}>
               Black Label membership is structured around three pillars of elite health — each designed to work together as a complete system for your biology.

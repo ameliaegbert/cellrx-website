@@ -349,7 +349,7 @@ export default function Services() {
               className="text-[#F6F5EC] mb-6"
               style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(32px, 4vw, 52px)" }}
             >
-              NO HIDDEN FEES. NO SURPRISES.
+              HOW MUCH DOES STEM CELL THERAPY COST?
             </h2>
             <p className="text-[#D6D7D9]/70 leading-relaxed mb-8">
               Stem cell injection therapy starts at <strong className="text-[#FBB217]">$2,500</strong> and IV therapy starts at <strong className="text-[#FBB217]">$4,000</strong>. All protocols are priced at $1,250 per CC, ranging from 1 CC to a maximum of 10 CC. Your Medical Director will recommend the optimal dose during your private consultation. You will always know exactly what you are investing — and exactly what you are receiving.
@@ -380,7 +380,7 @@ export default function Services() {
               className="text-[#F6F5EC]"
               style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(36px, 4vw, 56px)" }}
             >
-              YOUR JOURNEY TO RENEWAL
+              HOW DOES STEM CELL THERAPY WORK?
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">

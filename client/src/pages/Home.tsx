@@ -124,16 +124,26 @@ export default function Home() {
           0%   { transform: scale(1.10) translateY(2%); }
           100% { transform: scale(1.0)  translateY(0%); }
         }
-        .hero-ken-burns {
-          animation: kenBurns 14s ease-out forwards;
-          will-change: transform;
+        /* Desktop only: Ken Burns animation — disabled on mobile to reduce main-thread work */
+        @media (min-width: 768px) {
+          .hero-ken-burns {
+            animation: kenBurns 14s ease-out forwards;
+            will-change: transform;
+          }
         }
         .hero-img-base {
           transform: scale(1.10) translateY(2%);
         }
+        /* Mobile: static image, no animation */
+        @media (max-width: 767px) {
+          .hero-ken-burns {
+            transform: scale(1.0) translateY(0%);
+            will-change: auto;
+          }
+        }
       `}</style>
       <section className="relative min-h-screen flex items-center overflow-hidden">
-        {/* Full-bleed background: Option A 16:9 crop with Ken Burns on load */}
+        {/* Full-bleed background: Option A 16:9 crop with Ken Burns on load (desktop only) */}
         <div className="absolute inset-0 overflow-hidden">
           <img
             src={HERO_CROP_A}

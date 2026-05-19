@@ -234,8 +234,8 @@ export default function HealthOptimization() {
               className="text-[#F6F5EC]"
               style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(36px, 4vw, 56px)" }}
             >
-              SIX PILLARS OF<br />
-              <span className="text-[#0047BB]">BIOLOGICAL OPTIMIZATION</span>
+              WHAT DOES HEALTH OPTIMIZATION<br />
+              <span className="text-[#0047BB]">ACTUALLY INCLUDE?</span>
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -272,7 +272,7 @@ export default function HealthOptimization() {
                 className="text-[#F6F5EC] mb-6"
                 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(32px, 3.5vw, 48px)" }}
               >
-                WHAT WE MEASURE
+                WHAT BIOMARKERS DO WE TEST?
               </h2>
               <p className="text-[#D6D7D9]/70 leading-relaxed mb-8" style={{ fontFamily: "'Libre Franklin', sans-serif" }}>
                 Our comprehensive biomarker panel goes far beyond the standard annual physical. Every marker is selected because it provides actionable information about a specific biological system — and because optimizing it produces measurable improvements in how you feel and perform.
@@ -292,7 +292,7 @@ export default function HealthOptimization() {
                 className="text-[#F6F5EC] mb-6"
                 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(32px, 3.5vw, 48px)" }}
               >
-                WHAT YOU GAIN
+                WHAT RESULTS CAN YOU EXPECT?
               </h2>
               <p className="text-[#D6D7D9]/70 leading-relaxed mb-8" style={{ fontFamily: "'Libre Franklin', sans-serif" }}>
                 Health optimization is not about chasing numbers on a lab report. It is about translating biological improvements into real-world performance, resilience, and quality of life. These are the outcomes our patients consistently report.

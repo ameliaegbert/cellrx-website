@@ -245,8 +245,8 @@ export default function LongevityPrograms() {
               className="text-[#F6F5EC]"
               style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(36px, 4vw, 56px)" }}
             >
-              THREE PATHWAYS TO<br />
-              <span className="text-[#0047BB]">BIOLOGICAL LONGEVITY</span>
+              WHAT LONGEVITY PROGRAMS<br />
+              <span className="text-[#0047BB]">DOES CELLRX OFFER?</span>
             </h2>
           </div>
 
@@ -326,8 +326,8 @@ export default function LongevityPrograms() {
               className="text-[#F6F5EC]"
               style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(32px, 4vw, 52px)" }}
             >
-              THE PRINCIPLES BEHIND<br />
-              <span className="text-[#FBB217]">EVERY PROTOCOL</span>
+              HOW DOES LONGEVITY MEDICINE<br />
+              <span className="text-[#FBB217]">ACTUALLY WORK?</span>
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

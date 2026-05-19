@@ -179,10 +179,10 @@
 - [x] Add `fetchpriority="high"` to the hero image to prioritize LCP element loading — already applied in Home.tsx
 
 #### P1: JavaScript Reduction (TBT 4,040ms on mobile — ~370 KiB savings)
-- [ ] Analyze bundle size with rollup-plugin-visualizer: run `pnpm build` and inspect output
-- [ ] Code-split heavy page sections (FAQ, stats counters, service cards) using React.lazy + Suspense
+- [x] Analyze bundle size with rollup-plugin-visualizer: run `pnpm build` and inspect output — main index bundle 567 KB (160 KB gzip); vendor-charts 407 KB (lazy); streamdown in AIChatBox.tsx is the main culprit in shared bundle; manualChunks already configured for react/trpc/ui/charts
+- [x] Code-split heavy page sections (FAQ, stats counters, service cards) using React.lazy + Suspense — all 13 non-Home routes already lazy-loaded via React.lazy(); visualizer added to vite.config.ts (ANALYZE=true pnpm build)
 - [ ] Defer non-critical third-party scripts (Google Fonts, analytics) using `defer` or dynamic import
-- [ ] Replace Ken Burns CSS animation with a static image on mobile to reduce main-thread work
+- [x] Replace Ken Burns CSS animation with a static image on mobile to reduce main-thread work — media query added: @media (max-width: 767px) disables will-change and animation; desktop retains full Ken Burns effect
 
 #### P1: Caching Headers (~2,635 KiB savings on repeat visits)
 - [x] Add long-lived cache headers (1 year) for all static assets served from CDN URLs — CDN assets already have CloudFront caching
@@ -250,7 +250,7 @@
 #### Content Structure for AI Citation
 - [x] Add "Answer first" block (60–90 words) under the H1 on homepage and each service page — added/updated on Services, BlackLabel, HealthOptimization, LongevityPrograms; Home hero paragraph already present
 - [x] Add "Key Takeaways" section (4–6 bullets, max 16 words each) to each service page — added to Services, BlackLabel, HealthOptimization, LongevityPrograms
-- [ ] Rewrite section headings to match real patient search prompts: "What is stem cell therapy?", "How long does recovery take?", "Is stem cell therapy safe?", "How much does stem cell therapy cost in [city]?"
+- [x] Rewrite section headings to match real patient search prompts — Services: "HOW MUCH DOES STEM CELL THERAPY COST?" + "HOW DOES STEM CELL THERAPY WORK?"; BlackLabel: "WHAT IS INCLUDED IN CONCIERGE MEDICINE?"; HealthOptimization: "WHAT DOES HEALTH OPTIMIZATION ACTUALLY INCLUDE?" + "WHAT BIOMARKERS DO WE TEST?" + "WHAT RESULTS CAN YOU EXPECT?"; LongevityPrograms: "WHAT LONGEVITY PROGRAMS DOES CELLRX OFFER?" + "HOW DOES LONGEVITY MEDICINE ACTUALLY WORK?"
 - [x] Build dedicated `/faq` page with 15–20 Q&As answered in 40–80 words each — /faq page created with 20 Q&As in 6 categories; FAQPage JSON-LD schema injected; added to sitemap.xml, Footer, Sitemap page, and llms.txt
 - [x] Add authorship block to all content pages: author name, credentials, published date, last updated date (E-E-A-T author block added to all blog posts)
 

@@ -5,6 +5,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { defineConfig, type Plugin, type ViteDevServer } from "vite";
 import { vitePluginManusRuntime } from "vite-plugin-manus-runtime";
+import { visualizer } from "rollup-plugin-visualizer";
 
 // =============================================================================
 // Manus Debug Collector - Vite Plugin
@@ -196,7 +197,11 @@ function vitePluginStorageProxy(): Plugin {
   };
 }
 
-const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector(), vitePluginStorageProxy()];
+const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector(), vitePluginStorageProxy(),
+  // Bundle analyzer — generates stats.html in dist/ after `pnpm build`
+  // Only runs during build, not dev server
+  ...(process.env.ANALYZE === 'true' ? [visualizer({ open: false, filename: 'dist/stats.html', gzipSize: true })] : []),
+];
 
 export default defineConfig({
   plugins,
