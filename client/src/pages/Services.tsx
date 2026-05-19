@@ -109,6 +109,9 @@ export default function Services() {
             <span className="text-[#0047BB]">REGENERATIVE</span><br />
             PROTOCOLS
           </h1>
+          <p className="text-[#D6D7D9] text-base leading-relaxed mt-6 max-w-2xl" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+            CellRX offers physician-directed stem cell injection therapy starting at $2,500 and IV therapy starting at $4,000 in Lehi, Utah. All protocols are priced at $1,250 per CC and dosed from 1 to 10 CC based on your condition. Unlike most clinics, our Medical Director oversees both the clinic and the stem cell source company, ensuring full chain-of-custody biologics that are never diluted and never replicated.
+          </p>
         </div>
       </section>
 
@@ -174,7 +177,7 @@ export default function Services() {
                   "Full chain-of-custody biologics",
                 ].map((f, i) => (
                   <div key={i} className="flex items-center gap-2">
-                    <CheckCircle2 size={13} className="text-[#0047BB] shrink-0" />
+                    <CheckCircle2 size={13} className="text-[#6DB3F2] shrink-0" />
                     <span className="text-[#D6D7D9]/70 text-sm">{f}</span>
                   </div>
                 ))}
@@ -240,7 +243,7 @@ export default function Services() {
                   "Promotes long-term longevity",
                 ].map((f, i) => (
                   <div key={i} className="flex items-center gap-2">
-                    <CheckCircle2 size={13} className="text-[#0047BB] shrink-0" />
+                    <CheckCircle2 size={13} className="text-[#6DB3F2] shrink-0" />
                     <span className="text-[#D6D7D9]/70 text-sm">{f}</span>
                   </div>
                 ))}

@@ -183,7 +183,7 @@ export default function Contact() {
                     "Ask about our referral program",
                   ].map((item, i) => (
                     <div key={i} className="flex items-center gap-2">
-                      <CheckCircle2 size={13} className="text-[#0047BB] shrink-0" />
+                      <CheckCircle2 size={13} className="text-[#6DB3F2] shrink-0" />
                       <span className="text-[#D6D7D9]/70 text-xs">{item}</span>
                     </div>
                   ))}
@@ -195,7 +195,7 @@ export default function Contact() {
             <div className="lg:col-span-3 fade-up" style={{ transitionDelay: "0.15s" }}>
               {submitted ? (
                 <div className="h-full flex flex-col items-center justify-center text-center py-20 border border-white/5 bg-[#030d1e]">
-                  <CheckCircle2 size={48} className="text-[#0047BB] mb-6" />
+                  <CheckCircle2 size={48} className="text-[#6DB3F2] mb-6" />
                   <h3
                     className="text-white mb-4"
                     style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "40px" }}

@@ -37,7 +37,7 @@ export default function Team() {
   useSEO({
     title: "Our Team — CellRX Regenerative Medicine | Lehi, Utah",
     description: "Meet the CellRX team: Dr. Jacob Egbert (Medical Director), Amelia Egbert (COO), Samantha Buker, and David Fajardo. A small, intentional team built for exceptional results.",
-    canonical: "https://www.cellrx.bio/team",
+    canonical: "/team",
     ogImage: "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/physician_portrait_d5fe25e9.webp",
   });
   useScrollAnimation();

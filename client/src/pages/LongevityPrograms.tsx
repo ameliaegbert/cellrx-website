@@ -181,7 +181,7 @@ export default function LongevityPrograms() {
             className="text-[#D6D7D9]/70 max-w-xl mt-6 leading-relaxed fade-up"
             style={{ fontFamily: "'DM Sans', sans-serif", transitionDelay: "0.2s" }}
           >
-            Longevity is not about living longer. It is about extending the years in which you operate at your highest level — physically, cognitively, and biologically. These programs are designed for individuals who refuse to accept decline as inevitable.
+            CellRX Longevity Programs in Lehi, Utah combine regenerative stem cell biologics, NAD+ therapy, peptide protocols, hormone optimization, and advanced diagnostics to extend your healthspan — not just your lifespan. Dr. Jacob Egbert builds each protocol around your biomarkers, targeting cellular repair, mitochondrial function, and systemic resilience. These programs are designed for individuals who refuse to accept biological decline as inevitable.
           </p>
           <div className="mt-10 flex flex-wrap gap-4 fade-up" style={{ transitionDelay: "0.3s" }}>
             <Link href="/contact">
@@ -269,7 +269,7 @@ export default function LongevityPrograms() {
                   <ul className="space-y-2 mb-6">
                     {program.features.map((feature, j) => (
                       <li key={j} className="flex items-start gap-2 text-[#D6D7D9]/60 text-sm" style={{ fontFamily: "'Libre Franklin', sans-serif" }}>
-                        <CheckCircle2 size={13} className="text-[#0047BB] shrink-0 mt-0.5" />
+                        <CheckCircle2 size={13} className="text-[#6DB3F2] shrink-0 mt-0.5" />
                         {feature}
                       </li>
                     ))}
@@ -281,7 +281,10 @@ export default function LongevityPrograms() {
                     </p>
                   </div>
                   <Link href={program.href}>
-                    <button className="flex items-center gap-2 text-[#D6D7D9]/60 text-sm hover:text-[#FBB217] transition-colors group">
+                    <button
+                      className="flex items-center gap-2 text-[#D6D7D9]/60 text-sm hover:text-[#FBB217] transition-colors group"
+                      aria-label={`Learn more about ${program.title} at CellRX`}
+                    >
                       Learn More <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                     </button>
                   </Link>

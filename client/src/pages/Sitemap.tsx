@@ -90,7 +90,7 @@ export default function Sitemap() {
                       >
                         <ArrowRight
                           size={14}
-                          className="text-[#0047BB] mt-1 shrink-0 group-hover:text-[#FBB217] transition-colors"
+                          className="text-[#6DB3F2] mt-1 shrink-0 group-hover:text-[#FBB217] transition-colors"
                         />
                         <div>
                           <p

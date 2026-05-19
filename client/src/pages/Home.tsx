@@ -10,7 +10,7 @@ import { Link } from "wouter";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ChevronDown, Shield, Zap, Clock, Star, ArrowRight, CheckCircle2, Plus, Minus } from "lucide-react";
-import { useSEO, PAGE_SEO } from "@/hooks/useSEO";
+import { useSEO, PAGE_SEO, useFAQSchema } from "@/hooks/useSEO";
 
 // CDN URLs
 const INJECTION_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/service_injection_3f039e48.webp";
@@ -107,6 +107,10 @@ function FAQItem({ q, a }: { q: string; a: string }) {
 
 export default function Home() {
   useSEO(PAGE_SEO.home);
+  useFAQSchema(
+    faqs.map((f) => ({ question: f.q, answer: f.a })),
+    "home"
+  );
   useScrollAnimation();
   const [heroLoaded, setHeroLoaded] = useState(false);
 
@@ -310,7 +314,7 @@ export default function Home() {
                   <ul className="space-y-2 mb-6">
                     {service.features.map((f, j) => (
                       <li key={j} className="flex items-center gap-2 text-[#D6D7D9]/70 text-xs">
-                        <CheckCircle2 size={13} className="text-[#0047BB] shrink-0" />
+                        <CheckCircle2 size={13} className="text-[#6DB3F2] shrink-0" />
                         {f}
                       </li>
                     ))}
@@ -318,7 +322,10 @@ export default function Home() {
                   <div className="flex items-center justify-between pt-4 border-t border-white/10">
                     <span className="text-[#FBB217] text-sm font-semibold">{service.price}</span>
                     <Link href={service.href}>
-                      <button className="flex items-center gap-2 text-[#D6D7D9]/60 text-xs hover:text-[#FBB217] transition-colors group/btn">
+                      <button
+                        className="flex items-center gap-2 text-[#D6D7D9]/60 text-xs hover:text-[#FBB217] transition-colors group/btn"
+                        aria-label={`Learn more about ${service.title.toLowerCase()} at CellRX`}
+                      >
                         Learn More <ArrowRight size={13} className="group-hover/btn:translate-x-1 transition-transform" />
                       </button>
                     </Link>
@@ -499,7 +506,7 @@ export default function Home() {
                 <div className="border-t border-white/10 pt-4">
                   <p className="text-[#F6F5EC] font-semibold text-sm">{t.name}</p>
                   <p className="text-[#D6D7D9]/50 text-xs mt-0.5">{t.role}</p>
-                  <p className="text-[#0047BB] text-xs mt-1">{t.treatment}</p>
+                  <p className="text-[#6DB3F2] text-xs mt-1">{t.treatment}</p>
                 </div>
               </div>
             ))}

@@ -176,7 +176,7 @@ export default function Blog() {
                   <span className="flex items-center gap-1.5"><Clock size={12} />{articles[0].readTime}</span>
                 </div>
                 <div className="flex items-center gap-4">
-                  <span className="flex items-center gap-2 text-[#0047BB] text-sm font-semibold group/btn w-fit">
+                  <span className="flex items-center gap-2 text-[#6DB3F2] text-sm font-semibold group/btn w-fit">
                     Read Article <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                   </span>
                   {articles[0].serviceLink && (
@@ -233,7 +233,7 @@ export default function Blog() {
                       <span className="flex items-center gap-1.5"><Calendar size={11} />{article.date}</span>
                       <span className="flex items-center gap-1.5"><Clock size={11} />{article.readTime}</span>
                     </div>
-                    <div className="flex items-center gap-2 mt-4 text-[#0047BB] text-xs font-semibold">
+                    <div className="flex items-center gap-2 mt-4 text-[#6DB3F2] text-xs font-semibold">
                       Read Article <ArrowRight size={11} className="group-hover:translate-x-1 transition-transform" />
                     </div>
                   </div>

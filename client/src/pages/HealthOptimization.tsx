@@ -159,7 +159,7 @@ export default function HealthOptimization() {
             className="text-[#D6D7D9]/70 max-w-xl mt-6 leading-relaxed fade-up"
             style={{ fontFamily: "'DM Sans', sans-serif", transitionDelay: "0.2s" }}
           >
-            Most people accept declining energy, cognitive fog, and reduced resilience as inevitable consequences of aging. They are not. They are the measurable, addressable results of biological systems operating below their potential.
+            CellRX Health Optimization is a physician-directed program in Lehi, Utah that uses comprehensive biomarker testing, hormone balancing, and personalized supplementation to help you perform at your biological peak. Dr. Jacob Egbert designs each protocol around your unique lab results — targeting energy, cognitive clarity, metabolic function, and resilience. Most people accept declining performance as inevitable. CellRX treats it as a solvable problem.
           </p>
         </div>
       </section>
@@ -258,7 +258,7 @@ export default function HealthOptimization() {
               <ul className="space-y-3">
                 {biomarkers.map((marker, i) => (
                   <li key={i} className="flex items-start gap-3 text-[#D6D7D9]/70 text-sm" style={{ fontFamily: "'Libre Franklin', sans-serif" }}>
-                    <CheckCircle2 size={14} className="text-[#0047BB] shrink-0 mt-0.5" />
+                    <CheckCircle2 size={14} className="text-[#6DB3F2] shrink-0 mt-0.5" />
                     {marker}
                   </li>
                 ))}

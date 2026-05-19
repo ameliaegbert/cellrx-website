@@ -371,7 +371,7 @@ function ArticleContent({ article }: { article: ArticleData }) {
               <div className="space-y-3">
                 {article.internalLinks.map((link) => (
                   <Link key={link.href} href={link.href} className="group flex items-start gap-3 hover:text-[#FBB217] transition-colors">
-                    <ArrowLeft size={14} className="text-[#0047BB] mt-1 shrink-0 rotate-180 group-hover:text-[#FBB217] transition-colors" />
+                    <ArrowLeft size={14} className="text-[#6DB3F2] mt-1 shrink-0 rotate-180 group-hover:text-[#FBB217] transition-colors" />
                     <div>
                       <p className="text-[#F6F5EC] text-sm font-medium group-hover:text-[#FBB217] transition-colors" style={{ fontFamily: "'DM Sans', sans-serif" }}>
                         {link.label}
@@ -441,6 +441,10 @@ export default function BlogPost() {
             src={article.img}
             alt={article.title}
             className="w-full h-full object-cover"
+            fetchPriority="high"
+            decoding="async"
+            width="1200"
+            height="600"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#051229] via-[#051229]/60 to-[#051229]/20" />
           <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#051229] to-transparent" />
@@ -553,6 +557,10 @@ export default function BlogPost() {
                         src={rel.img}
                         alt={rel.title}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        loading="lazy"
+                        decoding="async"
+                        width="600"
+                        height="400"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#030d1e] via-transparent to-transparent" />
                     </div>

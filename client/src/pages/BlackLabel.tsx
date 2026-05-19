@@ -114,7 +114,7 @@ export default function BlackLabel() {
             className="text-[#D6D7D9]/80 text-lg max-w-2xl mt-6 leading-relaxed fade-up"
             style={{ transitionDelay: "0.2s", fontFamily: BODY_FONT }}
           >
-            You have spent years building something extraordinary. Your health should reflect that. Black Label is not a wellness program — it is a year-round partnership between you and a physician who is proactively invested in your biology, your performance, and your longevity.
+            CellRX Black Label is an exclusive annual concierge medicine membership in Lehi, Utah for executives, athletes, and high-net-worth individuals who demand proactive, physician-directed healthcare. Membership includes quarterly laboratory panels, personalized longevity protocols, direct access to Dr. Jacob Egbert, priority scheduling, and unlimited consultations. Stem cell treatments are available as a premium add-on. Membership is limited by design. Pricing is custom and determined during a private consultation.
           </p>
           <div className="mt-10 fade-up" style={{ transitionDelay: "0.3s" }}>
             <Link href="/contact">
@@ -280,8 +280,8 @@ export default function BlackLabel() {
               </ul>
               <div className="mt-6 pt-6 border-t border-white/5">
                 <div className="flex items-center gap-2 mb-2">
-                  <Plus size={13} className="text-[#0047BB]" />
-                  <p className="text-[#0047BB] text-xs tracking-widest uppercase" style={{ fontFamily: SUBTITLE_FONT }}>Stem Cell Add-On</p>
+                  <Plus size={13} className="text-[#6DB3F2]" />
+                  <p className="text-[#6DB3F2] text-xs tracking-widest uppercase" style={{ fontFamily: SUBTITLE_FONT }}>Stem Cell Add-On</p>
                 </div>
                 <p className="text-[#D6D7D9]/50 text-xs leading-relaxed" style={{ fontFamily: BODY_FONT }}>
                   Stem cell treatments — both injection and IV — are available as a premium add-on. Protocols range from 1 to 10 CC. Every biologic carries full chain of custody. Never diluted. Never replicated.

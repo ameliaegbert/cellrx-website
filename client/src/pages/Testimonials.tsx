@@ -151,7 +151,7 @@ export default function Testimonials() {
 
                 {/* Result callout */}
                 <div className="bg-[#0047BB]/10 border border-[#0047BB]/20 px-4 py-2 mb-6">
-                  <p className="text-[#0047BB] text-xs font-semibold">Result: {t.result}</p>
+                  <p className="text-[#6DB3F2] text-xs font-semibold">Result: {t.result}</p>
                 </div>
 
                 <div className="border-t border-white/10 pt-4">
