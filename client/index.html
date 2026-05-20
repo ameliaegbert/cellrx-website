@@ -282,143 +282,44 @@
 
     <!-- ═══════════════════════════════════════════════════════════
          CRITICAL CSS — Inlined to eliminate render-blocking delay
-         Contains only the minimum CSS needed to paint the hero
-         section without FOUC. Full CSS loads asynchronously.
+         Minimal safe subset: only background + CSS variables.
+         No resets or utility classes that could conflict with Tailwind.
     ═══════════════════════════════════════════════════════════ -->
     <style>
-      /* Base reset & body */
-      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-      html { scroll-behavior: smooth; }
-      body {
-        background-color: #051229;
-        color: #F6F5EC;
-        font-family: 'Libre Franklin', system-ui, -apple-system, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        min-height: 100vh;
-      }
-      #root { min-height: 100vh; }
+      /* Prevent white flash before Tailwind CSS loads */
+      html, body { background-color: #051229; color: #F6F5EC; }
+      #root { background-color: #051229; min-height: 100vh; }
 
-      /* CSS custom properties (design tokens) */
+      /* CSS custom properties — available before bundle loads */
       :root {
         --radius: 0.5rem;
         --background: oklch(0.13 0.04 255);
         --foreground: oklch(0.97 0.01 80);
+        --card: oklch(0.19 0.04 255);
+        --card-foreground: oklch(0.97 0.01 80);
+        --popover: oklch(0.19 0.04 255);
+        --popover-foreground: oklch(0.97 0.01 80);
         --primary: oklch(0.38 0.20 258);
+        --primary-foreground: oklch(1 0 0);
+        --secondary: oklch(0.35 0.03 220);
+        --secondary-foreground: oklch(0.97 0.01 80);
+        --muted: oklch(0.22 0.03 255);
+        --muted-foreground: oklch(0.86 0.005 255);
         --accent: oklch(0.78 0.16 75);
+        --accent-foreground: oklch(0.13 0.04 255);
+        --destructive: oklch(0.577 0.245 27.325);
         --border: oklch(1 0 0 / 10%);
+        --input: oklch(1 0 0 / 10%);
+        --ring: oklch(0.38 0.20 258);
         --color-navy: oklch(0.13 0.04 255);
+        --color-navy-light: oklch(0.19 0.04 255);
+        --color-cellrx-blue: oklch(0.38 0.20 258);
+        --color-cellrx-blue-hover: oklch(0.44 0.20 258);
+        --color-charcoal: oklch(0.35 0.03 220);
+        --color-silver: oklch(0.86 0.005 255);
         --color-cream: oklch(0.97 0.01 80);
         --color-amber: oklch(0.78 0.16 75);
-        --color-cellrx-blue: oklch(0.38 0.20 258);
-        --color-silver: oklch(0.86 0.005 255);
-      }
-
-      /* Navbar — fixed top bar */
-      nav {
-        position: fixed;
-        top: 0; left: 0; right: 0;
-        z-index: 50;
-        transition: all 0.5s;
-      }
-
-      /* Container utility */
-      .container {
-        width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-        padding-left: 1.25rem;
-        padding-right: 1.25rem;
-      }
-      @media (min-width: 640px) {
-        .container { padding-left: 2rem; padding-right: 2rem; }
-      }
-      @media (min-width: 1024px) {
-        .container { padding-left: 3rem; padding-right: 3rem; max-width: 1320px; }
-      }
-
-      /* Hero section */
-      .hero-section {
-        position: relative;
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        overflow: hidden;
-      }
-
-      /* Section label */
-      .section-label {
-        font-family: 'DM Sans', system-ui, sans-serif;
-        font-size: 0.75rem;
-        font-weight: 600;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        color: #FBB217;
-      }
-
-      /* CTA buttons — prevent layout shift before full CSS loads */
-      .btn-primary {
-        display: inline-block;
-        background: #0047BB;
-        color: #fff;
-        font-family: 'DM Sans', system-ui, sans-serif;
-        font-weight: 700;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        font-size: 0.78rem;
-        padding: 0.9rem 2.5rem;
-        border: 1px solid transparent;
-        cursor: pointer;
-      }
-      .btn-outline {
-        display: inline-block;
-        background: transparent;
-        color: #F6F5EC;
-        font-family: 'DM Sans', system-ui, sans-serif;
-        font-weight: 700;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        font-size: 0.78rem;
-        padding: 0.9rem 2.5rem;
-        border: 1px solid rgba(255,255,255,0.3);
-        cursor: pointer;
-      }
-
-      /* Ken Burns hero animation */
-      @keyframes kenBurns {
-        0%   { transform: scale(1.10) translateY(2%); }
-        100% { transform: scale(1.0)  translateY(0%); }
-      }
-      .hero-ken-burns {
-        animation: kenBurns 14s ease-out forwards;
-        will-change: transform;
-      }
-      .hero-img-base { transform: scale(1.10) translateY(2%); }
-      @media (max-width: 767px) {
-        .hero-ken-burns { animation: none !important; }
-        .hero-img-base  { transform: none !important; }
-      }
-
-      /* Fade animations */
-      .fade-up {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 0.7s ease, transform 0.7s ease;
-      }
-      .fade-up.visible { opacity: 1; transform: translateY(0); }
-      .fade-in { opacity: 0; transition: opacity 0.7s ease; }
-      .fade-in.visible { opacity: 1; }
-
-      /* Gold/amber rule divider */
-      .gold-rule { width: 60px; height: 2px; background: #FBB217; }
-
-      /* Headings font family */
-      h1, h2, h3 {
-        font-family: 'Bebas Neue', system-ui, sans-serif;
-        letter-spacing: 0.04em;
-      }
-      h4, h5, h6 {
-        font-family: 'DM Sans', system-ui, sans-serif;
-        font-weight: 500;
+        --color-amber-dark: oklch(0.68 0.16 75);
       }
     </style>
 
