@@ -172,7 +172,7 @@ export default function Home() {
           <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#051229] to-transparent" />
         </div>
 
-        <div className="container relative z-10 pt-32 pb-24">
+        <div className="container relative z-10 pt-24 md:pt-32 pb-16 md:pb-24">
           <div className="max-w-xl">
             <p className="section-label mb-6 fade-up">Concierge Regenerative Medicine</p>
             <h1

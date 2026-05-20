@@ -415,7 +415,7 @@ export default function BlogPost() {
     return (
       <div className="min-h-screen bg-[#051229]">
         <Navbar />
-        <div className="container pt-48 pb-24 text-center">
+        <div className="container pt-28 md:pt-48 pb-16 md:pb-24 text-center">
           <h1 className="text-[#F6F5EC] text-4xl mb-6" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
             ARTICLE NOT FOUND
           </h1>
@@ -435,7 +435,7 @@ export default function BlogPost() {
       <Navbar />
 
       {/* Hero */}
-      <section className="relative pt-32 pb-0 overflow-hidden">
+      <section className="relative pt-24 md:pt-32 pb-0 overflow-hidden">
         <div className="relative h-[50vh] min-h-[360px] overflow-hidden">
           <img
             src={article.img}

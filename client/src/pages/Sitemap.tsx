@@ -55,7 +55,7 @@ export default function Sitemap() {
       <Navbar />
 
       {/* Hero */}
-      <section className="pt-36 pb-16 bg-[#030d1e] border-b border-white/5">
+      <section className="pt-24 md:pt-36 pb-16 bg-[#030d1e] border-b border-white/5">
         <div className="container">
           <p className="section-label mb-4">Navigation</p>
           <h1

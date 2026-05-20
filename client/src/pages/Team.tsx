@@ -48,7 +48,7 @@ export default function Team() {
 
       {/* Page Header */}
       <section
-        className="relative pt-40 pb-24 overflow-hidden"
+        className="relative pt-28 md:pt-40 pb-16 md:pb-24 overflow-hidden"
         style={{ backgroundImage: `url(${CLINIC_IMG})`, backgroundSize: "cover", backgroundPosition: "center" }}
       >
         <div className="absolute inset-0 bg-[#051229]/88" />

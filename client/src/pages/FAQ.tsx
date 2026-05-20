@@ -180,7 +180,7 @@ export default function FAQ() {
       <Navbar />
 
       {/* Hero */}
-      <section className="pt-40 pb-16 bg-[#030d1e] border-b border-white/5">
+      <section className="pt-28 md:pt-40 pb-16 bg-[#030d1e] border-b border-white/5">
         <div className="container">
           <p className="section-label mb-4 fade-up">Common Questions</p>
           <h1

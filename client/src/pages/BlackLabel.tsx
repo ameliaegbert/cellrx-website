@@ -101,7 +101,7 @@ export default function BlackLabel() {
         style={{ backgroundImage: `url(${BLACK_LABEL_IMG})`, backgroundSize: "cover", backgroundPosition: "center 30%" }}
       >
         <div className="absolute inset-0 bg-gradient-to-t from-[#051229] via-[#051229]/60 to-transparent" />
-        <div className="container relative z-10 pb-24 pt-48">
+        <div className="container relative z-10 pb-16 md:pb-24 pt-28 md:pt-48">
           <p className="section-label mb-4 fade-up">Exclusive Annual Membership</p>
           <h1
             className="text-[#F6F5EC] fade-up"
