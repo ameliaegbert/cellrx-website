@@ -18,7 +18,10 @@ const IV_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBq
 const BLACK_LABEL_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/service_black_label_1c68d442.webp";
 const CLINIC_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/clinic_interior_31c757cf.webp";
 const PHYSICIAN_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/physician_portrait_d5fe25e9.webp";
-const HERO_CROP_A = "/hero_crop_a.jpg";
+// Optimized hero images — responsive variants (WebP, landscape crop)
+const HERO_DESKTOP = "/manus-storage/hero_desktop_1920_d480245c.webp"; // 1920×1080, 69 KB
+const HERO_TABLET  = "/manus-storage/hero_tablet_1280_75e16c47.webp";  // 1280×720,  33 KB
+const HERO_MOBILE  = "/manus-storage/hero_mobile_768_2ed2f8a9.webp";   // 768×432,   12 KB
 const CONSULTATION_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/consultation_photo_de51af6c.webp";
 const BG_DARK_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/background_dark_fb24a343.webp";
 
@@ -145,17 +148,23 @@ export default function Home() {
       <section className="relative min-h-screen flex items-center overflow-hidden">
         {/* Full-bleed background: Option A 16:9 crop with Ken Burns on load (desktop only) */}
         <div className="absolute inset-0 overflow-hidden">
-          <img
-            src={HERO_CROP_A}
-            alt="Dr. Egbert performing stem cell injection"
-            className={`w-full h-full ${heroLoaded ? 'hero-ken-burns' : 'hero-img-base'}`}
-            style={{ objectFit: 'cover', objectPosition: 'center center', display: 'block' }}
-            onLoad={() => setHeroLoaded(true)}
-            fetchPriority="high"
-            decoding="async"
-            width="1920"
-            height="1080"
-          />
+          {/* Responsive hero image — 3 sizes for mobile/tablet/desktop */}
+          <picture>
+            <source media="(max-width: 767px)"  srcSet={HERO_MOBILE}  type="image/webp" />
+            <source media="(max-width: 1279px)" srcSet={HERO_TABLET}  type="image/webp" />
+            <source                              srcSet={HERO_DESKTOP} type="image/webp" />
+            <img
+              src={HERO_DESKTOP}
+              alt="Dr. Egbert performing a stem cell injection treatment at CellRX clinic in Lehi, Utah"
+              className={`w-full h-full ${heroLoaded ? 'hero-ken-burns' : 'hero-img-base'}`}
+              style={{ objectFit: 'cover', objectPosition: 'center center', display: 'block' }}
+              onLoad={() => setHeroLoaded(true)}
+              fetchPriority="high"
+              decoding="async"
+              width="1920"
+              height="1080"
+            />
+          </picture>
           {/* Dark overlay so text is readable */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#051229]/90 via-[#051229]/60 to-[#051229]/20" />
           {/* Bottom fade */}
@@ -334,9 +343,9 @@ export default function Home() {
                     <Link href={service.href}>
                       <button
                         className="flex items-center gap-2 text-[#D6D7D9]/60 text-xs hover:text-[#FBB217] transition-colors group/btn"
-                        aria-label={`Learn more about ${service.title.toLowerCase()} at CellRX`}
+                        aria-label={`Explore ${service.title.toLowerCase()} treatment details`}
                       >
-                        Learn More <ArrowRight size={13} className="group-hover/btn:translate-x-1 transition-transform" />
+                        Explore Treatment <ArrowRight size={13} className="group-hover/btn:translate-x-1 transition-transform" />
                       </button>
                     </Link>
                   </div>
@@ -456,8 +465,8 @@ export default function Home() {
                 ))}
               </div>
               <Link href="/about">
-                <button className="btn-outline rounded-none">
-                  Learn More About Our Team
+                <button className="btn-outline rounded-none" aria-label="Meet the CellRX medical team and learn about our physicians">
+                  Meet the CellRX Medical Team
                 </button>
               </Link>
             </div>

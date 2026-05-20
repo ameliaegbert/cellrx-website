@@ -305,9 +305,9 @@ export default function LongevityPrograms() {
                   <Link href={program.href}>
                     <button
                       className="flex items-center gap-2 text-[#D6D7D9]/60 text-sm hover:text-[#FBB217] transition-colors group"
-                      aria-label={`Learn more about ${program.title} at CellRX`}
+                      aria-label={`View details for ${program.title} longevity program at CellRX`}
                     >
-                      Learn More <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                      View Program Details <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                     </button>
                   </Link>
                 </div>

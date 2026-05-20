@@ -230,8 +230,11 @@ export default defineConfig({
           "vendor-trpc": ["@trpc/client", "@trpc/react-query", "@tanstack/react-query"],
           // UI components
           "vendor-ui": ["lucide-react", "class-variance-authority", "clsx", "tailwind-merge"],
-          // Charts
+          // Charts — only used in admin dashboard (lazy route)
           "vendor-charts": ["recharts"],
+          // Markdown renderer — only used in BlogPost & AIChatBox (lazy routes)
+          // Keeping it separate prevents it from entering the main entry bundle
+          "vendor-markdown": ["streamdown"],
         },
       },
     },

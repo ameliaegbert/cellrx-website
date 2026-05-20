@@ -175,13 +175,14 @@
 - [ ] Convert all hero and service images to AVIF format with WebP fallback using `<picture>` element — images are served as WebP from CDN; AVIF conversion would require re-uploading
 - [x] Add explicit `width` and `height` attributes to all `<img>` tags to eliminate layout shift (CLS) — exhaustive audit complete: all img tags in About, Blog, BlogPost, Home, Services, HealthOptimization, LongevityPrograms, Team have width/height
 - [x] Add `loading="lazy"` to all below-the-fold images — exhaustive audit complete: all non-hero images have loading=lazy; hero images use fetchPriority=high
-- [ ] Compress and resize the hero image (HERO_CROP_A) — primary LCP bottleneck; requires re-uploading optimized version
+- [x] Compress and resize the hero image (HERO_CROP_A) — new responsive WebP variants uploaded: desktop 1920×1080 (69 KB), tablet 1280×720 (33 KB), mobile 768×432 (12 KB); <picture> element with srcset in Home.tsx; preload hint updated in index.html
 - [x] Add `fetchpriority="high"` to the hero image to prioritize LCP element loading — already applied in Home.tsx
 
 #### P1: JavaScript Reduction (TBT 4,040ms on mobile — ~370 KiB savings)
 - [x] Analyze bundle size with rollup-plugin-visualizer: run `pnpm build` and inspect output — main index bundle 567 KB (160 KB gzip); vendor-charts 407 KB (lazy); streamdown in AIChatBox.tsx is the main culprit in shared bundle; manualChunks already configured for react/trpc/ui/charts
 - [x] Code-split heavy page sections (FAQ, stats counters, service cards) using React.lazy + Suspense — all 13 non-Home routes already lazy-loaded via React.lazy(); visualizer added to vite.config.ts (ANALYZE=true pnpm build)
-- [ ] Defer non-critical third-party scripts (Google Fonts, analytics) using `defer` or dynamic import
+- [x] Defer non-critical third-party scripts (Google Fonts, analytics) — GA4 and Microsoft Clarity both moved to window.addEventListener('load') in index.html; no longer block FCP/LCP; data capture unaffected
+- [x] Add streamdown to separate manual chunk in vite.config.ts — vendor-markdown chunk created; prevents markdown renderer from loading on non-blog pages
 - [x] Replace Ken Burns CSS animation with a static image on mobile to reduce main-thread work — media query added: @media (max-width: 767px) disables will-change and animation; desktop retains full Ken Burns effect
 
 #### P1: Caching Headers (~2,635 KiB savings on repeat visits)
@@ -208,8 +209,8 @@
 - [x] Confirm canonical resolves to `https://www.cellrx.bio/` (not HTTP or non-www) — BASE_URL = 'https://www.cellrx.bio' in useSEO.ts
 
 #### Descriptive Link Text (3 links flagged by audit)
-- [x] Audit all links with generic text ("click here", "learn more", "read more") and replace with descriptive anchor text — aria-labels added to Learn More buttons in Home and LongevityPrograms
-- [x] Ensure all CTA buttons have descriptive aria-labels (e.g., "Book a stem cell consultation" not just "Book Now") — aria-labels added to service card buttons
+- [x] Audit all links with generic text ("click here", "learn more", "read more") and replace with descriptive anchor text — Home service cards: "Explore Treatment"; Home team section: "Meet the CellRX Medical Team"; LongevityPrograms: "View Program Details"
+- [x] Ensure all CTA buttons have descriptive aria-labels (e.g., "Book a stem cell consultation" not just "Book Now") — aria-labels added to all service card buttons
 
 #### Structured Data / Schema Markup (Verify completeness)
 - [x] Verify `MedicalClinic` JSON-LD schema on homepage includes: name, address, phone, openingHours, priceRange, medicalSpecialty — MedicalBusiness+LocalBusiness schema in index.html with all fields

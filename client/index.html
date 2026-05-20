@@ -246,25 +246,38 @@
     </script>
 
     <!-- ═══════════════════════════════════════════════════════════
-         GOOGLE ANALYTICS 4 — G-M096BDCQTR
+         GOOGLE ANALYTICS 4 — deferred until after page load
+         Using window.addEventListener('load') prevents GA from
+         blocking FCP/LCP — data is still captured for all sessions.
     ═══════════════════════════════════════════════════════════ -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-M096BDCQTR"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-M096BDCQTR');
+      window.addEventListener('load', function() {
+        // Load GA4 script after page is fully loaded
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-M096BDCQTR';
+        document.head.appendChild(s);
+        s.onload = function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          window.gtag = gtag;
+          gtag('js', new Date());
+          gtag('config', 'G-M096BDCQTR');
+        };
+      });
     </script>
 
     <!-- ═══════════════════════════════════════════════════════════
-         MICROSOFT CLARITY — HEATMAP & SESSION RECORDING
+         MICROSOFT CLARITY — deferred until after page load
     ═══════════════════════════════════════════════════════════ -->
-    <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "wr6mdwhjnk");
+    <script>
+      window.addEventListener('load', function() {
+        (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, 'clarity', 'script', 'wr6mdwhjnk');
+      });
     </script>
 
     <!-- ═══════════════════════════════════════════════════════════
@@ -272,8 +285,8 @@
     ═══════════════════════════════════════════════════════════ -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Preload LCP hero image -->
-    <link rel="preload" as="image" href="/manus-storage/hero_crop_a_6cea0e7a.jpg" fetchpriority="high" />
+    <!-- Preload LCP hero image — desktop version (mobile/tablet served via <picture> srcset) -->
+    <link rel="preload" as="image" href="/manus-storage/hero_desktop_1920_d480245c.webp" fetchpriority="high" type="image/webp" imagesrcset="/manus-storage/hero_mobile_768_2ed2f8a9.webp 768w, /manus-storage/hero_tablet_1280_75e16c47.webp 1280w, /manus-storage/hero_desktop_1920_d480245c.webp 1920w" imagesizes="100vw" />
 
     <!-- DNS prefetch for CDN image domains -->
     <link rel="dns-prefetch" href="https://d2xsxph8kpxj0f.cloudfront.net" />
