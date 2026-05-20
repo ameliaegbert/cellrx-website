@@ -273,3 +273,4 @@
 - [ ] Ensure NAP (Name, Address, Phone) is consistent across website, GBP, and all directories
 - [ ] Submit to medical directories: Healthgrades, Zocdoc, Vitals, RateMDs, WebMD Find a Doctor
 - [x] Add location-specific content mentioning city/region served on homepage and contact page — "Serving Patients Across Utah" section added to Home.tsx (with clinic info card) and Contact.tsx (12-city grid + NAP)
+- [x] Inline critical above-the-fold CSS in index.html to eliminate 950ms render-blocking delay
