@@ -98,9 +98,9 @@ export default function BlackLabel() {
       {/* ─── HERO ─── */}
       <section
         className="relative min-h-[80vh] flex items-end overflow-hidden"
-        style={{ backgroundImage: `url(${BLACK_LABEL_IMG})`, backgroundSize: "cover", backgroundPosition: "40% 35%" }}
+        style={{ backgroundImage: `url(${BLACK_LABEL_IMG})`, backgroundSize: "cover", backgroundPosition: "75% 30%" }}
       >
-        <div className="absolute inset-0 bg-gradient-to-t from-[#051229] via-[#051229]/60 to-transparent" />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(5,18,41,0.92) 0%, rgba(5,18,41,0.75) 40%, rgba(5,18,41,0.25) 70%, rgba(5,18,41,0.10) 100%), linear-gradient(to top, rgba(5,18,41,0.95) 0%, transparent 40%)' }} />
         <div className="container relative z-10 pb-16 md:pb-24 pt-28 md:pt-48">
           <p className="section-label mb-4 fade-up">Exclusive Annual Membership</p>
           <h1

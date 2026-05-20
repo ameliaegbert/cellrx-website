@@ -158,7 +158,7 @@ export default function Home() {
               src={HERO_DESKTOP}
               alt="Dr. Egbert performing a stem cell injection treatment at CellRX clinic in Lehi, Utah"
               className={`w-full h-full ${heroLoaded ? 'hero-ken-burns' : 'hero-img-base'}`}
-              style={{ objectFit: 'cover', objectPosition: 'center center', display: 'block' }}
+              style={{ objectFit: 'cover', objectPosition: 'center 35%', display: 'block' }}
               onLoad={() => setHeroLoaded(true)}
               fetchPriority="high"
               decoding="async"
