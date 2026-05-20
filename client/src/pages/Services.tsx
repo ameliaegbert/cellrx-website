@@ -62,9 +62,9 @@ function ServiceFAQItem({ q, a }: { q: string; a: string }) {
   );
 }
 
-const INJECTION_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/CELLRX_HAPS-12_94cc8872.webp";
-const IV_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/service_iv_9142a5f3.webp";
-const CLINIC_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/clinic_interior_31c757cf.webp";
+const INJECTION_IMG = "/manus-storage/haps12_services_opt_03ce80ba.webp";
+const IV_IMG = "/manus-storage/service_iv_opt_42742b15.webp";
+const CLINIC_IMG = "/manus-storage/clinic_interior_opt_d513ed06.webp";
 
 function useScrollAnimation() {
   useEffect(() => {

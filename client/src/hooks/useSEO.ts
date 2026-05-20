@@ -16,7 +16,7 @@ interface SEOProps {
 }
 
 const DEFAULT_OG_IMAGE =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/physician_portrait_d5fe25e9.webp";
+  "/manus-storage/physician_portrait_opt_0f7ccc2a.webp";
 
 const SITE_NAME = "CellRX";
 const BASE_URL = "https://www.cellrx.bio";

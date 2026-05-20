@@ -12,11 +12,11 @@ import Footer from "@/components/Footer";
 import { ArrowRight } from "lucide-react";
 import { useSEO } from "@/hooks/useSEO";
 
-const PHYSICIAN_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/physician_portrait_d5fe25e9.webp";
-const CLINIC_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/clinic_interior_31c757cf.webp";
-const AMELIA_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/amelia_egbert_7f527cc3.webp";
-const SAMANTHA_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/samantha_buker_013a942e.webp";
-const DAVID_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/david_fajardo_39d545ed.webp";
+const PHYSICIAN_IMG = "/manus-storage/physician_portrait_opt_0f7ccc2a.webp";
+const CLINIC_IMG = "/manus-storage/clinic_interior_opt_d513ed06.webp";
+const AMELIA_IMG = "/manus-storage/amelia_egbert_opt_0e0c389f.webp";
+const SAMANTHA_IMG = "/manus-storage/samantha_buker_opt_c69cab89.webp";
+const DAVID_IMG = "/manus-storage/david_fajardo_opt_4507be8d.webp";
 
 const TITLE_FONT = "'Bebas Neue', sans-serif";
 const SUBTITLE_FONT = "'DM Sans', sans-serif";
@@ -38,7 +38,7 @@ export default function Team() {
     title: "Our Team — CellRX Regenerative Medicine | Lehi, Utah",
     description: "Meet the CellRX team: Dr. Jacob Egbert (Medical Director), Amelia Egbert (COO), Samantha Buker, and David Fajardo. A small, intentional team built for exceptional results.",
     canonical: "/team",
-    ogImage: "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/physician_portrait_d5fe25e9.webp",
+    ogImage: "/manus-storage/physician_portrait_opt_0f7ccc2a.webp",
   });
   useScrollAnimation();
 

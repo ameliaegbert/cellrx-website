@@ -25,7 +25,7 @@ const socialLinks = [
   { href: "https://www.linkedin.com/company/113543963/", label: "LinkedIn", icon: <Linkedin size={14} /> },
 ];
 
-const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/cellrx_logo_white_c7e5a738.png";
+const LOGO_URL = "/manus-storage/cellrx_logo_opt_9963f027.webp";
 
 const navLinks = [
   { label: "About", href: "/about" },

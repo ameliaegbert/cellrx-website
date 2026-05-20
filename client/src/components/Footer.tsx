@@ -7,7 +7,7 @@
 import { Link } from "wouter";
 import { MapPin, Phone, Mail, Instagram, Facebook, Linkedin, Youtube } from "lucide-react";
 
-const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/cellrx_logo_white_c7e5a738.png";
+const LOGO_URL = "/manus-storage/cellrx_logo_opt_9963f027.webp";
 
 // TikTok icon (not in lucide-react, using SVG)
 function TikTokIcon({ size = 15 }: { size?: number }) {

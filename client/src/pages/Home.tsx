@@ -13,17 +13,18 @@ import { ChevronDown, Shield, Zap, Clock, Star, ArrowRight, CheckCircle2, Plus, 
 import { useSEO, PAGE_SEO, useFAQSchema } from "@/hooks/useSEO";
 
 // CDN URLs
-const INJECTION_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/service_injection_3f039e48.webp";
-const IV_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/service_iv_9142a5f3.webp";
-const BLACK_LABEL_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/service_black_label_1c68d442.webp";
-const CLINIC_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/clinic_interior_31c757cf.webp";
-const PHYSICIAN_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/physician_portrait_d5fe25e9.webp";
+// Optimized service card images — resized to 800×800, WebP quality 82 (was 780–1066 KB, now 28–47 KB)
+const INJECTION_IMG = "/manus-storage/service_injection_opt_c744419a.webp";
+const IV_IMG = "/manus-storage/service_iv_opt_42742b15.webp";
+const BLACK_LABEL_IMG = "/manus-storage/service_black_label_opt_686cc654.webp";
+const CLINIC_IMG = "/manus-storage/clinic_interior_opt_d513ed06.webp";
+const PHYSICIAN_IMG = "/manus-storage/physician_portrait_opt_0f7ccc2a.webp";
 // Optimized hero images — responsive variants (WebP, landscape crop)
 const HERO_DESKTOP = "/manus-storage/hero_desktop_1920_d480245c.webp"; // 1920×1080, 69 KB
 const HERO_TABLET  = "/manus-storage/hero_tablet_1280_75e16c47.webp";  // 1280×720,  33 KB
 const HERO_MOBILE  = "/manus-storage/hero_mobile_768_2ed2f8a9.webp";   // 768×432,   12 KB
-const CONSULTATION_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/consultation_photo_de51af6c.webp";
-const BG_DARK_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/background_dark_fb24a343.webp";
+const CONSULTATION_IMG = "/manus-storage/consultation_photo_opt_b1d3b598.webp";
+const BG_DARK_IMG = "/manus-storage/background_dark_opt_b4ede28a.webp";
 
 function useScrollAnimation() {
   useEffect(() => {

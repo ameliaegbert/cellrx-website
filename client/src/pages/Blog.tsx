@@ -12,11 +12,11 @@ import Footer from "@/components/Footer";
 import { ArrowRight, Calendar, Clock } from "lucide-react";
 import { toast } from "sonner";
 
-const INJECTION_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/service_injection_3f039e48.webp";
-const IV_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/service_iv_9142a5f3.webp";
-const CLINIC_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/clinic_interior_31c757cf.webp";
-const PHYSICIAN_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/team_photo_3d1739e6.webp";
-const BG_DARK_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/background_dark_fb24a343.webp";
+const INJECTION_IMG = "/manus-storage/service_injection_opt_c744419a.webp";
+const IV_IMG = "/manus-storage/service_iv_opt_42742b15.webp";
+const CLINIC_IMG = "/manus-storage/clinic_interior_opt_d513ed06.webp";
+const PHYSICIAN_IMG = "/manus-storage/clinic_interior_opt_d513ed06.webp";
+const BG_DARK_IMG = "/manus-storage/background_dark_opt_b4ede28a.webp";
 
 function useScrollAnimation() {
   useEffect(() => {

@@ -10,7 +10,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Star, Quote } from "lucide-react";
 
-const BG_DARK_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/background_dark_fb24a343.webp";
+const BG_DARK_IMG = "/manus-storage/background_dark_opt_b4ede28a.webp";
 
 function useScrollAnimation() {
   useEffect(() => {

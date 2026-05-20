@@ -12,14 +12,14 @@ import BackToTop from "@/components/BackToTop";
 import { ArrowLeft, Calendar, Clock, Award } from "lucide-react";
 import { useSEO, getBlogPostSEO } from "@/hooks/useSEO";
 
-const PHYSICIAN_PORTRAIT = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/physician_portrait_d5fe25e9.webp";
+const PHYSICIAN_PORTRAIT = "/manus-storage/physician_portrait_opt_0f7ccc2a.webp";
 
-const INJECTION_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/service_injection_3f039e48.webp";
-const IV_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/service_iv_9142a5f3.webp";
-const CLINIC_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/clinic_interior_31c757cf.webp";
-const PHYSICIAN_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/team_photo_3d1739e6.webp";
-const BG_DARK_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/background_dark_fb24a343.webp";
-const BLACK_LABEL_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/service_black_label_1c68d442.webp";
+const INJECTION_IMG = "/manus-storage/service_injection_opt_c744419a.webp";
+const IV_IMG = "/manus-storage/service_iv_opt_42742b15.webp";
+const CLINIC_IMG = "/manus-storage/clinic_interior_opt_d513ed06.webp";
+const PHYSICIAN_IMG = "/manus-storage/clinic_interior_opt_d513ed06.webp";
+const BG_DARK_IMG = "/manus-storage/background_dark_opt_b4ede28a.webp";
+const BLACK_LABEL_IMG = "/manus-storage/service_black_label_opt_686cc654.webp";
 
 function useScrollAnimation() {
   useEffect(() => {
