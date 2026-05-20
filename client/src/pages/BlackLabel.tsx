@@ -60,7 +60,7 @@ function BlackLabelFAQItem({ q, a }: { q: string; a: string }) {
   );
 }
 
-const BLACK_LABEL_IMG = "/manus-storage/service_black_label_opt_686cc654.webp";
+const BLACK_LABEL_IMG = "/manus-storage/CELLRX_HAPS_v2-1_flipped_768391a0.webp";
 const BG_DARK_IMG = "/manus-storage/background_dark_opt_b4ede28a.webp";
 const CLINIC_IMG = "/manus-storage/clinic_interior_opt_d513ed06.webp";
 
@@ -98,7 +98,7 @@ export default function BlackLabel() {
       {/* ─── HERO ─── */}
       <section
         className="relative min-h-[80vh] flex items-end overflow-hidden"
-        style={{ backgroundImage: `url(${BLACK_LABEL_IMG})`, backgroundSize: "cover", backgroundPosition: "center 30%" }}
+        style={{ backgroundImage: `url(${BLACK_LABEL_IMG})`, backgroundSize: "cover", backgroundPosition: "40% 35%" }}
       >
         <div className="absolute inset-0 bg-gradient-to-t from-[#051229] via-[#051229]/60 to-transparent" />
         <div className="container relative z-10 pb-16 md:pb-24 pt-28 md:pt-48">
