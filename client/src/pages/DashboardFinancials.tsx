@@ -6,6 +6,7 @@
  */
 
 import { trpc } from "@/lib/trpc";
+import { useAuth } from "@/_core/hooks/useAuth";
 import { DollarSign, RefreshCw, ExternalLink, Lock } from "lucide-react";
 import { useState } from "react";
 import DashboardLayout from "@/components/DashboardLayout";
@@ -36,11 +37,37 @@ function SectionHeader({ title, sub }: { title: string; sub?: string }) {
 export default function DashboardFinancials() {
   useNoIndex(); // Prevent search engines from indexing this private page
 
-  const revenueQ = trpc.dashboard.revenue.useQuery(undefined, { refetchInterval: 10 * 60 * 1000 });
+  const { user, loading } = useAuth();
+  const canAccess = !loading && (user?.role === 'admin' || user?.role === 'owner');
+
+  const revenueQ = trpc.dashboard.revenue.useQuery(undefined, {
+    refetchInterval: 10 * 60 * 1000,
+    enabled: canAccess,
+  });
   const [revPeriod, setRevPeriod] = useState<'30d' | '60d' | '90d' | 'ytd' | 'lifetime'>('30d');
 
   const rev = revenueQ.data;
   const lastUpdated = new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+
+  // Block employees and unauthenticated users from accessing this page directly
+  if (!loading && !canAccess) {
+    return (
+      <DashboardLayout>
+        <div className="flex flex-col items-center justify-center min-h-[60vh] gap-6">
+          <div className="flex flex-col items-center gap-3 text-center max-w-sm">
+            <div className="h-14 w-14 rounded-full bg-amber-500/10 flex items-center justify-center">
+              <Lock className="h-7 w-7 text-amber-400" />
+            </div>
+            <h2 className="text-xl font-semibold tracking-tight">Access Restricted</h2>
+            <p className="text-sm text-muted-foreground">
+              The Financials dashboard is only accessible to <strong>Owner</strong> and <strong>Admin</strong> accounts.
+              Contact your administrator if you believe this is an error.
+            </p>
+          </div>
+        </div>
+      </DashboardLayout>
+    );
+  }
 
   return (
     <DashboardLayout>

@@ -8,7 +8,7 @@
  * - Revenue placeholder (activates when invoices.readonly scope is added)
  */
 
-import { adminProcedure, router } from "../_core/trpc";
+import { adminProcedure, staffProcedure, ownerOrAdminProcedure, router } from "../_core/trpc";
 import { callDataApi } from "../_core/dataApi";
 import { ENV } from "../_core/env";
 import { getDb } from "../db";
@@ -47,7 +47,7 @@ export const dashboardRouter = router({
   /**
    * Core KPI summary — the top-level numbers for the dashboard header cards
    */
-  summary: adminProcedure.query(async () => {
+  summary: staffProcedure.query(async () => {
     const now = Date.now();
     const thirtyDaysAgo = now - 30 * 24 * 60 * 60 * 1000;
     const sevenDaysAgo = now - 7 * 24 * 60 * 60 * 1000;
@@ -138,7 +138,7 @@ export const dashboardRouter = router({
   /**
    * Lead trend — new CRM contacts added per day for the last 30 days
    */
-  leadTrend: adminProcedure.query(async () => {
+  leadTrend: staffProcedure.query(async () => {
     const thirtyDaysAgo = Date.now() - 30 * 24 * 60 * 60 * 1000;
 
     // Build daily counts scaffold
@@ -182,7 +182,7 @@ export const dashboardRouter = router({
   /**
    * Appointment metrics — from the appointment_tracking table
    */
-  appointments: adminProcedure.query(async () => {
+  appointments: staffProcedure.query(async () => {
     const db = await getDb();
     if (!db) return { total: 0, upcoming: 0, noShows: 0, remindersEnqueued: 0 };
 
@@ -207,7 +207,7 @@ export const dashboardRouter = router({
   /**
    * Nurture queue status — active SMS sequences in flight
    */
-  nurtureStatus: adminProcedure.query(async () => {
+  nurtureStatus: staffProcedure.query(async () => {
     const db = await getDb();
     if (!db) return { activeSequences: 0, pendingMessages: 0, sentLast7d: 0 };
 
@@ -250,7 +250,7 @@ export const dashboardRouter = router({
   /**
    * Revenue & Invoices — live from GHL
    */
-  revenue: adminProcedure.query(async () => {
+  revenue: ownerOrAdminProcedure.query(async () => {
     const loc = ENV.ghlLocationId;
 
     const [invoicesResp, paymentsResp] = await Promise.all([
@@ -355,7 +355,7 @@ export const dashboardRouter = router({
   /**
    * Pipeline stage breakdown for the funnel chart
    */
-  pipeline: adminProcedure.query(async () => {
+  pipeline: staffProcedure.query(async () => {
     const data = await ghlGet(
       `/opportunities/search?location_id=${ENV.ghlLocationId}&limit=100`
     );
@@ -399,7 +399,7 @@ export const dashboardRouter = router({
   /**
    * Social stats — TikTok (page scrape) + YouTube (RSS feed) + Instagram (Meta Graph API)
    */
-  socialStats: adminProcedure.query(async () => {
+  socialStats: staffProcedure.query(async () => {
     const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
 
     // ── TikTok ──────────────────────────────────────────────────────────────

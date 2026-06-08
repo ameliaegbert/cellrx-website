@@ -118,7 +118,14 @@ function DashboardLayoutContent({
   const isCollapsed = state === "collapsed";
   const [isResizing, setIsResizing] = useState(false);
   const sidebarRef = useRef<HTMLDivElement>(null);
-  const activeMenuItem = menuItems.find(item => item.path === location) ?? menuItems[0];
+
+  // Role-based menu filtering: employees cannot see Financials
+  const canSeeFinancials = user?.role === 'admin' || user?.role === 'owner';
+  const visibleMenuItems = menuItems.filter(item =>
+    !(item as any).private || canSeeFinancials
+  );
+
+  const activeMenuItem = visibleMenuItems.find(item => item.path === location) ?? visibleMenuItems[0];
   const isMobile = useIsMobile();
 
   useEffect(() => {
@@ -186,10 +193,10 @@ function DashboardLayoutContent({
 
           <SidebarContent className="gap-0">
             <SidebarMenu className="px-2 py-1">
-              {menuItems.map((item, idx) => {
+              {visibleMenuItems.map((item, idx) => {
                 const isActive = location === item.path;
                 const isPrivate = (item as any).private === true;
-                const prevItem = menuItems[idx - 1] as any;
+                const prevItem = visibleMenuItems[idx - 1] as any;
                 const showDivider = isPrivate && (!prevItem || !prevItem.private);
                 return (
                   <div key={item.path}>
@@ -245,6 +252,11 @@ function DashboardLayoutContent({
                     <p className="text-xs text-muted-foreground truncate mt-1.5">
                       {user?.email || "-"}
                     </p>
+                    {user?.role && user.role !== 'user' && (
+                      <p className="text-[10px] font-semibold uppercase tracking-wide mt-1 text-amber-400/80">
+                        {user.role}
+                      </p>
+                    )}
                   </div>
                 </button>
               </DropdownMenuTrigger>
