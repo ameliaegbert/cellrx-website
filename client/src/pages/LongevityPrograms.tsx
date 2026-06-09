@@ -153,8 +153,8 @@ export default function LongevityPrograms() {
     "longevity-programs"
   );
   useBreadcrumb([
-    { name: "Home", url: "https://www.cellrx.bio/" },
-    { name: "Longevity Programs", url: "https://www.cellrx.bio/longevity-programs" },
+    { name: "Home", url: "https://cellrx.bio/" },
+    { name: "Longevity Programs", url: "https://cellrx.bio/longevity-programs" },
   ]);
   useScrollAnimation();
 

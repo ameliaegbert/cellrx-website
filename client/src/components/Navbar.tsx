@@ -72,6 +72,11 @@ export default function Navbar() {
               src={LOGO_URL}
               alt="CellRX"
               className="h-8 w-auto cursor-pointer"
+              width="160"
+              height="32"
+              fetchPriority="low"
+              loading="eager"
+              decoding="async"
             />
           </Link>
 

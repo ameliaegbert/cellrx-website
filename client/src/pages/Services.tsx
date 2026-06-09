@@ -80,8 +80,8 @@ function useScrollAnimation() {
 export default function Services() {
   useSEO(PAGE_SEO.services);
   useBreadcrumb([
-    { name: "Home", url: "https://www.cellrx.bio/" },
-    { name: "Services", url: "https://www.cellrx.bio/services" },
+    { name: "Home", url: "https://cellrx.bio/" },
+    { name: "Services", url: "https://cellrx.bio/services" },
   ]);
   useFAQSchema(
     SERVICE_FAQS.map((f) => ({ question: f.q, answer: f.a })),

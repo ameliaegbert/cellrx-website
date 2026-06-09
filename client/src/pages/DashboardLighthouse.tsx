@@ -141,7 +141,7 @@ export default function DashboardLighthouse() {
               {isFetching ? "Running audit…" : "Re-run audit"}
             </button>
             <a
-              href={`https://pagespeed.web.dev/report?url=${encodeURIComponent("https://www.cellrx.bio")}`}
+              href={`https://pagespeed.web.dev/report?url=${encodeURIComponent("https://cellrx.bio")}`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground"

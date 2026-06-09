@@ -274,3 +274,14 @@
 - [ ] Submit to medical directories: Healthgrades, Zocdoc, Vitals, RateMDs, WebMD Find a Doctor
 - [x] Add location-specific content mentioning city/region served on homepage and contact page — "Serving Patients Across Utah" section added to Home.tsx (with clinic info card) and Contact.tsx (12-city grid + NAP)
 - [x] Inline critical above-the-fold CSS in index.html to eliminate 950ms render-blocking delay
+
+## Lighthouse Fixes — June 9, 2026
+- [x] Fix canonical URL: www.cellrx.bio → cellrx.bio across all files (index.html, useSEO.ts, sitemap.xml, robots.txt, llms.txt, all page components)
+- [x] Fix og:url to match canonical (no-www)
+- [x] Fix footer h4 heading order (changed to p tags to avoid out-of-sequence headings)
+- [x] Fix footer color contrast: text-white/30 → text-white/50 (bottom bar + FDA disclaimer)
+- [x] Fix navbar logo: add fetchPriority="low" + explicit width/height to stop it being LCP candidate
+- [x] Fix GA4 transport_type: 'beacon' to avoid unload event listener (improves BF-cache)
+- [x] Fix HTML Cache-Control: remove no-store (was blocking BF-cache), use no-cache instead
+- [x] Add preconnect for manus storage CDN
+- [x] Improve Vite chunk splitting: split vendor-ui → vendor-ui-utils + vendor-icons, add superjson to vendor-trpc

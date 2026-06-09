@@ -131,8 +131,8 @@ export default function HealthOptimization() {
     "health-optimization"
   );
   useBreadcrumb([
-    { name: "Home", url: "https://www.cellrx.bio/" },
-    { name: "Health Optimization", url: "https://www.cellrx.bio/health-optimization" },
+    { name: "Home", url: "https://cellrx.bio/" },
+    { name: "Health Optimization", url: "https://cellrx.bio/health-optimization" },
   ]);
   useScrollAnimation();
 

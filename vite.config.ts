@@ -227,9 +227,11 @@ export default defineConfig({
           // Routing
           "vendor-router": ["wouter"],
           // tRPC + React Query — changes with API updates
-          "vendor-trpc": ["@trpc/client", "@trpc/react-query", "@tanstack/react-query"],
-          // UI components
-          "vendor-ui": ["lucide-react", "class-variance-authority", "clsx", "tailwind-merge"],
+          "vendor-trpc": ["@trpc/client", "@trpc/react-query", "@tanstack/react-query", "superjson"],
+          // UI utilities — tiny, rarely change
+          "vendor-ui-utils": ["class-variance-authority", "clsx", "tailwind-merge"],
+          // Icons — large, separate for caching
+          "vendor-icons": ["lucide-react"],
           // Charts — only used in admin dashboard (lazy route)
           "vendor-charts": ["recharts"],
           // Markdown renderer — only used in BlogPost & AIChatBox (lazy routes)

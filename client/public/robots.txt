@@ -1,5 +1,5 @@
 # CellRX — Concierge Regenerative Medicine
-# www.cellrx.bio
+# cellrx.bio
 
 # ─── Allow all crawlers ───────────────────────────────────────
 User-agent: *
@@ -54,4 +54,4 @@ Allow: /
 Disallow: /dashboard
 
 # ─── Sitemap ──────────────────────────────────────────────────
-Sitemap: https://www.cellrx.bio/sitemap.xml
+Sitemap: https://cellrx.bio/sitemap.xml

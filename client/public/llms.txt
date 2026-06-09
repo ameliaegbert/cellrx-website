@@ -32,19 +32,19 @@ Dr. Egbert is board-certified and specializes in regenerative medicine, function
 - Address: 3098 Executive Parkway, Suite 100, Lehi, Utah 84043
 - Phone: (385) 707-2373
 - Email: info@cellrx.bio
-- Website: https://www.cellrx.bio
+- Website: https://cellrx.bio
 - Hours: Monday–Friday, 9:00 AM – 5:00 PM MST
 - Serving: Lehi, Provo, Salt Lake City, and all of Utah
 
 ## Blog Articles & Research
 
-- [How Stem Cell Injection Therapy Is Changing Joint Repair](https://www.cellrx.bio/blog/stem-cell-injection-joint-repair) — The science behind targeted regenerative biologics for joint pain and tissue damage.
-- [The Science Behind IV Stem Cell Therapy](https://www.cellrx.bio/blog/iv-stem-cell-therapy-science) — How systemic delivery unlocks whole-body regeneration and cellular restoration.
-- [Why Top Performers Choose Concierge Medicine](https://www.cellrx.bio/blog/top-performers-concierge-medicine) — The case for personalized, proactive healthcare for high-achieving individuals.
-- [What to Expect at Your First CellRX Consultation](https://www.cellrx.bio/blog/first-cellrx-consultation) — A step-by-step guide to your first visit with Dr. Egbert.
-- [Why Chain of Custody Matters in Stem Cell Therapy](https://www.cellrx.bio/blog/chain-of-custody-stem-cells) — The critical difference in biologic sourcing, safety, and efficacy.
-- [Quarterly Lab Work and the Future of Longevity](https://www.cellrx.bio/blog/quarterly-labs-longevity) — Using biomarker data to build a personalized longevity protocol.
-- [Regenerative Medicine for Athletes and High Performers](https://www.cellrx.bio/blog/regenerative-medicine-athletes) — How stem cell therapy accelerates recovery and extends peak performance.
+- [How Stem Cell Injection Therapy Is Changing Joint Repair](https://cellrx.bio/blog/stem-cell-injection-joint-repair) — The science behind targeted regenerative biologics for joint pain and tissue damage.
+- [The Science Behind IV Stem Cell Therapy](https://cellrx.bio/blog/iv-stem-cell-therapy-science) — How systemic delivery unlocks whole-body regeneration and cellular restoration.
+- [Why Top Performers Choose Concierge Medicine](https://cellrx.bio/blog/top-performers-concierge-medicine) — The case for personalized, proactive healthcare for high-achieving individuals.
+- [What to Expect at Your First CellRX Consultation](https://cellrx.bio/blog/first-cellrx-consultation) — A step-by-step guide to your first visit with Dr. Egbert.
+- [Why Chain of Custody Matters in Stem Cell Therapy](https://cellrx.bio/blog/chain-of-custody-stem-cells) — The critical difference in biologic sourcing, safety, and efficacy.
+- [Quarterly Lab Work and the Future of Longevity](https://cellrx.bio/blog/quarterly-labs-longevity) — Using biomarker data to build a personalized longevity protocol.
+- [Regenerative Medicine for Athletes and High Performers](https://cellrx.bio/blog/regenerative-medicine-athletes) — How stem cell therapy accelerates recovery and extends peak performance.
 
 ## Frequently Asked Questions
 
@@ -78,16 +78,16 @@ CellRX uses ethically sourced, rigorously screened biologic products with full c
 
 ## Pages
 
-- [Home](https://www.cellrx.bio/) — Overview of CellRX services and differentiators
-- [Services](https://www.cellrx.bio/services) — Stem cell injection and IV therapy details and pricing
-- [Black Label Concierge Medicine](https://www.cellrx.bio/black-label) — Exclusive annual membership program
-- [Health Optimization](https://www.cellrx.bio/health-optimization) — Biomarker-driven health optimization
-- [Longevity Programs](https://www.cellrx.bio/longevity-programs) — Anti-aging and longevity protocols
-- [FAQ](https://www.cellrx.bio/faq) — 20 common questions answered about stem cell therapy, pricing, safety, and more
-- [About](https://www.cellrx.bio/about) — Dr. Egbert's background and the CellRX story
-- [Testimonials](https://www.cellrx.bio/testimonials) — Patient outcomes and stories
-- [Contact](https://www.cellrx.bio/contact) — Book a consultation
+- [Home](https://cellrx.bio/) — Overview of CellRX services and differentiators
+- [Services](https://cellrx.bio/services) — Stem cell injection and IV therapy details and pricing
+- [Black Label Concierge Medicine](https://cellrx.bio/black-label) — Exclusive annual membership program
+- [Health Optimization](https://cellrx.bio/health-optimization) — Biomarker-driven health optimization
+- [Longevity Programs](https://cellrx.bio/longevity-programs) — Anti-aging and longevity protocols
+- [FAQ](https://cellrx.bio/faq) — 20 common questions answered about stem cell therapy, pricing, safety, and more
+- [About](https://cellrx.bio/about) — Dr. Egbert's background and the CellRX story
+- [Testimonials](https://cellrx.bio/testimonials) — Patient outcomes and stories
+- [Contact](https://cellrx.bio/contact) — Book a consultation
 
 ## Schema & Structured Data
 
-This site includes structured data markup (schema.org) for: MedicalBusiness, LocalBusiness, Physician, FAQPage (global + page-specific), MedicalProcedure (Services page), BreadcrumbList (all pages), and Article (blog posts). Canonical URL: https://www.cellrx.bio/
+This site includes structured data markup (schema.org) for: MedicalBusiness, LocalBusiness, Physician, FAQPage (global + page-specific), MedicalProcedure (Services page), BreadcrumbList (all pages), and Article (blog posts). Canonical URL: https://cellrx.bio/

@@ -19,7 +19,7 @@ const DEFAULT_OG_IMAGE =
   "/manus-storage/physician_portrait_opt_0f7ccc2a.webp";
 
 const SITE_NAME = "CellRX";
-const BASE_URL = "https://www.cellrx.bio";
+const BASE_URL = "https://cellrx.bio";
 
 function setMeta(name: string, content: string, attr: "name" | "property" = "name") {
   let el = document.querySelector(`meta[${attr}="${name}"]`) as HTMLMetaElement | null;
@@ -119,7 +119,7 @@ export function useFAQSchema(faqs: FAQItem[], pageId: string) {
     const schema = {
       "@context": "https://schema.org",
       "@type": "FAQPage",
-      "@id": `https://www.cellrx.bio${window.location.pathname}#faq`,
+      "@id": `https://cellrx.bio${window.location.pathname}#faq`,
       mainEntity: faqs.map((faq) => ({
         "@type": "Question",
         name: faq.question,
@@ -170,9 +170,9 @@ export function useMedicalProcedureSchema(procedures: MedicalProcedureData[], pa
       "performedBy": {
         "@type": "Physician",
         "name": "Dr. Jacob Egbert",
-        "worksFor": { "@id": "https://www.cellrx.bio/#organization" }
+        "worksFor": { "@id": "https://cellrx.bio/#organization" }
       },
-      "provider": { "@id": "https://www.cellrx.bio/#organization" }
+      "provider": { "@id": "https://cellrx.bio/#organization" }
     }));
     const id = `medical-procedure-schema-${pageId}`;
     let el = document.getElementById(id) as HTMLScriptElement | null;

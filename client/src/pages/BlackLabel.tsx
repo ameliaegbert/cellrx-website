@@ -82,8 +82,8 @@ function useScrollAnimation() {
 export default function BlackLabel() {
   useSEO(PAGE_SEO.blackLabel);
   useBreadcrumb([
-    { name: "Home", url: "https://www.cellrx.bio/" },
-    { name: "Black Label Concierge", url: "https://www.cellrx.bio/black-label" },
+    { name: "Home", url: "https://cellrx.bio/" },
+    { name: "Black Label Concierge", url: "https://cellrx.bio/black-label" },
   ]);
   useFAQSchema(
     BLACK_LABEL_FAQS.map((f) => ({ question: f.q, answer: f.a })),

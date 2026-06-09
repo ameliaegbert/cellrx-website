@@ -55,7 +55,7 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="text-white text-xs font-semibold tracking-widest uppercase mb-6" style={{ fontFamily: "'DM Sans', sans-serif" }}>Services</h4>
+            <p className="text-white text-xs font-semibold tracking-widest uppercase mb-6" style={{ fontFamily: "'DM Sans', sans-serif" }}>Services</p>
             <ul className="space-y-3">
               {[
                 { label: "Stem Cell Injection", href: "/services" },
@@ -75,7 +75,7 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <h4 className="text-white text-xs font-semibold tracking-widest uppercase mb-6" style={{ fontFamily: "'DM Sans', sans-serif" }}>Company</h4>
+            <p className="text-white text-xs font-semibold tracking-widest uppercase mb-6" style={{ fontFamily: "'DM Sans', sans-serif" }}>Company</p>
             <ul className="space-y-3">
               {[
                 { label: "About Us", href: "/about" },
@@ -95,7 +95,7 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-white text-xs font-semibold tracking-widest uppercase mb-6" style={{ fontFamily: "'DM Sans', sans-serif" }}>Contact</h4>
+            <p className="text-white text-xs font-semibold tracking-widest uppercase mb-6" style={{ fontFamily: "'DM Sans', sans-serif" }}>Contact</p>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin size={15} className="text-[#FBB217] mt-0.5 shrink-0" />
@@ -122,7 +122,7 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-white/30 text-xs tracking-wide" style={{ fontFamily: "'Libre Franklin', sans-serif" }}>
+          <p className="text-white/50 text-xs tracking-wide" style={{ fontFamily: "'Libre Franklin', sans-serif" }}>
             © 2026 CellRX. All rights reserved.
           </p>
           <div className="flex gap-6 flex-wrap justify-center md:justify-end">
@@ -132,7 +132,7 @@ export default function Footer() {
               { label: "FDA Disclaimer", href: "/contact" },
               { label: "Sitemap", href: "/sitemap" },
             ].map((item) => (
-              <Link key={item.label} href={item.href} className="text-white/30 text-xs hover:text-white/60 transition-colors" style={{ fontFamily: "'Libre Franklin', sans-serif" }}>
+              <Link key={item.label} href={item.href} className="text-white/50 text-xs hover:text-white/80 transition-colors" style={{ fontFamily: "'Libre Franklin', sans-serif" }}>
                 {item.label}
               </Link>
             ))}
@@ -140,8 +140,8 @@ export default function Footer() {
         </div>
 
         {/* FDA Disclaimer */}
-        <p className="mt-6 text-white/20 text-xs leading-relaxed max-w-3xl" style={{ fontFamily: "'Libre Franklin', sans-serif" }}>
-          <strong className="text-white/30">FDA Disclaimer:</strong> The statements on this website have not been evaluated by the Food and Drug Administration. These products and services are not intended to diagnose, treat, cure, or prevent any disease. Results may vary. Consult your physician before beginning any treatment program.
+        <p className="mt-6 text-white/40 text-xs leading-relaxed max-w-3xl" style={{ fontFamily: "'Libre Franklin', sans-serif" }}>
+          <strong className="text-white/40">FDA Disclaimer:</strong> The statements on this website have not been evaluated by the Food and Drug Administration. These products and services are not intended to diagnose, treat, cure, or prevent any disease. Results may vary. Consult your physician before beginning any treatment program.
         </p>
       </div>
     </footer>

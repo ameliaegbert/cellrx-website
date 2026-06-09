@@ -8,7 +8,7 @@
  *
  * Setup in GHL:
  *   Settings → Integrations → Webhooks → Add Webhook
- *   URL: https://www.cellrx.bio/api/webhooks/ghl
+ *   URL: https://cellrx.bio/api/webhooks/ghl
  *   Events: AppointmentCreate, AppointmentNoShow (or AppointmentUpdate with status check)
  */
 

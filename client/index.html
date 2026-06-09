@@ -22,7 +22,7 @@
     <meta name="anthropic-ai" content="index, follow" />
     <meta name="CCBot" content="index, follow" />
     <meta name="author" content="CellRX Regenerative Medicine" />
-    <link rel="canonical" href="https://www.cellrx.bio/" />
+    <link rel="canonical" href="https://cellrx.bio/" />
 
     <!-- ═══════════════════════════════════════════════════════════
          GEO / LOCAL SEO
@@ -39,7 +39,7 @@
     <meta property="og:site_name" content="CellRX" />
     <meta property="og:title" content="CellRX — Concierge Stem Cell Therapy &amp; Regenerative Medicine | Lehi, Utah" />
     <meta property="og:description" content="Physician-directed stem cell injections and IV therapy in Lehi, Utah. Full chain-of-custody biologics — never diluted, never replicated. Starting at $2,500." />
-    <meta property="og:url" content="https://www.cellrx.bio/" />
+    <meta property="og:url" content="https://cellrx.bio/" />
     <meta property="og:image" content="https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/physician_portrait_d5fe25e9.webp" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -65,11 +65,11 @@
       "@graph": [
         {
           "@type": ["MedicalBusiness", "LocalBusiness"],
-          "@id": "https://www.cellrx.bio/#organization",
+          "@id": "https://cellrx.bio/#organization",
           "name": "CellRX",
           "alternateName": "CellRX Regenerative Medicine",
           "description": "CellRX is a concierge regenerative medicine clinic in Lehi, Utah, specializing in physician-directed stem cell injections and IV therapy. Medical Director Dr. Jacob Egbert serves simultaneously as Medical Director of the stem cell source company, ensuring full chain-of-custody biologics — never diluted, never replicated, ethically sourced from healthy local births.",
-          "url": "https://www.cellrx.bio",
+          "url": "https://cellrx.bio",
           "logo": "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/logo_white_rx_blue_4d9c1e4e.png",
           "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663367412750/C7tmEBqytWZc3WMCpXZgAW/physician_portrait_d5fe25e9.webp",
           "telephone": "+1-385-707-2373",
@@ -150,12 +150,12 @@
         },
         {
           "@type": "Physician",
-          "@id": "https://www.cellrx.bio/#physician",
+          "@id": "https://cellrx.bio/#physician",
           "name": "Dr. Jacob Egbert",
           "jobTitle": "Medical Director",
           "description": "Dr. Jacob Egbert is the Medical Director of CellRX and simultaneously the Medical Director of the stem cell source company — providing unbroken chain-of-custody oversight from procurement to administration. He specializes in regenerative medicine, functional medicine, and personalized longevity protocols.",
           "worksFor": {
-            "@id": "https://www.cellrx.bio/#organization"
+            "@id": "https://cellrx.bio/#organization"
           },
           "medicalSpecialty": [
             "Regenerative Medicine",
@@ -165,7 +165,7 @@
         },
         {
           "@type": "FAQPage",
-          "@id": "https://www.cellrx.bio/#faq",
+          "@id": "https://cellrx.bio/#faq",
           "mainEntity": [
             {
               "@type": "Question",
@@ -262,7 +262,8 @@
           function gtag(){dataLayer.push(arguments);}
           window.gtag = gtag;
           gtag('js', new Date());
-          gtag('config', 'G-M096BDCQTR');
+          // Use beacon transport to avoid unload handler (improves BF-cache)
+          gtag('config', 'G-M096BDCQTR', { transport_type: 'beacon' });
         };
       });
     </script>
@@ -331,7 +332,8 @@
     <!-- Preload LCP hero image — desktop version (mobile/tablet served via <picture> srcset) -->
     <link rel="preload" as="image" href="/manus-storage/hero_desktop_1920_d480245c.webp" fetchpriority="high" type="image/webp" imagesrcset="/manus-storage/hero_mobile_768_2ed2f8a9.webp 768w, /manus-storage/hero_tablet_1280_75e16c47.webp 1280w, /manus-storage/hero_desktop_1920_d480245c.webp 1920w" imagesizes="100vw" />
 
-    <!-- DNS prefetch for CDN image domains -->
+    <!-- DNS prefetch + preconnect for CDN image domains -->
+    <link rel="preconnect" href="https://d36hbw14aib5lz.cloudfront.net" crossorigin />
     <link rel="dns-prefetch" href="https://d2xsxph8kpxj0f.cloudfront.net" />
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     <link rel="dns-prefetch" href="https://www.clarity.ms" />

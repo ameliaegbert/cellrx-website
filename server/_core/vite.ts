@@ -67,7 +67,9 @@ export function serveStatic(app: Express) {
       setHeaders: (res, filePath) => {
         // HTML must not be cached (SPA routing)
         if (filePath.endsWith(".html")) {
-          res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+          // no-cache allows BF-cache (back/forward cache) while still revalidating
+          // no-store would block BF-cache entirely, hurting Lighthouse score
+          res.setHeader("Cache-Control", "no-cache, must-revalidate");
         } else if (
           filePath.match(/\.(js|css|woff2?|ttf|otf|eot|ico|svg|png|jpg|jpeg|webp|avif|gif)$/)
         ) {

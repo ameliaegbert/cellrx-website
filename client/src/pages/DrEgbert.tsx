@@ -58,7 +58,7 @@ export default function DrEgbert() {
       "jobTitle": "Medical Director",
       "description": "Board-certified physician specializing in regenerative medicine, functional medicine, and personalized longevity protocols. Medical Director of CellRX and its stem cell source company.",
       "image": PHYSICIAN_IMG,
-      "url": "https://www.cellrx.bio/about/dr-egbert",
+      "url": "https://cellrx.bio/about/dr-egbert",
       "medicalSpecialty": [
         "Regenerative Medicine",
         "Functional Medicine",
@@ -68,7 +68,7 @@ export default function DrEgbert() {
       "worksFor": {
         "@type": "MedicalBusiness",
         "name": "CellRX Regenerative Medicine",
-        "url": "https://www.cellrx.bio",
+        "url": "https://cellrx.bio",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "3098 Executive Parkway, Suite 100",

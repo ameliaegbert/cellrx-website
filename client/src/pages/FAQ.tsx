@@ -166,8 +166,8 @@ function useScrollAnimation() {
 export default function FAQ() {
   useSEO(PAGE_SEO.faq);
   useBreadcrumb([
-    { name: "Home", url: "https://www.cellrx.bio/" },
-    { name: "FAQ", url: "https://www.cellrx.bio/faq" },
+    { name: "Home", url: "https://cellrx.bio/" },
+    { name: "FAQ", url: "https://cellrx.bio/faq" },
   ]);
   useFAQSchema(
     ALL_FAQS.map((f) => ({ question: f.q, answer: f.a })),

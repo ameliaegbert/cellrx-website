@@ -15,7 +15,7 @@ import { adminProcedure, router } from "../_core/trpc";
 import { ENV } from "../_core/env";
 
 const PSI_API = "https://www.googleapis.com/pagespeedonline/v5/runPagespeed";
-const SITE_URL = "https://www.cellrx.bio";
+const SITE_URL = "https://cellrx.bio";
 
 // 1-hour in-memory cache per strategy
 const cache: Record<string, { data: LighthouseResult; fetchedAt: number }> = {};
