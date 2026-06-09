@@ -31,3 +31,4 @@ export function getSearchConsoleAuth() {
 export function getAnalyticsAuth() {
   return getGoogleAuth(["https://www.googleapis.com/auth/analytics.readonly"]);
 }
+// refreshed: 20260609222029
