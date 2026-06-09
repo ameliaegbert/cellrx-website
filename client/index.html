@@ -269,16 +269,17 @@
     </script>
 
     <!-- ═══════════════════════════════════════════════════════════
-         MICROSOFT CLARITY — deferred until after page load
+         MICROSOFT CLARITY — standard async snippet
+         Using the standard snippet (not window.load wrapper) prevents the
+         "a[c] is not a function" console error caused by async-loading Clarity.
+         The script tag itself has async so it does not block rendering.
     ═══════════════════════════════════════════════════════════ -->
-    <script>
-      window.addEventListener('load', function() {
-        (function(c,l,a,r,i,t,y){
-          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-          t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;
-          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, 'clarity', 'script', 'wr6mdwhjnk');
-      });
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "wr6mdwhjnk");
     </script>
 
     <!-- ═══════════════════════════════════════════════════════════
@@ -327,20 +328,87 @@
     <!-- ═══════════════════════════════════════════════════════════
          FONTS
     ═══════════════════════════════════════════════════════════ -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Preload LCP hero image — desktop version (mobile/tablet served via <picture> srcset) -->
-    <link rel="preload" as="image" href="/manus-storage/hero_desktop_1920_d480245c.webp" fetchpriority="high" type="image/webp" imagesrcset="/manus-storage/hero_mobile_768_2ed2f8a9.webp 768w, /manus-storage/hero_tablet_1280_75e16c47.webp 1280w, /manus-storage/hero_desktop_1920_d480245c.webp 1920w" imagesizes="100vw" />
+    <!-- Google Fonts preconnects removed — fonts are now self-hosted, no external DNS lookup needed -->
+    <!-- NOTE: Hero image preload removed — /manus-storage/ proxy redirects to a signed CloudFront URL,
+         which breaks browser preload matching. fetchPriority="high" on the <img> element is the
+         correct signal. The preconnect below warms the CDN connection instead. -->
 
     <!-- DNS prefetch + preconnect for CDN image domains -->
     <link rel="preconnect" href="https://d36hbw14aib5lz.cloudfront.net" crossorigin />
     <link rel="dns-prefetch" href="https://d2xsxph8kpxj0f.cloudfront.net" />
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     <link rel="dns-prefetch" href="https://www.clarity.ms" />
-    <!-- Fonts: Bebas Neue (titles) | DM Sans (subtitles) | Libre Franklin (body) -->
-    <!-- font-display=swap prevents render-blocking -->
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Libre+Franklin:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Libre+Franklin:wght@300;400;500;600;700&display=swap" rel="stylesheet" /></noscript>
+    <!-- Self-hosted fonts — eliminates the 750ms render-blocking Google Fonts external request.
+         Fonts are served from the same CDN as all other assets (no extra DNS lookup). -->
+    <style>
+      /* Bebas Neue — display/title font */
+      @font-face {
+        font-family: 'Bebas Neue';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url('/manus-storage/bebas-neue-latin_1c6e6e16.woff2') format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+      /* DM Sans — subtitle/UI font (variable, covers 300–700) */
+      @font-face {
+        font-family: 'DM Sans';
+        font-style: normal;
+        font-weight: 100 900;
+        font-display: swap;
+        src: url('/manus-storage/dm-sans-latin-ext_3e5a7b3d.woff2') format('woff2');
+        unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+      }
+      @font-face {
+        font-family: 'DM Sans';
+        font-style: normal;
+        font-weight: 100 900;
+        font-display: swap;
+        src: url('/manus-storage/dm-sans-latin_d4529fd7.woff2') format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+      /* Libre Franklin — body text font */
+      @font-face {
+        font-family: 'Libre Franklin';
+        font-style: normal;
+        font-weight: 300;
+        font-display: swap;
+        src: url('/manus-storage/libre-franklin-300_4b0c5e4f.woff2') format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+      @font-face {
+        font-family: 'Libre Franklin';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url('/manus-storage/libre-franklin-400_f9e7dbc9.woff2') format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+      @font-face {
+        font-family: 'Libre Franklin';
+        font-style: normal;
+        font-weight: 500;
+        font-display: swap;
+        src: url('/manus-storage/libre-franklin-500_2137c093.woff2') format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+      @font-face {
+        font-family: 'Libre Franklin';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: url('/manus-storage/libre-franklin-600_82f27627.woff2') format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+      @font-face {
+        font-family: 'Libre Franklin';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: url('/manus-storage/libre-franklin-700_77b33aaf.woff2') format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+    </style>
   </head>
 
   <body>

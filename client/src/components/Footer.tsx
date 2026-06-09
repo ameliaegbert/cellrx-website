@@ -140,8 +140,8 @@ export default function Footer() {
         </div>
 
         {/* FDA Disclaimer */}
-        <p className="mt-6 text-white/40 text-xs leading-relaxed max-w-3xl" style={{ fontFamily: "'Libre Franklin', sans-serif" }}>
-          <strong className="text-white/40">FDA Disclaimer:</strong> The statements on this website have not been evaluated by the Food and Drug Administration. These products and services are not intended to diagnose, treat, cure, or prevent any disease. Results may vary. Consult your physician before beginning any treatment program.
+        <p className="mt-6 text-white/55 text-xs leading-relaxed max-w-3xl" style={{ fontFamily: "'Libre Franklin', sans-serif" }}>
+          <strong className="text-white/55">FDA Disclaimer:</strong> The statements on this website have not been evaluated by the Food and Drug Administration. These products and services are not intended to diagnose, treat, cure, or prevent any disease. Results may vary. Consult your physician before beginning any treatment program.
         </p>
       </div>
     </footer>

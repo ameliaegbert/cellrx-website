@@ -218,6 +218,12 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
+    // Target modern browsers — avoids legacy JS polyfills (saves ~8KB, fixes Lighthouse legacy-javascript audit)
+    // Covers 95%+ of users: Chrome 90+, Firefox 90+, Safari 15+, Edge 90+
+    target: ["chrome90", "firefox90", "safari15", "edge90"],
+    // Merge all CSS into one file — prevents Vite from creating separate CSS chunks
+    // (e.g. vendor-markdown.css) that get injected as render-blocking <link> tags on every page
+    cssCodeSplit: false,
     rollupOptions: {
       output: {
         // Manual chunk splitting for better caching and smaller initial bundle

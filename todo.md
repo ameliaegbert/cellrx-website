@@ -285,3 +285,12 @@
 - [x] Fix HTML Cache-Control: remove no-store (was blocking BF-cache), use no-cache instead
 - [x] Add preconnect for manus storage CDN
 - [x] Improve Vite chunk splitting: split vendor-ui → vendor-ui-utils + vendor-icons, add superjson to vendor-trpc
+
+## Lighthouse Fixes Round 2 — June 9, 2026
+- [x] Fix footer FDA disclaimer contrast: text-white/40 → text-white/55 (clears 4.5:1 WCAG AA)
+- [x] Fix Clarity console error: replaced window.load wrapper with standard async snippet (fixes "a[c] is not a function")
+- [x] Add cssCodeSplit: false to Vite config (eliminates vendor-markdown.css render-blocking link tag)
+- [x] Add modern browser build target to Vite (chrome90/firefox90/safari15/edge90) — removes legacy JS polyfills
+- [x] Remove broken hero image preload (manus-storage proxy 307 redirect breaks preload matching)
+- [x] Self-host all fonts (Bebas Neue, DM Sans, Libre Franklin) — eliminates 750ms Google Fonts render-blocking request
+- [x] Remove Google Fonts preconnect tags (no longer needed)
