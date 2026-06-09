@@ -46,6 +46,9 @@ import {
   Monitor,
   Smartphone,
   Tablet,
+  Search,
+  Eye,
+  ArrowUpRight,
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import DashboardLayout from "@/components/DashboardLayout";
@@ -204,6 +207,8 @@ export default function Dashboard() {
   const pipelineQ = trpc.dashboard.pipeline.useQuery(undefined, { refetchInterval: 5 * 60 * 1000 });
   const socialQ = trpc.dashboard.socialStats.useQuery(undefined, { refetchInterval: 30 * 60 * 1000 });
   const clarityQ = trpc.clarity.metrics.useQuery(undefined, { refetchInterval: 6 * 60 * 60 * 1000 }); // 6h cache matches API limit
+  const gscQ = trpc.searchConsole.performance.useQuery(undefined, { refetchInterval: 60 * 60 * 1000 });
+  const gsc = gscQ.data;
 
   const isLoading =
     summaryQ.isLoading || leadTrendQ.isLoading || appointmentsQ.isLoading || nurtureQ.isLoading || pipelineQ.isLoading;
@@ -238,260 +243,48 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* ── Top KPI Cards ── */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <KPICard
-            icon={Users}
-            label="Total Contacts"
-            value={s?.totalContacts?.toLocaleString() ?? "—"}
-            sub="All time in GHL"
-          />
-          <KPICard
-            icon={TrendingUp}
-            label="New Leads (30d)"
-            value={s?.newLeads30d ?? "—"}
-            sub={`${s?.newLeads7d ?? "—"} this week`}
-            accent
-          />
-          <KPICard
-            icon={BarChart2}
-            label="Open Pipeline"
-            value={s?.openOpportunities ?? "—"}
-            sub={`${formatCurrency(s?.totalPipelineValue ?? 0)} potential value`}
-          />
-          <KPICard
-            icon={TrendingUp}
-            label="Conversion Rate"
-            value={s ? `${s.conversionRate}%` : "—"}
-            sub="Won / (Won + Lost)"
-            accent={!!s && s.conversionRate > 0}
-          />
-        </div>
-
-        {/* ── Lead Trend Chart ── */}
-        <div className="bg-card border border-border rounded-lg p-6">
-          <SectionHeader
-            title="New Leads — Last 30 Days"
-            sub="Opportunities created in GHL by day"
-          />
-          {leadTrend.length > 0 ? (
-            <ResponsiveContainer width="100%" height={200}>
-              <AreaChart data={leadTrend} margin={{ top: 4, right: 4, bottom: 0, left: -20 }}>
-                <defs>
-                  <linearGradient id="leadGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#0047BB" stopOpacity={0.3} />
-                    <stop offset="95%" stopColor="#0047BB" stopOpacity={0} />
-                  </linearGradient>
-                </defs>
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
-                <XAxis
-                  dataKey="date"
-                  tickFormatter={formatDate}
-                  tick={{ fontSize: 10, fill: "#D6D7D9" }}
-                  tickLine={false}
-                  axisLine={false}
-                  interval={6}
-                />
-                <YAxis
-                  tick={{ fontSize: 10, fill: "#D6D7D9" }}
-                  tickLine={false}
-                  axisLine={false}
-                  allowDecimals={false}
-                />
-                <Tooltip
-                  contentStyle={{
-                    background: "#0a1a2e",
-                    border: "1px solid rgba(255,255,255,0.1)",
-                    borderRadius: 6,
-                    fontSize: 12,
-                  }}
-                  labelFormatter={(v) => `Date: ${v}`}
-                  formatter={(v: number) => [v, "New Leads"]}
-                />
-                <Area
-                  type="monotone"
-                  dataKey="leads"
-                  stroke="#0047BB"
-                  strokeWidth={2}
-                  fill="url(#leadGrad)"
-                  dot={false}
-                  activeDot={{ r: 4, fill: "#FBB217" }}
-                />
-              </AreaChart>
-            </ResponsiveContainer>
-          ) : (
-            <div className="h-48 flex items-center justify-center text-muted-foreground text-sm">
-              {leadTrendQ.isLoading ? "Loading..." : "No data yet"}
-            </div>
-          )}
-        </div>
-
-        {/* ── Pipeline Funnel + Appointments ── */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-
-          {/* Pipeline by Stage */}
-          <div className="bg-card border border-border rounded-lg p-6">
-            <SectionHeader
-              title="Pipeline by Stage"
-              sub="Open opportunities in Patient Pipeline"
-            />
-            {pipeline.length > 0 ? (
-              <ResponsiveContainer width="100%" height={220}>
-                <BarChart
-                  data={pipeline}
-                  layout="vertical"
-                  margin={{ top: 0, right: 16, bottom: 0, left: 0 }}
-                >
-                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" horizontal={false} />
-                  <XAxis type="number" tick={{ fontSize: 10, fill: "#D6D7D9" }} tickLine={false} axisLine={false} allowDecimals={false} />
-                  <YAxis
-                    dataKey="stage"
-                    type="category"
-                    tick={{ fontSize: 10, fill: "#D6D7D9" }}
-                    tickLine={false}
-                    axisLine={false}
-                    width={120}
-                  />
-                  <Tooltip
-                    contentStyle={{
-                      background: "#0a1a2e",
-                      border: "1px solid rgba(255,255,255,0.1)",
-                      borderRadius: 6,
-                      fontSize: 12,
-                    }}
-                    formatter={(v: number, _: string, props: any) => [
-                      `${v} leads · ${formatCurrency(props.payload.value)}`,
-                      "Stage",
-                    ]}
-                  />
-                  <Bar dataKey="count" radius={[0, 4, 4, 0]}>
-                    {pipeline.map((entry) => (
-                      <Cell
-                        key={entry.stage}
-                        fill={STAGE_COLORS[entry.stage] ?? "#36454F"}
-                      />
-                    ))}
-                  </Bar>
-                </BarChart>
-              </ResponsiveContainer>
-            ) : (
-              <div className="h-48 flex items-center justify-center text-muted-foreground text-sm">
-                {pipelineQ.isLoading ? "Loading..." : "No pipeline data"}
-              </div>
-            )}
-          </div>
-
-          {/* Appointments + Nurture */}
-          <div className="flex flex-col gap-4">
-            <div className="bg-card border border-border rounded-lg p-6">
-              <SectionHeader title="Appointments (30d)" sub="From GHL calendar polling" />
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <p className="text-2xl font-bold text-foreground" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-                    {appt?.total ?? "—"}
-                  </p>
-                  <p className="text-xs text-muted-foreground mt-1">Total tracked</p>
-                </div>
-                <div>
-                  <p className="text-2xl font-bold text-amber-400" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-                    {appt?.upcoming ?? "—"}
-                  </p>
-                  <p className="text-xs text-muted-foreground mt-1">Upcoming</p>
-                </div>
-                <div>
-                  <p className="text-2xl font-bold text-red-400" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-                    {appt?.noShows ?? "—"}
-                  </p>
-                  <p className="text-xs text-muted-foreground mt-1">No-shows</p>
-                </div>
-                <div>
-                  <p className="text-2xl font-bold text-green-400" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-                    {appt?.remindersEnqueued ?? "—"}
-                  </p>
-                  <p className="text-xs text-muted-foreground mt-1">Reminders sent</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-card border border-border rounded-lg p-6">
-              <SectionHeader title="Nurture Sequences" sub="Active SMS follow-up campaigns" />
-              <div className="grid grid-cols-3 gap-4">
-                <div>
-                  <p className="text-2xl font-bold text-foreground" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-                    {nurture?.activeSequences ?? "—"}
-                  </p>
-                  <p className="text-xs text-muted-foreground mt-1">Active contacts</p>
-                </div>
-                <div>
-                  <p className="text-2xl font-bold text-amber-400" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-                    {nurture?.pendingMessages ?? "—"}
-                  </p>
-                  <p className="text-xs text-muted-foreground mt-1">Pending msgs</p>
-                </div>
-                <div>
-                  <p className="text-2xl font-bold text-green-400" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-                    {nurture?.sentLast7d ?? "—"}
-                  </p>
-                  <p className="text-xs text-muted-foreground mt-1">Sent (7d)</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* ── Financials — Private Page Link ── */}
-        <div id="revenue" className="bg-card border border-amber-500/20 rounded-lg p-6">
-          <div className="flex items-start justify-between gap-4">
-            <div className="flex items-start gap-3">
-              <div className="h-10 w-10 rounded-full bg-amber-500/10 flex items-center justify-center shrink-0">
-                <DollarSign className="h-5 w-5 text-amber-400" />
-              </div>
-              <div>
-                <div className="flex items-center gap-2">
-                  <p className="text-sm font-semibold text-foreground">Revenue &amp; Invoices</p>
-                  <span className="text-[10px] font-semibold bg-amber-500/15 text-amber-400 px-1.5 py-0.5 rounded-full">PRIVATE PAGE</span>
-                </div>
-                <p className="text-xs text-muted-foreground mt-1 max-w-md">
-                  Financial data has been moved to a separate private page. Open it in a new tab to keep it out of shared meeting views.
-                </p>
-              </div>
-            </div>
-            <a
-              href="/dashboard/financials"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs font-medium text-amber-400 hover:text-amber-300 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 px-3 py-2 rounded-lg transition-colors shrink-0"
-            >
-              <ExternalLink className="h-3 w-3" />
-              Open Financials
+        {/* ── SEO Quick Stats ── */}
+        <div id="seo-summary">
+          <div className="flex items-center gap-2 mb-3">
+            <Search className="h-4 w-4 text-[#4285F4]" />
+            <h2 className="text-sm font-semibold text-foreground" style={{ fontFamily: "'DM Sans', sans-serif" }}>SEO Performance</h2>
+            <span className="text-xs text-muted-foreground">— organic search · last 28 days</span>
+            <a href="/dashboard/seo" className="ml-auto text-xs text-primary hover:underline flex items-center gap-1">
+              <ArrowUpRight className="h-3 w-3" /> Full Report
             </a>
           </div>
-        </div>
-
-        {/* ── Ads Performance ── */}
-        <div>
-          <SectionHeader
-            title="Ads Performance"
-            sub="Click a panel to open live reporting in GHL — full spend, clicks, and conversion data"
-          />
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <ConnectCard
-              icon={BarChart2}
-              title="Google Ads"
-              badge="Live in GHL"
-              description="Spend, impressions, clicks, conversions, and campaign performance. Opens directly in GHL Ads Reporting."
-              action="Open Google Ads Reporting →"
-              href="https://app.gohighlevel.com/v2/location/nANRD9sxSutEDIdeosHo/reporting/ads-reporting?platform=google"
-            />
-            <ConnectCard
-              icon={BarChart2}
-              title="Meta Ads"
-              badge="Live in GHL"
-              description="Facebook and Instagram ad performance — spend, reach, leads, and cost per result. Opens directly in GHL Ads Reporting."
-              action="Open Meta Ads Reporting →"
-              href="https://app.gohighlevel.com/v2/location/nANRD9sxSutEDIdeosHo/reporting/ads-reporting?platform=facebook"
-            />
-          </div>
+          {gscQ.isLoading ? (
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {[0,1,2,3].map(i => <div key={i} className="bg-card border border-border rounded-lg p-5 h-24 animate-pulse" />)}
+            </div>
+          ) : gscQ.error || !gsc ? (
+            <div className="bg-card border border-border rounded-lg p-4 text-xs text-muted-foreground">
+              Search Console data unavailable — <a href="/dashboard/seo" className="text-primary hover:underline">check SEO page for details</a>
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="bg-card border border-border rounded-lg p-5">
+                <div className="flex items-center gap-2 mb-2"><MousePointerClick className="h-4 w-4 text-[#4285F4]" /><p className="text-xs text-muted-foreground">Clicks</p></div>
+                <p className="text-2xl font-bold text-foreground" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>{gsc.current.clicks.toLocaleString()}</p>
+                <p className="text-xs text-muted-foreground mt-1">organic search</p>
+              </div>
+              <div className="bg-card border border-border rounded-lg p-5">
+                <div className="flex items-center gap-2 mb-2"><Eye className="h-4 w-4 text-[#4285F4]" /><p className="text-xs text-muted-foreground">Impressions</p></div>
+                <p className="text-2xl font-bold text-foreground" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>{gsc.current.impressions.toLocaleString()}</p>
+                <p className="text-xs text-muted-foreground mt-1">search appearances</p>
+              </div>
+              <div className="bg-card border border-border rounded-lg p-5">
+                <div className="flex items-center gap-2 mb-2"><ArrowUpRight className="h-4 w-4 text-[#4285F4]" /><p className="text-xs text-muted-foreground">Avg CTR</p></div>
+                <p className="text-2xl font-bold text-foreground" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>{gsc.current.ctr}%</p>
+                <p className="text-xs text-muted-foreground mt-1">click-through rate</p>
+              </div>
+              <div className="bg-card border border-border rounded-lg p-5">
+                <div className="flex items-center gap-2 mb-2"><Search className="h-4 w-4 text-[#4285F4]" /><p className="text-xs text-muted-foreground">Avg Position</p></div>
+                <p className="text-2xl font-bold text-foreground" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>#{gsc.current.position}</p>
+                <p className="text-xs text-muted-foreground mt-1">lower is better</p>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* ── Social Stats ── */}
@@ -771,6 +564,263 @@ export default function Dashboard() {
           </PanelErrorBoundary>
           )}
         </div>
+
+        {/* ── Top KPI Cards ── */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <KPICard
+            icon={Users}
+            label="Total Contacts"
+            value={s?.totalContacts?.toLocaleString() ?? "—"}
+            sub="All time in GHL"
+          />
+          <KPICard
+            icon={TrendingUp}
+            label="New Leads (30d)"
+            value={s?.newLeads30d ?? "—"}
+            sub={`${s?.newLeads7d ?? "—"} this week`}
+            accent
+          />
+          <KPICard
+            icon={BarChart2}
+            label="Open Pipeline"
+            value={s?.openOpportunities ?? "—"}
+            sub={`${formatCurrency(s?.totalPipelineValue ?? 0)} potential value`}
+          />
+          <KPICard
+            icon={TrendingUp}
+            label="Conversion Rate"
+            value={s ? `${s.conversionRate}%` : "—"}
+            sub="Won / (Won + Lost)"
+            accent={!!s && s.conversionRate > 0}
+          />
+        </div>
+
+        {/* ── Lead Trend Chart ── */}
+        <div className="bg-card border border-border rounded-lg p-6">
+          <SectionHeader
+            title="New Leads — Last 30 Days"
+            sub="Opportunities created in GHL by day"
+          />
+          {leadTrend.length > 0 ? (
+            <ResponsiveContainer width="100%" height={200}>
+              <AreaChart data={leadTrend} margin={{ top: 4, right: 4, bottom: 0, left: -20 }}>
+                <defs>
+                  <linearGradient id="leadGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#0047BB" stopOpacity={0.3} />
+                    <stop offset="95%" stopColor="#0047BB" stopOpacity={0} />
+                  </linearGradient>
+                </defs>
+                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
+                <XAxis
+                  dataKey="date"
+                  tickFormatter={formatDate}
+                  tick={{ fontSize: 10, fill: "#D6D7D9" }}
+                  tickLine={false}
+                  axisLine={false}
+                  interval={6}
+                />
+                <YAxis
+                  tick={{ fontSize: 10, fill: "#D6D7D9" }}
+                  tickLine={false}
+                  axisLine={false}
+                  allowDecimals={false}
+                />
+                <Tooltip
+                  contentStyle={{
+                    background: "#0a1a2e",
+                    border: "1px solid rgba(255,255,255,0.1)",
+                    borderRadius: 6,
+                    fontSize: 12,
+                  }}
+                  labelFormatter={(v) => `Date: ${v}`}
+                  formatter={(v: number) => [v, "New Leads"]}
+                />
+                <Area
+                  type="monotone"
+                  dataKey="leads"
+                  stroke="#0047BB"
+                  strokeWidth={2}
+                  fill="url(#leadGrad)"
+                  dot={false}
+                  activeDot={{ r: 4, fill: "#FBB217" }}
+                />
+              </AreaChart>
+            </ResponsiveContainer>
+          ) : (
+            <div className="h-48 flex items-center justify-center text-muted-foreground text-sm">
+              {leadTrendQ.isLoading ? "Loading..." : "No data yet"}
+            </div>
+          )}
+        </div>
+
+        {/* ── Pipeline Funnel + Appointments ── */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+          {/* Pipeline by Stage */}
+          <div className="bg-card border border-border rounded-lg p-6">
+            <SectionHeader
+              title="Pipeline by Stage"
+              sub="Open opportunities in Patient Pipeline"
+            />
+            {pipeline.length > 0 ? (
+              <ResponsiveContainer width="100%" height={220}>
+                <BarChart
+                  data={pipeline}
+                  layout="vertical"
+                  margin={{ top: 0, right: 16, bottom: 0, left: 0 }}
+                >
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" horizontal={false} />
+                  <XAxis type="number" tick={{ fontSize: 10, fill: "#D6D7D9" }} tickLine={false} axisLine={false} allowDecimals={false} />
+                  <YAxis
+                    dataKey="stage"
+                    type="category"
+                    tick={{ fontSize: 10, fill: "#D6D7D9" }}
+                    tickLine={false}
+                    axisLine={false}
+                    width={120}
+                  />
+                  <Tooltip
+                    contentStyle={{
+                      background: "#0a1a2e",
+                      border: "1px solid rgba(255,255,255,0.1)",
+                      borderRadius: 6,
+                      fontSize: 12,
+                    }}
+                    formatter={(v: number, _: string, props: any) => [
+                      `${v} leads · ${formatCurrency(props.payload.value)}`,
+                      "Stage",
+                    ]}
+                  />
+                  <Bar dataKey="count" radius={[0, 4, 4, 0]}>
+                    {pipeline.map((entry) => (
+                      <Cell
+                        key={entry.stage}
+                        fill={STAGE_COLORS[entry.stage] ?? "#36454F"}
+                      />
+                    ))}
+                  </Bar>
+                </BarChart>
+              </ResponsiveContainer>
+            ) : (
+              <div className="h-48 flex items-center justify-center text-muted-foreground text-sm">
+                {pipelineQ.isLoading ? "Loading..." : "No pipeline data"}
+              </div>
+            )}
+          </div>
+
+          {/* Appointments + Nurture */}
+          <div className="flex flex-col gap-4">
+            <div className="bg-card border border-border rounded-lg p-6">
+              <SectionHeader title="Appointments (30d)" sub="From GHL calendar polling" />
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <p className="text-2xl font-bold text-foreground" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                    {appt?.total ?? "—"}
+                  </p>
+                  <p className="text-xs text-muted-foreground mt-1">Total tracked</p>
+                </div>
+                <div>
+                  <p className="text-2xl font-bold text-amber-400" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                    {appt?.upcoming ?? "—"}
+                  </p>
+                  <p className="text-xs text-muted-foreground mt-1">Upcoming</p>
+                </div>
+                <div>
+                  <p className="text-2xl font-bold text-red-400" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                    {appt?.noShows ?? "—"}
+                  </p>
+                  <p className="text-xs text-muted-foreground mt-1">No-shows</p>
+                </div>
+                <div>
+                  <p className="text-2xl font-bold text-green-400" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                    {appt?.remindersEnqueued ?? "—"}
+                  </p>
+                  <p className="text-xs text-muted-foreground mt-1">Reminders sent</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-card border border-border rounded-lg p-6">
+              <SectionHeader title="Nurture Sequences" sub="Active SMS follow-up campaigns" />
+              <div className="grid grid-cols-3 gap-4">
+                <div>
+                  <p className="text-2xl font-bold text-foreground" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                    {nurture?.activeSequences ?? "—"}
+                  </p>
+                  <p className="text-xs text-muted-foreground mt-1">Active contacts</p>
+                </div>
+                <div>
+                  <p className="text-2xl font-bold text-amber-400" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                    {nurture?.pendingMessages ?? "—"}
+                  </p>
+                  <p className="text-xs text-muted-foreground mt-1">Pending msgs</p>
+                </div>
+                <div>
+                  <p className="text-2xl font-bold text-green-400" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                    {nurture?.sentLast7d ?? "—"}
+                  </p>
+                  <p className="text-xs text-muted-foreground mt-1">Sent (7d)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ── Financials — Private Page Link ── */}
+        <div id="revenue" className="bg-card border border-amber-500/20 rounded-lg p-6">
+          <div className="flex items-start justify-between gap-4">
+            <div className="flex items-start gap-3">
+              <div className="h-10 w-10 rounded-full bg-amber-500/10 flex items-center justify-center shrink-0">
+                <DollarSign className="h-5 w-5 text-amber-400" />
+              </div>
+              <div>
+                <div className="flex items-center gap-2">
+                  <p className="text-sm font-semibold text-foreground">Revenue &amp; Invoices</p>
+                  <span className="text-[10px] font-semibold bg-amber-500/15 text-amber-400 px-1.5 py-0.5 rounded-full">PRIVATE PAGE</span>
+                </div>
+                <p className="text-xs text-muted-foreground mt-1 max-w-md">
+                  Financial data has been moved to a separate private page. Open it in a new tab to keep it out of shared meeting views.
+                </p>
+              </div>
+            </div>
+            <a
+              href="/dashboard/financials"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs font-medium text-amber-400 hover:text-amber-300 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 px-3 py-2 rounded-lg transition-colors shrink-0"
+            >
+              <ExternalLink className="h-3 w-3" />
+              Open Financials
+            </a>
+          </div>
+        </div>
+
+        {/* ── Ads Performance ── */}
+        <div>
+          <SectionHeader
+            title="Ads Performance"
+            sub="Click a panel to open live reporting in GHL — full spend, clicks, and conversion data"
+          />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <ConnectCard
+              icon={BarChart2}
+              title="Google Ads"
+              badge="Live in GHL"
+              description="Spend, impressions, clicks, conversions, and campaign performance. Opens directly in GHL Ads Reporting."
+              action="Open Google Ads Reporting →"
+              href="https://app.gohighlevel.com/v2/location/nANRD9sxSutEDIdeosHo/reporting/ads-reporting?platform=google"
+            />
+            <ConnectCard
+              icon={BarChart2}
+              title="Meta Ads"
+              badge="Live in GHL"
+              description="Facebook and Instagram ad performance — spend, reach, leads, and cost per result. Opens directly in GHL Ads Reporting."
+              action="Open Meta Ads Reporting →"
+              href="https://app.gohighlevel.com/v2/location/nANRD9sxSutEDIdeosHo/reporting/ads-reporting?platform=facebook"
+            />
+          </div>
+        </div>
+
 
         {/* ── Heatmap / CRO Panel ── */}
         <div id="heatmap" className="bg-card border border-border rounded-lg p-6 space-y-5">

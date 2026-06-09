@@ -282,7 +282,7 @@ export default function DashboardSEO() {
             <span className="text-xs text-muted-foreground">— website traffic & behavior</span>
           </div>
 
-          {!ga?.configured ? (
+          {ga?.configured === false ? (
             <div className="bg-card border border-amber-500/20 rounded-lg p-6 space-y-3">
               <p className="text-sm font-medium text-amber-400">GA4 Property ID Required</p>
               <p className="text-xs text-muted-foreground max-w-lg">

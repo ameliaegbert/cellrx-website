@@ -4,7 +4,7 @@
  * Uses service account credentials — no user OAuth required.
  */
 
-import { adminProcedure, router } from "../_core/trpc";
+import { adminProcedure, staffProcedure, router } from "../_core/trpc";
 import { ENV } from "../_core/env";
 import { google } from "googleapis";
 import { getSearchConsoleAuth } from "../googleApi";
@@ -26,7 +26,7 @@ export const searchConsoleRouter = router({
    * Overall performance summary — clicks, impressions, CTR, avg position
    * for the last 28 days vs the prior 28 days
    */
-  performance: adminProcedure.query(async () => {
+  performance: staffProcedure.query(async () => {
     const auth = getSearchConsoleAuth();
     const webmasters = google.webmasters({ version: "v3", auth });
 
@@ -119,7 +119,7 @@ export const searchConsoleRouter = router({
   /**
    * Daily click trend for the last 28 days (for sparkline chart)
    */
-  clickTrend: adminProcedure.query(async () => {
+  clickTrend: staffProcedure.query(async () => {
     const auth = getSearchConsoleAuth();
     const webmasters = google.webmasters({ version: "v3", auth });
 
