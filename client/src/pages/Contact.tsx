@@ -1,13 +1,15 @@
 /*
  * CellRX Contact Page — Editorial Dark Luxury
  * Consultation booking form wired to GHL CRM via tRPC
+ * Form reduced to 3 fields (Name, Phone, Treatment Interest) for higher conversion
+ * Calendar widget removed — booking link is texted after opt-in
  */
 
 import { useEffect, useState } from "react";
 import { useSEO, PAGE_SEO } from "@/hooks/useSEO";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { MapPin, Phone, Mail, Clock, CheckCircle2, Loader2, AlertCircle } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, CheckCircle2, Loader2, AlertCircle, Star } from "lucide-react";
 import { trpc } from "@/lib/trpc";
 
 const CLINIC_IMG = "/manus-storage/clinic_interior_opt_d513ed06.webp";
@@ -25,6 +27,21 @@ function useScrollAnimation() {
 
 type InterestValue = "stem-cell-injection" | "stem-cell-iv" | "black-label" | "general" | "other";
 
+const testimonials = [
+  {
+    quote: "I had been dealing with chronic knee pain for 6 years. After one stem cell injection at CellRX, I was back on the golf course in three weeks. The difference is night and day.",
+    author: "Michael T.",
+    detail: "Stem Cell Injection Patient",
+    stars: 5,
+  },
+  {
+    quote: "The level of care here is unlike anything I've experienced. Dr. Egbert took the time to understand my goals and designed a protocol specifically for me. I feel 15 years younger.",
+    author: "Sandra K.",
+    detail: "Black Label Member",
+    stars: 5,
+  },
+];
+
 export default function Contact() {
   useSEO(PAGE_SEO.contact);
   useScrollAnimation();
@@ -32,12 +49,8 @@ export default function Contact() {
   const [errorMessage, setErrorMessage] = useState("");
   const [form, setForm] = useState({
     firstName: "",
-    lastName: "",
-    email: "",
     phone: "",
     interest: "" as InterestValue | "",
-    message: "",
-    hearAbout: "",
   });
 
   const submitContact = trpc.contact.submit.useMutation({
@@ -51,7 +64,7 @@ export default function Contact() {
     },
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
@@ -63,15 +76,23 @@ export default function Contact() {
       setErrorMessage("Please select a treatment or service you're interested in.");
       return;
     }
+    if (!form.firstName.trim()) {
+      setErrorMessage("Please enter your name.");
+      return;
+    }
+    if (!form.phone.trim()) {
+      setErrorMessage("Please enter your phone number so we can reach you.");
+      return;
+    }
 
     submitContact.mutate({
       firstName: form.firstName,
-      lastName: form.lastName,
-      email: form.email,
+      lastName: "",
+      email: "",
       phone: form.phone,
       interest: form.interest as InterestValue,
-      message: form.message,
-      hearAbout: form.hearAbout,
+      message: "",
+      hearAbout: "",
     });
   };
 
@@ -94,6 +115,28 @@ export default function Contact() {
             BEGIN YOUR<br />
             <span className="text-[#0047BB]">TRANSFORMATION</span>
           </h1>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="py-12 bg-[#030d1e] border-b border-white/5">
+        <div className="container">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {testimonials.map((t, i) => (
+              <div key={i} className="p-6 border border-white/5 bg-[#051229] fade-up" style={{ transitionDelay: `${i * 0.1}s` }}>
+                <div className="flex gap-0.5 mb-3">
+                  {Array.from({ length: t.stars }).map((_, s) => (
+                    <Star key={s} size={12} className="text-[#FBB217] fill-[#FBB217]" />
+                  ))}
+                </div>
+                <p className="text-[#D6D7D9]/80 text-sm leading-relaxed mb-4 italic" style={{ fontFamily: "'Libre Franklin', sans-serif" }}>
+                  "{t.quote}"
+                </p>
+                <p className="text-white text-sm font-semibold" style={{ fontFamily: "'DM Sans', sans-serif" }}>{t.author}</p>
+                <p className="text-[#D6D7D9]/40 text-xs">{t.detail}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -207,179 +250,97 @@ export default function Contact() {
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="border border-white/5 bg-[#030d1e] p-8 md:p-10">
+                  <h2
+                    className="text-white mb-2"
+                    style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(28px, 3vw, 40px)" }}
+                  >
+                    REQUEST YOUR CONSULTATION
+                  </h2>
+                  <p className="text-[#D6D7D9]/50 text-sm mb-8" style={{ fontFamily: "'Libre Franklin', sans-serif" }}>
+                    Takes 30 seconds. We'll reach out within 24 hours.
+                  </p>
+
+                  <form onSubmit={handleSubmit} className="space-y-5">
                     <div>
-                      <label className="block text-[#D6D7D9]/60 text-xs tracking-widest uppercase mb-2">First Name *</label>
+                      <label className="block text-[#D6D7D9]/60 text-xs tracking-widest uppercase mb-2">Your Name *</label>
                       <input
                         type="text"
                         name="firstName"
                         required
                         value={form.firstName}
                         onChange={handleChange}
-                        className="w-full bg-[#030d1e] border border-white/10 text-white text-sm px-4 py-3 focus:outline-none focus:border-[#0047BB] transition-colors"
-                        placeholder="John"
+                        className="w-full bg-[#051229] border border-white/10 text-white text-sm px-4 py-4 focus:outline-none focus:border-[#0047BB] transition-colors placeholder-white/20"
+                        placeholder="First and last name"
                       />
                     </div>
-                    <div>
-                      <label className="block text-[#D6D7D9]/60 text-xs tracking-widest uppercase mb-2">Last Name *</label>
-                      <input
-                        type="text"
-                        name="lastName"
-                        required
-                        value={form.lastName}
-                        onChange={handleChange}
-                        className="w-full bg-[#030d1e] border border-white/10 text-white text-sm px-4 py-3 focus:outline-none focus:border-[#0047BB] transition-colors"
-                        placeholder="Smith"
-                      />
-                    </div>
-                  </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-[#D6D7D9]/60 text-xs tracking-widest uppercase mb-2">Email *</label>
-                      <input
-                        type="email"
-                        name="email"
-                        required
-                        value={form.email}
-                        onChange={handleChange}
-                        className="w-full bg-[#030d1e] border border-white/10 text-white text-sm px-4 py-3 focus:outline-none focus:border-[#0047BB] transition-colors"
-                        placeholder="john@example.com"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-[#D6D7D9]/60 text-xs tracking-widest uppercase mb-2">Phone</label>
+                      <label className="block text-[#D6D7D9]/60 text-xs tracking-widest uppercase mb-2">Phone Number *</label>
                       <input
                         type="tel"
                         name="phone"
+                        required
                         value={form.phone}
                         onChange={handleChange}
-                        className="w-full bg-[#030d1e] border border-white/10 text-white text-sm px-4 py-3 focus:outline-none focus:border-[#0047BB] transition-colors"
+                        className="w-full bg-[#051229] border border-white/10 text-white text-sm px-4 py-4 focus:outline-none focus:border-[#0047BB] transition-colors placeholder-white/20"
                         placeholder="(385) 000-0000"
                       />
                     </div>
-                  </div>
 
-                  <div>
-                    <label className="block text-[#D6D7D9]/60 text-xs tracking-widest uppercase mb-2">I'm Interested In *</label>
-                    <select
-                      name="interest"
-                      required
-                      value={form.interest}
-                      onChange={handleChange}
-                      className="w-full bg-[#030d1e] border border-white/10 text-white text-sm px-4 py-3 focus:outline-none focus:border-[#0047BB] transition-colors"
-                    >
-                      <option value="" disabled>Select a treatment or service</option>
-                      <option value="stem-cell-injection">Stem Cell Injection</option>
-                      <option value="stem-cell-iv">Stem Cell IV Therapy</option>
-                      <option value="black-label">Black Label Concierge Medicine</option>
-                      <option value="general">General Consultation</option>
-                      <option value="other">Other</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block text-[#D6D7D9]/60 text-xs tracking-widest uppercase mb-2">How Did You Hear About Us?</label>
-                    <select
-                      name="hearAbout"
-                      value={form.hearAbout}
-                      onChange={handleChange}
-                      className="w-full bg-[#030d1e] border border-white/10 text-white text-sm px-4 py-3 focus:outline-none focus:border-[#0047BB] transition-colors"
-                    >
-                      <option value="">Select an option</option>
-                      <option value="google">Google Search</option>
-                      <option value="referral">Patient Referral</option>
-                      <option value="social">Social Media</option>
-                      <option value="physician">Physician Referral</option>
-                      <option value="other">Other</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block text-[#D6D7D9]/60 text-xs tracking-widest uppercase mb-2">Tell Us About Your Goals</label>
-                    <textarea
-                      name="message"
-                      rows={5}
-                      value={form.message}
-                      onChange={handleChange}
-                      className="w-full bg-[#030d1e] border border-white/10 text-white text-sm px-4 py-3 focus:outline-none focus:border-[#0047BB] transition-colors resize-none"
-                      placeholder="Briefly describe your health goals, current concerns, or any questions you have..."
-                    />
-                  </div>
-
-                  {errorMessage && (
-                    <div className="flex items-start gap-3 p-4 border border-red-500/30 bg-red-500/10">
-                      <AlertCircle size={16} className="text-red-400 shrink-0 mt-0.5" />
-                      <p className="text-red-400 text-sm">{errorMessage}</p>
+                    <div>
+                      <label className="block text-[#D6D7D9]/60 text-xs tracking-widest uppercase mb-2">I'm Interested In *</label>
+                      <select
+                        name="interest"
+                        required
+                        value={form.interest}
+                        onChange={handleChange}
+                        className="w-full bg-[#051229] border border-white/10 text-white text-sm px-4 py-4 focus:outline-none focus:border-[#0047BB] transition-colors"
+                      >
+                        <option value="" disabled>Select a treatment or service</option>
+                        <option value="stem-cell-injection">Stem Cell Injection</option>
+                        <option value="stem-cell-iv">Stem Cell IV Therapy</option>
+                        <option value="black-label">Black Label Concierge Medicine</option>
+                        <option value="general">General Consultation</option>
+                        <option value="other">Other</option>
+                      </select>
                     </div>
-                  )}
 
-                  <button
-                    type="submit"
-                    disabled={submitContact.isPending}
-                    className="btn-primary rounded-none w-full flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
-                  >
-                    {submitContact.isPending ? (
-                      <>
-                        <Loader2 size={16} className="animate-spin" />
-                        Submitting...
-                      </>
-                    ) : (
-                      "Request My Private Consultation"
+                    {errorMessage && (
+                      <div className="flex items-start gap-3 p-4 border border-red-500/30 bg-red-500/10">
+                        <AlertCircle size={16} className="text-red-400 shrink-0 mt-0.5" />
+                        <p className="text-red-400 text-sm">{errorMessage}</p>
+                      </div>
                     )}
-                  </button>
 
-                  <p className="text-[#FBB217]/70 text-xs text-center leading-relaxed mb-1">
-                    Referral programs are available — ask about our referral program during your consultation.
-                  </p>
-                  <p className="text-[#D6D7D9]/40 text-xs text-center leading-relaxed">
-                    Your information is kept strictly confidential. We will never share your personal data with third parties.
-                  </p>
-                </form>
+                    <button
+                      type="submit"
+                      disabled={submitContact.isPending}
+                      className="btn-primary rounded-none w-full flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed py-4 text-base"
+                    >
+                      {submitContact.isPending ? (
+                        <>
+                          <Loader2 size={16} className="animate-spin" />
+                          Submitting...
+                        </>
+                      ) : (
+                        "Request My Private Consultation"
+                      )}
+                    </button>
+
+                    <p className="text-[#D6D7D9]/40 text-xs text-center leading-relaxed" style={{ fontFamily: "'Libre Franklin', sans-serif" }}>
+                      Your information is kept strictly confidential. We will never share your personal data with third parties.
+                    </p>
+                  </form>
+                </div>
               )}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Calendar Booking Section */}
-      <section className="py-20 bg-[#030d1e] border-t border-white/5">
-        <div className="container">
-          <div className="text-center mb-12 fade-up">
-            <p className="section-label mb-4">Prefer to Book Directly?</p>
-            <h2
-              className="text-[#F6F5EC] mb-4"
-              style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(32px, 4vw, 52px)" }}
-            >
-              SELECT YOUR APPOINTMENT TIME
-            </h2>
-            <p className="text-[#D6D7D9]/60 text-sm max-w-lg mx-auto leading-relaxed" style={{ fontFamily: "'Libre Franklin', sans-serif" }}>
-              Choose a time that works for you and book your private consultation instantly. No waiting for a callback.
-            </p>
-          </div>
-          {/* GHL Calendar Embed — replace the src below with your GHL calendar embed URL */}
-          {/* To get your embed URL: GHL → Settings → Calendars → your calendar → Share → Embed */}
-          <div
-            className="fade-up border border-white/5 overflow-hidden"
-            style={{ minHeight: "600px", background: "#030d1e" }}
-          >
-            <iframe
-              src="https://api.leadconnectorhq.com/widget/booking/ObJ0Y5tw59PrShIJKowv"
-              style={{ width: "100%", minHeight: "600px", border: "none" }}
-              scrolling="no"
-              id="cellrx-calendar-embed"
-              title="Book a CellRX Consultation"
-            />
-          </div>
-          <p className="text-[#D6D7D9]/30 text-xs text-center mt-4" style={{ fontFamily: "'Libre Franklin', sans-serif" }}>
-            All consultations are private and confidential. You will receive a confirmation by email and SMS.
-          </p>
-        </div>
-      </section>
-
       {/* ─── SERVING UTAH ─── */}
-      <section className="py-16 bg-[#051229] border-t border-white/5">
+      <section className="py-16 bg-[#030d1e] border-t border-white/5">
         <div className="container">
           <div className="text-center mb-10 fade-up">
             <p className="section-label mb-4">Service Area</p>
@@ -392,20 +353,10 @@ export default function Contact() {
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 text-center">
             {[
-              "Lehi",
-              "Salt Lake City",
-              "Provo",
-              "Orem",
-              "Sandy",
-              "Draper",
-              "American Fork",
-              "Pleasant Grove",
-              "Lindon",
-              "Murray",
-              "Ogden",
-              "Park City",
+              "Lehi", "Salt Lake City", "Provo", "Orem", "Sandy", "Draper",
+              "American Fork", "Pleasant Grove", "Lindon", "Murray", "Ogden", "Park City",
             ].map((city, i) => (
-              <div key={i} className="bg-[#030d1e] border border-white/5 py-3 px-4 text-center">
+              <div key={i} className="bg-[#051229] border border-white/5 py-3 px-4 text-center">
                 <p className="text-[#D6D7D9]/70 text-xs tracking-wide" style={{ fontFamily: "'DM Sans', sans-serif" }}>{city}</p>
               </div>
             ))}

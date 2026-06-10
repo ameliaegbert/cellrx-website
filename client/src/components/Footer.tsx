@@ -127,9 +127,9 @@ export default function Footer() {
           </p>
           <div className="flex gap-6 flex-wrap justify-center md:justify-end">
             {[
-              { label: "Privacy Policy", href: "/contact" },
-              { label: "Terms of Service", href: "/contact" },
-              { label: "FDA Disclaimer", href: "/contact" },
+              { label: "Privacy Policy", href: "/privacy" },
+              { label: "Terms of Service", href: "/terms" },
+              { label: "FDA Disclaimer", href: "/fda-disclaimer" },
               { label: "Sitemap", href: "/sitemap" },
             ].map((item) => (
               <Link key={item.label} href={item.href} className="text-white/50 text-xs hover:text-white/80 transition-colors" style={{ fontFamily: "'Libre Franklin', sans-serif" }}>

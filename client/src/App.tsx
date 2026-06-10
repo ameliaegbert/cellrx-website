@@ -2,7 +2,8 @@ import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
 import { lazy, Suspense } from "react";
-import { Route, Switch } from "wouter";
+import { Route, Switch, useLocation } from "wouter";
+import ExitIntentModal from "./components/ExitIntentModal";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 
@@ -27,6 +28,9 @@ const Dashboard = lazy(() => import("./pages/Dashboard"));
 const DashboardFinancials = lazy(() => import("./pages/DashboardFinancials"));
 const DashboardSEO = lazy(() => import("./pages/DashboardSEO"));
 const DashboardLighthouse = lazy(() => import("./pages/DashboardLighthouse"));
+const Privacy = lazy(() => import("./pages/Privacy"));
+const Terms = lazy(() => import("./pages/Terms"));
+const FDADisclaimer = lazy(() => import("./pages/FDADisclaimer"));
 
 // Minimal page-level loading skeleton — matches site background
 function PageLoader() {
@@ -59,6 +63,9 @@ function Router() {
         <Route path="/dashboard/financials" component={DashboardFinancials} />
         <Route path="/dashboard/seo" component={DashboardSEO} />
         <Route path="/dashboard/lighthouse" component={DashboardLighthouse} />
+        <Route path="/privacy" component={Privacy} />
+        <Route path="/terms" component={Terms} />
+        <Route path="/fda-disclaimer" component={FDADisclaimer} />
         {/* Legacy redirects */}
         <Route path="/team" component={About} />
         <Route path="/404" component={NotFound} />
@@ -68,6 +75,13 @@ function Router() {
   );
 }
 
+function PublicExitIntent() {
+  const [location] = useLocation();
+  // Only show on public pages — not on dashboard or admin routes
+  if (location.startsWith("/dashboard")) return null;
+  return <ExitIntentModal />;
+}
+
 function App() {
   return (
     <ErrorBoundary>
@@ -75,6 +89,7 @@ function App() {
         <TooltipProvider>
           <Toaster />
           <Router />
+          <PublicExitIntent />
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>

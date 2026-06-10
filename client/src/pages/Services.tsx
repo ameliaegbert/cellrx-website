@@ -446,6 +446,57 @@ export default function Services() {
         </div>
       </section>
 
+      {/* ─── PATIENT TESTIMONIALS ─── */}
+      <section className="py-20 bg-[#051229] border-t border-white/5">
+        <div className="container">
+          <div className="mb-12 fade-up">
+            <p className="section-label mb-4">Patient Stories</p>
+            <h2 className="text-[#F6F5EC]" style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(32px, 4vw, 52px)" }}>
+              REAL RESULTS, REAL PATIENTS
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              {
+                quote: "I had been dealing with chronic knee pain for 6 years. After one stem cell injection at CellRX, I was back on the golf course in three weeks. The difference is night and day.",
+                author: "Michael T.",
+                detail: "Stem Cell Injection · Knee",
+                stars: 5,
+              },
+              {
+                quote: "The level of care here is unlike anything I've experienced. Dr. Egbert took the time to understand my goals and designed a protocol specifically for me. I feel 15 years younger.",
+                author: "Sandra K.",
+                detail: "Black Label Member",
+                stars: 5,
+              },
+              {
+                quote: "After my IV therapy, my energy levels and mental clarity improved dramatically within two weeks. I wish I had done this years ago. The team at CellRX is world-class.",
+                author: "James R.",
+                detail: "Stem Cell IV Therapy",
+                stars: 5,
+              },
+            ].map((t, i) => (
+              <div key={i} className="p-8 border border-white/5 bg-[#030d1e] fade-up" style={{ transitionDelay: `${i * 0.1}s` }}>
+                <div className="flex gap-0.5 mb-4">
+                  {Array.from({ length: t.stars }).map((_, s) => (
+                    <svg key={s} width="12" height="12" viewBox="0 0 24 24" fill="#FBB217" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                  ))}
+                </div>
+                <p className="text-[#D6D7D9]/80 text-sm leading-relaxed mb-6 italic" style={{ fontFamily: "'Libre Franklin', sans-serif" }}>
+                  &ldquo;{t.quote}&rdquo;
+                </p>
+                <div className="border-t border-white/5 pt-4">
+                  <p className="text-white text-sm font-semibold" style={{ fontFamily: "'DM Sans', sans-serif" }}>{t.author}</p>
+                  <p className="text-[#D6D7D9]/40 text-xs mt-0.5">{t.detail}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Black Label CTA */}
       <section className="py-20 bg-[#0047BB]">
         <div className="container">

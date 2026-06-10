@@ -42,9 +42,16 @@ export default function Navbar() {
   const [location] = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 40);
+    let rafId: number;
+    const handleScroll = () => {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => setScrolled(window.scrollY > 40));
+    };
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      cancelAnimationFrame(rafId);
+    };
   }, []);
 
   useEffect(() => {

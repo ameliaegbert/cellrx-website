@@ -322,3 +322,18 @@
 - [x] Remove duplicate Clarity loader from Dashboard.tsx (was loading Clarity twice on dashboard visits)
 - [x] Split vendor-react-dom into separate chunk from vendor-react for parallel browser parsing
 - [x] Add real LQIP inline placeholder for hero image (168-byte base64 WebP from actual hero)
+
+## Conversion Audit Fixes (June 2026)
+- [ ] Create /privacy page with Privacy Policy content
+- [ ] Create /terms page with Terms of Service content
+- [ ] Create /fda-disclaimer page with FDA Disclaimer content
+- [ ] Fix Footer legal links to point to correct pages (not /contact)
+- [ ] Reduce contact form from 7 fields to 3 (Name, Phone, Treatment Interest)
+- [ ] Remove calendar widget from Contact page entirely
+- [ ] Add CTA block at end of every blog post
+- [ ] Add testimonial pull-quotes section to Services page
+- [ ] Add testimonial pull-quotes section to Contact page
+- [ ] Fix INP - throttle Navbar scroll handler
+- [ ] Add location/service descriptor to hero section ("Stem Cell Therapy · Lehi, Utah")
+- [ ] Add pricing anchor to Black Label page
+- [ ] Add exit intent modal with email/SMS capture

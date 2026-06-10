@@ -187,7 +187,11 @@ export default function Home() {
 
         <div className="container relative z-10 pt-24 md:pt-28 pb-20 md:pb-28">
           <div className="max-w-xl">
-            <p className="section-label mb-4 fade-up">Concierge Regenerative Medicine</p>
+            <div className="flex flex-wrap items-center gap-3 mb-4 fade-up">
+              <p className="section-label">Concierge Regenerative Medicine</p>
+              <span className="text-[#D6D7D9]/30 text-xs hidden sm:inline">&middot;</span>
+              <p className="text-[#D6D7D9]/50 text-xs tracking-widest uppercase" style={{ fontFamily: "'DM Sans', sans-serif" }}>Lehi, Utah</p>
+            </div>
             <h1
               className="text-[#F6F5EC] leading-none mb-5 fade-up"
               style={{ fontSize: "clamp(56px, 7.5vw, 100px)", fontFamily: "'Bebas Neue', sans-serif", letterSpacing: "0.03em", transitionDelay: "0.1s" }}
