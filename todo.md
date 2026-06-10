@@ -303,3 +303,9 @@
 - [x] Add stable page chunk names (pages/Home-[hash].js etc.) for better debugging
 - [x] Total initial JS load reduced from ~357KB gzip to ~228KB gzip (36% reduction)
 - [x] Dashboard page (recharts) no longer preloaded on homepage
+
+## Heatmap UX Fixes (Jun 2026)
+- [x] Reduce hero height from min-h-screen to 88vh desktop / 75vh mobile to show next section below fold
+- [x] Make scroll indicator more prominent (higher opacity, add label, larger icon, clickable)
+- [x] Move primary CTA button higher in hero to sit in hottest attention zone (above body copy)
+- [x] Filter Electron traffic in Clarity: added navigator.userAgent Electron guard in index.html (Clarity IP blocking only supports IPs, not URL patterns)

@@ -146,7 +146,7 @@ export default function Home() {
           }
         }
       `}</style>
-      <section className="relative min-h-screen flex items-center overflow-hidden">
+      <section className="relative flex items-center overflow-hidden" style={{ minHeight: 'min(88vh, 820px)' }}>
         {/* Full-bleed background: Option A 16:9 crop with Ken Burns on load (desktop only) */}
         <div className="absolute inset-0 overflow-hidden">
           {/* Responsive hero image — 3 sizes for mobile/tablet/desktop */}
@@ -172,24 +172,19 @@ export default function Home() {
           <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#051229] to-transparent" />
         </div>
 
-        <div className="container relative z-10 pt-24 md:pt-32 pb-16 md:pb-24">
+        <div className="container relative z-10 pt-24 md:pt-28 pb-20 md:pb-28">
           <div className="max-w-xl">
-            <p className="section-label mb-6 fade-up">Concierge Regenerative Medicine</p>
+            <p className="section-label mb-4 fade-up">Concierge Regenerative Medicine</p>
             <h1
-              className="text-[#F6F5EC] leading-none mb-6 fade-up"
-              style={{ fontSize: "clamp(60px, 8vw, 110px)", fontFamily: "'Bebas Neue', sans-serif", letterSpacing: "0.03em", transitionDelay: "0.1s" }}
+              className="text-[#F6F5EC] leading-none mb-5 fade-up"
+              style={{ fontSize: "clamp(56px, 7.5vw, 100px)", fontFamily: "'Bebas Neue', sans-serif", letterSpacing: "0.03em", transitionDelay: "0.1s" }}
             >
               RECLAIM<br />
               <span className="text-[#0047BB]">YOUR</span><br />
               VITALITY
             </h1>
-            <p
-              className="text-[#D6D7D9] text-lg leading-relaxed mb-10 max-w-lg fade-up"
-              style={{ transitionDelay: "0.2s" }}
-            >
-              The most advanced stem cell therapies available — sourced with full chain of custody, never diluted, and administered by the physician who oversees their creation.
-            </p>
-            <div className="flex flex-wrap gap-4 fade-up" style={{ transitionDelay: "0.3s" }}>
+            {/* CTA buttons moved up — above body copy — to sit in the hottest attention zone */}
+            <div className="flex flex-wrap gap-4 mb-6 fade-up" style={{ transitionDelay: "0.2s" }}>
               <Link href="/contact">
                 <button className="btn-primary rounded-none">
                   Book Your Private Consultation
@@ -201,11 +196,22 @@ export default function Home() {
                 </button>
               </Link>
             </div>
+            <p
+              className="text-[#D6D7D9] text-base leading-relaxed max-w-lg fade-up"
+              style={{ transitionDelay: "0.3s" }}
+            >
+              The most advanced stem cell therapies available — sourced with full chain of custody, never diluted, and administered by the physician who oversees their creation.
+            </p>
           </div>
         </div>
 
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/30 animate-bounce">
-          <ChevronDown size={20} />
+        {/* Scroll indicator — more prominent to encourage scroll */}
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 cursor-pointer group"
+          onClick={() => window.scrollBy({ top: window.innerHeight * 0.7, behavior: 'smooth' })}>
+          <span className="text-white/60 text-xs tracking-widest uppercase group-hover:text-[#FBB217] transition-colors" style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: '0.15em' }}>Scroll</span>
+          <div className="animate-bounce text-white/60 group-hover:text-[#FBB217] transition-colors">
+            <ChevronDown size={24} />
+          </div>
         </div>
       </section>
 
