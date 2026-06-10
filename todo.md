@@ -309,3 +309,16 @@
 - [x] Make scroll indicator more prominent (higher opacity, add label, larger icon, clickable)
 - [x] Move primary CTA button higher in hero to sit in hottest attention zone (above body copy)
 - [x] Filter Electron traffic in Clarity: added navigator.userAgent Electron guard in index.html (Clarity IP blocking only supports IPs, not URL patterns)
+
+## Lighthouse Performance Round 3 Fixes
+- [ ] Defer GA4 loading until after user interaction (3s delay) to remove from critical path
+- [ ] Fix GA4 duplicate load (appears twice in unused JS audit)
+- [ ] Add LQIP (low-quality inline placeholder) for hero image to improve perceived LCP
+- [ ] Split vendor-react into react + react-dom separate chunks for parallel parsing
+- [ ] Add resource hints for CloudFront CDN domain
+
+## Lighthouse Performance Round 3 (Jun 2026)
+- [x] Defer GA4 further — interaction-based trigger (click/scroll/keydown) + 5s fallback (was window.load)
+- [x] Remove duplicate Clarity loader from Dashboard.tsx (was loading Clarity twice on dashboard visits)
+- [x] Split vendor-react-dom into separate chunk from vendor-react for parallel browser parsing
+- [x] Add real LQIP inline placeholder for hero image (168-byte base64 WebP from actual hero)

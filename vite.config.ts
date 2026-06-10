@@ -243,8 +243,12 @@ export default defineConfig({
           // chunks (Dashboard, BlogPost) so they are NEVER preloaded on the homepage.
           // ——————————————————————————————————————————————————————————————————————
 
-          // React core — changes rarely, cached longest
-          if (id.includes("node_modules/react/") || id.includes("node_modules/react-dom/")) {
+          // React core — split into two chunks so the browser can parse them in parallel
+          // react (~7KB) is tiny; react-dom (~130KB) is the heavy one
+          if (id.includes("node_modules/react-dom/")) {
+            return "vendor-react-dom";
+          }
+          if (id.includes("node_modules/react/") || id.includes("node_modules/scheduler/")) {
             return "vendor-react";
           }
           // Routing

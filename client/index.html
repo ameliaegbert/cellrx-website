@@ -251,21 +251,35 @@
          blocking FCP/LCP — data is still captured for all sessions.
     ═══════════════════════════════════════════════════════════ -->
     <script>
-      window.addEventListener('load', function() {
-        // Load GA4 script after page is fully loaded
-        var s = document.createElement('script');
-        s.async = true;
-        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-M096BDCQTR';
-        document.head.appendChild(s);
-        s.onload = function() {
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          window.gtag = gtag;
-          gtag('js', new Date());
-          // Use beacon transport to avoid unload handler (improves BF-cache)
-          gtag('config', 'G-M096BDCQTR', { transport_type: 'beacon' });
-        };
-      });
+      // GA4 — deferred until user interaction OR 5 seconds after load, whichever comes first.
+      // This removes GA4 entirely from the critical path (no blocking, no parse cost on initial load).
+      // Data is still captured: the page_view event fires when GA4 initializes.
+      (function() {
+        var loaded = false;
+        function loadGA4() {
+          if (loaded) return;
+          loaded = true;
+          var s = document.createElement('script');
+          s.async = true;
+          s.src = 'https://www.googletagmanager.com/gtag/js?id=G-M096BDCQTR';
+          document.head.appendChild(s);
+          s.onload = function() {
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            window.gtag = gtag;
+            gtag('js', new Date());
+            gtag('config', 'G-M096BDCQTR', { transport_type: 'beacon' });
+          };
+        }
+        // Load on first user interaction (click, scroll, keydown, touch)
+        ['click','scroll','keydown','touchstart','mousemove'].forEach(function(e) {
+          document.addEventListener(e, loadGA4, { once: true, passive: true });
+        });
+        // Fallback: load after 5 seconds even without interaction
+        window.addEventListener('load', function() {
+          setTimeout(loadGA4, 5000);
+        });
+      })();
     </script>
 
     <!-- ═══════════════════════════════════════════════════════════

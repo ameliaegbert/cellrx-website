@@ -149,6 +149,19 @@ export default function Home() {
       <section className="relative flex items-center overflow-hidden" style={{ minHeight: 'min(88vh, 820px)' }}>
         {/* Full-bleed background: Option A 16:9 crop with Ken Burns on load (desktop only) */}
         <div className="absolute inset-0 overflow-hidden">
+          {/* LQIP: Tiny inline placeholder — renders instantly before the real hero loads.
+               This is a 20×11px blurred WebP of the hero, base64-encoded (~200 bytes).
+               It fills the hero area immediately, eliminating the white flash. */}
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `url("data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAADQAwCdASoUAAsAPzmGuVOvKSWisAgB4CcJagC7ACHaBB51cHIvxawA/s3lttzNOPa8VjDQ5L1IFw75PLjA96kZs/DX94+NsHpy4V/Vh9/rrAND5ziXeF7/xOYuKF87KxessxDp9Co0AAAA")`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center 35%',
+              filter: 'blur(8px)',
+              transform: 'scale(1.05)',
+            }}
+          />
           {/* Responsive hero image — 3 sizes for mobile/tablet/desktop */}
           <picture>
             <source media="(max-width: 767px)"  srcSet={HERO_MOBILE}  type="image/webp" />

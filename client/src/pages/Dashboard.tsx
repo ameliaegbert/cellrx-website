@@ -57,25 +57,8 @@ import PanelErrorBoundary from "@/components/PanelErrorBoundary";
 import { Skeleton } from "@/components/ui/skeleton";
 
 // ─── Clarity injection ───────────────────────────────────────────────────────
-const CLARITY_PROJECT_ID = "wr6mdwhjnk"; // Microsoft Clarity — CellRX project
-
-function useMicrosoftClarity() {
-  useEffect(() => {
-    if ((window as any).clarity) return; // already loaded
-
-    const script = document.createElement("script");
-    script.type = "text/javascript";
-    script.async = true;
-    script.innerHTML = `
-      (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-      })(window, document, "clarity", "script", "${CLARITY_PROJECT_ID}");
-    `;
-    document.head.appendChild(script);
-  }, []);
-}
+// Clarity is loaded globally in index.html — no need to load it again here
+const CLARITY_PROJECT_ID = "wr6mdwhjnk"; // Microsoft Clarity — CellRX project (used for dashboard links only)
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 function formatCurrency(n: number) {
@@ -197,7 +180,6 @@ const STAGE_COLORS: Record<string, string> = {
 
 // ─── Main Dashboard ───────────────────────────────────────────────────────────
 export default function Dashboard() {
-  useMicrosoftClarity();
   useNoIndex(); // Prevent search engines from indexing the admin dashboard
 
   const summaryQ = trpc.dashboard.summary.useQuery(undefined, { refetchInterval: 5 * 60 * 1000 });
