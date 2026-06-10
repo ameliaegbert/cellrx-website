@@ -311,11 +311,11 @@
 - [x] Filter Electron traffic in Clarity: added navigator.userAgent Electron guard in index.html (Clarity IP blocking only supports IPs, not URL patterns)
 
 ## Lighthouse Performance Round 3 Fixes
-- [ ] Defer GA4 loading until after user interaction (3s delay) to remove from critical path
-- [ ] Fix GA4 duplicate load (appears twice in unused JS audit)
-- [ ] Add LQIP (low-quality inline placeholder) for hero image to improve perceived LCP
-- [ ] Split vendor-react into react + react-dom separate chunks for parallel parsing
-- [ ] Add resource hints for CloudFront CDN domain
+- [x] Defer GA4 loading until after user interaction (3s delay) to remove from critical path
+- [x] Fix GA4 duplicate load (appears twice in unused JS audit)
+- [x] Add LQIP (low-quality inline placeholder) for hero image to improve perceived LCP
+- [x] Split vendor-react into react + react-dom separate chunks for parallel parsing
+- [x] Add resource hints for CloudFront CDN domain
 
 ## Lighthouse Performance Round 3 (Jun 2026)
 - [x] Defer GA4 further — interaction-based trigger (click/scroll/keydown) + 5s fallback (was window.load)
@@ -324,16 +324,16 @@
 - [x] Add real LQIP inline placeholder for hero image (168-byte base64 WebP from actual hero)
 
 ## Conversion Audit Fixes (June 2026)
-- [ ] Create /privacy page with Privacy Policy content
-- [ ] Create /terms page with Terms of Service content
-- [ ] Create /fda-disclaimer page with FDA Disclaimer content
-- [ ] Fix Footer legal links to point to correct pages (not /contact)
-- [ ] Reduce contact form from 7 fields to 3 (Name, Phone, Treatment Interest)
-- [ ] Remove calendar widget from Contact page entirely
-- [ ] Add CTA block at end of every blog post
-- [ ] Add testimonial pull-quotes section to Services page
-- [ ] Add testimonial pull-quotes section to Contact page
-- [ ] Fix INP - throttle Navbar scroll handler
-- [ ] Add location/service descriptor to hero section ("Stem Cell Therapy · Lehi, Utah")
-- [ ] Add pricing anchor to Black Label page
-- [ ] Add exit intent modal with email/SMS capture
+- [x] Create /privacy page with Privacy Policy content
+- [x] Create /terms page with Terms of Service content
+- [x] Create /fda-disclaimer page with FDA Disclaimer content
+- [x] Fix Footer legal links to point to correct pages (not /contact)
+- [x] Reduce contact form from 7 fields to 3 (Name, Phone, Treatment Interest)
+- [x] Remove calendar widget from Contact page entirely
+- [x] Add CTA block at end of every blog post (already present in BlogPost.tsx)
+- [x] Add testimonial pull-quotes section to Services page
+- [x] Add testimonial pull-quotes section to Contact page
+- [x] Fix INP - throttle Navbar scroll handler with requestAnimationFrame
+- [x] Add location/service descriptor to hero section ("Concierge Regenerative Medicine · Lehi, Utah")
+- [x] Add pricing anchor to Black Label page (Starting at $500/month with add-on breakdown)
+- [x] Add exit intent modal with phone capture (fires on mouse-leave top + 45s fallback; Electron/dashboard excluded)

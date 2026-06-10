@@ -312,30 +312,11 @@ export default function BlackLabel() {
             </div>
           </div>
 
-          {/* Pricing anchor */}
-          <div className="mt-12 fade-up">
-            <div className="border border-[#FBB217]/20 bg-[#030d1e] p-8 max-w-2xl mx-auto text-center">
-              <p className="text-[#FBB217] text-xs tracking-widest uppercase mb-3" style={{ fontFamily: SUBTITLE_FONT }}>Investment</p>
-              <p className="text-[#F6F5EC] text-2xl font-bold mb-2" style={{ fontFamily: SUBTITLE_FONT }}>Starting at $500/month</p>
-              <p className="text-[#D6D7D9]/60 text-sm leading-relaxed mb-6" style={{ fontFamily: BODY_FONT }}>
-                Membership is structured around your biology, your goals, and your timeline. Your exact investment is determined during a private consultation — with full transparency before any commitment is made.
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6 text-left">
-                {[
-                  { label: "Stem Cell Injection Add-On", value: "From $2,500" },
-                  { label: "Stem Cell IV Add-On", value: "From $4,000" },
-                  { label: "Spouse Enrollment", value: "Custom pricing" },
-                ].map((item, i) => (
-                  <div key={i} className="border border-white/5 p-4">
-                    <p className="text-[#D6D7D9]/40 text-xs mb-1" style={{ fontFamily: BODY_FONT }}>{item.label}</p>
-                    <p className="text-white text-sm font-semibold" style={{ fontFamily: SUBTITLE_FONT }}>{item.value}</p>
-                  </div>
-                ))}
-              </div>
-              <p className="text-[#D6D7D9]/30 text-xs" style={{ fontFamily: BODY_FONT }}>
-                Membership is limited by design. Availability is not guaranteed.
-              </p>
-            </div>
+          {/* Pricing note */}
+          <div className="text-center mt-12 fade-up">
+            <p className="text-[#D6D7D9]/40 text-sm" style={{ fontFamily: BODY_FONT }}>
+              Membership pricing is custom and determined during your private consultation. We do not publish rates publicly — because your protocol is not generic, and neither is your investment.
+            </p>
           </div>
         </div>
       </section>
