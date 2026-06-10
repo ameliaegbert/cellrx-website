@@ -52,13 +52,13 @@ export default function ExitIntentModal() {
       return;
     }
     submitContact.mutate({
-      firstName: "Exit Intent Lead",
+      firstName: "Website Visitor",
       lastName: "",
       email: "",
       phone: phone.trim(),
       interest: "general",
-      message: "Exit intent capture",
-      hearAbout: "",
+      message: "Exit intent modal — phone only capture",
+      hearAbout: "Exit Intent Modal",
     });
   };
 
