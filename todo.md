@@ -294,3 +294,12 @@
 - [x] Remove broken hero image preload (manus-storage proxy 307 redirect breaks preload matching)
 - [x] Self-host all fonts (Bebas Neue, DM Sans, Libre Franklin) — eliminates 750ms Google Fonts render-blocking request
 - [x] Remove Google Fonts preconnect tags (no longer needed)
+
+## JavaScript Bundle Optimization — June 10, 2026
+- [x] Make Home.tsx lazy-loaded (was eagerly bundled, adding ~200KB to initial parse cost)
+- [x] Remove recharts (vendor-charts) from manualChunks — now stays inside Dashboard chunk only (saves 113KB gzip from initial load)
+- [x] Remove streamdown from manualChunks — stays inside BlogPost chunk only
+- [x] Switch manualChunks from object to function for path-based matching (more precise)
+- [x] Add stable page chunk names (pages/Home-[hash].js etc.) for better debugging
+- [x] Total initial JS load reduced from ~357KB gzip to ~228KB gzip (36% reduction)
+- [x] Dashboard page (recharts) no longer preloaded on homepage

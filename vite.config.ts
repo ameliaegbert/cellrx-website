@@ -226,23 +226,54 @@ export default defineConfig({
     cssCodeSplit: false,
     rollupOptions: {
       output: {
+        // Stable chunk names — allows us to reference them in index.html for preloading
+        chunkFileNames: (chunkInfo) => {
+          // Give page chunks stable names based on their source file
+          if (chunkInfo.facadeModuleId?.includes("/pages/")) {
+            const name = chunkInfo.facadeModuleId.split("/pages/")[1].replace(/\.tsx?$/, "");
+            return `pages/${name}-[hash].js`;
+          }
+          return "assets/[name]-[hash].js";
+        },
         // Manual chunk splitting for better caching and smaller initial bundle
-        manualChunks: {
-          // React core — changes rarely, gets cached longest
-          "vendor-react": ["react", "react-dom"],
+        manualChunks(id) {
+          // ——————————————————————————————————————————————————————————————————————
+          // STRATEGY: Only split truly shared, stable vendor code into named chunks.
+          // recharts and streamdown are NOT split — they stay inside their lazy page
+          // chunks (Dashboard, BlogPost) so they are NEVER preloaded on the homepage.
+          // ——————————————————————————————————————————————————————————————————————
+
+          // React core — changes rarely, cached longest
+          if (id.includes("node_modules/react/") || id.includes("node_modules/react-dom/")) {
+            return "vendor-react";
+          }
           // Routing
-          "vendor-router": ["wouter"],
-          // tRPC + React Query — changes with API updates
-          "vendor-trpc": ["@trpc/client", "@trpc/react-query", "@tanstack/react-query", "superjson"],
-          // UI utilities — tiny, rarely change
-          "vendor-ui-utils": ["class-variance-authority", "clsx", "tailwind-merge"],
-          // Icons — large, separate for caching
-          "vendor-icons": ["lucide-react"],
-          // Charts — only used in admin dashboard (lazy route)
-          "vendor-charts": ["recharts"],
-          // Markdown renderer — only used in BlogPost & AIChatBox (lazy routes)
-          // Keeping it separate prevents it from entering the main entry bundle
-          "vendor-markdown": ["streamdown"],
+          if (id.includes("node_modules/wouter")) {
+            return "vendor-router";
+          }
+          // tRPC + React Query — only needed when the app boots (always loaded)
+          if (
+            id.includes("node_modules/@trpc/") ||
+            id.includes("node_modules/@tanstack/react-query") ||
+            id.includes("node_modules/superjson")
+          ) {
+            return "vendor-trpc";
+          }
+          // UI utilities — tiny class helpers used everywhere
+          if (
+            id.includes("node_modules/class-variance-authority") ||
+            id.includes("node_modules/clsx") ||
+            id.includes("node_modules/tailwind-merge")
+          ) {
+            return "vendor-ui-utils";
+          }
+          // Icons — large, separate for cache granularity
+          if (id.includes("node_modules/lucide-react")) {
+            return "vendor-icons";
+          }
+          // recharts stays in Dashboard chunk — NOT a named chunk
+          // streamdown stays in BlogPost chunk — NOT a named chunk
+          // Everything else: let Rollup decide (default splitting)
         },
       },
     },
