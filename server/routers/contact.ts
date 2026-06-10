@@ -291,8 +291,8 @@ export const contactRouter = router({
     .input(
       z.object({
         firstName: z.string().min(1, "First name is required"),
-        lastName: z.string().min(1, "Last name is required"),
-        email: z.string().email("Valid email is required").optional().default(""),
+        lastName: z.string().optional().default(""),
+        email: z.union([z.string().email(), z.literal("")]).optional().default(""),
         phone: z.string().optional().default(""),
         interest: z.enum(["stem-cell-injection", "stem-cell-iv", "black-label", "general", "other"]),
         message: z.string().optional().default(""),
