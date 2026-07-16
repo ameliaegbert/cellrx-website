@@ -1,12 +1,12 @@
 /**
  * CellRX Contact Router
  * Handles contact form submissions → GoHighLevel CRM
- * Tags leads as "Stem Cell Prospect" or "Black Label Prospect" based on service interest
- * Creates a follow-up task assigned to Samantha Buker (GHL user: 2hbeJA839rk6Md45RgXk)
- * Sends SMS greeting immediately upon contact creation
- * Notifies info@cellrx.bio via GHL email on every new lead
+ * Upserts and tags leads as "Stem Cell Prospect" or "Black Label Prospect"
+ * Lets the published tag workflow own staff routing, opportunity, and task actions
+ * Preserves the patient-facing SMS, info@ notification, and nurture enrollment
  */
 
+import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import { publicProcedure, router } from "../_core/trpc";
 import { ENV } from "../_core/env";
@@ -14,15 +14,10 @@ import { notifyOwner } from "../_core/notification";
 import { enqueueNurtureSequence } from "../nurture";
 
 const GHL_API_BASE = "https://services.leadconnectorhq.com";
-const SAMANTHA_USER_ID = "2hbeJA839rk6Md45RgXk";
 const NOTIFY_EMAIL = "info@cellrx.bio";
 
-// Patient Pipeline constants
-const PATIENT_PIPELINE_ID = "NBqu4y9ct8y8sPQZWcPr";
-const PIPELINE_STAGE_NEW_LEAD = "4a0028de-ef0d-4381-9f43-401437202651";
-
 /** Map form interest values to GHL pipeline tags */
-function getLeadTag(interest: string): string {
+export function getLeadTag(interest: string): string {
   if (interest === "black-label") {
     return "Black Label Prospect";
   }
@@ -49,55 +44,7 @@ function buildSmsGreeting(firstName: string, isBlackLabel: boolean): string {
   return `Hi ${firstName} — this is an automated text from CellRX. Please save this number — it is the direct line for Samantha, Dr. Jacob Egbert's personal assistant. Thank you for reaching out about our regenerative stem cell therapies. Samantha will be in touch with you shortly. Our team is available Monday–Friday, 10am–5pm MT. If you are contacting us outside of business hours, we will respond on the next business day. The next step is booking your complimentary consultation — you can book directly here: https://api.leadconnectorhq.com/widget/booking/ObJ0Y5tw59PrShIJKowv`;
 }
 
-/** Create an Opportunity in the Patient Pipeline — "New Lead" stage */
-async function createGHLOpportunity(data: {
-  contactId: string;
-  firstName: string;
-  lastName: string;
-  interest: string;
-  tag: string;
-}): Promise<void> {
-  const apiKey = ENV.ghlApiKey;
-  const locationId = ENV.ghlLocationId;
-  if (!apiKey || !data.contactId) return;
-
-  const interestLabel = getInterestLabel(data.interest);
-
-  const payload = {
-    pipelineId: PATIENT_PIPELINE_ID,
-    pipelineStageId: PIPELINE_STAGE_NEW_LEAD,
-    contactId: data.contactId,
-    locationId,
-    name: `${data.firstName} ${data.lastName} — ${interestLabel}`,
-    status: "open",
-    assignedTo: SAMANTHA_USER_ID,
-    monetaryValue: 0,
-  };
-
-  try {
-    const response = await fetch(`${GHL_API_BASE}/opportunities/`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${apiKey}`,
-        Version: "2021-07-28",
-      },
-      body: JSON.stringify(payload),
-    });
-
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.warn(`[GHL] Opportunity creation failed: ${response.status} ${errorText}`);
-    } else {
-      const result = await response.json() as { opportunity?: { id?: string } };
-      console.log(`[GHL] Opportunity created in Patient Pipeline — New Lead stage: ${result?.opportunity?.id}`);
-    }
-  } catch (error) {
-    console.warn("[GHL] Error creating opportunity:", error);
-  }
-}
-
-/** Submit a contact to GoHighLevel CRM */
+/** Upsert a contact in GoHighLevel CRM and apply the routing tag */
 async function createGHLContact(data: {
   firstName: string;
   lastName: string;
@@ -116,7 +63,6 @@ async function createGHLContact(data: {
   }
 
   const tag = getLeadTag(data.interest);
-  const interestLabel = getInterestLabel(data.interest);
 
   const payload = {
     firstName: data.firstName,
@@ -126,15 +72,10 @@ async function createGHLContact(data: {
     locationId,
     tags: [tag],
     source: "CellRX Website",
-    customFields: [
-      { id: "interest", field_value: interestLabel },
-      { id: "hearAbout", field_value: data.hearAbout || "Not specified" },
-      { id: "message", field_value: data.message || "No message provided" },
-    ],
   };
 
   try {
-    const response = await fetch(`${GHL_API_BASE}/contacts/`, {
+    const response = await fetch(`${GHL_API_BASE}/contacts/upsert`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -146,55 +87,22 @@ async function createGHLContact(data: {
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.error(`[GHL] Contact creation failed: ${response.status} ${errorText}`);
+      console.error(`[GHL] Contact upsert failed: ${response.status} ${errorText}`);
       return { success: false, reason: "ghl_error", status: response.status };
     }
 
     const result = await response.json() as { contact?: { id?: string } };
     const contactId = result?.contact?.id;
-    console.log(`[GHL] Contact created successfully: ${contactId} — tagged as "${tag}"`);
+    if (!contactId) {
+      console.error("[GHL] Contact upsert returned no contact ID");
+      return { success: false, reason: "invalid_response", status: response.status };
+    }
+
+    console.log(`[GHL] Contact upserted successfully: ${contactId} — tagged as "${tag}"`);
     return { success: true, contactId, tag };
   } catch (error) {
     console.error("[GHL] Network error submitting contact:", error);
     return { success: false, reason: "network_error" };
-  }
-}
-
-/** Create a follow-up task assigned to Samantha Buker in GHL */
-async function createFollowUpTask(contactId: string, firstName: string, lastName: string, tag: string): Promise<void> {
-  const apiKey = ENV.ghlApiKey;
-  if (!apiKey || !contactId) return;
-
-  // Due date: 24 hours from now
-  const dueDate = new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString();
-
-  const taskPayload = {
-    title: `Follow up with ${firstName} ${lastName} — ${tag}`,
-    body: `New lead from CellRX website. Interest: ${tag}. Please contact ${firstName} to schedule a consultation.`,
-    assignedTo: SAMANTHA_USER_ID,
-    dueDate,
-    completed: false,
-  };
-
-  try {
-    const response = await fetch(`${GHL_API_BASE}/contacts/${contactId}/tasks/`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${apiKey}`,
-        Version: "2021-07-28",
-      },
-      body: JSON.stringify(taskPayload),
-    });
-
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.warn(`[GHL] Task creation failed: ${response.status} ${errorText}`);
-    } else {
-      console.log(`[GHL] Follow-up task created for ${firstName} ${lastName}, assigned to Samantha`);
-    }
-  } catch (error) {
-    console.warn("[GHL] Error creating follow-up task:", error);
   }
 }
 
@@ -310,9 +218,8 @@ export const contactRouter = router({
       if (ghlResult.success && ghlResult.contactId) {
         const contactId = ghlResult.contactId;
 
-        // Create follow-up task for Samantha (due in 24 hours)
-        await createFollowUpTask(contactId, input.firstName, input.lastName, tag);
-
+        // Opportunity, staff notifications, and Samantha's task are owned by the
+        // published HighLevel tag workflow. Keep only patient-facing follow-up here.
         // Send immediate SMS greeting if phone provided
         if (input.phone) {
           await sendSmsGreeting(contactId, input.phone, input.firstName, isBlackLabel);
@@ -323,15 +230,6 @@ export const contactRouter = router({
           ...input,
           tag,
           contactId,
-        });
-
-        // Create opportunity in Patient Pipeline — New Lead stage
-        await createGHLOpportunity({
-          contactId,
-          firstName: input.firstName,
-          lastName: input.lastName,
-          interest: input.interest,
-          tag,
         });
 
         // Enqueue 5-day nurture SMS sequence (starts Day 1, fires hourly via heartbeat)
@@ -357,9 +255,16 @@ export const contactRouter = router({
         console.warn("[Contact] Owner notification failed:", notifyError);
       }
 
+      if (!ghlResult.success || !ghlResult.contactId) {
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: "Your request could not be added to our scheduling system. Please call us at 385-707-2373.",
+        });
+      }
+
       return {
         success: true,
-        ghlSubmitted: ghlResult.success,
+        ghlSubmitted: true,
         tag,
       };
     }),

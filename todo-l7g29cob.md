@@ -1,0 +1,21 @@
+# Project TODO
+
+- [x] Change the public contact backend from create-only HighLevel submission to the official contact upsert endpoint.
+- [x] Remove invalid symbolic custom-field IDs from the HighLevel contact payload.
+- [x] Require a confirmed HighLevel contact ID before returning a successful contact-form response.
+- [x] Preserve the Manus owner fallback notification when HighLevel ingestion fails.
+- [x] Keep patient-facing SMS, info@cellrx.bio notification, and nurture enrollment after successful CRM ingestion.
+- [x] Remove direct website opportunity and Samantha task creation because the published tag workflow owns those actions.
+- [x] Require confirmed CRM ingestion before the main Contact form shows its success state.
+- [x] Require confirmed CRM ingestion before the exit-intent form shows its success state.
+- [x] Add regression coverage for successful upsert, payload shape, failure propagation, tag mapping, and duplicate-action prevention.
+- [x] Run the focused contact regression suite successfully.
+- [x] Run TypeScript validation successfully.
+- [x] Run the production build successfully.
+- [x] Verify the repaired Contact page visually in the live development preview.
+- [ ] Save a Manus project checkpoint containing the validated repair.
+- [ ] Publish the checkpoint through the Manus project interface.
+- [ ] Submit a unique post-publication test lead through the live website.
+- [ ] Verify the test contact, prospect tag, routing workflow enrollment, and downstream notifications in HighLevel.
+- [x] Confirm the desktop `/contact` preview shows the consultation form, contact details, navigation, service-area content, and footer without clipping or overlap.
+- [x] Confirm the mobile `/contact` preview preserves readable content order, full-width form controls, visible CTA text, and footer navigation without horizontal overflow.

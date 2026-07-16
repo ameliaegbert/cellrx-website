@@ -19,7 +19,14 @@ export default function ExitIntentModal() {
   const [error, setError] = useState("");
 
   const submitContact = trpc.contact.submit.useMutation({
-    onSuccess: () => setSubmitted(true),
+    onSuccess: (result) => {
+      if (!result.ghlSubmitted) {
+        setError("We couldn't add your request to our scheduling system. Please call us at 385-707-2373.");
+        return;
+      }
+
+      setSubmitted(true);
+    },
     onError: () => setError("Something went wrong. Please call us at 385-707-2373."),
   });
 

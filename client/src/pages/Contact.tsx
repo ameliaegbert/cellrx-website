@@ -54,7 +54,12 @@ export default function Contact() {
   });
 
   const submitContact = trpc.contact.submit.useMutation({
-    onSuccess: () => {
+    onSuccess: (result) => {
+      if (!result.ghlSubmitted) {
+        setErrorMessage("We couldn't add your request to our scheduling system. Please call us directly at 385-707-2373.");
+        return;
+      }
+
       setSubmitted(true);
       setErrorMessage("");
     },
