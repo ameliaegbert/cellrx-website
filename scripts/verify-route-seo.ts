@@ -1,11 +1,11 @@
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
-import { renderRouteAwareHtml } from "../server/seo";
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import { getStaticExportPaths, toAbsoluteUrl } from "../shared/seo";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const template = fs.readFileSync(path.resolve(__dirname, "../client/index.html"), "utf-8");
+const publicDir = path.resolve(__dirname, "../dist/public");
 
 function assertIncludes(actual: string, expected: string, label: string) {
   if (!actual.includes(expected)) {
@@ -13,27 +13,44 @@ function assertIncludes(actual: string, expected: string, label: string) {
   }
 }
 
-const about = renderRouteAwareHtml(template, "/about");
-if (about.status !== 200) throw new Error("About route should return HTTP 200");
-assertIncludes(about.html, '<link rel="canonical" href="https://cellrx.bio/about" />', "About canonical");
-assertIncludes(about.html, "About CellRX Regenerative Medicine", "About title");
-assertIncludes(about.html, 'data-seo-fallback="true"', "Crawlable fallback");
-assertIncludes(about.html, '"MedicalClinic"', "Structured data");
+function artifactPathFor(pathname: string): string {
+  if (pathname === "/") return path.join(publicDir, "index.html");
+  return path.join(publicDir, pathname.replace(/^\//, ""), "index.html");
+}
 
-const blogPost = renderRouteAwareHtml(template, "/blog/first-cellrx-consultation");
-if (blogPost.status !== 200) throw new Error("Known blog route should return HTTP 200");
-assertIncludes(
-  blogPost.html,
-  '<link rel="canonical" href="https://cellrx.bio/blog/first-cellrx-consultation" />',
-  "Blog canonical",
+const routes = getStaticExportPaths();
+if (routes.length === 0) throw new Error("No static SEO routes were supplied.");
+
+for (const pathname of routes) {
+  const artifactPath = artifactPathFor(pathname);
+  if (!fs.existsSync(artifactPath)) {
+    throw new Error(`Missing static artifact for ${pathname}: ${artifactPath}`);
+  }
+
+  const html = fs.readFileSync(artifactPath, "utf8");
+  const canonical = toAbsoluteUrl(pathname);
+  assertIncludes(html, `<link rel="canonical" href="${canonical}" />`, `${pathname} canonical`);
+  assertIncludes(html, 'data-seo-fallback="true"', `${pathname} crawlable fallback`);
+  assertIncludes(html, '"MedicalClinic"', `${pathname} structured data`);
+  assertIncludes(html, `<meta property="og:url" content="${canonical}" />`, `${pathname} Open Graph URL`);
+}
+
+const article = fs.readFileSync(
+  artifactPathFor("/blog/first-cellrx-consultation"),
+  "utf8",
 );
-assertIncludes(blogPost.html, '<meta property="og:type" content="article" />', "Article Open Graph type");
+assertIncludes(article, '<meta property="og:type" content="article" />', "Article Open Graph type");
 
-const dashboard = renderRouteAwareHtml(template, "/dashboard");
-assertIncludes(dashboard.html, '<meta name="robots" content="noindex, nofollow" />', "Dashboard noindex");
+const notFoundPath = path.join(publicDir, "404.html");
+if (!fs.existsSync(notFoundPath)) throw new Error("Missing static 404.html.");
+const notFound = fs.readFileSync(notFoundPath, "utf8");
+assertIncludes(notFound, '<meta name="robots" content="noindex, nofollow" />', "404 noindex");
+assertIncludes(notFound, 'data-seo-fallback="true"', "404 crawlable fallback");
 
-const missing = renderRouteAwareHtml(template, "/this-route-does-not-exist");
-if (missing.status !== 404) throw new Error("Unknown route should return HTTP 404");
-assertIncludes(missing.html, '<meta name="robots" content="noindex, nofollow" />', "Missing route noindex");
+const legacyTeamPath = path.join(publicDir, "team", "index.html");
+if (!fs.existsSync(legacyTeamPath)) throw new Error("Missing legacy /team redirect document.");
+const legacyTeam = fs.readFileSync(legacyTeamPath, "utf8");
+assertIncludes(legacyTeam, 'http-equiv="refresh" content="0; url=/about"', "Legacy team redirect");
+assertIncludes(legacyTeam, '<meta name="robots" content="noindex, follow" />', "Legacy team noindex");
 
-console.log("Route SEO verification passed.");
+console.log(`Static route SEO verification passed for ${routes.length} public routes.`);

@@ -316,3 +316,18 @@ export function getIndexablePaths(): string[] {
     ...Object.values(BLOG_POSTS).map(post => post.canonical as string),
   ];
 }
+
+/**
+ * Public route manifest for static hosts such as GitHub Pages. This includes
+ * informational and legal pages that may be intentionally omitted from the
+ * XML sitemap but still require correct direct-request metadata and fallback
+ * content.
+ */
+export function getStaticExportPaths(): string[] {
+  const paths = [
+    ...Object.values(PAGE_SEO).map(page => page.canonical),
+    ...Object.values(BLOG_POSTS).map(page => page.canonical),
+  ].filter((pathname): pathname is string => Boolean(pathname));
+
+  return Array.from(new Set(paths.map(normalizePathname)));
+}
