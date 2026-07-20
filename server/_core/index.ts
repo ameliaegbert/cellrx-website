@@ -97,6 +97,21 @@ async function startServer() {
       createContext,
     })
   );
+  // Permanently consolidate legacy team URLs into the canonical About page.
+  // This runs before the SPA fallback in development and production.
+  const legacyRedirects: Record<string, string> = {
+    "/team": "/about",
+    "/about-the-team": "/about",
+  };
+  app.use((req, res, next) => {
+    const destination = legacyRedirects[req.path];
+    if (destination) {
+      res.redirect(301, destination);
+      return;
+    }
+    next();
+  });
+
   // development mode uses Vite, production mode uses static files
   if (process.env.NODE_ENV === "development") {
     await setupVite(app, server);
