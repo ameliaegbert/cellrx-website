@@ -365,3 +365,12 @@
 - [x] Upload 16 re-compressed WebP images to manus-storage with new content-hashed filenames
 - [x] Update all image references across 14 source files (Footer, Navbar, About, BlackLabel, Blog, BlogPost, Contact, DrEgbert, HealthOptimization, Home, LongevityPrograms, Services, Team, Testimonials)
 - [x] Logo (cellrx_logo_opt_9963f027.webp) is only 5KB — no compression needed
+
+## Audit Score Improvements (Aug 3, 2026)
+- [x] Embed full article body text in server-rendered fallback HTML for all 7 blog posts — root cause was req.path vs req.originalUrl bug in vite.ts; fixed; all 7 articles now serve 9,000+ words to crawlers
+- [x] Add Article + MedicalWebPage schema with author (Dr. Jacob Egbert MD), datePublished, and citations to all 7 blog posts
+- [x] Add physician byline block to server-rendered fallback HTML for all blog posts
+- [x] Add FAQPage schema to /faq page with 6 Q&A pairs
+- [x] Add speakable schema to WebSite and WebPage nodes (cssSelector: h1, h2, [data-speakable])
+- [x] Add security headers: X-Content-Type-Options, X-Frame-Options, X-XSS-Protection, Referrer-Policy, Permissions-Policy, HSTS (production only)
+- [x] Add areaServed with 20 Utah cities to MedicalClinic schema

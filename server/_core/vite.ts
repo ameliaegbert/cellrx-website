@@ -39,9 +39,11 @@ export async function setupVite(app: Express, server: Server) {
         `src="/src/main.tsx"`,
         `src="/src/main.tsx?v=${nanoid()}"`
       );
-      const rendered = renderRouteAwareHtml(template, req.path);
-      const page = await vite.transformIndexHtml(url, rendered.html);
-      res.status(rendered.status).set({ "Content-Type": "text/html" }).end(page);
+      // Apply Vite transforms first (injects HMR client, resolves imports),
+      // then apply route-aware SEO/fallback so Vite cannot reset our metadata.
+      const vitePage = await vite.transformIndexHtml(url, template);
+      const rendered = renderRouteAwareHtml(vitePage, req.originalUrl);
+      res.status(rendered.status).set({ "Content-Type": "text/html" }).end(rendered.html);
     } catch (e) {
       vite.ssrFixStacktrace(e as Error);
       next(e);

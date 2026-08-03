@@ -39,6 +39,31 @@ async function startServer() {
   const server = createServer(app);
   // Gzip compression for all responses (improves Lighthouse performance score)
   app.use(compression());
+
+  // ─── Security headers (improves audit scores: X-Content-Type, X-Frame, HSTS, etc.) ───
+  app.use((_req, res, next) => {
+    // Prevent MIME-type sniffing
+    res.setHeader("X-Content-Type-Options", "nosniff");
+    // Prevent clickjacking — allow same-origin iframes only
+    res.setHeader("X-Frame-Options", "SAMEORIGIN");
+    // Enable XSS filter in legacy browsers
+    res.setHeader("X-XSS-Protection", "1; mode=block");
+    // Strict referrer policy
+    res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
+    // Permissions policy — restrict unnecessary browser features
+    res.setHeader(
+      "Permissions-Policy",
+      "camera=(), microphone=(), geolocation=(self), payment=()",
+    );
+    // HSTS — only set in production to avoid dev issues
+    if (process.env.NODE_ENV !== "development") {
+      res.setHeader(
+        "Strict-Transport-Security",
+        "max-age=31536000; includeSubDomains; preload",
+      );
+    }
+    next();
+  });
   // Configure body parser with larger size limit for file uploads
   app.use(express.json({ limit: "50mb" }));
   app.use(express.urlencoded({ limit: "50mb", extended: true }));
