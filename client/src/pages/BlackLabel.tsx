@@ -171,7 +171,7 @@ export default function BlackLabel() {
             </div>
             <div className="grid grid-cols-2 gap-4 fade-in">
               {[
-                { icon: <Crown size={20} className="text-[#FBB217]" />, title: "Reactive, Not Proactive", desc: "Conventional medicine waits for decline. Black Label prevents it before it begins." },
+                { icon: <Crown size={20} className="text-[#FBB217]" />, title: "Reactive, Not Proactive", desc: "Conventional medicine waits for decline. Black Label supports your health proactively." },
                 { icon: <FlaskConical size={20} className="text-[#FBB217]" />, title: "No Visibility", desc: "Most patients have never seen a comprehensive biomarker panel. You deserve to know your numbers." },
                 { icon: <Zap size={20} className="text-[#FBB217]" />, title: "Generic Protocols", desc: "Cookie-cutter treatment plans ignore your unique biology. Your protocol should be built for you." },
                 { icon: <Shield size={20} className="text-[#FBB217]" />, title: "No Access", desc: "When you need your physician, you wait weeks. Black Label members have a direct line." },
@@ -340,10 +340,10 @@ export default function BlackLabel() {
             </div>
             <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4 fade-in">
               {[
-                { title: "C-Suite Executives", desc: "Who need to perform at peak cognitive and physical capacity, day after day, year after year — and cannot afford to decline." },
-                { title: "Professional Athletes", desc: "Seeking accelerated recovery, injury prevention, and the longevity to extend their career entirely on their own terms." },
+                { title: "C-Suite Executives", desc: "Who need to support peak cognitive and physical capacity, day after day, year after year — and want a proactive health partner." },
+                { title: "Professional Athletes", desc: "Seeking to support recovery, reduce injury risk, and maintain the longevity to extend their career on their own terms." },
                 { title: "High-Net-Worth Individuals", desc: "Who demand the same standard of excellence in their healthcare as in every other area of their life. No compromises." },
-                { title: "Longevity-Focused Individuals", desc: "Who are proactively investing in their health span — not waiting for decline to make the first move." },
+                { title: "Longevity-Focused Individuals", desc: "Who are proactively investing in their healthspan — supporting their biology before changes become symptomatic." },
               ].map((profile, i) => (
                 <div key={i} className="p-6 border border-[#FBB217]/15 bg-[#030d1e]">
                   <div className="gold-rule mb-4" />
@@ -370,10 +370,10 @@ export default function BlackLabel() {
               style={{ fontFamily: TITLE_FONT, fontSize: "clamp(36px, 5vw, 64px)" }}
             >
               EVERY YEAR YOU WAIT<br />
-              <span className="text-[#FBB217]">IS A YEAR OF COMPOUNDING DECLINE</span>
+              <span className="text-[#FBB217]">IS A YEAR WITHOUT PROACTIVE SUPPORT</span>
             </h2>
             <p className="text-[#D6D7D9]/70 leading-relaxed mb-4" style={{ fontFamily: BODY_FONT }}>
-              The individuals who thrive into their 60s, 70s, and beyond are not the ones who reacted to decline — they are the ones who invested in prevention decades earlier. Biology does not wait. Inflammation accumulates. Hormones shift. Cellular repair slows. The question is not whether these changes are happening — it is whether you have a physician who is actively working to reverse them.
+              The individuals who thrive into their 60s, 70s, and beyond are not the ones who reacted to decline — they are the ones who invested in proactive health support decades earlier. Biology changes over time. Inflammatory markers shift. Hormones change. Cellular function evolves. The question is not whether these changes are happening — it is whether you have a physician who is actively supporting your biology.
             </p>
             <p className="text-[#D6D7D9]/70 leading-relaxed" style={{ fontFamily: BODY_FONT }}>
               Black Label exists for the individual who has decided that the answer is yes.

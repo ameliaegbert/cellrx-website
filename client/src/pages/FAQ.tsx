@@ -65,11 +65,11 @@ const FAQ_CATEGORIES = [
       },
       {
         q: "When will I see results from stem cell therapy?",
-        a: "Many patients report initial improvements in pain and inflammation within two to four weeks. The more significant structural repair — rebuilding of cartilage and connective tissue — continues to unfold over three to six months. Results represent genuine biological repair that tends to be durable at one and two-year follow-up, not a temporary mask.",
+        a: "Many patients report initial improvements in pain and inflammation within two to four weeks. Regenerative support continues to unfold over three to six months as the body's natural processes are engaged. Individual results may vary. These statements have not been evaluated by the FDA.",
       },
       {
         q: "What conditions can stem cell therapy treat at CellRX?",
-        a: "Common conditions treated include knee osteoarthritis, hip osteoarthritis, rotator cuff tears and tendinopathy, Achilles tendinopathy, plantar fasciitis, degenerative disc disease, chronic systemic inflammation, post-COVID syndrome, chronic fatigue, and cognitive decline. Your consultation with Dr. Egbert will determine whether your specific condition makes you a strong candidate.",
+        a: "Patients who have sought regenerative support include those with knee osteoarthritis, hip osteoarthritis, rotator cuff tendinopathy, Achilles tendinopathy, plantar fasciitis, degenerative disc disease, chronic systemic inflammation, post-COVID syndrome, chronic fatigue, and cognitive concerns. Your consultation with Dr. Egbert will determine whether you are a strong candidate. Individual results may vary.",
       },
       {
         q: "What is the maximum stem cell dose available at CellRX?",
@@ -99,11 +99,11 @@ const FAQ_CATEGORIES = [
     faqs: [
       {
         q: "What is health optimization at CellRX?",
-        a: "CellRX Health Optimization is a physician-directed program that uses comprehensive biomarker testing, hormone balancing, and personalized supplementation to help you perform at your biological peak. Dr. Jacob Egbert designs each protocol around your unique lab results — targeting energy, cognitive clarity, metabolic function, and resilience. It treats declining performance as a solvable problem, not an inevitable outcome.",
+        a: "CellRX Health Optimization is a physician-directed program that uses comprehensive biomarker testing, hormone balancing, and personalized supplementation to support your biological performance. Dr. Jacob Egbert designs each protocol around your unique lab results — supporting energy, cognitive clarity, metabolic function, and resilience. Individual results may vary. These statements have not been evaluated by the FDA.",
       },
       {
         q: "What longevity programs does CellRX offer?",
-        a: "CellRX Longevity Programs combine regenerative stem cell biologics, NAD+ therapy, peptide protocols, hormone optimization, and advanced diagnostics to extend your healthspan. Dr. Egbert builds each protocol around your biomarkers, targeting cellular repair, mitochondrial function, and systemic resilience. These programs are designed for individuals who refuse to accept biological decline as inevitable.",
+        a: "CellRX Longevity Programs combine regenerative stem cell biologics, NAD+ therapy, peptide protocols, hormone optimization, and advanced diagnostics to support your healthspan. Dr. Egbert builds each protocol around your biomarkers, supporting cellular function, mitochondrial health, and systemic resilience. Individual results may vary. These statements have not been evaluated by the FDA.",
       },
       {
         q: "Does CellRX offer NAD+ therapy?",

@@ -210,14 +210,14 @@ export default function DrEgbert() {
                 This is not a marketing distinction. It is a structural guarantee. When you receive treatment at CellRX, you are not trusting a distributor's documentation or a third-party lab's quality assurance. You are trusting a physician who personally ensures the purity, concentration, and provenance of every vial — because he is the one who oversaw its creation.
               </p>
               <p className="text-[#D6D7D9] leading-relaxed mb-8" style={{ fontFamily: BODY_FONT }}>
-                With over a decade of clinical experience in regenerative and functional medicine, Dr. Egbert has helped hundreds of patients avoid surgery, recover faster, and invest in a biology that performs at the level they demand. His approach is evidence-based, individualized, and grounded in the belief that the body has a profound capacity to heal — when given the right signals, at the right concentration, at the right time.
+                With over a decade of clinical experience in regenerative and functional medicine, Dr. Egbert has helped hundreds of patients explore non-surgical options, support their recovery, and invest in a biology that performs at the level they demand. His approach is evidence-based, individualized, and grounded in the belief that the body has a profound capacity to support its own natural processes — when given the right signals, at the right concentration, at the right time.
               </p>
 
               <h3 className="text-[#F6F5EC] mb-4" style={{ fontFamily: TITLE_FONT, fontSize: "clamp(22px, 2.5vw, 32px)" }}>
                 CLINICAL PHILOSOPHY
               </h3>
               <p className="text-[#D6D7D9] leading-relaxed mb-8" style={{ fontFamily: BODY_FONT }}>
-                Dr. Egbert practices medicine from a root-cause perspective. Rather than managing symptoms, he identifies the underlying biological deficits — inflammatory burden, cellular senescence, hormonal imbalance, mitochondrial dysfunction — and addresses them directly with precision-dosed regenerative biologics, biomarker-driven protocols, and personalized supplementation strategies. Every patient receives a protocol designed specifically for their biology, their goals, and their timeline.
+                Dr. Egbert practices medicine from a whole-person perspective. Rather than managing symptoms alone, he identifies the underlying biological factors — inflammatory burden, cellular function, hormonal balance, mitochondrial health — and supports them with precision-dosed regenerative biologics, biomarker-driven protocols, and personalized supplementation strategies. Every patient receives a protocol designed specifically for their biology, their goals, and their timeline.
               </p>
 
               <h3 className="text-[#F6F5EC] mb-4" style={{ fontFamily: TITLE_FONT, fontSize: "clamp(22px, 2.5vw, 32px)" }}>
@@ -233,7 +233,7 @@ export default function DrEgbert() {
                   "Peptide Protocols",
                   "Hormone Optimization",
                   "Biomarker-Driven Health Optimization",
-                  "Chronic Pain & Joint Repair",
+                  "Chronic Pain & Joint Support",
                   "Concierge Medicine",
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-3">

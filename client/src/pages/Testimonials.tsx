@@ -30,8 +30,8 @@ const testimonials = [
     age: 34,
     treatment: "Stem Cell Injection",
     stars: 5,
-    quote: "After two years of knee pain that was threatening my career, CellRX gave me my life back. Within three months of the stem cell injection, I was back to full training. The level of care and attention was unlike anything I've experienced in traditional medicine. The team genuinely cared about my outcome, not just the procedure.",
-    result: "Returned to full athletic training within 3 months"
+    quote: "After two years of knee pain, I sought care at CellRX. Within three months of the stem cell injection, I was back to full training. The level of care and attention was unlike anything I've experienced in traditional medicine. The team genuinely cared about my outcome, not just the procedure. Individual results may vary.",
+    result: "Returned to full athletic training within 3 months. Individual results may vary."
   },
   {
     name: "Sarah T.",
@@ -39,8 +39,8 @@ const testimonials = [
     age: 47,
     treatment: "Investment Plan Membership",
     stars: 5,
-    quote: "The Investment Plan membership has completely transformed how I manage my health. Having a dedicated medical team that proactively monitors and optimizes my biology means I can focus entirely on my business and family. My energy levels, cognitive clarity, and resilience have all improved dramatically. The ROI on my health has been extraordinary.",
-    result: "Significant improvement in energy, focus, and resilience"
+    quote: "The Investment Plan membership has changed how I manage my health. Having a dedicated medical team that proactively monitors my biology means I can focus entirely on my business and family. My energy levels, cognitive clarity, and resilience have all improved. Individual results may vary.",
+    result: "Reported improvement in energy, focus, and resilience. Individual results may vary."
   },
   {
     name: "David L.",
@@ -48,8 +48,8 @@ const testimonials = [
     age: 58,
     treatment: "Stem Cell IV Therapy",
     stars: 5,
-    quote: "I was skeptical at first, but the results from the IV therapy have been remarkable. My energy levels, cognitive clarity, and recovery from workouts have all improved dramatically. The team at CellRX is professional, discreet, and genuinely invested in my outcomes. I've recommended them to several colleagues.",
-    result: "Dramatic improvement in energy, cognition, and recovery"
+    quote: "I was skeptical at first, but the results from the IV therapy have been notable. My energy levels, cognitive clarity, and recovery from workouts have all improved. The team at CellRX is professional, discreet, and genuinely invested in my outcomes. I've recommended them to several colleagues. Individual results may vary.",
+    result: "Reported improvement in energy, cognition, and recovery. Individual results may vary."
   },
   {
     name: "Jennifer M.",
@@ -57,8 +57,8 @@ const testimonials = [
     age: 41,
     treatment: "Stem Cell Injection",
     stars: 5,
-    quote: "I had a shoulder injury that had been limiting my quality of life for years. After the stem cell injection at CellRX, the improvement was gradual but steady — and by month four, I had full range of motion back. I avoided surgery entirely. The team was incredibly thorough in explaining every step of the process.",
-    result: "Full shoulder mobility restored, surgery avoided"
+    quote: "I had a shoulder injury that had been limiting my quality of life for years. After the stem cell injection at CellRX, the improvement was gradual but steady — and by month four, I had significantly improved range of motion. I was able to avoid surgery. The team was incredibly thorough in explaining every step of the process. Individual results may vary.",
+    result: "Reported significant improvement in shoulder mobility. Individual results may vary."
   },
   {
     name: "Robert K.",
@@ -75,8 +75,8 @@ const testimonials = [
     age: 38,
     treatment: "Stem Cell IV Therapy",
     stars: 5,
-    quote: "As a fitness professional, recovery is everything. The IV therapy has been a game-changer for my training and recovery. I feel like I've turned back the clock by a decade. The clinic itself is beautiful, the staff is exceptional, and the results speak for themselves.",
-    result: "Accelerated recovery and improved athletic performance"
+    quote: "As a fitness professional, recovery is everything. The IV therapy has been a meaningful addition to my training and recovery routine. The clinic itself is beautiful, the staff is exceptional, and I have been very pleased with my experience. Individual results may vary.",
+    result: "Reported improved recovery and athletic performance. Individual results may vary."
   }
 ];
 
@@ -172,10 +172,10 @@ export default function Testimonials() {
             className="text-white mb-4 fade-up"
             style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(36px, 5vw, 64px)" }}
           >
-            YOUR TRANSFORMATION STARTS HERE
+            YOUR JOURNEY STARTS HERE
           </h2>
           <p className="text-white/70 mb-8 max-w-xl mx-auto fade-up" style={{ transitionDelay: "0.1s" }}>
-            Join hundreds of patients who have reclaimed their vitality, restored their performance, and invested in a biology that works for them. Book your private consultation today.
+            Join hundreds of patients who have invested in their health and biology. Book your private consultation today. Individual results may vary.
           </p>
           <Link href="/contact">
             <button className="bg-white text-[#0047BB] font-bold text-xs tracking-widest uppercase px-10 py-4 hover:bg-[#F6F5EC] transition-colors fade-up" style={{ transitionDelay: "0.2s" }}>

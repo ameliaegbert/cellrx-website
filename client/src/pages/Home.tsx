@@ -75,7 +75,7 @@ const faqs = [
   },
   {
     q: "When will I start to notice results?",
-    a: "Many patients report meaningful improvements in pain, mobility, energy, and cognitive clarity within the first few weeks. Because regenerative healing operates at the cellular level, the full arc of benefit often continues to unfold over three to six months as your body rebuilds and restores function. The results are not a temporary mask — they represent genuine biological repair."
+    a: "Many patients report meaningful improvements in pain, mobility, energy, and cognitive clarity within the first few weeks. Because regenerative support operates at the cellular level, the full arc of benefit often continues to unfold over three to six months. Individual results may vary. These statements have not been evaluated by the FDA."
   },
   {
     q: "How long does a procedure take, and what is the recovery like?",
@@ -293,20 +293,20 @@ export default function Home() {
                 img: INJECTION_IMG,
                 label: "01",
                 title: "STEM CELL INJECTION",
-                sub: "Targeted Joint & Tissue Repair",
-                desc: "Precision-dosed regenerative biologics delivered directly to the site of damage — giving your body the exact signals it needs to repair tissue, eliminate chronic inflammation, and restore function without surgery.",
+                sub: "Targeted Joint & Tissue Support",
+                desc: "Precision-dosed regenerative biologics delivered directly to the site of damage — giving your body the exact biologic signals it needs to support tissue, promote a healthy inflammatory response, and support joint function.",
                 price: "Starting at $2,500",
-                features: ["Addresses root cause, not symptoms", "Eliminates chronic inflammation", "Restores mobility — avoids surgery"],
+                features: ["Supports the body's natural processes", "Promotes a healthy inflammatory response", "Supports mobility and joint function"],
                 href: "/services"
               },
               {
                 img: IV_IMG,
                 label: "02",
                 title: "STEM CELL IV THERAPY",
-                sub: "Systemic Regeneration & Optimization",
-                desc: "A full-body regenerative infusion that delivers concentrated biologics through the bloodstream — targeting inflammation, accelerating cellular repair, and restoring the energy and clarity of a younger biology.",
+                sub: "Systemic Regenerative Support & Optimization",
+                desc: "A full-body regenerative infusion that delivers concentrated biologics through the bloodstream — supporting a healthy inflammatory response, promoting cellular renewal, and supporting the energy and clarity of optimized biology.",
                 price: "Starting at $4,000",
-                features: ["Whole-body cellular restoration", "Elevates energy and cognitive performance", "Accelerates recovery, extends longevity"],
+                features: ["Whole-body cellular support", "Supports energy and cognitive performance", "Supports recovery and healthy aging"],
                 href: "/services"
               },
               {
@@ -517,21 +517,21 @@ export default function Home() {
                 name: "Michael R.",
                 role: "Professional Athlete",
                 stars: 5,
-                quote: "After two years of knee pain that was threatening my career, CellRX gave me my life back. Within three months of the stem cell injection, I was back to full training. The level of care was unlike anything I've experienced in traditional medicine.",
+                quote: "After two years of knee pain, I sought care at CellRX. Within three months of the stem cell injection, I was back to full training. The level of care was unlike anything I've experienced in traditional medicine. Individual results may vary.",
                 treatment: "Stem Cell Injection"
               },
               {
                 name: "Sarah T.",
                 role: "CEO & Entrepreneur",
                 stars: 5,
-                quote: "The Black Label membership has completely transformed how I manage my health. Having a dedicated physician who proactively monitors and optimizes my biology means I can focus entirely on what matters. The ROI on my health has been extraordinary.",
+                quote: "The Black Label membership has changed how I manage my health. Having a dedicated physician who proactively monitors my biology means I can focus entirely on what matters. Individual results may vary.",
                 treatment: "Black Label Concierge Medicine"
               },
               {
                 name: "David L.",
                 role: "Executive",
                 stars: 5,
-                quote: "I was skeptical at first, but the results from the IV therapy have been remarkable. My energy levels, cognitive clarity, and recovery from workouts have all improved dramatically. The team at CellRX is professional, discreet, and genuinely invested in my outcomes.",
+                quote: "I was skeptical at first, but the results from the IV therapy have been notable. My energy levels, cognitive clarity, and recovery from workouts have all improved. The team at CellRX is professional, discreet, and genuinely invested in my outcomes. Individual results may vary.",
                 treatment: "Stem Cell IV Therapy"
               }
             ].map((t, i) => (

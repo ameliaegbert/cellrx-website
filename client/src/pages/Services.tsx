@@ -27,7 +27,7 @@ const SERVICE_FAQS = [
   },
   {
     q: "When will I see results from stem cell therapy?",
-    a: "Many patients report initial improvements in pain and inflammation within two to four weeks. The more significant structural repair — rebuilding of cartilage and connective tissue — continues to unfold over three to six months. Results are not a temporary mask; they represent genuine biological repair that tends to be durable at one and two-year follow-up."
+    a: "Many patients report initial improvements in pain and inflammation within two to four weeks. Regenerative support continues to unfold over three to six months as the body's natural processes are engaged. Individual results may vary. These statements have not been evaluated by the FDA."
   },
   {
     q: "Are CellRX stem cells safe and ethically sourced?",
@@ -35,7 +35,7 @@ const SERVICE_FAQS = [
   },
   {
     q: "What conditions can be treated with stem cell therapy at CellRX?",
-    a: "Common conditions treated include knee osteoarthritis, hip osteoarthritis, rotator cuff tears and tendinopathy, Achilles tendinopathy, plantar fasciitis, degenerative disc disease, chronic systemic inflammation, post-COVID syndrome, chronic fatigue, and cognitive decline. Your consultation will determine whether your specific condition makes you a strong candidate."
+    a: "Patients who have sought regenerative support include those with knee osteoarthritis, hip osteoarthritis, rotator cuff tendinopathy, Achilles tendinopathy, plantar fasciitis, degenerative disc disease, chronic systemic inflammation, post-COVID syndrome, chronic fatigue, and cognitive concerns. Your consultation will determine whether you are a strong candidate. Individual results may vary."
   },
 ];
 
@@ -194,7 +194,7 @@ export default function Services() {
               </div>
             </div>
             <div className="fade-up">
-              <p className="section-label mb-4">Targeted Joint & Tissue Repair</p>
+              <p className="section-label mb-4">Targeted Joint & Tissue Support</p>
               <h2
                 className="text-[#F6F5EC] mb-4"
                 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(36px, 4vw, 56px)" }}
@@ -203,7 +203,7 @@ export default function Services() {
               </h2>
               <div className="gold-rule mb-6" />
               <p className="text-[#D6D7D9]/80 leading-relaxed mb-6">
-                Our Stem Cell Injection therapy delivers a precision-dosed concentration of regenerative biologics directly into the affected joint or tissue. This targeted approach gives your body the exact biologic signals it needs to repair damaged tissue, resolve chronic inflammation, and restore function — without surgery, without lengthy recovery, and without compromise.
+                Our Stem Cell Injection therapy delivers a precision-dosed concentration of regenerative biologics directly into the affected joint or tissue. This targeted approach gives your body the exact biologic signals it needs to support tissue, promote a healthy inflammatory response, and support function — with minimal recovery and without compromise.
               </p>
               <p className="text-[#D6D7D9]/80 leading-relaxed mb-8">
                 Unlike treatments sourced through distributors, every vial we use has been under our Medical Director's direct oversight from procurement to administration. You receive the full therapeutic dose — never diluted, never replicated — for results that reflect the true potential of regenerative medicine.
@@ -211,10 +211,10 @@ export default function Services() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
                 {[
-                  "Addresses root cause, not symptoms",
-                  "Resolves chronic joint inflammation",
-                  "Restores mobility and range of motion",
-                  "Avoids surgery and extended recovery",
+                  "Supports the body's natural processes",
+                  "Promotes a healthy inflammatory response",
+                  "Supports mobility and range of motion",
+                  "Minimally invasive — same-day return to activity",
                   "Completed in under 60 minutes",
                   "Full chain-of-custody biologics",
                 ].map((f, i) => (
@@ -269,18 +269,18 @@ export default function Services() {
               </h2>
               <div className="gold-rule mb-6" />
               <p className="text-[#D6D7D9]/80 leading-relaxed mb-6">
-                Our Stem Cell IV Therapy delivers a concentrated infusion of regenerative biologics directly into the bloodstream — allowing them to travel throughout the body, seek out areas of inflammation and cellular stress, and initiate a cascade of repair that affects everything from immune function to cognitive performance to metabolic efficiency.
+                Our Stem Cell IV Therapy delivers a concentrated infusion of regenerative biologics directly into the bloodstream — allowing them to travel throughout the body, support areas of inflammation and cellular stress, and engage the body's natural renewal processes across immune function, cognitive performance, and metabolic efficiency.
               </p>
               <p className="text-[#D6D7D9]/80 leading-relaxed mb-8">
-                This is the treatment of choice for high-performance individuals who demand more from their health — those who want to restore the biology of a younger self, accelerate recovery, and maintain the edge that separates exceptional from ordinary.
+                This is the treatment of choice for high-performance individuals who demand more from their health — those who want to support the biology of a younger self, optimize recovery, and maintain the edge that separates exceptional from ordinary.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
                 {[
-                  "Whole-body cellular restoration",
-                  "Reduces systemic inflammation",
-                  "Elevates energy and cognitive clarity",
-                  "Accelerates athletic recovery",
+                  "Whole-body cellular support",
+                  "Promotes a healthy inflammatory response",
+                  "Supports energy and cognitive clarity",
+                  "Supports athletic recovery",
                   "Supports immune system resilience",
                   "Promotes long-term longevity",
                 ].map((f, i) => (

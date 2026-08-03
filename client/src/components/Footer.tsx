@@ -140,9 +140,11 @@ export default function Footer() {
         </div>
 
         {/* FDA Disclaimer */}
-        <p className="mt-6 text-white/55 text-xs leading-relaxed max-w-3xl" style={{ fontFamily: "'Libre Franklin', sans-serif" }}>
-          <strong className="text-white/55">FDA Disclaimer:</strong> The statements on this website have not been evaluated by the Food and Drug Administration. These products and services are not intended to diagnose, treat, cure, or prevent any disease. Results may vary. Consult your physician before beginning any treatment program.
-        </p>
+        <div className="mt-6 border-t border-white/5 pt-6">
+          <p className="text-white/55 text-xs leading-relaxed max-w-4xl" style={{ fontFamily: "'Libre Franklin', sans-serif" }}>
+            <strong className="text-white/70">FDA Disclaimer:</strong> The statements on this website have not been evaluated by the Food and Drug Administration. The products and services offered by CellRX — including stem cell biologics, peptide protocols, and regenerative therapies — are not intended to diagnose, treat, cure, or prevent any disease or medical condition. Stem cell therapies discussed on this site are offered as part of the practice of medicine by licensed physicians and are not FDA-approved treatments. Individual results may vary. Prior patient outcomes do not guarantee similar results. All treatments are subject to a physician consultation and individualized medical assessment. This website is intended for informational purposes only and does not constitute medical advice. Always consult a qualified healthcare professional before beginning any treatment program.
+          </p>
+        </div>
       </div>
     </footer>
   );

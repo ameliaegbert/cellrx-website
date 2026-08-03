@@ -15,7 +15,7 @@ import { CheckCircle2, Activity, Brain, Zap, Shield, Heart, TrendingUp, Plus, Mi
 const HEALTH_OPT_FAQS = [
   {
     q: "What is health optimization at CellRX?",
-    a: "Health optimization at CellRX is a physician-directed program that uses advanced biomarker testing, personalized protocols, and targeted interventions to help you perform at your biological peak. It goes beyond treating disease — it is about identifying and addressing the subtle imbalances that limit your energy, cognitive performance, and longevity before they become clinical problems."
+    a: "Health optimization at CellRX is a physician-directed program that uses advanced biomarker testing, personalized protocols, and targeted interventions to support your biological performance. It goes beyond standard care — it is about identifying and supporting the subtle imbalances that may limit your energy, cognitive performance, and longevity. Individual results may vary. These statements have not been evaluated by the FDA."
   },
   {
     q: "What biomarkers does CellRX test for health optimization?",
@@ -83,12 +83,12 @@ const pillars = [
   {
     icon: <Zap size={22} className="text-[#FBB217]" />,
     title: "Energy & Recovery",
-    desc: "Addressing the root causes of fatigue — mitochondrial dysfunction, adrenal dysregulation, nutrient deficiencies, and chronic inflammation — rather than masking symptoms with stimulants.",
+    desc: "Supporting the biological factors associated with fatigue — mitochondrial function, adrenal balance, nutrient status, and inflammatory response — rather than masking symptoms with stimulants.",
   },
   {
     icon: <Shield size={22} className="text-[#FBB217]" />,
     title: "Immune Resilience",
-    desc: "Strengthening the immune system's capacity to respond appropriately to threats while reducing the chronic, low-grade inflammation that silently degrades performance and accelerates aging.",
+    desc: "Supporting the immune system's capacity to respond appropriately while promoting a healthy inflammatory response that supports performance and healthy aging.",
   },
   {
     icon: <Heart size={22} className="text-[#FBB217]" />,
@@ -159,7 +159,7 @@ export default function HealthOptimization() {
             className="text-[#D6D7D9]/70 max-w-xl mt-6 leading-relaxed fade-up"
             style={{ fontFamily: "'DM Sans', sans-serif", transitionDelay: "0.2s" }}
           >
-            CellRX Health Optimization is a physician-directed program in Lehi, Utah that uses comprehensive biomarker testing, hormone balancing, and personalized supplementation to help you perform at your biological peak. Dr. Jacob Egbert designs each protocol around your unique lab results — targeting energy, cognitive clarity, metabolic function, and resilience. Most people accept declining performance as inevitable. CellRX treats it as a solvable problem.
+            CellRX Health Optimization is a physician-directed program in Lehi, Utah that uses comprehensive biomarker testing, hormone balancing, and personalized supplementation to support your biological performance. Dr. Jacob Egbert designs each protocol around your unique lab results — supporting energy, cognitive clarity, metabolic function, and resilience. Individual results may vary. These statements have not been evaluated by the FDA.
           </p>
         </div>
       </section>

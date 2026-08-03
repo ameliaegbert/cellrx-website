@@ -29,13 +29,13 @@ type InterestValue = "stem-cell-injection" | "stem-cell-iv" | "black-label" | "g
 
 const testimonials = [
   {
-    quote: "I had been dealing with chronic knee pain for 6 years. After one stem cell injection at CellRX, I was back on the golf course in three weeks. The difference is night and day.",
+    quote: "I had been dealing with chronic knee pain for 6 years. After stem cell injection treatment at CellRX, I was back on the golf course within weeks. The level of care was exceptional. Individual results may vary.",
     author: "Michael T.",
     detail: "Stem Cell Injection Patient",
     stars: 5,
   },
   {
-    quote: "The level of care here is unlike anything I've experienced. Dr. Egbert took the time to understand my goals and designed a protocol specifically for me. I feel 15 years younger.",
+    quote: "The level of care here is unlike anything I've experienced. Dr. Egbert took the time to understand my goals and designed a protocol specifically for me. I feel significantly better. Individual results may vary.",
     author: "Sandra K.",
     detail: "Black Label Member",
     stars: 5,
@@ -118,7 +118,7 @@ export default function Contact() {
             style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(48px, 7vw, 96px)" }}
           >
             BEGIN YOUR<br />
-            <span className="text-[#0047BB]">TRANSFORMATION</span>
+            <span className="text-[#0047BB]">CONSULTATION</span>
           </h1>
         </div>
       </section>

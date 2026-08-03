@@ -118,7 +118,7 @@ export default function Team() {
                 Dr. Egbert serves as the Medical Director of CellRX and simultaneously as the Medical Director of our stem cell source company — a dual role that gives him direct, unbroken oversight of every biologic administered at our clinic. This is not a marketing distinction. It is a structural guarantee: when you receive treatment at CellRX, you are trusting a physician who personally ensures the purity, concentration, and provenance of every vial — because he is the one who oversaw its creation.
               </p>
               <p className="text-[#D6D7D9] leading-relaxed mb-8" style={{ fontFamily: BODY_FONT }}>
-                With over a decade of clinical experience in regenerative and functional medicine, Dr. Egbert has helped hundreds of patients avoid surgery, recover faster, and invest in a biology that performs at the level they demand. His commitment to full chain-of-custody biologics, personalized protocols, and never-diluted products sets the standard for what regenerative medicine can and should be.
+                With over a decade of clinical experience in regenerative and functional medicine, Dr. Egbert has helped hundreds of patients explore non-surgical options, support their recovery, and invest in their biology. His commitment to full chain-of-custody biologics, personalized protocols, and never-diluted products sets the standard for what regenerative medicine can and should be.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">

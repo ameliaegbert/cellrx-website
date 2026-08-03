@@ -252,7 +252,7 @@ export const PAGE_SEO = {
   testimonials: {
     title: "Patient Testimonials & Outcomes — CellRX Regenerative Medicine",
     description:
-      "Real patient stories from CellRX — stem cell therapy outcomes for joint pain, energy, cognitive clarity, and systemic regeneration. Read what our patients say.",
+      "Real patient stories from CellRX — experiences with stem cell therapy for joint pain, energy, cognitive clarity, and systemic support. Individual results may vary. Read what our patients say.",
     canonical: "/testimonials",
     keywords:
       "stem cell therapy reviews Utah, CellRX patient testimonials, regenerative medicine outcomes, stem cell results",
@@ -260,7 +260,7 @@ export const PAGE_SEO = {
   healthOptimization: {
     title: "Health Optimization Programs — CellRX Concierge Medicine",
     description:
-      "CellRX health optimization combines advanced biomarker testing, personalized protocols, and physician-directed interventions to help you perform at your biological peak.",
+      "CellRX health optimization combines advanced biomarker testing, personalized protocols, and physician-directed interventions to support your biological performance. Individual results may vary.",
     canonical: "/health-optimization",
     keywords:
       "health optimization Utah, biomarker testing, functional medicine Utah, personalized health protocols",
@@ -268,7 +268,7 @@ export const PAGE_SEO = {
   longevityPrograms: {
     title: "Longevity Programs — Science-Backed Anti-Aging at CellRX",
     description:
-      "CellRX longevity programs combine regenerative biologics, precision nutrition, hormone optimization, and advanced diagnostics to extend your healthspan.",
+      "CellRX longevity programs combine regenerative biologics, precision nutrition, hormone optimization, and advanced diagnostics to support your healthspan. Individual results may vary.",
     canonical: "/longevity-programs",
     keywords:
       "longevity medicine Utah, anti-aging programs, healthspan optimization, longevity clinic Utah",
@@ -302,7 +302,7 @@ export function getBlogPostSEO(slug: string): SEOProps {
     "iv-stem-cell-therapy-science": {
       title: "The Science Behind IV Stem Cell Therapy — Systemic Regeneration",
       description:
-        "How intravenous stem cell delivery targets inflammation, accelerates cellular repair, and restores the energy and clarity of a younger biology. Expert insight from CellRX.",
+        "How intravenous stem cell delivery supports the body's natural inflammatory response, promotes cellular renewal, and supports energy and cognitive clarity. Expert insight from CellRX.",
       canonical: "/blog/iv-stem-cell-therapy-science",
       ogType: "article",
       keywords: "IV stem cell therapy science, systemic stem cell treatment, stem cell IV Utah",
@@ -342,7 +342,7 @@ export function getBlogPostSEO(slug: string): SEOProps {
     "regenerative-medicine-athletes": {
       title: "Regenerative Medicine for Athletes & High Performers — CellRX",
       description:
-        "How stem cell therapy accelerates recovery, reduces chronic injury risk, and extends peak performance for athletes and high performers.",
+        "How stem cell therapy supports recovery, promotes healthy inflammatory response, and supports performance for athletes and high performers. Individual results may vary.",
       canonical: "/blog/regenerative-medicine-athletes",
       ogType: "article",
       keywords: "regenerative medicine athletes Utah, stem cell therapy sports performance, athlete recovery stem cells",

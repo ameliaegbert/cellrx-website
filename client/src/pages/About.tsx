@@ -77,7 +77,7 @@ export default function About() {
                 CellRX was founded on a singular belief: that the most discerning individuals deserve medical care that matches their standards. We exist at the intersection of cutting-edge regenerative science and the discretion, precision, and white-glove service of a private members' club.
               </p>
               <p className="text-[#D6D7D9] leading-relaxed mb-8" style={{ fontFamily: BODY_FONT }}>
-                Our clinic is located in Lehi, Utah, and serves patients from across the United States who are seeking non-surgical alternatives to chronic pain, accelerated recovery, and proactive longevity optimization. Every protocol we administer is evidence-based, ethically sourced, and tailored to the individual — with a level of provenance and transparency that no other clinic can match.
+                Our clinic is located in Lehi, Utah, and serves patients from across the United States who are seeking non-surgical options to support chronic pain management, recovery, and proactive longevity optimization. Every protocol we administer is evidence-based, ethically sourced, and tailored to the individual — with a level of provenance and transparency that no other clinic can match.
               </p>
               <div className="space-y-3">
                 {[
@@ -156,7 +156,7 @@ export default function About() {
                 This dual role is not a marketing distinction. It is a structural guarantee. When you receive treatment at CellRX, you are not trusting a distributor's documentation. You are trusting a physician who personally ensures the purity, concentration, and provenance of every vial — because he is the one who oversaw its creation.
               </p>
               <p className="text-[#D6D7D9] leading-relaxed mb-8" style={{ fontFamily: BODY_FONT }}>
-                With over a decade of clinical experience in regenerative and functional medicine, Dr. Egbert has helped hundreds of patients avoid surgery, recover faster, and invest in a biology that performs at the level they demand.
+                With over a decade of clinical experience in regenerative and functional medicine, Dr. Egbert has helped hundreds of patients explore non-surgical options, support their recovery, and invest in a biology that performs at the level they demand.
               </p>
               <div className="grid grid-cols-2 gap-4 mb-8">
                 {[

@@ -337,3 +337,21 @@
 - [x] Add location/service descriptor to hero section ("Concierge Regenerative Medicine · Lehi, Utah")
 - [x] Add pricing anchor to Black Label page (Starting at $500/month with add-on breakdown)
 - [x] Add exit intent modal with phone capture (fires on mouse-leave top + 45s fallback; Electron/dashboard excluded)
+
+## FDA Compliance Audit (Aug 3, 2026)
+- [x] Audit all pages for FDA non-compliant disease/treatment claims
+- [x] Fix Services.tsx — remove "eliminate", "cure", "treat disease" language; replace with "support" framing
+- [x] Fix FAQ.tsx — update efficacy claims to use "may support" / "individual results may vary"
+- [x] Fix HealthOptimization.tsx — remove absolute benefit claims
+- [x] Fix LongevityPrograms.tsx — remove "reverse aging" / "extend lifespan" absolute claims
+- [x] Fix BlogPost.tsx — all 7 articles audited; disease treatment claims replaced with support language
+- [x] Fix About.tsx — remove "cure", "treat", "prevent" language
+- [x] Fix DrEgbert.tsx — "avoid surgery" → "explore non-surgical options"; "root-cause" framing softened
+- [x] Fix Home.tsx — testimonials updated with "individual results may vary"; service features softened
+- [x] Fix Testimonials.tsx — all 6 testimonials updated; "Result:" callouts softened; CTA updated
+- [x] Fix BlackLabel.tsx — "prevents decline" → "supports health proactively"; "reverse" → "supporting"
+- [x] Fix useSEO.ts — metadata descriptions updated to remove absolute efficacy claims
+- [x] Fix Team.tsx — "avoid surgery, recover faster" → "explore non-surgical options, support recovery"
+- [x] Fix Contact.tsx — testimonials updated; hero headline changed from "TRANSFORMATION" to "CONSULTATION"
+- [x] Fix Blog.tsx — article excerpts updated to remove absolute treatment/cure claims
+- [x] Strengthen global FDA disclaimer in Footer.tsx — now explicitly covers stem cells, peptides, and regenerative therapies; includes "not FDA-approved treatments" and "individual results may vary"

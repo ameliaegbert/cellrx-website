@@ -23,7 +23,7 @@ const LONGEVITY_FAQS = [
   },
   {
     q: "How does stem cell therapy fit into a longevity program?",
-    a: "Stem cell therapy is a cornerstone of CellRX longevity protocols. IV stem cell delivery provides systemic cellular rejuvenation — reducing biological age markers, improving mitochondrial function, reducing chronic inflammation, and restoring the regenerative capacity that declines with age. Many longevity patients receive annual or semi-annual IV therapy as part of their ongoing protocol."
+    a: "Stem cell therapy is a cornerstone of CellRX longevity protocols. IV stem cell delivery provides systemic regenerative support — supporting biological age markers, mitochondrial function, healthy inflammatory response, and the regenerative capacity that naturally changes with age. Many longevity patients receive annual or semi-annual IV therapy as part of their ongoing protocol. Individual results may vary."
   },
   {
     q: "How do I know if a longevity program is right for me?",
@@ -77,7 +77,7 @@ const programs = [
     number: "01",
     title: "CELLULAR RENEWAL PROTOCOL",
     sub: "Systemic Regeneration",
-    desc: "A structured series of IV stem cell infusions designed to address the root causes of biological aging: cellular senescence, mitochondrial dysfunction, chronic inflammation, and declining regenerative capacity. This is the flagship longevity protocol for patients seeking whole-body biological renewal.",
+    desc: "A structured series of IV stem cell infusions designed to support healthy aging by engaging the body's natural processes around cellular function, mitochondrial health, inflammatory balance, and regenerative capacity. This is the flagship longevity protocol for patients seeking whole-body biological support.",
     features: [
       "Series of 2–4 IV infusions spaced 4–8 weeks apart",
       "Full biomarker assessment before and after each infusion",
@@ -126,8 +126,8 @@ const longevityPrinciples = [
     desc: "Every longevity program begins with a comprehensive biomarker assessment. You cannot optimize what you do not measure. We establish your biological baseline before designing any intervention.",
   },
   {
-    title: "Address Root Causes",
-    desc: "Longevity is not achieved by managing symptoms. It requires identifying and addressing the underlying biological mechanisms that drive aging — cellular senescence, inflammation, hormonal decline, mitochondrial dysfunction.",
+    title: "Support the Body's Natural Processes",
+    desc: "Longevity is not achieved by managing symptoms. It requires identifying and supporting the underlying biological mechanisms associated with aging — cellular function, inflammatory balance, hormonal health, mitochondrial function.",
   },
   {
     title: "Personalize Everything",
@@ -181,7 +181,7 @@ export default function LongevityPrograms() {
             className="text-[#D6D7D9]/70 max-w-xl mt-6 leading-relaxed fade-up"
             style={{ fontFamily: "'DM Sans', sans-serif", transitionDelay: "0.2s" }}
           >
-            CellRX Longevity Programs in Lehi, Utah combine regenerative stem cell biologics, NAD+ therapy, peptide protocols, hormone optimization, and advanced diagnostics to extend your healthspan — not just your lifespan. Dr. Jacob Egbert builds each protocol around your biomarkers, targeting cellular repair, mitochondrial function, and systemic resilience. These programs are designed for individuals who refuse to accept biological decline as inevitable.
+            CellRX Longevity Programs in Lehi, Utah combine regenerative stem cell biologics, NAD+ therapy, peptide protocols, hormone optimization, and advanced diagnostics to support your healthspan — not just your lifespan. Dr. Jacob Egbert builds each protocol around your biomarkers, supporting cellular function, mitochondrial health, and systemic resilience. Individual results may vary. These statements have not been evaluated by the FDA.
           </p>
           <div className="mt-10 flex flex-wrap gap-4 fade-up" style={{ transitionDelay: "0.3s" }}>
             <Link href="/contact">
@@ -222,7 +222,7 @@ export default function LongevityPrograms() {
             {[
               "Combines stem cell biologics, NAD+, peptides, and hormone optimization",
               "Protocols built around your biomarkers — not a generic template",
-              "Targets cellular repair, mitochondrial function, and systemic resilience",
+              "Supports cellular function, mitochondrial health, and systemic resilience",
               "Advanced diagnostics included — track biological age, not just calendar age",
               "Designed for individuals who refuse to accept biological decline",
               "Physician-directed by Dr. Jacob Egbert — 10+ years in regenerative medicine",
