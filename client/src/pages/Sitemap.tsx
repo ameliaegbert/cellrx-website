@@ -16,7 +16,7 @@ const sections = [
     links: [
       { label: "Home", href: "/", desc: "CellRX concierge regenerative medicine overview" },
       { label: "About Us", href: "/about", desc: "Our story, mission, and medical team" },
-      { label: "Our Team", href: "/team", desc: "Meet Dr. Jacob Egbert and the CellRX team" },
+      { label: "Dr. Jacob Egbert", href: "/about/dr-egbert", desc: "Meet CellRX's Medical Director" },
       { label: "Contact", href: "/contact", desc: "Book a consultation or reach our team" },
       { label: "Patient Testimonials", href: "/testimonials", desc: "Real patient outcomes and stories" },
       { label: "FAQ", href: "/faq", desc: "Answers to common questions about stem cell therapy, pricing, safety, and more" },
