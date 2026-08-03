@@ -73,6 +73,13 @@ export function serveStatic(app: Express) {
           // no-store would block BF-cache entirely, hurting Lighthouse score
           res.setHeader("Cache-Control", "no-cache, must-revalidate");
         } else if (
+          // sitemap.xml and robots.txt must never be long-cached — search engines
+          // (including Google Search Console) need to fetch fresh copies on demand.
+          // A 1-year cache causes GSC "Couldn't fetch" errors.
+          filePath.endsWith("sitemap.xml") || filePath.endsWith("robots.txt")
+        ) {
+          res.setHeader("Cache-Control", "public, max-age=0, must-revalidate");
+        } else if (
           filePath.match(/\.(js|css|woff2?|ttf|otf|eot|ico|svg|png|jpg|jpeg|webp|avif|gif)$/)
         ) {
           // Hashed assets get immutable cache

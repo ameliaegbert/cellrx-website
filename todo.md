@@ -338,6 +338,9 @@
 - [x] Add pricing anchor to Black Label page (Starting at $500/month with add-on breakdown)
 - [x] Add exit intent modal with phone capture (fires on mouse-leave top + 45s fallback; Electron/dashboard excluded)
 
+## Sitemap Fix (Aug 3, 2026)
+- [x] Fix sitemap.xml "Couldn't fetch" error in Google Search Console — root cause was 1-year Cache-Control header applied by express.static; added explicit `max-age=0, must-revalidate` rule for sitemap.xml and robots.txt in server/_core/vite.ts
+
 ## FDA Compliance Audit (Aug 3, 2026)
 - [x] Audit all pages for FDA non-compliant disease/treatment claims
 - [x] Fix Services.tsx — remove "eliminate", "cure", "treat disease" language; replace with "support" framing
