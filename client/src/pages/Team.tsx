@@ -12,11 +12,11 @@ import Footer from "@/components/Footer";
 import { ArrowRight } from "lucide-react";
 import { useSEO } from "@/hooks/useSEO";
 
-const PHYSICIAN_IMG = "/manus-storage/physician_portrait_opt_0f7ccc2a.webp";
-const CLINIC_IMG = "/manus-storage/clinic_interior_opt_d513ed06.webp";
-const AMELIA_IMG = "/manus-storage/amelia_egbert_opt_0e0c389f.webp";
-const SAMANTHA_IMG = "/manus-storage/samantha_buker_opt_c69cab89.webp";
-const DAVID_IMG = "/manus-storage/david_fajardo_opt_4507be8d.webp";
+const PHYSICIAN_IMG = "/manus-storage/physician_portrait_opt_0f7ccc2a_49ec7e57.webp";
+const CLINIC_IMG = "/manus-storage/clinic_interior_opt_d513ed06_f900112b.webp";
+const AMELIA_IMG = "/manus-storage/amelia_egbert_opt_0e0c389f_1b1fbab4.webp";
+const SAMANTHA_IMG = "/manus-storage/samantha_buker_opt_c69cab89_eb049963.webp";
+const DAVID_IMG = "/manus-storage/david_fajardo_opt_4507be8d_11e2e723.webp";
 
 const TITLE_FONT = "'Bebas Neue', sans-serif";
 const SUBTITLE_FONT = "'DM Sans', sans-serif";
@@ -38,7 +38,7 @@ export default function Team() {
     title: "Our Team — CellRX Regenerative Medicine | Lehi, Utah",
     description: "Meet the CellRX team: Dr. Jacob Egbert (Medical Director), Amelia Egbert (COO), Samantha Buker, and David Fajardo. A small, intentional team built for exceptional results.",
     canonical: "/team",
-    ogImage: "/manus-storage/physician_portrait_opt_0f7ccc2a.webp",
+    ogImage: "/manus-storage/physician_portrait_opt_0f7ccc2a_49ec7e57.webp",
   });
   useScrollAnimation();
 

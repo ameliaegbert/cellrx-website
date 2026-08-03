@@ -12,11 +12,11 @@ import Footer from "@/components/Footer";
 import { ArrowRight, Calendar, Clock } from "lucide-react";
 import { toast } from "sonner";
 
-const INJECTION_IMG = "/manus-storage/service_injection_opt_c744419a.webp";
-const IV_IMG = "/manus-storage/service_iv_opt_42742b15.webp";
-const CLINIC_IMG = "/manus-storage/clinic_interior_opt_d513ed06.webp";
-const PHYSICIAN_IMG = "/manus-storage/clinic_interior_opt_d513ed06.webp";
-const BG_DARK_IMG = "/manus-storage/background_dark_opt_b4ede28a.webp";
+const INJECTION_IMG = "/manus-storage/service_injection_opt_c744419a_a1cec12d.webp";
+const IV_IMG = "/manus-storage/service_iv_opt_42742b15_4d88b573.webp";
+const CLINIC_IMG = "/manus-storage/clinic_interior_opt_d513ed06_f900112b.webp";
+const PHYSICIAN_IMG = "/manus-storage/clinic_interior_opt_d513ed06_f900112b.webp";
+const BG_DARK_IMG = "/manus-storage/background_dark_opt_b4ede28a_fed4916f.webp";
 
 function useScrollAnimation() {
   useEffect(() => {

@@ -12,7 +12,7 @@ import Footer from "@/components/Footer";
 import { MapPin, Phone, Mail, Clock, CheckCircle2, Loader2, AlertCircle, Star } from "lucide-react";
 import { trpc } from "@/lib/trpc";
 
-const CLINIC_IMG = "/manus-storage/clinic_interior_opt_d513ed06.webp";
+const CLINIC_IMG = "/manus-storage/clinic_interior_opt_d513ed06_f900112b.webp";
 
 function useScrollAnimation() {
   useEffect(() => {

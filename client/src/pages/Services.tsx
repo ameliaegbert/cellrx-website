@@ -62,9 +62,9 @@ function ServiceFAQItem({ q, a }: { q: string; a: string }) {
   );
 }
 
-const INJECTION_IMG = "/manus-storage/haps12_services_opt_03ce80ba.webp";
-const IV_IMG = "/manus-storage/service_iv_opt_42742b15.webp";
-const CLINIC_IMG = "/manus-storage/clinic_interior_opt_d513ed06.webp";
+const INJECTION_IMG = "/manus-storage/haps12_services_opt_03ce80ba_ab1f698c.webp";
+const IV_IMG = "/manus-storage/service_iv_opt_42742b15_4d88b573.webp";
+const CLINIC_IMG = "/manus-storage/clinic_interior_opt_d513ed06_f900112b.webp";
 
 function useScrollAnimation() {
   useEffect(() => {

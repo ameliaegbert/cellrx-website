@@ -54,9 +54,9 @@ function HealthOptFAQItem({ q, a }: { q: string; a: string }) {
   );
 }
 
-const CLINIC_IMG = "/manus-storage/clinic_interior_opt_d513ed06.webp";
-const IV_IMG = "/manus-storage/service_iv_opt_42742b15.webp";
-const PHYSICIAN_IMG = "/manus-storage/physician_portrait_opt_0f7ccc2a.webp";
+const CLINIC_IMG = "/manus-storage/clinic_interior_opt_d513ed06_f900112b.webp";
+const IV_IMG = "/manus-storage/service_iv_opt_42742b15_4d88b573.webp";
+const PHYSICIAN_IMG = "/manus-storage/physician_portrait_opt_0f7ccc2a_49ec7e57.webp";
 
 function useScrollAnimation() {
   useEffect(() => {

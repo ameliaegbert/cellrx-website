@@ -60,9 +60,9 @@ function BlackLabelFAQItem({ q, a }: { q: string; a: string }) {
   );
 }
 
-const BLACK_LABEL_IMG = "/manus-storage/CELLRX_HAPS_v2-1_flipped_768391a0.webp";
-const BG_DARK_IMG = "/manus-storage/background_dark_opt_b4ede28a.webp";
-const CLINIC_IMG = "/manus-storage/clinic_interior_opt_d513ed06.webp";
+const BLACK_LABEL_IMG = "/manus-storage/CELLRX_HAPS_v2-1_flipped_768391a0_3ce6782e.webp";
+const BG_DARK_IMG = "/manus-storage/background_dark_opt_b4ede28a_fed4916f.webp";
+const CLINIC_IMG = "/manus-storage/clinic_interior_opt_d513ed06_f900112b.webp";
 
 const TITLE_FONT = "'Bebas Neue', sans-serif";
 const SUBTITLE_FONT = "'DM Sans', sans-serif";

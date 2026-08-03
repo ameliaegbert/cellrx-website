@@ -14,17 +14,17 @@ import { useSEO, PAGE_SEO, useFAQSchema } from "@/hooks/useSEO";
 
 // CDN URLs
 // Optimized service card images — resized to 800×800, WebP quality 82 (was 780–1066 KB, now 28–47 KB)
-const INJECTION_IMG = "/manus-storage/service_injection_opt_c744419a.webp";
-const IV_IMG = "/manus-storage/service_iv_opt_42742b15.webp";
-const BLACK_LABEL_IMG = "/manus-storage/service_black_label_opt_686cc654.webp";
-const CLINIC_IMG = "/manus-storage/clinic_interior_opt_d513ed06.webp";
-const PHYSICIAN_IMG = "/manus-storage/physician_portrait_opt_0f7ccc2a.webp";
+const INJECTION_IMG = "/manus-storage/service_injection_opt_c744419a_a1cec12d.webp";
+const IV_IMG = "/manus-storage/service_iv_opt_42742b15_4d88b573.webp";
+const BLACK_LABEL_IMG = "/manus-storage/service_black_label_opt_686cc654_3484a9b6.webp";
+const CLINIC_IMG = "/manus-storage/clinic_interior_opt_d513ed06_f900112b.webp";
+const PHYSICIAN_IMG = "/manus-storage/physician_portrait_opt_0f7ccc2a_49ec7e57.webp";
 // Optimized hero images — responsive variants (WebP, landscape crop)
-const HERO_DESKTOP = "/manus-storage/hero_desktop_1920_d480245c.webp"; // 1920×1080, 69 KB
-const HERO_TABLET  = "/manus-storage/hero_tablet_1280_75e16c47.webp";  // 1280×720,  33 KB
-const HERO_MOBILE  = "/manus-storage/hero_mobile_768_2ed2f8a9.webp";   // 768×432,   12 KB
-const CONSULTATION_IMG = "/manus-storage/consultation_photo_opt_b1d3b598.webp";
-const BG_DARK_IMG = "/manus-storage/background_dark_opt_b4ede28a.webp";
+const HERO_DESKTOP = "/manus-storage/hero_desktop_1920_d480245c_f692d90a.webp"; // 1920×1080, 69 KB
+const HERO_TABLET  = "/manus-storage/hero_tablet_1280_75e16c47_5b3a69f3.webp";  // 1280×720,  33 KB
+const HERO_MOBILE  = "/manus-storage/hero_mobile_768_2ed2f8a9_d2b37788.webp";   // 768×432,   12 KB
+const CONSULTATION_IMG = "/manus-storage/consultation_photo_opt_b1d3b598_17a49879.webp";
+const BG_DARK_IMG = "/manus-storage/background_dark_opt_b4ede28a_fed4916f.webp";
 
 function useScrollAnimation() {
   useEffect(() => {

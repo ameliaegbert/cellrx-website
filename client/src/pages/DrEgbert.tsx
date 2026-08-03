@@ -12,8 +12,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { CheckCircle2, Award, BookOpen, Stethoscope, ArrowRight, GraduationCap, Building2 } from "lucide-react";
 
-const PHYSICIAN_IMG = "/manus-storage/physician_portrait_opt_0f7ccc2a.webp";
-const CLINIC_IMG = "/manus-storage/clinic_interior_opt_d513ed06.webp";
+const PHYSICIAN_IMG = "/manus-storage/physician_portrait_opt_0f7ccc2a_49ec7e57.webp";
+const CLINIC_IMG = "/manus-storage/clinic_interior_opt_d513ed06_f900112b.webp";
 
 const TITLE_FONT = "'Bebas Neue', sans-serif";
 const SUBTITLE_FONT = "'DM Sans', sans-serif";

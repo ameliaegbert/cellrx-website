@@ -358,3 +358,10 @@
 - [x] Fix Contact.tsx — testimonials updated; hero headline changed from "TRANSFORMATION" to "CONSULTATION"
 - [x] Fix Blog.tsx — article excerpts updated to remove absolute treatment/cure claims
 - [x] Strengthen global FDA disclaimer in Footer.tsx — now explicitly covers stem cells, peptides, and regenerative therapies; includes "not FDA-approved treatments" and "individual results may vary"
+
+## Image Compression (Aug 3, 2026)
+- [x] Inventory all 16 manus-storage image URLs used across the site
+- [x] Download originals and test AVIF vs WebP compression — AVIF increased file sizes (images already well-optimized); re-compressed WebP at quality 80 saves 13.7% overall (872KB → 753KB)
+- [x] Upload 16 re-compressed WebP images to manus-storage with new content-hashed filenames
+- [x] Update all image references across 14 source files (Footer, Navbar, About, BlackLabel, Blog, BlogPost, Contact, DrEgbert, HealthOptimization, Home, LongevityPrograms, Services, Team, Testimonials)
+- [x] Logo (cellrx_logo_opt_9963f027.webp) is only 5KB — no compression needed

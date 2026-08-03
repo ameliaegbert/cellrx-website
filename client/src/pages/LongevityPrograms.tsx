@@ -54,11 +54,11 @@ function LongevityFAQItem({ q, a }: { q: string; a: string }) {
   );
 }
 
-const BG_DARK_IMG = "/manus-storage/background_dark_opt_b4ede28a.webp";
-const IV_IMG = "/manus-storage/service_iv_opt_42742b15.webp";
-const INJECTION_IMG = "/manus-storage/service_injection_opt_c744419a.webp";
-const BLACK_LABEL_IMG = "/manus-storage/service_black_label_opt_686cc654.webp";
-const CLINIC_IMG = "/manus-storage/clinic_interior_opt_d513ed06.webp";
+const BG_DARK_IMG = "/manus-storage/background_dark_opt_b4ede28a_fed4916f.webp";
+const IV_IMG = "/manus-storage/service_iv_opt_42742b15_4d88b573.webp";
+const INJECTION_IMG = "/manus-storage/service_injection_opt_c744419a_a1cec12d.webp";
+const BLACK_LABEL_IMG = "/manus-storage/service_black_label_opt_686cc654_3484a9b6.webp";
+const CLINIC_IMG = "/manus-storage/clinic_interior_opt_d513ed06_f900112b.webp";
 
 function useScrollAnimation() {
   useEffect(() => {
