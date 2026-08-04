@@ -49,98 +49,98 @@ export const PAGE_SEO = {
     "CellRX offers private, physician-directed consultations for people seeking information about regenerative medicine, health optimization, and concierge care.",
   ),
   about: page(
-    "/about",
+    "/about/",
     "About CellRX Regenerative Medicine | Lehi, Utah",
     "Meet the CellRX team and learn about the clinic's approach to private, physician-directed consultations in Lehi, Utah.",
     "About CellRX Regenerative Medicine",
     "Learn about the people, location, and consultation approach behind CellRX Regenerative Medicine.",
   ),
   drEgbert: page(
-    "/about/dr-egbert",
+    "/about/dr-egbert/",
     "Dr. Jacob Egbert | CellRX Regenerative Medicine",
     "Learn about Dr. Jacob Egbert and his role at CellRX Regenerative Medicine in Lehi, Utah.",
     "Dr. Jacob Egbert",
     "Read the CellRX physician profile and learn about the clinic's approach to patient consultations.",
   ),
   services: page(
-    "/services",
+    "/services/",
     "Regenerative Medicine Services | CellRX, Lehi, Utah",
     "Explore CellRX service options, the consultation process, and questions to discuss with a qualified clinician.",
     "Regenerative Medicine Services",
     "Explore CellRX service options and use a private consultation to discuss suitability, evidence, risks, alternatives, and next steps with a qualified clinician.",
   ),
   blackLabel: page(
-    "/black-label",
+    "/black-label/",
     "Black Label Concierge Medicine | CellRX",
     "Learn about CellRX's private concierge-care membership and its consultation-focused health-planning experience.",
     "Black Label Concierge Medicine",
     "CellRX Black Label is a private concierge-care membership designed around physician-led consultation and ongoing health-planning conversations.",
   ),
   contact: page(
-    "/contact",
+    "/contact/",
     "Request a Private Consultation | CellRX, Lehi, Utah",
     "Contact CellRX Regenerative Medicine in Lehi, Utah to request a private consultation and learn what to expect before your visit.",
     "Request a Private Consultation",
     "Contact CellRX to request a private consultation, ask logistical questions, and learn what to expect before your visit.",
   ),
   blog: page(
-    "/blog",
+    "/blog/",
     "Regenerative Medicine & Patient Education | CellRX",
     "Read CellRX's patient-education articles about regenerative medicine, health optimization, and preparing for a clinician conversation.",
     "Regenerative Medicine & Patient Education",
     "Read general educational articles from CellRX and discuss any personal health questions with a qualified healthcare professional.",
   ),
   testimonials: page(
-    "/testimonials",
+    "/testimonials/",
     "Patient Experiences | CellRX Regenerative Medicine",
     "Read patient experiences shared with CellRX, together with important information about individual variability and results.",
     "Patient Experiences",
     "Individual patient experiences are personal and may not predict another person's experience or outcome.",
   ),
   healthOptimization: page(
-    "/health-optimization",
+    "/health-optimization/",
     "Health Optimization Programs | CellRX",
     "Learn about CellRX's health-optimization consultation options in Lehi, Utah.",
     "Health Optimization Programs",
     "Explore CellRX health-optimization consultation options and discuss your questions with a qualified clinician.",
   ),
   longevityPrograms: page(
-    "/longevity-programs",
+    "/longevity-programs/",
     "Longevity Programs | CellRX",
     "Learn about CellRX's consultation-focused longevity programs in Lehi, Utah.",
     "Longevity Programs",
     "Explore CellRX longevity-program consultation options and discuss individual goals with a qualified clinician.",
   ),
   faq: page(
-    "/faq",
+    "/faq/",
     "Frequently Asked Questions | CellRX Regenerative Medicine",
     "Find general questions about CellRX, private consultations, logistics, and patient education in Lehi, Utah.",
     "Frequently Asked Questions",
     "Review general information about CellRX and bring questions about your individual circumstances to a qualified clinician.",
   ),
   sitemap: page(
-    "/sitemap",
+    "/sitemap/",
     "Site Map | CellRX Regenerative Medicine",
     "Browse the public pages and patient-education resources available on the CellRX website.",
     "CellRX Site Map",
     "Browse the public CellRX website and patient-education resources.",
   ),
   privacy: page(
-    "/privacy",
+    "/privacy/",
     "Privacy Policy | CellRX Regenerative Medicine",
     "Read the CellRX Regenerative Medicine privacy policy.",
     "Privacy Policy",
     "Read the CellRX privacy policy and contact the clinic with questions about how information is handled.",
   ),
   terms: page(
-    "/terms",
+    "/terms/",
     "Terms of Service | CellRX Regenerative Medicine",
     "Read the CellRX Regenerative Medicine terms of service.",
     "Terms of Service",
     "Read the CellRX terms of service.",
   ),
   fdaDisclaimer: page(
-    "/fda-disclaimer",
+    "/fda-disclaimer/",
     "FDA Disclaimer | CellRX Regenerative Medicine",
     "Read CellRX's FDA disclaimer and information about discussing services with a qualified healthcare professional.",
     "FDA Disclaimer",
@@ -150,7 +150,7 @@ export const PAGE_SEO = {
 
 const BLOG_POSTS: Record<string, ServerSEOPage> = {
   "stem-cell-injection-joint-repair": page(
-    "/blog/stem-cell-injection-joint-repair",
+    "/blog/stem-cell-injection-joint-repair/",
     "Joint-Health Patient Education | CellRX",
     "Read CellRX's general patient-education article about discussing joint-health questions with a qualified clinician.",
     "Joint-Health Patient Education",
@@ -159,7 +159,7 @@ const BLOG_POSTS: Record<string, ServerSEOPage> = {
     "article",
   ),
   "iv-stem-cell-therapy-science": page(
-    "/blog/iv-stem-cell-therapy-science",
+    "/blog/iv-stem-cell-therapy-science/",
     "Regenerative Medicine Education | CellRX",
     "Read CellRX's general patient-education article about regenerative medicine questions to discuss with a qualified clinician.",
     "Regenerative Medicine Education",
@@ -168,7 +168,7 @@ const BLOG_POSTS: Record<string, ServerSEOPage> = {
     "article",
   ),
   "top-performers-concierge-medicine": page(
-    "/blog/top-performers-concierge-medicine",
+    "/blog/top-performers-concierge-medicine/",
     "Concierge Medicine Education | CellRX",
     "Read CellRX's general patient-education article about concierge-care conversations and planning.",
     "Concierge Medicine Education",
@@ -177,7 +177,7 @@ const BLOG_POSTS: Record<string, ServerSEOPage> = {
     "article",
   ),
   "first-cellrx-consultation": page(
-    "/blog/first-cellrx-consultation",
+    "/blog/first-cellrx-consultation/",
     "Preparing for a CellRX Consultation | CellRX",
     "Read CellRX's guide to preparing for a private consultation in Lehi, Utah.",
     "Preparing for a CellRX Consultation",
@@ -186,7 +186,7 @@ const BLOG_POSTS: Record<string, ServerSEOPage> = {
     "article",
   ),
   "chain-of-custody-stem-cells": page(
-    "/blog/chain-of-custody-stem-cells",
+    "/blog/chain-of-custody-stem-cells/",
     "Questions About Product Information | CellRX",
     "Read CellRX's patient-education article about questions to ask a qualified clinician regarding product information.",
     "Questions About Product Information",
@@ -195,7 +195,7 @@ const BLOG_POSTS: Record<string, ServerSEOPage> = {
     "article",
   ),
   "quarterly-labs-longevity": page(
-    "/blog/quarterly-labs-longevity",
+    "/blog/quarterly-labs-longevity/",
     "Health-Planning Education | CellRX",
     "Read CellRX's general patient-education article about health-planning conversations and laboratory questions.",
     "Health-Planning Education",
@@ -204,7 +204,7 @@ const BLOG_POSTS: Record<string, ServerSEOPage> = {
     "article",
   ),
   "regenerative-medicine-athletes": page(
-    "/blog/regenerative-medicine-athletes",
+    "/blog/regenerative-medicine-athletes/",
     "Athlete Health Education | CellRX",
     "Read CellRX's general patient-education article about questions athletes can discuss with a qualified clinician.",
     "Athlete Health Education",
@@ -217,7 +217,10 @@ const BLOG_POSTS: Record<string, ServerSEOPage> = {
 export function normalizePathname(pathname: string): string {
   const withoutQuery = pathname.split("?")[0].split("#")[0] || "/";
   if (withoutQuery === "/") return "/";
-  return withoutQuery.replace(/\/+$/, "") || "/";
+  // Normalize multiple slashes but preserve a single trailing slash
+  // (Cloudflare adds trailing slashes to all non-root URLs)
+  const cleaned = withoutQuery.replace(/\/\/+/g, "/");
+  return cleaned.endsWith("/") ? cleaned : cleaned + "/";
 }
 
 export function getBlogPostSEO(slug: string): SEOProps {
@@ -242,29 +245,32 @@ export function resolveSEOPage(pathname: string): {
   const normalized = normalizePathname(pathname);
   const routeEntries: Array<[string, ServerSEOPage]> = [
     ["/", PAGE_SEO.home],
-    ["/about", PAGE_SEO.about],
-    ["/about/dr-egbert", PAGE_SEO.drEgbert],
-    ["/services", PAGE_SEO.services],
-    ["/black-label", PAGE_SEO.blackLabel],
-    ["/contact", PAGE_SEO.contact],
-    ["/blog", PAGE_SEO.blog],
-    ["/testimonials", PAGE_SEO.testimonials],
-    ["/health-optimization", PAGE_SEO.healthOptimization],
-    ["/longevity-programs", PAGE_SEO.longevityPrograms],
-    ["/sitemap", PAGE_SEO.sitemap],
-    ["/faq", PAGE_SEO.faq],
-    ["/privacy", PAGE_SEO.privacy],
-    ["/terms", PAGE_SEO.terms],
-    ["/fda-disclaimer", PAGE_SEO.fdaDisclaimer],
+    ["/about/", PAGE_SEO.about],
+    ["/about/dr-egbert/", PAGE_SEO.drEgbert],
+    ["/services/", PAGE_SEO.services],
+    ["/black-label/", PAGE_SEO.blackLabel],
+    ["/contact/", PAGE_SEO.contact],
+    ["/blog/", PAGE_SEO.blog],
+    ["/testimonials/", PAGE_SEO.testimonials],
+    ["/health-optimization/", PAGE_SEO.healthOptimization],
+    ["/longevity-programs/", PAGE_SEO.longevityPrograms],
+    ["/sitemap/", PAGE_SEO.sitemap],
+    ["/faq/", PAGE_SEO.faq],
+    ["/privacy/", PAGE_SEO.privacy],
+    ["/terms/", PAGE_SEO.terms],
+    ["/fda-disclaimer/", PAGE_SEO.fdaDisclaimer],
   ];
 
   const exact = routeEntries.find(([route]) => route === normalized);
   if (exact) return { page: exact[1], found: true };
 
   if (normalized.startsWith("/blog/")) {
-    const slug = normalized.slice("/blog/".length);
-    const knownPost = BLOG_POSTS[slug];
-    if (knownPost) return { page: knownPost, found: true };
+    // Strip the leading /blog/ and trailing slash to get the slug
+    const slug = normalized.slice("/blog/".length).replace(/\/$/, "");
+    if (slug) {
+      const knownPost = BLOG_POSTS[slug];
+      if (knownPost) return { page: knownPost, found: true };
+    }
   }
 
   if (normalized.startsWith("/dashboard")) {

@@ -2,78 +2,116 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://cellrx.bio/</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-08-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://cellrx.bio/about</loc>
-    <lastmod>2026-07-20</lastmod>
+    <loc>https://cellrx.bio/about/</loc>
+    <lastmod>2026-08-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cellrx.bio/about/dr-egbert</loc>
-    <lastmod>2026-07-20</lastmod>
+    <loc>https://cellrx.bio/about/dr-egbert/</loc>
+    <lastmod>2026-08-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cellrx.bio/services</loc>
-    <lastmod>2026-07-20</lastmod>
+    <loc>https://cellrx.bio/services/</loc>
+    <lastmod>2026-08-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://cellrx.bio/black-label</loc>
-    <lastmod>2026-07-20</lastmod>
+    <loc>https://cellrx.bio/black-label/</loc>
+    <lastmod>2026-08-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://cellrx.bio/health-optimization</loc>
-    <lastmod>2026-07-20</lastmod>
+    <loc>https://cellrx.bio/health-optimization/</loc>
+    <lastmod>2026-08-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cellrx.bio/longevity-programs</loc>
-    <lastmod>2026-07-20</lastmod>
+    <loc>https://cellrx.bio/longevity-programs/</loc>
+    <lastmod>2026-08-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cellrx.bio/contact</loc>
-    <lastmod>2026-07-20</lastmod>
+    <loc>https://cellrx.bio/blog/</loc>
+    <lastmod>2026-08-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cellrx.bio/testimonials</loc>
-    <lastmod>2026-07-20</lastmod>
+    <loc>https://cellrx.bio/blog/stem-cell-injection-joint-repair/</loc>
+    <lastmod>2026-08-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://cellrx.bio/faq</loc>
-    <lastmod>2026-07-20</lastmod>
+    <loc>https://cellrx.bio/blog/iv-stem-cell-therapy-science/</loc>
+    <lastmod>2026-08-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://cellrx.bio/blog</loc>
-    <lastmod>2026-07-20</lastmod>
+    <loc>https://cellrx.bio/blog/top-performers-concierge-medicine/</loc>
+    <lastmod>2026-08-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://cellrx.bio/blog/stem-cell-injection-joint-repair</loc>
-    <lastmod>2026-07-20</lastmod>
+    <loc>https://cellrx.bio/blog/first-cellrx-consultation/</loc>
+    <lastmod>2026-08-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://cellrx.bio/blog/iv-stem-cell-therapy-science</loc>
-    <lastmod>2026-07-20</lastmod>
+    <loc>https://cellrx.bio/blog/chain-of-custody-stem-cells/</loc>
+    <lastmod>2026-08-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://cellrx.bio/blog/top-performers-concierge-medicine</loc>
-    <lastmod>2026-07-20</lastmod>
+    <loc>https://cellrx.bio/blog/quarterly-labs-longevity/</loc>
+    <lastmod>2026-08-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://cellrx.bio/blog/first-cellrx-consultation</loc>
-    <lastmod>2026-07-20</lastmod>
+    <loc>https://cellrx.bio/blog/regenerative-medicine-athletes/</loc>
+    <lastmod>2026-08-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://cellrx.bio/blog/chain-of-custody-stem-cells</loc>
-    <lastmod>2026-07-20</lastmod>
+    <loc>https://cellrx.bio/testimonials/</loc>
+    <lastmod>2026-08-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://cellrx.bio/blog/quarterly-labs-longevity</loc>
-    <lastmod>2026-07-20</lastmod>
+    <loc>https://cellrx.bio/faq/</loc>
+    <lastmod>2026-08-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://cellrx.bio/blog/regenerative-medicine-athletes</loc>
-    <lastmod>2026-07-20</lastmod>
+    <loc>https://cellrx.bio/contact/</loc>
+    <lastmod>2026-08-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://cellrx.bio/fda-disclaimer</loc>
-    <lastmod>2026-07-20</lastmod>
+    <loc>https://cellrx.bio/fda-disclaimer/</loc>
+    <lastmod>2026-08-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 </urlset>

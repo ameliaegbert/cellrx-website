@@ -374,3 +374,12 @@
 - [x] Add speakable schema to WebSite and WebPage nodes (cssSelector: h1, h2, [data-speakable])
 - [x] Add security headers: X-Content-Type-Options, X-Frame-Options, X-XSS-Protection, Referrer-Policy, Permissions-Policy, HSTS (production only)
 - [x] Add areaServed with 20 Utah cities to MedicalClinic schema
+
+## Google Search Console Indexing Fixes (Aug 4, 2026)
+- [x] Diagnose and fix Soft 404 errors — root cause was canonical/sitemap URLs without trailing slashes; Cloudflare 301 redirects all non-trailing-slash URLs; fixed by updating all canonical URLs to trailing-slash format
+- [x] Fix Page with redirect issues — sitemap and canonical tags now use trailing-slash URLs matching Cloudflare's canonical served URLs
+- [x] Fix canonical URL mismatch — shared/seo.ts PAGE_SEO and BLOG_POSTS all updated to trailing-slash paths; normalizePathname() updated to preserve trailing slash; resolveSEOPage() route entries updated
+- [x] Fix blog slug extraction — strip trailing slash from slug before BLOG_POSTS lookup
+- [x] Fix dashboard noindex — correctly returns noindex,nofollow after build
+- [x] Update sitemap.xml to only include canonical, indexable URLs with trailing slashes
+- [ ] Address Crawled but not indexed (3 pages) — improve content depth (requires Dr. Egbert's content notes)
