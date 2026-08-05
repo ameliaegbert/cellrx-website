@@ -383,3 +383,12 @@
 - [x] Fix dashboard noindex — correctly returns noindex,nofollow after build
 - [x] Update sitemap.xml to only include canonical, indexable URLs with trailing slashes
 - [ ] Address Crawled but not indexed (3 pages) — improve content depth (requires Dr. Egbert's content notes)
+
+## PageSpeed Improvements (Aug 5, 2026)
+- [x] Add async CSS loading Vite plugin — converts render-blocking <link rel="stylesheet"> to <link rel="preload" onload> pattern; eliminates 940ms render-blocking delay
+- [x] Remove duplicate blocking CSS link — plugin strips Vite's secondary stylesheet injection
+- [x] Defer Clarity script until after window load event — removes 39ms main-thread blocking from LCP critical path
+- [x] Add preconnect for manus-analytics.com — PageSpeed flagged 310ms savings
+- [x] Add dns-prefetch for scripts.clarity.ms — reduces DNS lookup time for Clarity
+- [x] Lazy-load ExitIntentModal — removes tRPC mutation component from initial bundle
+- [x] Lazy-load NotFound page — removes from initial bundle

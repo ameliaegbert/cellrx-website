@@ -197,7 +197,46 @@ function vitePluginStorageProxy(): Plugin {
   };
 }
 
-const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector(), vitePluginStorageProxy(),
+// =============================================================================
+// Async CSS Plugin — converts render-blocking <link rel="stylesheet"> to async
+// Uses the media="print" trick: browser downloads CSS without blocking render,
+// then switches media to "all" once loaded. A <noscript> fallback ensures
+// CSS still loads for users with JavaScript disabled.
+// Only applies in production build — dev server uses HMR which needs sync CSS.
+// =============================================================================
+function vitePluginAsyncCss(): Plugin {
+  const asyncHrefs = new Set<string>();
+  return {
+    name: 'vite-plugin-async-css',
+    apply: 'build',
+    // enforce: 'post' ensures this runs AFTER Vite injects its own <link> tags
+    enforce: 'post',
+    transformIndexHtml(html) {
+      // Step 1: Convert all stylesheet link tags (with crossorigin) to async preload
+      let result = html.replace(
+        /<link rel="stylesheet" crossorigin href="([^"]+)">/g,
+        (match, href) => {
+          asyncHrefs.add(href);
+          return [
+            `<link rel="preload" href="${href}" as="style" onload="this.onload=null;this.rel='stylesheet'">`,
+            `<noscript><link rel="stylesheet" href="${href}"></noscript>`,
+          ].join('\n    ');
+        }
+      );
+      // Step 2: Remove any remaining blocking <link rel="stylesheet"> for the same hrefs
+      // (Vite sometimes injects a second copy without crossorigin)
+      Array.from(asyncHrefs).forEach((href) => {
+        result = result.replace(
+          new RegExp(`<link rel="stylesheet" href="${href.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}">`, 'g'),
+          ''
+        );
+      });
+      return result;
+    },
+  };
+}
+
+const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector(), vitePluginStorageProxy(), vitePluginAsyncCss(),
   // Bundle analyzer — generates stats.html in dist/ after `pnpm build`
   // Only runs during build, not dev server
   ...(process.env.ANALYZE === 'true' ? [visualizer({ open: false, filename: 'dist/stats.html', gzipSize: true })] : []),

@@ -290,12 +290,15 @@
     ═══════════════════════════════════════════════════════════ -->
     <script type="text/javascript">
       /* Skip Clarity in Electron (Manus desktop app) to prevent polluting analytics */
+      /* Defer until after load to avoid blocking LCP — Clarity data is still captured */
       if (!/electron/i.test(navigator.userAgent) && window.location.protocol !== 'file:') {
-        (function(c,l,a,r,i,t,y){
-          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", "wr6mdwhjnk");
+        window.addEventListener('load', function() {
+          (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+          })(window, document, "clarity", "script", "wr6mdwhjnk");
+        });
       }
     </script>
 
@@ -352,9 +355,12 @@
 
     <!-- DNS prefetch + preconnect for CDN image domains -->
     <link rel="preconnect" href="https://d36hbw14aib5lz.cloudfront.net" crossorigin />
+    <!-- Preconnect for analytics (PageSpeed flagged 310ms savings) -->
+    <link rel="preconnect" href="https://manus-analytics.com" />
     <link rel="dns-prefetch" href="https://d2xsxph8kpxj0f.cloudfront.net" />
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     <link rel="dns-prefetch" href="https://www.clarity.ms" />
+    <link rel="dns-prefetch" href="https://scripts.clarity.ms" />
     <!-- Self-hosted fonts — eliminates the 750ms render-blocking Google Fonts external request.
          Fonts are served from the same CDN as all other assets (no extra DNS lookup). -->
     <style>

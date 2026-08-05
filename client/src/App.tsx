@@ -1,11 +1,13 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import NotFound from "@/pages/NotFound";
 import { lazy, Suspense } from "react";
 import { Route, Switch, useLocation } from "wouter";
-import ExitIntentModal from "./components/ExitIntentModal";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
+
+// Lazy-load non-critical shell components to reduce initial bundle
+const ExitIntentModal = lazy(() => import("./components/ExitIntentModal"));
+const NotFound = lazy(() => import("@/pages/NotFound"));
 
 // ─── All routes are lazily loaded (code-split) ────────────────────────────────
 // Home is lazy too — the App shell (React + router + Toaster) is tiny and renders
@@ -79,7 +81,8 @@ function PublicExitIntent() {
   const [location] = useLocation();
   // Only show on public pages — not on dashboard or admin routes
   if (location.startsWith("/dashboard")) return null;
-  return <ExitIntentModal />;
+  // Wrapped in Suspense since ExitIntentModal is lazy-loaded
+  return <Suspense fallback={null}><ExitIntentModal /></Suspense>;
 }
 
 function App() {
