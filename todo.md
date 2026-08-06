@@ -392,3 +392,12 @@
 - [x] Add dns-prefetch for scripts.clarity.ms — reduces DNS lookup time for Clarity
 - [x] Lazy-load ExitIntentModal — removes tRPC mutation component from initial bundle
 - [x] Lazy-load NotFound page — removes from initial bundle
+
+## PageSpeed v2 Improvements (Aug 6, 2026)
+- [x] Revert async CSS plugin — caused CLS 0.396 (layout shift when CSS loads after first paint)
+- [x] Remove unused Libre Franklin weight 300 font file — not used in any Tailwind class
+- [x] Change Libre Franklin weight 400 to font-display: optional — below-fold body copy; prevents layout shift
+- [x] Add hero image preload hint with imagesrcset — helps browser discover LCP image before React renders
+- [x] Add modulePreload polyfill: false — removes ~1KB polyfill from bundle (all target browsers support native modulepreload)
+- [x] Deferred Clarity script to window.load — removes 64ms main-thread blocking from LCP path
+- [x] Added preconnect for manus-analytics.com — 310ms savings flagged by PageSpeed

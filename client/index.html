@@ -357,6 +357,15 @@
     <link rel="preconnect" href="https://d36hbw14aib5lz.cloudfront.net" crossorigin />
     <!-- Preconnect for analytics (PageSpeed flagged 310ms savings) -->
     <link rel="preconnect" href="https://manus-analytics.com" />
+    <!-- Hero image preload — helps browser discover LCP image before React renders.
+         Uses imagesrcset so the browser picks the right size for the viewport.
+         The /manus-storage/ proxy redirects to CloudFront; the preconnect above
+         warms the CDN connection so the redirect is fast. -->
+    <link rel="preload" as="image" fetchpriority="high"
+      href="/manus-storage/hero_desktop_1920_d480245c_f692d90a.webp"
+      imagesrcset="/manus-storage/hero_mobile_768_2ed2f8a9_d2b37788.webp 768w, /manus-storage/hero_tablet_1280_75e16c47_5b3a69f3.webp 1280w, /manus-storage/hero_desktop_1920_d480245c_f692d90a.webp 1920w"
+      imagesizes="100vw"
+      type="image/webp" />
     <link rel="dns-prefetch" href="https://d2xsxph8kpxj0f.cloudfront.net" />
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     <link rel="dns-prefetch" href="https://www.clarity.ms" />
@@ -391,19 +400,14 @@
         unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
       }
       /* Libre Franklin — body text font */
-      @font-face {
-        font-family: 'Libre Franklin';
-        font-style: normal;
-        font-weight: 300;
-        font-display: swap;
-        src: url('/manus-storage/libre-franklin-300_4b0c5e4f.woff2') format('woff2');
-        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-      }
+      /* weight 300 removed — not used in any Tailwind utility class on this site */
       @font-face {
         font-family: 'Libre Franklin';
         font-style: normal;
         font-weight: 400;
-        font-display: swap;
+        /* optional: browser uses system fallback if font hasn't arrived by first paint.
+           400/normal weight is body copy — below the fold on the homepage. */
+        font-display: optional;
         src: url('/manus-storage/libre-franklin-400_f9e7dbc9.woff2') format('woff2');
         unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
       }
