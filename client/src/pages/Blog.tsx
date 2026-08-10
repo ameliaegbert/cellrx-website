@@ -114,6 +114,80 @@ const articles = [
     readTime: "9 min read",
     author: "CellRX Medical Team"
   }
+  ,
+  // ─── New articles — Aug/Sep/Oct 2026 drip schedule ───────────────────────
+  {
+    img: INJECTION_IMG,
+    category: "Stem Cell Therapy",
+    slug: "mesenchymal-stem-cell-therapy-patient-guide",
+    title: "What Is Mesenchymal Stem Cell Therapy? A Patient's Guide",
+    excerpt: "Mesenchymal stem cell therapy uses adult stem cells to help modulate inflammation and support tissue repair. Most non-FDA-approved uses remain investigational — here is what the current evidence shows and what to ask before treatment.",
+    date: "August 11, 2026",
+    readTime: "10 min read",
+    author: "Dr. Jacob Egbert, MD",
+    serviceLink: "/services",
+    serviceLabel: "View Stem Cell Services"
+  },
+  {
+    img: CLINIC_IMG,
+    category: "Peptide Therapy",
+    slug: "peptide-therapy-101-patient-guide",
+    title: "Peptide Therapy 101: What Patients Should Know Before Their Consultation",
+    excerpt: "Peptide therapy uses short chains of amino acids — the body's natural signaling molecules — to influence tissue repair, metabolism, or hormone signaling. Regulatory status varies widely; here is what to understand before your consultation.",
+    date: "August 18, 2026",
+    readTime: "9 min read",
+    author: "Dr. Jacob Egbert, MD",
+    serviceLink: "/health-optimization",
+    serviceLabel: "Health Optimization"
+  },
+  {
+    img: INJECTION_IMG,
+    category: "Stem Cell Therapy",
+    slug: "stem-cell-therapy-vs-prp-differences",
+    title: "Stem Cell Therapy vs. PRP: What Are the Differences?",
+    excerpt: "Stem cell therapy and PRP are both regenerative biologics but work through different mechanisms and have different evidence bases. Understanding the distinction helps patients ask better questions.",
+    date: "September 1, 2026",
+    readTime: "9 min read",
+    author: "Dr. Jacob Egbert, MD",
+    serviceLink: "/services",
+    serviceLabel: "View Regenerative Services"
+  },
+  {
+    img: PHYSICIAN_IMG,
+    category: "Patient Education",
+    slug: "prepare-first-regenerative-medicine-consultation",
+    title: "How to Prepare for Your First Regenerative Medicine Consultation",
+    excerpt: "A regenerative medicine consultation is a clinical conversation, not a sales presentation. Knowing what to bring, what to ask, and what red flags to watch for helps you make an informed decision.",
+    date: "September 8, 2026",
+    readTime: "8 min read",
+    author: "Dr. Jacob Egbert, MD",
+    serviceLink: "/contact",
+    serviceLabel: "Book a Consultation"
+  },
+  {
+    img: IV_IMG,
+    category: "Longevity Medicine",
+    slug: "nad-iv-therapy-longevity-medicine",
+    title: "What Is NAD+ IV Therapy and How Is It Used in Longevity Medicine?",
+    excerpt: "NAD+ IV therapy delivers a coenzyme central to cellular energy production directly into the bloodstream. The science is legitimate — but clinical evidence for anti-aging benefits in humans is still developing.",
+    date: "October 6, 2026",
+    readTime: "9 min read",
+    author: "Dr. Jacob Egbert, MD",
+    serviceLink: "/longevity-programs",
+    serviceLabel: "Longevity Programs"
+  },
+  {
+    img: BG_DARK_IMG,
+    category: "Health Optimization",
+    slug: "understanding-biomarker-testing-labs",
+    title: "Understanding Biomarker Testing: What Your Labs Actually Tell You",
+    excerpt: "Biomarker testing can offer valuable insight into your health — but results are most useful when interpreted in context, not as standalone numbers. Learn what the key markers measure and what questions to ask.",
+    date: "October 13, 2026",
+    readTime: "10 min read",
+    author: "Dr. Jacob Egbert, MD",
+    serviceLink: "/black-label",
+    serviceLabel: "Quarterly Lab Panels"
+  }
 ];
 
 export default function Blog() {
