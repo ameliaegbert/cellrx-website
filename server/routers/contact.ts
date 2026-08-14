@@ -198,7 +198,7 @@ export const contactRouter = router({
   submit: publicProcedure
     .input(
       z.object({
-        firstName: z.string().min(1, "First name is required"),
+        firstName: z.string().trim().min(1, "First name is required"),
         lastName: z.string().optional().default(""),
         email: z.union([z.string().email(), z.literal("")]).optional().default(""),
         phone: z.string().optional().default(""),

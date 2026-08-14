@@ -137,6 +137,19 @@ describe("contact.submit", () => {
     });
   });
 
+  it("rejects an empty or whitespace-only first name before calling HighLevel", async () => {
+    const caller = appRouter.createCaller({ user: null } as never);
+
+    await expect(caller.contact.submit({
+      ...stemInput,
+      firstName: "   ",
+    })).rejects.toMatchObject({
+      code: "BAD_REQUEST",
+    });
+
+    expect(globalThis.fetch).not.toHaveBeenCalled();
+  });
+
   it("does not call the website's former task or opportunity endpoints", async () => {
     const fetchMock = successfulFetch();
     globalThis.fetch = fetchMock as typeof fetch;

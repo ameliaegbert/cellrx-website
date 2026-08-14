@@ -82,7 +82,7 @@ export default function Contact() {
       return;
     }
     if (!form.firstName.trim()) {
-      setErrorMessage("Please enter your name.");
+      setErrorMessage("Please enter your first name.");
       return;
     }
     if (!form.phone.trim()) {
@@ -91,7 +91,7 @@ export default function Contact() {
     }
 
     submitContact.mutate({
-      firstName: form.firstName,
+      firstName: form.firstName.trim(),
       lastName: "",
       email: "",
       phone: form.phone,
@@ -268,7 +268,7 @@ export default function Contact() {
 
                   <form onSubmit={handleSubmit} className="space-y-5">
                     <div>
-                      <label className="block text-[#D6D7D9]/60 text-xs tracking-widest uppercase mb-2">Your Name *</label>
+                      <label className="block text-[#D6D7D9]/60 text-xs tracking-widest uppercase mb-2">First Name *</label>
                       <input
                         type="text"
                         name="firstName"
@@ -276,7 +276,8 @@ export default function Contact() {
                         value={form.firstName}
                         onChange={handleChange}
                         className="w-full bg-[#051229] border border-white/10 text-white text-sm px-4 py-4 focus:outline-none focus:border-[#0047BB] transition-colors placeholder-white/20"
-                        placeholder="First and last name"
+                        placeholder="Your first name"
+                        autoComplete="given-name"
                       />
                     </div>
 

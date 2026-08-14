@@ -10,6 +10,7 @@
 - [x] Upgrade project to full-stack (web-db-user) for backend API
 
 ## In Progress
+- [x] Require a first name on every public lead form and send it to GoHighLevel so new contacts are not labeled "Website Visitor" — exit-intent modal now requires a first name; contact form normalizes it; server rejects whitespace-only names; 14 contact submission tests passing
 - [x] Add GHL contact submission tRPC mutation in server/routers.ts
 - [x] Store GHL API key as secret (GHL_API_KEY) — full-scope private integration created in GHL
 - [x] Update Contact.tsx form to call tRPC mutation instead of local state

@@ -1,7 +1,7 @@
 /*
  * ExitIntentModal — CellRX
  * Fires when the user's cursor moves above the viewport (desktop) or after 45s of inactivity (mobile)
- * Captures phone number only — 1-field form for maximum conversion
+ * Captures first name and phone number so CRM contacts are correctly identified
  * Shows once per session (sessionStorage flag)
  * Wired to GHL CRM via the same contact.submit tRPC mutation
  */
@@ -14,6 +14,7 @@ const SESSION_KEY = "cellrx_exit_shown";
 
 export default function ExitIntentModal() {
   const [visible, setVisible] = useState(false);
+  const [firstName, setFirstName] = useState("");
   const [phone, setPhone] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
@@ -54,17 +55,23 @@ export default function ExitIntentModal() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
+    const normalizedFirstName = firstName.trim();
+
+    if (!normalizedFirstName) {
+      setError("Please enter your first name.");
+      return;
+    }
     if (!phone.trim()) {
       setError("Please enter your phone number.");
       return;
     }
     submitContact.mutate({
-      firstName: "Website Visitor",
+      firstName: normalizedFirstName,
       lastName: "",
       email: "",
       phone: phone.trim(),
       interest: "general",
-      message: "Exit intent modal — phone only capture",
+      message: "Exit intent modal lead capture",
       hearAbout: "Exit Intent Modal",
     });
   };
@@ -121,10 +128,24 @@ export default function ExitIntentModal() {
               <span className="text-[#0047BB]">CONSULTATION</span>
             </h3>
             <p className="text-[#D6D7D9]/60 text-sm leading-relaxed mb-6" style={{ fontFamily: "'Libre Franklin', sans-serif" }}>
-              Leave your number and we'll reach out within 24 hours to answer your questions — no pressure, no obligation.
+              Leave your first name and number and we'll reach out within 24 hours to answer your questions — no pressure, no obligation.
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <label htmlFor="exit-intent-first-name" className="sr-only">First name</label>
+                <input
+                  id="exit-intent-first-name"
+                  type="text"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                  placeholder="Your first name"
+                  autoComplete="given-name"
+                  required
+                  className="w-full bg-[#051229] border border-white/10 text-white text-sm px-4 py-4 focus:outline-none focus:border-[#0047BB] transition-colors placeholder-white/20"
+                  autoFocus
+                />
+              </div>
               <div className="relative">
                 <Phone size={14} className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30" />
                 <input
@@ -132,8 +153,9 @@ export default function ExitIntentModal() {
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder="Your phone number"
+                  autoComplete="tel"
+                  required
                   className="w-full bg-[#051229] border border-white/10 text-white text-sm pl-10 pr-4 py-4 focus:outline-none focus:border-[#0047BB] transition-colors placeholder-white/20"
-                  autoFocus
                 />
               </div>
 
