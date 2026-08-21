@@ -9,6 +9,15 @@
 - [x] Navigation restructured (logo clickable, CONCIERGE MEDICINE link)
 - [x] Upgrade project to full-stack (web-db-user) for backend API
 
+## Active Indexation Remediation — August 2026
+- [x] Align the two priority article titles, descriptions, H1s, and Article schema with their real subjects
+- [x] Add visible clinician-review, source, regulatory-context, and canonical internal-link signals to priority medical articles
+- [x] Normalize all blog-hub and related-article links to the trailing-slash canonical format
+- [x] Make the FDA disclaimer intentionally `noindex, follow` and remove it from the XML sitemap
+- [x] Remove unpublished future article URLs and future-dated `lastmod` values from all discovery paths
+- [x] Correct production wildcard handling so unknown URLs receive crawler-safe 404 responses instead of an indexable homepage shell
+- [x] Verify crawler-facing server metadata, fallback HTML, XML sitemap, direct runtime responses, and production build output
+
 ## In Progress
 - [x] Require a first name on every public lead form and send it to GoHighLevel so new contacts are not labeled "Website Visitor" — exit-intent modal now requires a first name; contact form normalizes it; server rejects whitespace-only names; 14 contact submission tests passing
 - [x] Add GHL contact submission tRPC mutation in server/routers.ts

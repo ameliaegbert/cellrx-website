@@ -1,9 +1,11 @@
 /*
+ * Clinical Evidence Ledger: this is a compliance resource, intentionally
+ * available to users but not positioned as an organic-search landing page.
  * CellRX FDA Disclaimer Page
  */
 
 import { useEffect } from "react";
-import { useSEO } from "@/hooks/useSEO";
+import { PAGE_SEO, useNoIndex, useSEO } from "@/hooks/useSEO";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Link } from "wouter";
@@ -20,12 +22,8 @@ function useScrollAnimation() {
 }
 
 export default function FDADisclaimer() {
-  useSEO({
-    title: "FDA Disclaimer — CellRX Regenerative Medicine",
-    description: "CellRX FDA Disclaimer. Important regulatory information about our regenerative medicine services.",
-    canonical: "https://cellrx.bio/fda-disclaimer",
-    ogImage: "https://cellrx.bio/og-image.jpg",
-  });
+  useSEO(PAGE_SEO.fdaDisclaimer);
+  useNoIndex();
   useScrollAnimation();
 
   return (

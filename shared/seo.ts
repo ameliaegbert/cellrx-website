@@ -1,3 +1,7 @@
+/**
+ * Clinical Evidence Ledger: crawler-facing metadata must be specific, patient-first,
+ * and consistent with each page's visible title, sources, and regulatory context.
+ */
 export type OpenGraphType = "website" | "article";
 
 export interface SEOProps {
@@ -139,13 +143,16 @@ export const PAGE_SEO = {
     "Terms of Service",
     "Read the CellRX terms of service.",
   ),
-  fdaDisclaimer: page(
-    "/fda-disclaimer/",
-    "FDA Disclaimer | CellRX Regenerative Medicine",
-    "Read CellRX's FDA disclaimer and information about discussing services with a qualified healthcare professional.",
-    "FDA Disclaimer",
-    "Review CellRX's FDA disclaimer and discuss any questions about services, evidence, risks, and regulatory status with a qualified healthcare professional.",
-  ),
+  fdaDisclaimer: {
+    ...page(
+      "/fda-disclaimer/",
+      "FDA Disclaimer | CellRX Regenerative Medicine",
+      "Read CellRX's FDA disclaimer and information about discussing services with a qualified healthcare professional.",
+      "FDA Disclaimer",
+      "Review CellRX's FDA disclaimer and discuss any questions about services, evidence, risks, and regulatory status with a qualified healthcare professional.",
+    ),
+    noindex: true,
+  },
 } as const;
 
 const BLOG_POSTS: Record<string, ServerSEOPage> = {
@@ -160,11 +167,11 @@ const BLOG_POSTS: Record<string, ServerSEOPage> = {
   ),
   "iv-stem-cell-therapy-science": page(
     "/blog/iv-stem-cell-therapy-science/",
-    "Regenerative Medicine Education | CellRX",
-    "Read CellRX's general patient-education article about regenerative medicine questions to discuss with a qualified clinician.",
-    "Regenerative Medicine Education",
-    "This article is for general information and does not replace individualized medical advice from a qualified clinician.",
-    "regenerative medicine education, CellRX",
+    "IV Stem Cell Therapy: Biology, Evidence, and Patient Questions | CellRX",
+    "Read a physician-reviewed overview of IV stem cell therapy, the current regulatory context, evidence limitations, and questions to discuss with a qualified clinician.",
+    "IV Stem Cell Therapy: Biology, Evidence, and Patient Questions",
+    "This patient-education guide explains what researchers are studying about IV administration, what remains uncertain, and what to ask before a consultation.",
+    "IV stem cell therapy, stem cell evidence, regenerative medicine patient education, CellRX",
     "article",
   ),
   "top-performers-concierge-medicine": page(
@@ -187,11 +194,11 @@ const BLOG_POSTS: Record<string, ServerSEOPage> = {
   ),
   "chain-of-custody-stem-cells": page(
     "/blog/chain-of-custody-stem-cells/",
-    "Questions About Product Information | CellRX",
-    "Read CellRX's patient-education article about questions to ask a qualified clinician regarding product information.",
-    "Questions About Product Information",
-    "Use this general educational article to prepare questions for a qualified clinician about source information, documentation, and your individual circumstances.",
-    "patient education, product information, CellRX",
+    "Stem Cell Chain of Custody: Sourcing Questions to Ask | CellRX",
+    "Learn which sourcing, handling, documentation, safety, and regulatory questions to discuss with a qualified clinician before a regenerative-medicine consultation.",
+    "Stem Cell Chain of Custody: Sourcing Questions to Ask",
+    "This patient-education guide explains why product documentation matters and which questions can support an informed clinician conversation.",
+    "stem cell chain of custody, biologic sourcing questions, regenerative medicine patient education, CellRX",
     "article",
   ),
   "quarterly-labs-longevity": page(
@@ -212,60 +219,6 @@ const BLOG_POSTS: Record<string, ServerSEOPage> = {
     "athlete health education, regenerative medicine education, CellRX",
     "article",
   ),
-  "mesenchymal-stem-cell-therapy-patient-guide": page(
-    "/blog/mesenchymal-stem-cell-therapy-patient-guide/",
-    "What Is Mesenchymal Stem Cell Therapy? A Patient's Guide | CellRX",
-    "Mesenchymal stem cell therapy uses adult stem cells to help modulate inflammation and support tissue repair. Learn what the current evidence shows, what questions to ask, and what realistic outcomes look like.",
-    "What Is Mesenchymal Stem Cell Therapy? A Patient's Guide",
-    "Written by Dr. Jacob Egbert, MD. MSC therapy uses adult stem cells from bone marrow, fat tissue, or umbilical cord tissue. Most non-FDA-approved uses remain investigational. A qualified provider can review your history and explain what the evidence does and does not show for your specific situation.",
-    "mesenchymal stem cell therapy, MSC therapy, stem cell patient guide, regenerative medicine Lehi Utah, CellRX",
-    "article",
-  ),
-  "peptide-therapy-101-patient-guide": page(
-    "/blog/peptide-therapy-101-patient-guide/",
-    "Peptide Therapy 101: What Patients Should Know | CellRX",
-    "Peptide therapy uses short amino acid chains to influence tissue repair, metabolism, and hormone signaling. Learn about regulatory status, evidence quality, and what to ask before your consultation.",
-    "Peptide Therapy 101: What Patients Should Know Before Their Consultation",
-    "Written by Dr. Jacob Egbert, MD. Peptide therapy covers a wide range of compounds with differing regulatory status and evidence bases. Before your consultation, understand which category a given peptide falls into and what questions to ask your provider.",
-    "peptide therapy, peptide consultation, compounding pharmacy, GLP-1, CellRX Lehi Utah",
-    "article",
-  ),
-  "stem-cell-therapy-vs-prp-differences": page(
-    "/blog/stem-cell-therapy-vs-prp-differences/",
-    "Stem Cell Therapy vs. PRP: What Are the Differences? | CellRX",
-    "Stem cell therapy and PRP are both regenerative biologics but work through different mechanisms and have different evidence bases. Learn how to compare them and what questions to ask your provider.",
-    "Stem Cell Therapy vs. PRP: What Are the Differences?",
-    "Written by Dr. Jacob Egbert, MD. PRP uses the patient's own blood to deliver growth factors; MSC therapy introduces living cells from donor or autologous sources. The choice depends on condition, evidence, and a thorough clinical assessment.",
-    "stem cell therapy vs PRP, platelet rich plasma, MSC therapy, regenerative medicine comparison, CellRX",
-    "article",
-  ),
-  "prepare-first-regenerative-medicine-consultation": page(
-    "/blog/prepare-first-regenerative-medicine-consultation/",
-    "How to Prepare for Your First Regenerative Medicine Consultation | CellRX",
-    "A regenerative medicine consultation is a clinical conversation, not a sales presentation. Learn what to bring, what to ask, and what red flags to watch for.",
-    "How to Prepare for Your First Regenerative Medicine Consultation",
-    "Written by Dr. Jacob Egbert, MD. Bring your medication list, relevant imaging, and a clear description of your goals. A good consultation covers evidence, realistic outcomes, regulatory status, and full cost — with no pressure to commit on the spot.",
-    "regenerative medicine consultation, what to expect, patient preparation, CellRX Lehi Utah",
-    "article",
-  ),
-  "nad-iv-therapy-longevity-medicine": page(
-    "/blog/nad-iv-therapy-longevity-medicine/",
-    "What Is NAD+ IV Therapy and How Is It Used in Longevity Medicine? | CellRX",
-    "NAD+ IV therapy delivers a coenzyme central to cellular energy production directly into the bloodstream. The science is legitimate — but clinical evidence for anti-aging benefits in humans is still limited. Here is what the research shows.",
-    "What Is NAD+ IV Therapy and How Is It Used in Longevity Medicine?",
-    "Written by Dr. Jacob Egbert, MD. NAD+ is central to cellular energy metabolism and DNA repair. IV administration produces higher plasma NAD+ than oral precursors, but clinical evidence for anti-aging or cognitive benefits in healthy adults is still developing.",
-    "NAD+ IV therapy, NAD infusion, longevity medicine, NMN NR comparison, CellRX Lehi Utah",
-    "article",
-  ),
-  "understanding-biomarker-testing-labs": page(
-    "/blog/understanding-biomarker-testing-labs/",
-    "Understanding Biomarker Testing: What Your Labs Actually Tell You | CellRX",
-    "Biomarker testing can offer valuable insight into your health — but results are most useful when interpreted in context, not as standalone numbers. Learn what the key markers measure and what questions to ask.",
-    "Understanding Biomarker Testing: What Your Labs Actually Tell You",
-    "Written by Dr. Jacob Egbert, MD. Key biomarkers include hsCRP, fasting insulin, hormone panels, lipid particle sizing, and nutritional markers. Standard reference ranges differ from optimal ranges — ask your provider what evidence supports any range being used to guide your care.",
-    "biomarker testing, lab results, hsCRP, hormone panel, longevity labs, CellRX Lehi Utah",
-    "article",
-  ),
 };
 
 export function normalizePathname(pathname: string): string {
@@ -282,7 +235,7 @@ export function getBlogPostSEO(slug: string): SEOProps {
   if (knownPost) return knownPost;
 
   return page(
-    `/blog/${slug}`,
+    `/blog/${slug}/`,
     "CellRX Patient Education",
     "Read general patient-education information from CellRX Regenerative Medicine in Lehi, Utah.",
     "CellRX Patient Education",
