@@ -62,6 +62,29 @@ export function serveStatic(app: Express) {
     );
   }
 
+  // Clinical Evidence Ledger: prevent a static-host or middleware fallback from
+  // returning the indexable homepage shell for an unknown editorial URL. Assets
+  // continue to pass through to the static server; unknown page-like routes get
+  // the route-aware, noindex 404 document before static handling begins.
+  app.use("*", async (req, res, next) => {
+    if (req.method !== "GET" || path.extname(req.path)) {
+      next();
+      return;
+    }
+
+    try {
+      const template = await fs.promises.readFile(path.resolve(distPath, "index.html"), "utf-8");
+      const rendered = renderRouteAwareHtml(template, req.originalUrl);
+      if (rendered.status === 404) {
+        res.status(404).set({ "Content-Type": "text/html" }).end(rendered.html);
+        return;
+      }
+      next();
+    } catch (error) {
+      next(error);
+    }
+  });
+
   // Serve static assets with long-lived cache headers for Lighthouse performance
   app.use(
     express.static(distPath, {
@@ -96,7 +119,7 @@ export function serveStatic(app: Express) {
   app.use("*", async (req, res, next) => {
     try {
       const template = await fs.promises.readFile(path.resolve(distPath, "index.html"), "utf-8");
-      const rendered = renderRouteAwareHtml(template, req.path);
+      const rendered = renderRouteAwareHtml(template, req.originalUrl);
       res.status(rendered.status).set({ "Content-Type": "text/html" }).end(rendered.html);
     } catch (error) {
       next(error);

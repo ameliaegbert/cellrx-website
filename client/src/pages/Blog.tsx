@@ -46,11 +46,11 @@ const articles = [
     img: IV_IMG,
     category: "Stem Cell IV Therapy",
     slug: "iv-stem-cell-therapy-science",
-    title: "The Science of Systemic Regeneration: What Happens During IV Stem Cell Therapy",
-    excerpt: "When regenerative biologics are delivered intravenously, they interact with areas of inflammation and cellular stress, initiating biological signals that may support immune function and cognitive performance. Individual results may vary.",
+    title: "IV Stem Cell Therapy: Biology, Evidence, and Patient Questions",
+    excerpt: "This physician-reviewed guide explains what researchers are studying about IV stem cell therapy, the current regulatory context, and questions to discuss with a qualified clinician.",
     date: "February 28, 2026",
     readTime: "10 min read",
-    author: "CellRX Medical Team",
+    author: "Dr. Jacob Egbert, MD",
     serviceLink: "/services",
     serviceLabel: "Learn About IV Therapy"
   },
@@ -80,13 +80,13 @@ const articles = [
   },
   {
     img: BG_DARK_IMG,
-    category: "Research",
+    category: "Patient Education",
     slug: "chain-of-custody-stem-cells",
-    title: "Chain of Custody: Why the Source of Your Stem Cells Matters More Than You Think",
-    excerpt: "Not all stem cell products are created equal. The difference between a diluted, replicated biologic and a full-concentration, ethically sourced product from a healthy local birth is the difference between compromised quality and the highest available standard of care.",
+    title: "Stem Cell Chain of Custody: Sourcing Questions to Ask",
+    excerpt: "Learn which sourcing, handling, documentation, safety, and regulatory questions to discuss with a qualified clinician before a regenerative-medicine consultation.",
     date: "January 8, 2026",
     readTime: "12 min read",
-    author: "CellRX Medical Team",
+    author: "Dr. Jacob Egbert, MD",
     serviceLink: "/services",
     serviceLabel: "Our Chain-of-Custody Standard"
   },
@@ -113,80 +113,6 @@ const articles = [
     date: "December 15, 2025",
     readTime: "9 min read",
     author: "CellRX Medical Team"
-  }
-  ,
-  // ─── New articles — Aug/Sep/Oct 2026 drip schedule ───────────────────────
-  {
-    img: INJECTION_IMG,
-    category: "Stem Cell Therapy",
-    slug: "mesenchymal-stem-cell-therapy-patient-guide",
-    title: "What Is Mesenchymal Stem Cell Therapy? A Patient's Guide",
-    excerpt: "Mesenchymal stem cell therapy uses adult stem cells to help modulate inflammation and support tissue repair. Most non-FDA-approved uses remain investigational — here is what the current evidence shows and what to ask before treatment.",
-    date: "August 11, 2026",
-    readTime: "10 min read",
-    author: "Dr. Jacob Egbert, MD",
-    serviceLink: "/services",
-    serviceLabel: "View Stem Cell Services"
-  },
-  {
-    img: CLINIC_IMG,
-    category: "Peptide Therapy",
-    slug: "peptide-therapy-101-patient-guide",
-    title: "Peptide Therapy 101: What Patients Should Know Before Their Consultation",
-    excerpt: "Peptide therapy uses short chains of amino acids — the body's natural signaling molecules — to influence tissue repair, metabolism, or hormone signaling. Regulatory status varies widely; here is what to understand before your consultation.",
-    date: "August 18, 2026",
-    readTime: "9 min read",
-    author: "Dr. Jacob Egbert, MD",
-    serviceLink: "/health-optimization",
-    serviceLabel: "Health Optimization"
-  },
-  {
-    img: INJECTION_IMG,
-    category: "Stem Cell Therapy",
-    slug: "stem-cell-therapy-vs-prp-differences",
-    title: "Stem Cell Therapy vs. PRP: What Are the Differences?",
-    excerpt: "Stem cell therapy and PRP are both regenerative biologics but work through different mechanisms and have different evidence bases. Understanding the distinction helps patients ask better questions.",
-    date: "September 1, 2026",
-    readTime: "9 min read",
-    author: "Dr. Jacob Egbert, MD",
-    serviceLink: "/services",
-    serviceLabel: "View Regenerative Services"
-  },
-  {
-    img: PHYSICIAN_IMG,
-    category: "Patient Education",
-    slug: "prepare-first-regenerative-medicine-consultation",
-    title: "How to Prepare for Your First Regenerative Medicine Consultation",
-    excerpt: "A regenerative medicine consultation is a clinical conversation, not a sales presentation. Knowing what to bring, what to ask, and what red flags to watch for helps you make an informed decision.",
-    date: "September 8, 2026",
-    readTime: "8 min read",
-    author: "Dr. Jacob Egbert, MD",
-    serviceLink: "/contact",
-    serviceLabel: "Book a Consultation"
-  },
-  {
-    img: IV_IMG,
-    category: "Longevity Medicine",
-    slug: "nad-iv-therapy-longevity-medicine",
-    title: "What Is NAD+ IV Therapy and How Is It Used in Longevity Medicine?",
-    excerpt: "NAD+ IV therapy delivers a coenzyme central to cellular energy production directly into the bloodstream. The science is legitimate — but clinical evidence for anti-aging benefits in humans is still developing.",
-    date: "October 6, 2026",
-    readTime: "9 min read",
-    author: "Dr. Jacob Egbert, MD",
-    serviceLink: "/longevity-programs",
-    serviceLabel: "Longevity Programs"
-  },
-  {
-    img: BG_DARK_IMG,
-    category: "Health Optimization",
-    slug: "understanding-biomarker-testing-labs",
-    title: "Understanding Biomarker Testing: What Your Labs Actually Tell You",
-    excerpt: "Biomarker testing can offer valuable insight into your health — but results are most useful when interpreted in context, not as standalone numbers. Learn what the key markers measure and what questions to ask.",
-    date: "October 13, 2026",
-    readTime: "10 min read",
-    author: "Dr. Jacob Egbert, MD",
-    serviceLink: "/black-label",
-    serviceLabel: "Quarterly Lab Panels"
   }
 ];
 
@@ -222,7 +148,7 @@ export default function Blog() {
           <div className="mb-8 fade-up">
             <p className="section-label mb-2">Featured Article</p>
           </div>
-          <Link href={`/blog/${articles[0].slug}`}>
+          <Link href={`/blog/${articles[0].slug}/`}>
             <div className="group grid grid-cols-1 lg:grid-cols-2 gap-0 border border-white/5 overflow-hidden cursor-pointer fade-in">
               <div className="relative h-64 lg:h-auto overflow-hidden">
                 <img
@@ -273,7 +199,7 @@ export default function Blog() {
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {articles.slice(1).map((article, i) => (
-              <Link key={i} href={`/blog/${article.slug}`}>
+              <Link key={i} href={`/blog/${article.slug}/`}>
                 <div
                   className="group border border-white/5 overflow-hidden cursor-pointer fade-up h-full"
                   style={{ transitionDelay: `${(i % 3) * 0.1}s` }}

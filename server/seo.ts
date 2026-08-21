@@ -67,14 +67,14 @@ const BLOG_ARTICLES: Record<string, {
     ],
   },
   "iv-stem-cell-therapy-science": {
-    title: "The Science of Systemic Regeneration: What Happens During IV Stem Cell Therapy",
+    title: "IV Stem Cell Therapy: Biology, Evidence, and Patient Questions",
     date: "2026-02-28",
-    lastUpdated: "2026-05-01",
+    lastUpdated: "2026-08-21",
     author: "Dr. Jacob Egbert, MD",
     authorTitle: "Medical Director, CellRX Regenerative Medicine",
     category: "Stem Cell IV Therapy",
     readTime: "10 min read",
-    excerpt: "When regenerative biologics are delivered intravenously, they actively seek out areas of inflammation and cellular stress, initiating a cascade of repair signals that can affect everything from immune function to cognitive performance.",
+    excerpt: "This patient-education guide explains what researchers are studying about IV stem cell therapy, what remains uncertain, the current regulatory context, and questions to discuss with a qualified clinician.",
     headings: [
       { after: 0, text: "The Homing Mechanism" },
       { after: 2, text: "Systemic vs. Targeted Effects" },
@@ -83,20 +83,20 @@ const BLOG_ARTICLES: Record<string, {
       { after: 8, text: "Who Benefits Most" },
     ],
     body: [
-      "When regenerative biologics are delivered intravenously, they don't simply circulate passively through the bloodstream. They actively seek out areas of inflammation and cellular stress — a phenomenon researchers call homing — engaging the body's natural renewal processes across immune function, cognitive performance, and metabolic health.",
-      "Mesenchymal stem cells possess a remarkable ability to migrate toward sites of tissue damage and inflammation. This is mediated by a class of signaling molecules called chemokines, which are released by injured or inflamed tissue. The stem cells express receptors for these chemokines, allowing them to follow the chemical gradient to the precise location where repair is needed.",
-      "When delivered intravenously, the biologics first pass through the pulmonary circulation — the lungs — where a significant portion are temporarily sequestered. This pulmonary first-pass effect is not a limitation but a feature: the lungs are a major site of immune regulation, and the interaction between the biologics and pulmonary immune cells appears to modulate systemic inflammation in ways that contribute to the whole-body effects patients report.",
-      "The distinction between IV therapy and targeted injection is not one of superiority but of application. Injection therapy delivers a concentrated dose to a specific anatomical site — ideal for discrete joint or tissue pathology. IV therapy delivers biologics systemically, making it the appropriate choice for conditions that are diffuse rather than localized: systemic inflammation, immune dysregulation, accelerated aging, cognitive decline, and chronic fatigue.",
-      "Many patients choose IV therapy as a complement to injection therapy — addressing both the specific site of damage and the broader systemic environment that may be contributing to it. Others choose IV therapy as a standalone longevity and optimization protocol, seeking the whole-body regenerative effects without a specific pathological target.",
-      "The IV infusion itself takes approximately 60 to 90 minutes in our private clinic environment. Patients typically report feeling relaxed during the infusion, with no significant discomfort. The biologics are delivered through a standard IV line at a controlled rate, with vital signs monitored throughout.",
-      "In the days following the infusion, some patients report a mild fatigue — a sign that the immune system is actively engaging with the biologics and initiating repair processes. This typically resolves within 24 to 48 hours. The more notable effects — improvements in energy, cognitive clarity, sleep quality, and recovery — tend to emerge over the following two to eight weeks. Individual results may vary.",
+      "Intravenous administration of cell-based products is an active area of research. A description of a proposed biological mechanism is not evidence that a product is safe or effective for a particular person, condition, or outcome.",
+      "Researchers study how mesenchymal stromal cells may respond to chemical signals associated with tissue injury or inflammation. The clinical meaning of those laboratory and early clinical observations depends on the product, route of administration, patient population, study design, and outcome being measured.",
+      "After intravenous administration, a substantial proportion of cells may be detected first in the pulmonary circulation. Researchers continue to study the implications of that distribution; it should not be presented as proof of a whole-body therapeutic effect.",
+      "The choice between an intravenous approach and a targeted procedure is a clinical and regulatory question, not a promise of superiority. A qualified clinician should discuss the evidence, alternatives, known and unknown risks, and whether a proposed use is part of an FDA-supervised clinical investigation.",
+      "The FDA states that, other than certain blood-forming stem cells derived from umbilical cord blood for disorders of the blood-forming system, stem cell products are not FDA-approved for other uses. FDA consumer guidance is listed in the references below.",
+      "The practical details of an infusion, including duration, monitoring, eligibility, and follow-up, vary by protocol and individual circumstances. Ask the treating clinician to explain the product, source documentation, safety monitoring, and aftercare plan before making a decision.",
+      "Potential benefits, side effects, and uncertainties should be discussed in an individualized clinical conversation. Do not interpret general education or another person's reported experience as a prediction of your own outcome.",
       "At CellRX, IV therapy is priced at $1,250 per CC, with protocols ranging from 1 CC to a maximum of 10 CC based on the patient's condition, goals, and the Medical Director's clinical assessment. The starting price for IV therapy is $4,000. Every biologic carries full chain of custody — never diluted, never replicated, always from healthy, consented local births under direct physician oversight.",
-      "The optimal dosing protocol is determined during your private consultation. Some patients benefit from a single high-dose infusion; others achieve better outcomes with a series of lower-dose infusions spaced over several months. Your Medical Director will design the protocol that best matches your biology and goals.",
-      "IV stem cell therapy is particularly well-suited for individuals experiencing the effects of accelerated biological aging, chronic systemic inflammation, post-COVID syndrome, autoimmune conditions, chronic fatigue, and cognitive decline. It is also increasingly chosen by high-performing executives and athletes as a proactive longevity investment — not in response to a specific pathology, but as a strategy for maintaining peak biological function. Individual results may vary. These statements have not been evaluated by the FDA.",
+      "Dosing and protocol decisions require a clinician's assessment of the available evidence, the product's regulatory status, and the patient's individual circumstances. This page does not recommend a product, dose, or course of care.",
+      "CellRX encourages patients to bring questions about regulatory status, evidence quality, source documentation, risks, alternatives, cost, and expected follow-up to a private consultation. No specific health outcome is guaranteed.",
     ],
     citations: [
+      { text: "FDA. Consumer Alert on Regenerative Medicine Products Including Stem Cells and Exosomes.", url: "https://www.fda.gov/vaccines-blood-biologics/consumers-biologics/consumer-alert-regenerative-medicine-products-including-stem-cells-and-exosomes" },
       { text: "Lalu MM, et al. Safety of Cell Therapy with Mesenchymal Stromal Cells (SafeCell): A Systematic Review and Meta-Analysis of Clinical Trials. PLoS One. 2012.", url: "https://pubmed.ncbi.nlm.nih.gov/23049760/" },
-      { text: "Caplan AI, Correa D. The MSC: An Injury Drugstore. Cell Stem Cell. 2011.", url: "https://pubmed.ncbi.nlm.nih.gov/21816364/" },
       { text: "Prockop DJ. Repair of Tissues by Adult Stem/Progenitor Cells (MSCs): Controversies, Myths, and Changing Paradigms. Mol Ther. 2009.", url: "https://pubmed.ncbi.nlm.nih.gov/19293777/" },
     ],
   },
@@ -162,14 +162,14 @@ const BLOG_ARTICLES: Record<string, {
     citations: [],
   },
   "chain-of-custody-stem-cells": {
-    title: "Chain of Custody: Why the Source of Your Stem Cells Matters More Than You Think",
+    title: "Stem Cell Chain of Custody: Sourcing Questions to Ask",
     date: "2026-01-08",
-    lastUpdated: "2026-05-01",
+    lastUpdated: "2026-08-21",
     author: "Dr. Jacob Egbert, MD",
     authorTitle: "Medical Director, CellRX Regenerative Medicine",
-    category: "Research & Sourcing",
+    category: "Patient Education",
     readTime: "12 min read",
-    excerpt: "Not all stem cell products are created equal. Understanding the supply chain behind the biologics you receive is the most important question you can ask before choosing a regenerative medicine provider.",
+    excerpt: "This patient-education guide explains why source and handling documentation matter, what they cannot establish on their own, and which questions to discuss with a qualified clinician.",
     headings: [
       { after: 0, text: "How Most Clinics Source Their Biologics" },
       { after: 3, text: "The Questions Every Patient Should Ask" },
@@ -177,19 +177,20 @@ const BLOG_ARTICLES: Record<string, {
       { after: 9, text: "Why This Matters for Your Outcomes" },
     ],
     body: [
-      "Not all stem cell products are created equal. The difference between a diluted, replicated biologic and a full-concentration, ethically sourced product from a healthy local birth is the difference between marginal results and transformative outcomes. Understanding the supply chain behind the biologics you receive is not a technical detail — it is the most important question you can ask before choosing a regenerative medicine provider.",
-      "The vast majority of regenerative medicine clinics in the United States do not have direct relationships with their biologic sources. They purchase through distributors — intermediaries who aggregate products from multiple tissue banks, process them according to their own protocols, and resell them to clinics at a markup. By the time a vial reaches a patient, it may have changed hands three or four times.",
-      "Each handoff introduces risk. Dilution — intentional or accidental — reduces the concentration of viable cells. Temperature excursions during shipping degrade cell viability. Documentation gaps make it impossible to verify the health status of the donor, the conditions of procurement, or the integrity of the processing chain.",
+      "Chain of custody describes the documented history of a product from procurement through handling, storage, and delivery. It can help a patient understand what documentation exists, but it does not by itself establish safety, efficacy, eligibility, or FDA approval for a particular use.",
+      "Products may have different sources, processing methods, storage requirements, and distribution paths. Patients should not assume that a marketing description alone answers questions about product characterization, regulatory status, or suitability for their situation.",
+      "Documentation can help support an informed discussion about identity, handling, release criteria, and traceability. It is one part of the broader clinical, safety, and regulatory conversation a patient should have with a qualified clinician.",
       "When a clinic tells you their biologics are high quality, ask them to prove it. Ask for the certificate of analysis. Ask for the name of the tissue bank. Ask whether the product has been replicated — meaning whether the original cells were expanded in culture to produce a larger volume. Ask how many times the product changed hands between procurement and your treatment.",
-      "Most clinics cannot answer these questions. Not because they are being deceptive, but because they genuinely do not know. They trusted their distributor, who trusted their supplier, who may or may not have maintained rigorous standards throughout the chain.",
+      "A responsible discussion should leave room for uncertainty. The presence of a document or a direct relationship does not replace independent clinical evidence, FDA requirements, or a careful discussion of potential risks and alternatives.",
       "The right questions to ask any regenerative medicine provider are: Who is your source? What is the chain of custody documentation? Has the product been diluted or replicated? What is the cell viability at the time of administration? Can you provide a certificate of analysis for the specific lot being used in my treatment?",
-      "At CellRX, our Medical Director serves simultaneously as the Medical Director of our stem cell source company. This is not a marketing claim — it is a structural fact that changes everything about the quality and provenance of what we administer.",
-      "Because our Medical Director oversees both the clinic and the source company, every biologic we administer has been under direct physician oversight from the moment of ethical procurement through the moment it enters your body. There are no distributors. There are no intermediaries. There is no gap in the chain of custody.",
-      "Our biologics are sourced exclusively from healthy, consented local births. They are never diluted and never replicated — you receive the full therapeutic concentration of the original product. Every lot comes with complete documentation that we can provide upon request.",
-      "The concentration and viability of the biologics you receive directly determines the magnitude of the regenerative response your body can mount. A diluted product with reduced cell viability will produce a diminished response — or no response at all. A full-concentration product from a verified, healthy source gives your body the maximum signal it needs to initiate repair.",
-      "This is why patients who have tried stem cell therapy elsewhere and seen minimal results often experience dramatically different outcomes at CellRX. The therapy is the same. The biology is the same. The difference is the quality of the product — and the integrity of the chain of custody behind it.",
+      "At CellRX, patients may ask the Medical Director about the clinic's stated source relationship and the documentation available for a proposed product. Those questions should be answered alongside discussion of the product's intended use, regulatory status, evidence, risks, and alternatives.",
+      "Before any decision, ask which records can be reviewed, what those records describe, and how the clinic evaluates product handling. A clinician should be able to explain what the documentation does and does not demonstrate.",
+      "The FDA regulates regenerative medicine products and urges consumers to ask about regulatory status before treatment. FDA consumer guidance is listed below and should be considered alongside a private clinical consultation.",
+      "No source, handling, or documentation claim should be understood as a guarantee of a particular treatment outcome. Clinical appropriateness and expected results vary by product, indication, individual circumstances, and evidence quality.",
+      "Use this information to prepare for a careful, transparent conversation. If you are considering a product, ask for time to review information, seek a second opinion where appropriate, and do not rely on general website content as individualized medical advice.",
     ],
     citations: [
+      { text: "FDA. Important Patient and Consumer Information About Regenerative Medicine Therapies.", url: "https://www.fda.gov/vaccines-blood-biologics/consumers-biologics/important-patient-and-consumer-information-about-regenerative-medicine-therapies" },
       { text: "Sensebe L, et al. Production of mesenchymal stromal/stem cells according to good manufacturing practices: a review. Stem Cell Res Ther. 2013.", url: "https://pubmed.ncbi.nlm.nih.gov/24021978/" },
       { text: "Mendicino M, et al. MSC-Based Product Characterization for Clinical Trials: An FDA Perspective. Cell Stem Cell. 2014.", url: "https://pubmed.ncbi.nlm.nih.gov/24905165/" },
     ],
@@ -592,7 +593,7 @@ export function renderRouteAwareHtml(template: string, pathname: string): {
   const canonicalUrl = toAbsoluteUrl(page.canonical ?? pathname);
   const title = page.title.includes("CellRX") ? page.title : `${page.title} | ${SITE_NAME}`;
   const ogImage = toAbsoluteUrl(page.ogImage ?? DEFAULT_OG_IMAGE);
-  const robots = page.noindex ? "noindex, nofollow" : DEFAULT_ROBOTS;
+  const robots = page.noindex ? "noindex, follow" : DEFAULT_ROBOTS;
 
   // Extract blog slug for article-specific schema and fallback content
   const normalized = pathname.replace(/\/+$/, "") || "/";
@@ -618,6 +619,11 @@ export function renderRouteAwareHtml(template: string, pathname: string): {
     html,
     /<meta\s+name="robots"\s+content="[^"]*"\s*\/>/i,
     `<meta name="robots" content="${robots}" />`,
+  );
+  html = replaceMeta(
+    html,
+    /<meta\s+name="googlebot"\s+content="[^"]*"\s*\/>/i,
+    `<meta name="googlebot" content="${robots}" />`,
   );
   html = replaceMeta(
     html,

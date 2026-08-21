@@ -1,4 +1,7 @@
 /**
+ * Clinical Evidence Ledger: client-side SEO mirrors the crawler-visible source
+ * with clear, accurate metadata and intentional indexation directives.
+ *
  * Client-side SEO management.
  * The server now sends matching metadata and crawlable fallback content. This hook
  * keeps metadata correct during client-side navigation after the application loads.
@@ -186,13 +189,14 @@ export function useMedicalProcedureSchema(procedures: MedicalProcedureData[], pa
 
 export function useNoIndex() {
   useEffect(() => {
-    setMeta("robots", "noindex, nofollow");
+    setMeta("robots", "noindex, follow");
+    setMeta("googlebot", "noindex, follow");
     return () => {
       setMeta(
         "robots",
         "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
       );
+      setMeta("googlebot", "index, follow, max-snippet:-1, max-image-preview:large");
     };
   }, []);
 }
-
